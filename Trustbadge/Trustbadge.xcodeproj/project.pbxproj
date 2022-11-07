@@ -11,6 +11,11 @@
 		C13B2AAF291932FC006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */; };
 		C13B2AB4291932FC006B7DD3 /* TrustbadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */; };
 		C13B2AB5291932FC006B7DD3 /* Trustbadge.h in Headers */ = {isa = PBXBuildFile; fileRef = C13B2AA7291932FC006B7DD3 /* Trustbadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C13B2AFC2919457E006B7DD3 /* iOS-SDK-Seal.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */; };
+		C13B2AFD2919457E006B7DD3 /* iOS-SDK-Seal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */; };
+		C13B2AFE2919457E006B7DD3 /* iOS-SDK-Seal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */; };
+		C13B2B04291945BC006B7DD3 /* checkout_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B02291945BC006B7DD3 /* checkout_page.html */; };
+		C13B2B05291945BC006B7DD3 /* trustcard_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B03291945BC006B7DD3 /* trustcard_page.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,12 @@
 		C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Trustbadge.docc; sourceTree = "<group>"; };
 		C13B2AAE291932FC006B7DD3 /* TrustbadgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustbadgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeTests.swift; sourceTree = "<group>"; };
+		C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal.png"; sourceTree = "<group>"; };
+		C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal@2x.png"; sourceTree = "<group>"; };
+		C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal@3x.png"; sourceTree = "<group>"; };
+		C13B2B002919459E006B7DD3 /* fontawesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontawesome.ttf; sourceTree = "<group>"; };
+		C13B2B02291945BC006B7DD3 /* checkout_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = checkout_page.html; sourceTree = "<group>"; };
+		C13B2B03291945BC006B7DD3 /* trustcard_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trustcard_page.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +82,7 @@
 		C13B2AA6291932FC006B7DD3 /* Trustbadge */ = {
 			isa = PBXGroup;
 			children = (
+				C13B2AF729194556006B7DD3 /* Assets */,
 				C13B2AA7291932FC006B7DD3 /* Trustbadge.h */,
 				C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */,
 			);
@@ -83,6 +95,43 @@
 				C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */,
 			);
 			path = TrustbadgeTests;
+			sourceTree = "<group>";
+		};
+		C13B2AF729194556006B7DD3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2AF829194561006B7DD3 /* Images */,
+				C13B2AFF2919458D006B7DD3 /* Fonts */,
+				C13B2B01291945A5006B7DD3 /* Html */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C13B2AF829194561006B7DD3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */,
+				C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */,
+				C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C13B2AFF2919458D006B7DD3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B002919459E006B7DD3 /* fontawesome.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C13B2B01291945A5006B7DD3 /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B02291945BC006B7DD3 /* checkout_page.html */,
+				C13B2B03291945BC006B7DD3 /* trustcard_page.html */,
+			);
+			path = Html;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +226,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13B2AFE2919457E006B7DD3 /* iOS-SDK-Seal@3x.png in Resources */,
+				C13B2AFD2919457E006B7DD3 /* iOS-SDK-Seal@2x.png in Resources */,
+				C13B2B05291945BC006B7DD3 /* trustcard_page.html in Resources */,
+				C13B2AFC2919457E006B7DD3 /* iOS-SDK-Seal.png in Resources */,
+				C13B2B04291945BC006B7DD3 /* checkout_page.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
