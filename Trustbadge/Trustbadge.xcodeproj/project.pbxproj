@@ -17,6 +17,10 @@
 		C13B2B04291945BC006B7DD3 /* checkout_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B02291945BC006B7DD3 /* checkout_page.html */; };
 		C13B2B05291945BC006B7DD3 /* trustcard_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B03291945BC006B7DD3 /* trustcard_page.html */; };
 		C13B2B09291946DA006B7DD3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B0B291946DA006B7DD3 /* Localizable.strings */; };
+		C13B2B16291AA2D5006B7DD3 /* TSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2B15291AA2D5006B7DD3 /* TSLogger.swift */; };
+		C13B2B18291AA3D2006B7DD3 /* TSConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2B17291AA3D2006B7DD3 /* TSConsoleLogger.swift */; };
+		C13B2B1A291AB016006B7DD3 /* TSLogSeverity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2B19291AB016006B7DD3 /* TSLogSeverity.swift */; };
+		C13B2B1E291AB3F8006B7DD3 /* Date + Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2B1D291AB3F8006B7DD3 /* Date + Formatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		C13B2B0E29194758006B7DD3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13B2B0F29194766006B7DD3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C13B2B102919476F006B7DD3 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C13B2B15291AA2D5006B7DD3 /* TSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSLogger.swift; sourceTree = "<group>"; };
+		C13B2B17291AA3D2006B7DD3 /* TSConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSConsoleLogger.swift; sourceTree = "<group>"; };
+		C13B2B19291AB016006B7DD3 /* TSLogSeverity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSLogSeverity.swift; sourceTree = "<group>"; };
+		C13B2B1D291AB3F8006B7DD3 /* Date + Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Formatting.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				C13B2AF729194556006B7DD3 /* Assets */,
+				C13B2B11291AA248006B7DD3 /* Views */,
+				C13B2B12291AA259006B7DD3 /* Models */,
+				C13B2B13291AA262006B7DD3 /* Services */,
+				C13B2B14291AA286006B7DD3 /* Utilities */,
+				C13B2B1C291AB3B1006B7DD3 /* Extensions */,
 				C13B2B0629194638006B7DD3 /* Localization */,
 				C13B2AA7291932FC006B7DD3 /* Trustbadge.h */,
 				C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */,
@@ -148,6 +161,53 @@
 				C13B2B0B291946DA006B7DD3 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		C13B2B11291AA248006B7DD3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C13B2B12291AA259006B7DD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C13B2B13291AA262006B7DD3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C13B2B14291AA286006B7DD3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B1B291AB065006B7DD3 /* Logger */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C13B2B1B291AB065006B7DD3 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B15291AA2D5006B7DD3 /* TSLogger.swift */,
+				C13B2B19291AB016006B7DD3 /* TSLogSeverity.swift */,
+				C13B2B17291AA3D2006B7DD3 /* TSConsoleLogger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		C13B2B1C291AB3B1006B7DD3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B1D291AB3F8006B7DD3 /* Date + Formatting.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13B2B1E291AB3F8006B7DD3 /* Date + Formatting.swift in Sources */,
+				C13B2B16291AA2D5006B7DD3 /* TSLogger.swift in Sources */,
 				C13B2AA9291932FC006B7DD3 /* Trustbadge.docc in Sources */,
+				C13B2B1A291AB016006B7DD3 /* TSLogSeverity.swift in Sources */,
+				C13B2B18291AA3D2006B7DD3 /* TSConsoleLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +554,7 @@
 		C13B2ABC291932FC006B7DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SP56HZ86QA;
@@ -506,6 +571,7 @@
 		C13B2ABD291932FC006B7DD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SP56HZ86QA;
