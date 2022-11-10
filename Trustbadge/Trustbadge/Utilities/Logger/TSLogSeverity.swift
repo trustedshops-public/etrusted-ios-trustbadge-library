@@ -9,11 +9,11 @@ import Foundation
 
 /**
  TsLogSeverity enumeration defines different level of severity for log messeges
- 1. Info
- 2. Warning
- 3. Error
+ 1. Info - Generic information like successful loading of the module, initialization, etc.
+ 2. Warning - Warning messages points to possibility of errors and nice to have changes.
+ 3. Error - Error messages show actual error details like runtime errors.
  */
-internal enum TSLogSeverity {
+public enum TSLogSeverity {
     case info, warning, error
 
     // MARK: Public properties

@@ -12,7 +12,7 @@ import Foundation
  different logger types
  */
 internal protocol TSLogger {
-    func log(
+    static func log(
         messege: String,
         severity: TSLogSeverity,
         file: String,

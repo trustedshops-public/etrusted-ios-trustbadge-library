@@ -18,7 +18,7 @@ public class TSConsoleLogger: TSLogger {
     /**
      Logs messege to the console with given details like severity, file and method names
      */
-    func log(
+    public static func log(
         messege: String,
         severity: TSLogSeverity,
         file: String = #file,
@@ -28,12 +28,14 @@ public class TSConsoleLogger: TSLogger {
         let filename: String = (file as NSString).lastPathComponent
 
         // Extract the method name without the parameter list
-        let methodName = self.getMethodName(for: method)
+        let methodName = TSConsoleLogger.getMethodName(for: method)
 
         // Get timestamp in Hour:Minute:Second format
-        let timeStamp = Date().toStringWithHourMinuteAndSecond()
+        let now = Date()
+        let dateStamp = now.toStringWithYearMonthAndDate()
+        let timeStamp = now.toStringWithHourMinuteAndSecond()
 
-        print("[\(timeStamp)] \(filename):\(methodName) \(severity.label):\(messege)")
+        print("[\(dateStamp) \(timeStamp)] \(filename):\(methodName) \(severity.label):\(messege)")
     }
 
     // MARK: Private methods
@@ -41,7 +43,7 @@ public class TSConsoleLogger: TSLogger {
     /**
      Returns just the method name for the given function signature
      */
-    private func getMethodName(for method: String) -> String {
+    private static func getMethodName(for method: String) -> String {
         var methodName = method
         if let regex = try? NSRegularExpression(pattern: "\\([^\\)]*\\)") {
             methodName = regex.stringByReplacingMatches(
