@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import Trustbadge
 
 struct ContentView: View {
+
     var body: some View {
-        Text("Trustbadge Example")
-            .padding()
+        ZStack {
+            Text("Trustbadge Example")
+                .padding()
+        }
+        .onAppear {
+            TSConsoleLogger.log(messege: "Hello from the example app", severity: .info)
+        }
     }
 }
 
