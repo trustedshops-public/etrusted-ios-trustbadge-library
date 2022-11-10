@@ -12,11 +12,8 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Text("Trustbadge Example")
-                .padding()
-        }
-        .onAppear {
-            TSConsoleLogger.log(messege: "Hello from the example app", severity: .info)
+            TrustbadgeView(tsid: "X86BFB46EE0BBFC1EA5D0A858030D8B3A")
+                .frame(width: 200, height: 200)
         }
     }
 }
