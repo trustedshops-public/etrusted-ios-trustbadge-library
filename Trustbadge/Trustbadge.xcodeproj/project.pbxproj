@@ -11,9 +11,6 @@
 		C13B2AAF291932FC006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */; };
 		C13B2AB4291932FC006B7DD3 /* TrustbadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */; };
 		C13B2AB5291932FC006B7DD3 /* Trustbadge.h in Headers */ = {isa = PBXBuildFile; fileRef = C13B2AA7291932FC006B7DD3 /* Trustbadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C13B2AFC2919457E006B7DD3 /* iOS-SDK-Seal.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */; };
-		C13B2AFD2919457E006B7DD3 /* iOS-SDK-Seal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */; };
-		C13B2AFE2919457E006B7DD3 /* iOS-SDK-Seal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */; };
 		C13B2B04291945BC006B7DD3 /* checkout_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B02291945BC006B7DD3 /* checkout_page.html */; };
 		C13B2B05291945BC006B7DD3 /* trustcard_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B03291945BC006B7DD3 /* trustcard_page.html */; };
 		C13B2B09291946DA006B7DD3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13B2B0B291946DA006B7DD3 /* Localizable.strings */; };
@@ -32,6 +29,9 @@
 		C13B2BC4291D6C10006B7DD3 /* TrustmarkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC3291D6C10006B7DD3 /* TrustmarkDataService.swift */; };
 		C13B2BC6291D6DB2006B7DD3 /* ShopDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC5291D6DB2006B7DD3 /* ShopDetailsModel.swift */; };
 		C13B2BC9291E1FC8006B7DD3 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC8291E1FC8006B7DD3 /* TypeAliases.swift */; };
+		C13B2BCB291E33C9006B7DD3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */; };
+		C13B2BCD291E3695006B7DD3 /* Image + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */; };
+		C13B2BD2291E3822006B7DD3 /* TrustbadgeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,6 @@
 		C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Trustbadge.docc; sourceTree = "<group>"; };
 		C13B2AAE291932FC006B7DD3 /* TrustbadgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustbadgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeTests.swift; sourceTree = "<group>"; };
-		C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal.png"; sourceTree = "<group>"; };
-		C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal@2x.png"; sourceTree = "<group>"; };
-		C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-SDK-Seal@3x.png"; sourceTree = "<group>"; };
 		C13B2B002919459E006B7DD3 /* fontawesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontawesome.ttf; sourceTree = "<group>"; };
 		C13B2B02291945BC006B7DD3 /* checkout_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = checkout_page.html; sourceTree = "<group>"; };
 		C13B2B03291945BC006B7DD3 /* trustcard_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trustcard_page.html; sourceTree = "<group>"; };
@@ -77,6 +74,9 @@
 		C13B2BC3291D6C10006B7DD3 /* TrustmarkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDataService.swift; sourceTree = "<group>"; };
 		C13B2BC5291D6DB2006B7DD3 /* ShopDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsModel.swift; sourceTree = "<group>"; };
 		C13B2BC8291E1FC8006B7DD3 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image + Bundle.swift"; sourceTree = "<group>"; };
+		C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,21 +144,11 @@
 		C13B2AF729194556006B7DD3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				C13B2AF829194561006B7DD3 /* Images */,
 				C13B2AFF2919458D006B7DD3 /* Fonts */,
 				C13B2B01291945A5006B7DD3 /* Html */,
+				C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		C13B2AF829194561006B7DD3 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				C13B2AF92919457E006B7DD3 /* iOS-SDK-Seal.png */,
-				C13B2AFA2919457E006B7DD3 /* iOS-SDK-Seal@2x.png */,
-				C13B2AFB2919457E006B7DD3 /* iOS-SDK-Seal@3x.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		C13B2AFF2919458D006B7DD3 /* Fonts */ = {
@@ -189,6 +179,7 @@
 		C13B2B11291AA248006B7DD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C13B2BCE291E3785006B7DD3 /* Common */,
 				C13B2B9F291D43B5006B7DD3 /* TrustbadgeView.swift */,
 			);
 			path = Views;
@@ -233,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				C13B2B1D291AB3F8006B7DD3 /* Date + Formatting.swift */,
+				C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -255,6 +247,14 @@
 			isa = PBXGroup;
 			children = (
 				C13B2BC8291E1FC8006B7DD3 /* TypeAliases.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C13B2BCE291E3785006B7DD3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -356,11 +356,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C13B2AFE2919457E006B7DD3 /* iOS-SDK-Seal@3x.png in Resources */,
 				C13B2B09291946DA006B7DD3 /* Localizable.strings in Resources */,
-				C13B2AFD2919457E006B7DD3 /* iOS-SDK-Seal@2x.png in Resources */,
+				C13B2BCB291E33C9006B7DD3 /* Icons.xcassets in Resources */,
 				C13B2B05291945BC006B7DD3 /* trustcard_page.html in Resources */,
-				C13B2AFC2919457E006B7DD3 /* iOS-SDK-Seal.png in Resources */,
 				C13B2B04291945BC006B7DD3 /* checkout_page.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,12 +386,14 @@
 				C13B2B16291AA2D5006B7DD3 /* TSLogger.swift in Sources */,
 				C13B2AA9291932FC006B7DD3 /* Trustbadge.docc in Sources */,
 				C13B2BB8291D5521006B7DD3 /* TSNetworkServiceMethod.swift in Sources */,
+				C13B2BCD291E3695006B7DD3 /* Image + Bundle.swift in Sources */,
 				C13B2BC4291D6C10006B7DD3 /* TrustmarkDataService.swift in Sources */,
 				C13B2B1A291AB016006B7DD3 /* TSLogSeverity.swift in Sources */,
 				C13B2B18291AA3D2006B7DD3 /* TSConsoleLogger.swift in Sources */,
 				C13B2BBA291D558F006B7DD3 /* TSNetworkServiceHeaderField.swift in Sources */,
 				C13B2BC0291D596A006B7DD3 /* TSNetworkDataService.swift in Sources */,
 				C13B2BB6291D4A25006B7DD3 /* TSBackendServiceURL.swift in Sources */,
+				C13B2BD2291E3822006B7DD3 /* TrustbadgeImage.swift in Sources */,
 				C13B2BA0291D43B5006B7DD3 /* TrustbadgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

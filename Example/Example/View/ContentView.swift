@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070")
-                .frame(width: 200, height: 200)
+                .frame(width: 100, height: 100)
         }
     }
 }

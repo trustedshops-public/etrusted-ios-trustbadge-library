@@ -43,7 +43,21 @@ class ShopDetailsModel: Codable {
  validity dates and status
  */
 class TrustmarkModel: Codable {
-    let status: String
+    let status: TrustmarkStatus
     let validFrom: String
     let validTo: String
+
+    // MARK: Public properties
+
+    var isValid: Bool {
+        self.status == .valid
+    }
+}
+
+/**
+ TrustmarkStatus enumeration indicates if a shop's trustmark is valid
+ */
+enum TrustmarkStatus: String, Codable {
+    case valid = "VALID"
+    case invalid = "INVALID"
 }
