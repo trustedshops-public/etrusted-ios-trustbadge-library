@@ -16,11 +16,11 @@ public struct TrustbadgeView: View {
 
     public init(tsid: String) {
         self.tsid = tsid
-        self.getTrustbadgeDetails()
     }
 
     // MARK: Private properties
     private var tsid: String?
+    @StateObject private var trustmarkDataService = TrustmarkDataService()
 
     // MARK: User interface
 
@@ -38,6 +38,9 @@ public struct TrustbadgeView: View {
                     .fill(Color.yellow)
             )
         }
+        .onAppear {
+            self.getTrustbadgeDetails()
+        }
     }
 
     // MARK: Private methods
@@ -46,9 +49,16 @@ public struct TrustbadgeView: View {
      Calls backend API to download trustbadge details for the given tsid
      */
     private func getTrustbadgeDetails() {
-        TSConsoleLogger.log(
-            messege: "Loading trustbadge details for shop with tsid: \(self.tsid ?? "")",
-            severity: .info
-        )
+        guard let shopId = self.tsid else {
+            return
+        }
+
+        self.trustmarkDataService.getTrustmarkDetails(for: shopId) { didLoadDetails in
+            guard didLoadDetails else { return }
+            TSConsoleLogger.log(
+                messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid ?? "")",
+                severity: .info
+            )
+        }
     }
 }
