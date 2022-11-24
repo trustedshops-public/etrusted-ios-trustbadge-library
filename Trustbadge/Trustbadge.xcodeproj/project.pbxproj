@@ -182,8 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C13B2BCE291E3785006B7DD3 /* Common */,
-				C13B2B9F291D43B5006B7DD3 /* TrustbadgeView.swift */,
-				C18AA4BF2926127F003B58AE /* TrustbadgeViewWrapper.swift */,
+				C1ECD77A292F49CE00C33E7F /* TrustbadgeView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +259,15 @@
 				C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C1ECD77A292F49CE00C33E7F /* TrustbadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				C13B2B9F291D43B5006B7DD3 /* TrustbadgeView.swift */,
+				C18AA4BF2926127F003B58AE /* TrustbadgeViewWrapper.swift */,
+			);
+			path = TrustbadgeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
