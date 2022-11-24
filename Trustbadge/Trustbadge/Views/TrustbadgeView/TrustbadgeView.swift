@@ -26,8 +26,8 @@ public struct TrustbadgeView: View {
 
     public var body: some View {
         ZStack {
-            if let shopDetails = self.trustmarkDataService.shopDetails {
-                if shopDetails.trustMark.isValid {
+            if let trustMarkDetails = self.trustmarkDataService.trustMarkDetails {
+                if trustMarkDetails.trustMark.isValid {
                     TrustbadgeImage(assetName: "iconTrustmark")
                         .onAppear {
                             TSConsoleLogger.log(
@@ -43,7 +43,7 @@ public struct TrustbadgeView: View {
             }
         }
         .onAppear {
-            self.getTrustbadgeDetails()
+            self.getTrustmarkDetails()
         }
     }
 
@@ -52,7 +52,7 @@ public struct TrustbadgeView: View {
     /**
      Calls backend API to download trustbadge details for the given tsid
      */
-    private func getTrustbadgeDetails() {
+    private func getTrustmarkDetails() {
         guard let shopId = self.tsid else {
             TSConsoleLogger.log(
                 messege: "Error showing the trustbadge due to missing tsid",

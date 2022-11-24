@@ -27,7 +27,7 @@
 		C13B2BC0291D596A006B7DD3 /* TSNetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BBF291D596A006B7DD3 /* TSNetworkDataService.swift */; };
 		C13B2BC2291D5A07006B7DD3 /* TSNetworkServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC1291D5A07006B7DD3 /* TSNetworkServiceRequest.swift */; };
 		C13B2BC4291D6C10006B7DD3 /* TrustmarkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC3291D6C10006B7DD3 /* TrustmarkDataService.swift */; };
-		C13B2BC6291D6DB2006B7DD3 /* ShopDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC5291D6DB2006B7DD3 /* ShopDetailsModel.swift */; };
+		C13B2BC6291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC5291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift */; };
 		C13B2BC9291E1FC8006B7DD3 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BC8291E1FC8006B7DD3 /* TypeAliases.swift */; };
 		C13B2BCB291E33C9006B7DD3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */; };
 		C13B2BCD291E3695006B7DD3 /* Image + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */; };
@@ -75,7 +75,7 @@
 		C13B2BBF291D596A006B7DD3 /* TSNetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkDataService.swift; sourceTree = "<group>"; };
 		C13B2BC1291D5A07006B7DD3 /* TSNetworkServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkServiceRequest.swift; sourceTree = "<group>"; };
 		C13B2BC3291D6C10006B7DD3 /* TrustmarkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDataService.swift; sourceTree = "<group>"; };
-		C13B2BC5291D6DB2006B7DD3 /* ShopDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsModel.swift; sourceTree = "<group>"; };
+		C13B2BC5291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDetailsModel.swift; sourceTree = "<group>"; };
 		C13B2BC8291E1FC8006B7DD3 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image + Bundle.swift"; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		C13B2B12291AA259006B7DD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C13B2BC5291D6DB2006B7DD3 /* ShopDetailsModel.swift */,
+				C13B2BC5291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift */,
 				C1ECD77D292F4B0800C33E7F /* ShopGradeModel.swift */,
 			);
 			path = Models;
@@ -397,7 +397,7 @@
 				C13B2BC9291E1FC8006B7DD3 /* TypeAliases.swift in Sources */,
 				C13B2BC2291D5A07006B7DD3 /* TSNetworkServiceRequest.swift in Sources */,
 				C13B2B1E291AB3F8006B7DD3 /* Date + Formatting.swift in Sources */,
-				C13B2BC6291D6DB2006B7DD3 /* ShopDetailsModel.swift in Sources */,
+				C13B2BC6291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift in Sources */,
 				C13B2BBE291D5834006B7DD3 /* TSNetworkServiceError.swift in Sources */,
 				C13B2BBC291D566D006B7DD3 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
 				C13B2B16291AA2D5006B7DD3 /* TSLogger.swift in Sources */,

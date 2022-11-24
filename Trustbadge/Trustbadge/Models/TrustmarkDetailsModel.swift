@@ -8,28 +8,10 @@
 import Foundation
 
 /**
- Data object for the response returned by the trustmark backend API
- */
-class TrustmarkBackendResponseModel: Codable {
-    let response: TrustmarkResponseModel
-}
-
-class TrustmarkResponseModel: Codable {
-    let code: Int
-    let data: TrustmarkResponseDataModel
-    let message: String
-    let status: String
-}
-
-class TrustmarkResponseDataModel: Codable {
-    let shop: ShopDetailsModel
-}
-
-/**
- ShopDetailsModel contains details about a shop like
+ TrustmarkDetailsModel contains details about a shop like
  name, url, target market, trustmark, etc
  */
-class ShopDetailsModel: Codable {
+class TrustmarkDetailsModel: Codable {
     let tsId: String
     let url: String
     let name: String

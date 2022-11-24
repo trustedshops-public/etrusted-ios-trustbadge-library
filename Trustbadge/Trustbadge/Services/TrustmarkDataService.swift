@@ -17,7 +17,7 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
 
     // MARK: Public properties
 
-    @Published var shopDetails: ShopDetailsModel?
+    @Published var trustMarkDetails: TrustmarkDetailsModel?
 
     // MARK: Public methods
 
@@ -48,7 +48,7 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
             }
 
             DispatchQueue.main.async {
-                self.shopDetails = trustmarkResponse.response.data.shop
+                self.trustMarkDetails = trustmarkResponse.response.data.shop
                 responseHandler(true)
             }
         }
@@ -66,4 +66,22 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
             responseHandler: apiResponseHandler
         )
     }
+}
+
+/**
+ Data object for the response returned by the trustmark backend API
+ */
+class TrustmarkBackendResponseModel: Codable {
+    let response: TrustmarkResponseModel
+}
+
+class TrustmarkResponseModel: Codable {
+    let code: Int
+    let data: TrustmarkResponseDataModel
+    let message: String
+    let status: String
+}
+
+class TrustmarkResponseDataModel: Codable {
+    let shop: TrustmarkDetailsModel
 }
