@@ -12,6 +12,6 @@ import SwiftUI
 @objc public class TrustbadgeViewWrapper : NSObject {
 
     @objc public static func createTrustbadgeView(tsid: String) -> UIViewController {
-        return UIHostingController(rootView: TrustbadgeView(tsid: tsid))
+        return UIHostingController(rootView: TrustbadgeView(tsid: tsid, context: .shopGrade))
     }
 }

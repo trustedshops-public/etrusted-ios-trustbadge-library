@@ -14,13 +14,17 @@ public struct TrustbadgeView: View {
 
     // MARK: Initializer
 
-    public init(tsid: String) {
+    public init(tsid: String, context: TrustbadgeContext) {
         self.tsid = tsid
+        self.context = context
     }
 
     // MARK: Private properties
     private var tsid: String?
+    private var context: TrustbadgeContext
+
     @StateObject private var trustmarkDataService = TrustmarkDataService()
+    @State private var state: TrustbadgeState = .default
 
     // MARK: User interface
 
