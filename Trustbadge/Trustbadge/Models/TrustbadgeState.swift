@@ -19,7 +19,17 @@ import Foundation
  */
 enum TrustbadgeState {
     case `default`
-    case expending
     case expended
     case expendedAsPopup
+
+    // MARK: Public properties
+
+    /// Icon name for the state
+    var iconName: String {
+        switch self {
+        case .default: return "trustmarkIcon"
+        case .expended: return ""
+        case .expendedAsPopup: return "blueCrossIcon"
+        }
+    }
 }

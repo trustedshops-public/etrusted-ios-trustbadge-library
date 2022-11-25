@@ -23,6 +23,7 @@ public struct TrustbadgeView: View {
     @StateObject private var trustmarkDataService = TrustmarkDataService()
     @State private var currentState: TrustbadgeState = .default
     @State private var shouldShowExpendedStateContent: Bool = false
+    @State private var iconName: String = TrustbadgeState.default.iconName
 
     private var tsid: String?
     private var context: TrustbadgeContext
@@ -57,10 +58,16 @@ public struct TrustbadgeView: View {
                                     currentState: self.currentState
                                 )
                             } else if self.context == .productGrade {
-                                ProductGradeView()
+                                ProductGradeView(
+                                    height: self.badgeIconBackgroundHeight,
+                                    currentState: self.currentState
+                                )
 
                             } else if self.context == .buyerProtection {
-                                BuyerProtectionView()
+                                BuyerProtectionView(
+                                    height: self.badgeIconBackgroundHeight,
+                                    currentState: self.currentState
+                                )
                             }
                         }
                         .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
@@ -73,19 +80,9 @@ public struct TrustbadgeView: View {
                             .fill(Color.white)
                             .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
-                        TrustbadgeImage(assetName: "trustmarkIcon")
+                        TrustbadgeImage(assetName: self.iconName)
                             .frame(width: self.badgeIconHeight, height: self.badgeIconHeight)
-                            .onAppear {
-                                TSConsoleLogger.log(
-                                    messege: "Trustmark for shop with tsid: \(self.tsid ?? "") is valid",
-                                    severity: .info
-                                )
-                                TSConsoleLogger.log(
-                                    messege: "Presented trustbadge successfully",
-                                    severity: .info
-                                )
-                                self.showBadgeAnimationIfNeeded()
-                        }
+                            .animation(.easeIn(duration: 0.2))
                     }
                 }
                 Spacer()
@@ -120,6 +117,16 @@ public struct TrustbadgeView: View {
                 messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid ?? "")",
                 severity: .info
             )
+
+            let trustMarkDetails = self.trustmarkDataService.trustMarkDetails
+            let isTrustmarkValid = trustMarkDetails?.trustMark.isValid ?? false
+            let validityString = isTrustmarkValid ? "is valid": "isn't valid!"
+            TSConsoleLogger.log(
+                messege: "Trustmark for shop with tsid: \(self.tsid ?? "") \(validityString)",
+                severity: .info
+            )
+
+            self.showBadgeAnimationIfNeeded()
         }
     }
 
@@ -134,12 +141,26 @@ public struct TrustbadgeView: View {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.currentState = .expended
+            self.setIconForState()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.shouldShowExpendedStateContent = false
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                 self.currentState = .default
+                self.setIconForState()
             }
+        }
+    }
+
+    /**
+     Sets the icon name for the current state
+     */
+    private func setIconForState() {
+        if self.currentState == .default {
+            self.iconName = self.currentState.iconName
+
+        } else if self.currentState == .expended {
+            self.iconName = self.context.iconName
         }
     }
 }

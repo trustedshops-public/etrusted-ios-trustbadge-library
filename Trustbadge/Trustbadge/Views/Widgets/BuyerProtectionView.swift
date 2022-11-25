@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct BuyerProtectionView: View {
-    var body: some View {
-        Text("Buyer Protection")
-    }
-}
+    var height: CGFloat
+    var currentState: TrustbadgeState
 
-struct BuyerProtectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        BuyerProtectionView()
+    var body: some View {
+        Text(self.currentState == .expended ? "Buyer Protection" : "")
     }
 }

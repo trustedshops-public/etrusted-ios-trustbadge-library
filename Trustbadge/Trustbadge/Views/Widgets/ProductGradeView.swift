@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct ProductGradeView: View {
+    var height: CGFloat
+    var currentState: TrustbadgeState
+    
     var body: some View {
-        Text("Product Grade")
-    }
-}
-
-struct ProductGradeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductGradeView()
+        Text(self.currentState == .expended ? "Product Grade" : "")
     }
 }

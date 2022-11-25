@@ -17,4 +17,16 @@ public enum TrustbadgeContext {
     case shopGrade
     case productGrade
     case buyerProtection
+
+    // MARK: Public properties
+
+    /// Icon name for the context
+    var iconName: String {
+        switch self {
+        case .trustMark: return "trustmarkIcon"
+        case .shopGrade: return "shopGradeIcon"
+        case .productGrade: return "productGradeIcon"
+        case .buyerProtection: return "buyerProtectionIcon"
+        }
+    }
 }
