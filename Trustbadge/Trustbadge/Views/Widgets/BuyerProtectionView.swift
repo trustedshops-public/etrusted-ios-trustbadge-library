@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BuyerProtectionView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Buyer Protection")
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ShopGradeModel.swift
+//  ShopGradeDetailsModel.swift
 //  Trustbadge
 //
 //  Created by Prem Pratap Singh on 24/11/22.

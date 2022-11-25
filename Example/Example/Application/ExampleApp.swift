@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ExampleApp: App {
+    @StateObject private var overlayContainerContext = OverlayContainerContext()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
+                .environmentObject(self.overlayContainerContext)
         }
     }
 }

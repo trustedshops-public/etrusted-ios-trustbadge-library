@@ -8,13 +8,41 @@
 import SwiftUI
 
 struct ShopGradeView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
 
-struct ShopGradeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShopGradeView()
+    // MARK: Public properties
+
+    //var shopGradeDetails: ShopGradeDetailsModel
+    var height: CGFloat
+    var currentState: TrustbadgeState
+
+    // MARK: User interface
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+
+            // Shop Grade Text
+            HStack(alignment: .center, spacing: 5) {
+                Text("Excellant")
+                    .foregroundColor(.black)
+                    .font(.system(size: 14, weight: .semibold))
+                Text(NSLocalizedString("shops reviews", comment: "Trustbadge: Shop grade title"))
+                    .foregroundColor(.black)
+                    .font(.system(size: 14, weight: .regular))
+            }
+
+            // Star Rating View
+            HStack(alignment: .center, spacing: 10) {
+                StarRatingView(rating: 3.5)
+                HStack(alignment: .center, spacing: 0) {
+                    Text("3.5")
+                        .foregroundColor(.black)
+                        .font(.system(size: 14, weight: .semibold))
+                    Text("/5.00")
+                        .foregroundColor(.black)
+                        .font(.system(size: 14, weight: .regular))
+                }
+            }
+        }
+        .frame(width: self.currentState == .default ? 0 : 200, height: self.height)
     }
 }

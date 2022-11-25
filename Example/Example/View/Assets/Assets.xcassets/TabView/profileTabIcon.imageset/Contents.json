@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "iOS-SDK-Seal.png",
+      "filename" : "profileTabIcon@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "iOS-SDK-Seal@2x.png",
+      "filename" : "profileTabIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "iOS-SDK-Seal@3x.png",
+      "filename" : "profileTabIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
