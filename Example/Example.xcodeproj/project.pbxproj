@@ -16,6 +16,7 @@
 		C13B2AE829193554006B7DD3 /* ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AE729193554006B7DD3 /* ExampleUITestsLaunchTests.swift */; };
 		C13B2B9B291CDF26006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; };
 		C13B2B9C291CDF26006B7DD3 /* Trustbadge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C19244AF2934F6D700F42ABC /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244AE2934F6D700F42ABC /* ProductCategory.swift */; };
 		C1ECD78C2930804800C33E7F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD78B2930804800C33E7F /* TabBarView.swift */; };
 		C1ECD790293080F100C33E7F /* OverlayContainerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD78F293080F100C33E7F /* OverlayContainerContext.swift */; };
 		C1ECD7922930817E00C33E7F /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD7912930817E00C33E7F /* ProductsView.swift */; };
@@ -90,6 +91,7 @@
 		C13B2B95291CDF16006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
 		C13B2B99291CDF1D006B7DD3 /* Trustbadge.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Trustbadge.framework.dSYM; sourceTree = "<group>"; };
 		C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
+		C19244AE2934F6D700F42ABC /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		C1ECD78B2930804800C33E7F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C1ECD78F293080F100C33E7F /* OverlayContainerContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayContainerContext.swift; sourceTree = "<group>"; };
 		C1ECD7912930817E00C33E7F /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,8 @@
 				C13B2B84291CDD9E006B7DD3 /* Trustbadge.xcodeproj */,
 				C13B2AF42919360C006B7DD3 /* Application */,
 				C13B2AF52919361D006B7DD3 /* View */,
+				C19244AD2934F6BB00F42ABC /* ViewModel */,
+				C19244AA2934F6AB00F42ABC /* Model */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -263,6 +267,21 @@
 			);
 			name = "Release-iphonesimulator";
 			path = "../../../../../../../../../../../../../Users/prempratapsingh/Library/Developer/Xcode/DerivedData/Trustbadge-dywienjnojeylsctkifnzqgljirv/Build/Products/Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		C19244AA2934F6AB00F42ABC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C19244AE2934F6D700F42ABC /* ProductCategory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C19244AD2934F6BB00F42ABC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C1ECD7992930932F00C33E7F /* Extensions */ = {
@@ -432,6 +451,7 @@
 				C13B2ACD2919354F006B7DD3 /* HomeView.swift in Sources */,
 				C1ECD78C2930804800C33E7F /* TabBarView.swift in Sources */,
 				C1ECD79B2930934700C33E7F /* Color + TsColors.swift in Sources */,
+				C19244AF2934F6D700F42ABC /* ProductCategory.swift in Sources */,
 				C1ECD790293080F100C33E7F /* OverlayContainerContext.swift in Sources */,
 				C13B2ACB2919354F006B7DD3 /* ExampleApp.swift in Sources */,
 				C1ECD794293081AA00C33E7F /* ProductCheckoutView.swift in Sources */,
