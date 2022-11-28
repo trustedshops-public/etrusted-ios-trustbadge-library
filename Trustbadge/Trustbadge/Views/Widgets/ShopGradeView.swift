@@ -22,10 +22,12 @@ struct ShopGradeView: View {
 
             // Shop Grade Text
             HStack(alignment: .center, spacing: 5) {
-                Text("Excellant")
+                Text(NSLocalizedString("Excellant",
+                                       comment: "Trustbadge: Excellant grade title"))
                     .foregroundColor(.black)
                     .font(.system(size: 14, weight: .semibold))
-                Text(NSLocalizedString("shops reviews", comment: "Trustbadge: Shop grade title"))
+                Text(NSLocalizedString("shops reviews",
+                                       comment: "Trustbadge: Shop grade title"))
                     .foregroundColor(.black)
                     .font(.system(size: 14, weight: .regular))
             }

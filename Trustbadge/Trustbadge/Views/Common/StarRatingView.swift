@@ -13,6 +13,7 @@ This view represents the star rating view based on the given rating value
 struct StarRatingView: View {
 
     // MARK: Private property
+
     private static let maxRating: Float = 5
     private static let filledStarColor = Color.tsPineapple500
     private static let emptyStarColor = Color.tsGray100
@@ -47,6 +48,7 @@ struct StarRatingView: View {
     }
 
     // MARK: Initializer
+
     init(rating: Float) {
         self.rating = rating
         self.fullCount = Int(rating)
@@ -55,6 +57,7 @@ struct StarRatingView: View {
     }
 
     // MARK: User interface
+    
     var body: some View {
         HStack(spacing: 5) {
             ForEach(0..<fullCount, id: \.self) { _ in

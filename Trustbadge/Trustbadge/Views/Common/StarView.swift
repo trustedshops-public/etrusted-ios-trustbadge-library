@@ -14,6 +14,7 @@ import SwiftUI
 struct StarView: Shape {
 
     // MARK: Public properties
+    
     let corners: Int
     let smoothness: Double
 

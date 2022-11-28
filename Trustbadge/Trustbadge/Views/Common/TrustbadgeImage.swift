@@ -21,6 +21,7 @@ struct TrustbadgeImage: View {
     var assetName: String
 
     // MARK: User interface
+    
     var body: some View {
         Image(self.assetName,
               bundle: Bundle(identifier:"com.etrusted.ios.trustbadge")
