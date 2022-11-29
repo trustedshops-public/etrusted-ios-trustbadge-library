@@ -52,6 +52,7 @@ struct HomeView: View {
                 }
                 .frame(height: 40)
 
+                // Product categories section
                 HStack {
                     Text("Your categories")
                         .font(.system(size: 20, weight: .semibold))
@@ -70,30 +71,13 @@ struct HomeView: View {
                             let productCategories: [ProductCategory] = ProductCategory.testCategories[i]
                             HStack(alignment: .top, spacing: self.productCategoryWidgetSpacing) {
                                 ForEach(0..<productCategories.count) { j in
-                                    let category = productCategories[j]
-                                    ZStack(alignment: .top) {
-                                        VStack(alignment: .leading) {
-                                            Image(category.icon)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 140)
-                                            Text(category.title)
-                                                .font(.system(size: 14, weight: .regular))
-                                                .foregroundColor(Color.black)
-                                                .padding(.leading, 10)
-                                        }
-                                    }
-                                    .frame(width: self.productCategoryWidgetWidth,
-                                           height: self.productCategoryWidgetWidth + 20
+                                    let productCategory = productCategories[j]
+                                    ProductCategoryDetailsView(
+                                        productCategory: productCategory,
+                                        width: self.productCategoryWidgetWidth
                                     )
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color.white)
-                                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
-                                    }
                                 }
                             }
-
                         }
                     }
                     .padding(.bottom, 140)
@@ -101,14 +85,48 @@ struct HomeView: View {
             }
             .padding(.horizontal, 16)
 
-//            TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .shopGrade)
-//                .frame(width: 100, height: 100)
-//                .padding(.leading, 16)
-//                .padding(.bottom, 50)
+            // Trustbadge and it's container view
+            VStack {
+                Spacer()
+                TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .shopGrade)
+                    .frame(width: 100, height: 100)
+            }
+            .padding(.bottom, 110)
         }
         .ignoresSafeArea(.all)
         .onAppear {
             self.productCategoryWidgetWidth = (UIScreen.main.bounds.width - 2*self.horizontalPadding - self.productCategoryWidgetSpacing) * 0.5
+        }
+    }
+}
+
+/**
+ ProductCategoryView shows details about a product category like icon, name, etc
+ */
+struct ProductCategoryDetailsView: View {
+
+    // MARK: Public properties
+
+    var productCategory: ProductCategory
+    var width: CGFloat
+
+    // MARK: User interface
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Image(self.productCategory.icon)
+                .resizable()
+                .scaledToFit()
+            Text(self.productCategory.title)
+                .font(.system(size: 14, weight: .regular))
+                .foregroundColor(Color.black)
+                .padding(.leading, 10)
+                .frame(height: 40, alignment: .top)
+        }
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.white)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
         }
     }
 }
