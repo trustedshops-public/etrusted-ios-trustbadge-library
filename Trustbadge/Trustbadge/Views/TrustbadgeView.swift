@@ -136,6 +136,8 @@ public struct TrustbadgeView: View {
      it then sets the visibility flag on for the expended view content like shop grade, product grade, etc
      */
     private func showBadgeAnimationIfNeeded() {
+        guard self.context != .trustMark else { return }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
             self.shouldShowExpendedStateContent = true
         }

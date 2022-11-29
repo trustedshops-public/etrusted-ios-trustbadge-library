@@ -18,20 +18,21 @@ import Combine
 struct TabBarView: View {
 
     // MARK: Private properties
-    @State private var selectedTab: Int = 0
+
+    @EnvironmentObject private var appContext: AppContext
     @State private var shouldShowOverlayContainerview: Bool = false
 
     // MARK: User interface
     var body: some View {
         ZStack {
             /// Main Tab View
-            TabView(selection: self.$selectedTab) {
+            TabView(selection: self.$appContext.selectedMainTab) {
                 HomeView()
                     .navigationBarHidden(true)
                     .navigationBarTitle("")
                     .tag(0)
 
-                ProductsView()
+                ProductsListView()
                     .navigationBarHidden(true)
                     .navigationBarTitle("")
                     .tag(1)
@@ -70,28 +71,28 @@ struct TabBarView: View {
 
             /// Floating Tab Buttons
             HStack(spacing: 35) {
-                B2CTabButton(selectedTab: self.$selectedTab,
+                B2CTabButton(selectedTab: self.$appContext.selectedMainTab,
                              iconName: "homeTabIcon",
                              iconSize: 24,
                              titleText: NSLocalizedString("Home",
                                                           comment: "Main tab view - home button title"),
                              tabIndex: 0)
 
-                B2CTabButton(selectedTab: self.$selectedTab,
+                B2CTabButton(selectedTab: self.$appContext.selectedMainTab,
                              iconName: "productsTabIcon",
                              iconSize: 24,
                              titleText: NSLocalizedString("Products",
                                                           comment: "Main tab view - bookmark button title"),
                              tabIndex: 1)
 
-                B2CTabButton(selectedTab: self.$selectedTab,
+                B2CTabButton(selectedTab: self.$appContext.selectedMainTab,
                              iconName: "checkoutTabIcon",
                              iconSize: 24,
                              titleText: NSLocalizedString("Checkout",
                                                           comment: "Main tab view - trustpoint button title"),
                              tabIndex: 2)
 
-                B2CTabButton(selectedTab: self.$selectedTab,
+                B2CTabButton(selectedTab: self.$appContext.selectedMainTab,
                              iconName: "profileTabIcon",
                              iconSize: 24,
                              titleText: NSLocalizedString("Profile",

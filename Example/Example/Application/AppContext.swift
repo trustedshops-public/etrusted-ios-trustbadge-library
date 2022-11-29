@@ -12,4 +12,6 @@ import Foundation
  */
 class AppContext: ObservableObject {
     @Published var selectedMainTab: Int = 0
+
+    var selectedProductCategory: ProductCategory?
 }

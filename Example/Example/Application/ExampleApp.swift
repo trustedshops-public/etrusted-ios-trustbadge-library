@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct ExampleApp: App {
     @StateObject private var overlayContainerContext = OverlayContainerContext()
+    @StateObject private var appContext = AppContext()
+
     var body: some Scene {
         WindowGroup {
             TabBarView()
+                .environmentObject(self.appContext)
                 .environmentObject(self.overlayContainerContext)
         }
     }

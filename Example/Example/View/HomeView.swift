@@ -12,7 +12,11 @@ struct HomeView: View {
 
     // MARK: Private properties
 
+    @EnvironmentObject private var appContext: AppContext
+    
     @State private var productCategoryWidgetWidth: CGFloat = 0
+    @State private var isTrustbadgeVisible: Bool = true
+
     private var productCategoryWidgetSpacing: CGFloat = 12
     private var horizontalPadding: CGFloat = 16
 
@@ -20,7 +24,6 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-
             // Background
             Color.tsOffWhite
                 .ignoresSafeArea()
@@ -76,11 +79,24 @@ struct HomeView: View {
                                         productCategory: productCategory,
                                         width: self.productCategoryWidgetWidth
                                     )
+                                    .onTapGesture {
+                                        self.showProductsForTheCategory(productCategory)
+                                    }
                                 }
                             }
                         }
+
+                        GeometryReader { proxy in
+                            let offset = proxy.frame(in: .named("scroll")).minY
+                            Color.clear.preference(key: ScrollViewOffsetPreferenceKey.self, value: offset)
+                        }
                     }
                     .padding(.bottom, 140)
+                }
+                .coordinateSpace(name: "scroll")
+                .onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
+                    let targetScrollOffset: CGFloat = 1100
+                    self.isTrustbadgeVisible = value >= targetScrollOffset
                 }
             }
             .padding(.horizontal, 16)
@@ -90,6 +106,8 @@ struct HomeView: View {
                 Spacer()
                 TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .shopGrade)
                     .frame(width: 100, height: 100)
+                    .opacity(self.isTrustbadgeVisible ? 1 : 0)
+                    .animation(.easeOut(duration: 0.3))
             }
             .padding(.bottom, 110)
         }
@@ -97,6 +115,16 @@ struct HomeView: View {
         .onAppear {
             self.productCategoryWidgetWidth = (UIScreen.main.bounds.width - 2*self.horizontalPadding - self.productCategoryWidgetSpacing) * 0.5
         }
+    }
+
+    // MARK: Private methods
+
+    /**
+     Switches view to products list view and shows products for the selected product category
+     */
+    private func showProductsForTheCategory(_ category: ProductCategory) {
+        self.appContext.selectedProductCategory = category
+        self.appContext.selectedMainTab = 1
     }
 }
 
@@ -128,5 +156,13 @@ struct ProductCategoryDetailsView: View {
                 .fill(Color.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
         }
+    }
+}
+
+struct ScrollViewOffsetPreferenceKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
