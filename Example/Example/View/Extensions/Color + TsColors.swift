@@ -30,4 +30,9 @@ extension Color {
 
     /// Trustedshops blue 700 color
     static let tsBlue700 = Color("TsBlue700")
+
+    /// Trustedshops pineapple 500 color
+    static let tsPineapple500 = Color("TsPineapple500")
+
+
 }

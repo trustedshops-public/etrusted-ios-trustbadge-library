@@ -102,7 +102,7 @@ struct ProductsListView: View {
             // Trustbadge and it's container view
             VStack {
                 Spacer()
-                TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .trustMark)
+                TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .productGrade)
                     .frame(width: 100, height: 100)
                     .opacity(self.isTrustbadgeVisible ? 1 : 0)
                     .animation(.easeOut(duration: 0.3))
@@ -148,6 +148,8 @@ struct ProductDetailsView: View {
                         .font(.system(size: 12, weight: .regular))
                         .foregroundColor(Color.blue)
                 }
+
+                StarRatingView(rating: Float(self.product.rating))
 
                 Text("\(self.product.price.formatted()) €")
                     .font(.system(size: 12, weight: .regular))
