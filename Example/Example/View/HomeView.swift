@@ -105,7 +105,7 @@ struct HomeView: View {
             VStack {
                 Spacer()
                 TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .shopGrade)
-                    .frame(width: 100, height: 100)
+                    .frame(height: 100)
                     .opacity(self.isTrustbadgeVisible ? 1 : 0)
                     .animation(.easeOut(duration: 0.3))
             }

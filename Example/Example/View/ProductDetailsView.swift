@@ -16,6 +16,9 @@ struct ProductDetailsView: View {
 
     // MARK: Private properties
 
+    @EnvironmentObject private var appContext: AppContext
+    @EnvironmentObject private var shoppingCart: ShoppingCart
+
     @Environment(\.presentationMode) private var presentationMode
     @State private var selectedQuantity: Int = 1
     @State private var isTrustbadgeVisible: Bool = true
@@ -126,7 +129,7 @@ struct ProductDetailsView: View {
                         // Add to cart button
                         Button(
                             action: {
-                                print("adding product to cart")
+                                self.addProductToShoppingCart()
                             },
                             label: {
                                 ZStack(alignment: .center) {
@@ -170,12 +173,25 @@ struct ProductDetailsView: View {
             VStack {
                 Spacer()
                 TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .productGrade)
-                    .frame(width: 100, height: 100)
+                    .frame(height: 100)
                     .opacity(self.isTrustbadgeVisible ? 1 : 0)
                     .animation(.easeOut(duration: 0.3))
             }
             .padding(.bottom, 25)
         }
         .navigationBarHidden(true)
+    }
+
+    // MARK: Private methods
+
+    /**
+     Creates a checkout product item based on the selected product and add it to the
+     global shoppig cart object
+     */
+    private func addProductToShoppingCart() {
+        let checkoutItem = CheckoutItem(product: self.productDetails, quantity: self.selectedQuantity)
+        self.shoppingCart.addItem(checkoutItem)
+
+        self.appContext.selectedMainTab = 2
     }
 }

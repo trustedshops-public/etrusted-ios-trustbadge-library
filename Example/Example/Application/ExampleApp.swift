@@ -11,12 +11,14 @@ import SwiftUI
 struct ExampleApp: App {
     @StateObject private var overlayContainerContext = OverlayContainerContext()
     @StateObject private var appContext = AppContext()
+    @StateObject private var shoppingCart = ShoppingCart(checkoutItems: [])
 
     var body: some Scene {
         WindowGroup {
             TabBarView()
                 .environmentObject(self.appContext)
                 .environmentObject(self.overlayContainerContext)
+                .environmentObject(self.shoppingCart)
         }
     }
 }
