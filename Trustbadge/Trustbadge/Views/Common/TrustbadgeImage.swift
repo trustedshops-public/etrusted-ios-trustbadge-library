@@ -19,6 +19,8 @@ struct TrustbadgeImage: View {
     // MARK: Public properties
 
     var assetName: String
+    var width: CGFloat
+    var height: CGFloat
 
     // MARK: User interface
     
@@ -27,6 +29,7 @@ struct TrustbadgeImage: View {
               bundle: Bundle(identifier:"com.etrusted.ios.trustbadge")
         )
         .resizable()
-        .scaledToFit()
+        //.scaledToFit()
+        .frame(width: self.width, height: self.height)
     }
 }

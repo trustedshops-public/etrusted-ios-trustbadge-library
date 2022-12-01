@@ -44,7 +44,7 @@ public struct TrustbadgeView: View {
                         RoundedRectangle(cornerRadius: self.badgeIconBackgroundHeight * 0.5)
                             .fill(Color.white)
                             .frame(
-                                width: self.currentState == .default ? self.badgeIconBackgroundHeight : UIScreen.main.bounds.width - 50,
+                                width: self.currentState == .default ? self.badgeIconBackgroundHeight : UIScreen.main.bounds.width - 40,
                                 height: self.badgeIconBackgroundHeight
                             )
                             .animation(.easeOut(duration: 0.3))
@@ -80,10 +80,14 @@ public struct TrustbadgeView: View {
                             .fill(Color.white)
                             .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
-                        TrustbadgeImage(assetName: self.iconName)
-                            .frame(width: self.badgeIconHeight, height: self.badgeIconHeight)
-                            .animation(.easeIn(duration: 0.2))
+
+                        TrustbadgeImage(
+                            assetName: self.iconName,
+                            width: self.badgeIconHeight,
+                            height: self.badgeIconHeight
+                        )
                     }
+                    .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                 }
                 Spacer()
             } else {
@@ -144,10 +148,10 @@ public struct TrustbadgeView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.currentState = .expended
             self.setIconForState()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.shouldShowExpendedStateContent = false
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.2) {
                 self.currentState = .default
                 self.setIconForState()
             }
