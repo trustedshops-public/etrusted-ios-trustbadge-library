@@ -14,8 +14,6 @@
 		C13B2ADC29193554006B7DD3 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2ADB29193554006B7DD3 /* ExampleTests.swift */; };
 		C13B2AE629193554006B7DD3 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AE529193554006B7DD3 /* ExampleUITests.swift */; };
 		C13B2AE829193554006B7DD3 /* ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AE729193554006B7DD3 /* ExampleUITestsLaunchTests.swift */; };
-		C13B2B9B291CDF26006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; };
-		C13B2B9C291CDF26006B7DD3 /* Trustbadge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C19244AF2934F6D700F42ABC /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244AE2934F6D700F42ABC /* ProductCategory.swift */; };
 		C19244B12935F31500F42ABC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244B02935F31500F42ABC /* Product.swift */; };
 		C19244B32935F38D00F42ABC /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244B22935F38D00F42ABC /* Shop.swift */; };
@@ -23,6 +21,8 @@
 		C19244B82936622600F42ABC /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244B72936622600F42ABC /* StarView.swift */; };
 		C19244BA2936641800F42ABC /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244B92936641800F42ABC /* ProductDetailsView.swift */; };
 		C19244BC293726DA00F42ABC /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19244BB293726DA00F42ABC /* ShoppingCart.swift */; };
+		C1D59EEC293F353D00A33E31 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; };
+		C1D59EED293F353D00A33E31 /* Trustbadge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1ECD78C2930804800C33E7F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD78B2930804800C33E7F /* TabBarView.swift */; };
 		C1ECD790293080F100C33E7F /* OverlayContainerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD78F293080F100C33E7F /* OverlayContainerContext.swift */; };
 		C1ECD7922930817E00C33E7F /* ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD7912930817E00C33E7F /* ProductsListView.swift */; };
@@ -64,13 +64,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C13B2B9D291CDF26006B7DD3 /* Embed Frameworks */ = {
+		C1D59EEE293F353D00A33E31 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C13B2B9C291CDF26006B7DD3 /* Trustbadge.framework in Embed Frameworks */,
+				C1D59EED293F353D00A33E31 /* Trustbadge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C13B2B9B291CDF26006B7DD3 /* Trustbadge.framework in Frameworks */,
+				C1D59EEC293F353D00A33E31 /* Trustbadge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +328,7 @@
 				C13B2AC32919354F006B7DD3 /* Sources */,
 				C13B2AC42919354F006B7DD3 /* Frameworks */,
 				C13B2AC52919354F006B7DD3 /* Resources */,
-				C13B2B9D291CDF26006B7DD3 /* Embed Frameworks */,
+				C1D59EEE293F353D00A33E31 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
