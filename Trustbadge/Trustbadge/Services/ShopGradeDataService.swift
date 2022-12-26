@@ -24,7 +24,7 @@ class ShopGradeDataService: TSNetworkDataService, ObservableObject {
      Calls Trustedshop's backend API for getting shop grade and rating details for the given `tsid`,
      handles response/error as returned by the backend and then responds back with `BoolResponseHandler`
      */
-    func getShopGradeDetails(for tsid: String, responseHandler: @escaping BoolResponseHandler) {
+    func getShopGradeDetails(for tsid: String, responseHandler: @escaping ResponseHandler<Bool>) {
         guard let url = self.backendServiceURL.getShopGradeServiceUrl(for: tsid) else {
             responseHandler(false)
             return

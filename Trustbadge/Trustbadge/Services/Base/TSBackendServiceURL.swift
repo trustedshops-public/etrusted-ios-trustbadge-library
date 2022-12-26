@@ -22,6 +22,15 @@ class TSBackendServiceURL {
         return instance
     }
 
+    /*
+     Returns TrustedShop's authentication service url
+     */
+    var authenticationServiceUrl: URL? {
+        let endpoint = TSBackendServiceEndpoint.shopAuthentication.name
+        let qualifiedURLString = self.authenticationServiceBaseUrlString.appending(endpoint)
+        return URL(string: qualifiedURLString)
+    }
+
     // MARK: Private properties
 
     private static var instance: TSBackendServiceURL?
@@ -30,7 +39,15 @@ class TSBackendServiceURL {
     private let buildEnvValueStage = "STAGE"
     private let buildEnvValueProd = "PROD"
 
-    /// Returns the base URL string for the B2C backend services
+    /// Returns the base URL string for TrustedShop's authentication services
+    private var authenticationServiceBaseUrlString: String {
+        switch self.environment {
+        case .stage: return "https://login.etrusted.com" //"https://login-qa.etrusted.com"
+        case .prod: return "https://login.etrusted.com"
+        }
+    }
+
+    /// Returns the base URL string for Trustedshop's backend services
     private var backendServiceBaseUrlString: String {
         switch self.environment {
         case .stage: return "https://cdn1.api-qa.trustedshops.com"
@@ -107,6 +124,9 @@ enum TSEnvironmentKey {
  TSBackendServiceEndpoint defines Trustedshops backend API endpoints
  */
 enum TSBackendServiceEndpoint: String {
+
+    // Authentication endpoints
+    case shopAuthentication = "/oauth/token"
 
     // Trustbadge endpoint
     case trustmark = "/shops/%@/mobiles/v1/sdks/ios/trustmarks.json"

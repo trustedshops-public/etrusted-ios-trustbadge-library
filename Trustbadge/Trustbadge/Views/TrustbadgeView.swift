@@ -97,11 +97,31 @@ public struct TrustbadgeView: View {
         }
         .frame(width: UIScreen.main.bounds.width - 32)
         .onAppear {
+            self.getAuthenticationTokenIfNeeded()
             self.getTrustmarkDetails()
         }
     }
 
     // MARK: Private methods
+
+    /**
+     Calls Trustedshops authentication service to obtain authentication token required for
+     API calls that return details like shop grade, product grade, etc
+     */
+    private func getAuthenticationTokenIfNeeded() {
+        let service = TSAuthenticationService()
+        service.getAuthenticationTokenFor(
+            clientId: "d197ed41db84__etrusted-ios-sdk",
+            clientSecret: "96e87f24-230a-4704-997c-8f040849e5de") { didAuthenticate in
+                guard didAuthenticate else {
+                    TSConsoleLogger.log(
+                        messege: "Authentication error, failed to obtain authentication token",
+                        severity: .error
+                    )
+                    return
+                }
+        }
+    }
 
     /**
      Calls backend API to download trustbadge details for the given tsid

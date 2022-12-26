@@ -25,7 +25,7 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
      Calls Trustedshop's backend API for getting trustmark details for the given `tsid`, handles response/error
      as returned by the backend and then responds back with `BoolResponseHandler`
      */
-    func getTrustmarkDetails(for tsid: String, responseHandler: @escaping BoolResponseHandler) {
+    func getTrustmarkDetails(for tsid: String, responseHandler: @escaping ResponseHandler<Bool>) {
         guard let url = self.backendServiceURL.getTrustmarkServiceUrl(for: tsid) else {
             responseHandler(false)
             return
@@ -42,7 +42,6 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
             guard let backendResponse = response,
                   let trustmarkResponse = backendResponse.first,
                   error == nil else {
-                print("Error loading trustmark details \(error?.type.description ?? "")")
                 responseHandler(false)
                 return
             }
