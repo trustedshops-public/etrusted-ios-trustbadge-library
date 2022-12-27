@@ -25,7 +25,7 @@ class TrustmarkDetailsModel: Codable {
  validity dates and status
  */
 class TrustmarkModel: Codable {
-    let status: TrustmarkStatus
+    var status: TrustmarkStatus
     let validFrom: String
     let validTo: String
 

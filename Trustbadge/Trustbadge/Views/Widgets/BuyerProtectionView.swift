@@ -13,6 +13,7 @@ struct BuyerProtectionView: View {
 
     var height: CGFloat
     var currentState: TrustbadgeState
+    var isTrustmarkValid: Bool = false
 
     // MARK: Private properties
 

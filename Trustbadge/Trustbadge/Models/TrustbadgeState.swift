@@ -17,8 +17,8 @@ import Foundation
  3. `expendedAsPopup` - In this state, the trustbadge view is shown as a popup with a close button. This state helps in showing
  more details.
  */
-enum TrustbadgeState {
-    case `default`
+enum TrustbadgeState: Equatable {
+    case `default`(Bool)
     case expended
     case expendedAsPopup
 
@@ -27,7 +27,7 @@ enum TrustbadgeState {
     /// Icon name for the state
     var iconName: String {
         switch self {
-        case .default: return "trustmarkIcon"
+        case .default(let isValid): return isValid ? "trustmarkIcon" : "trustmarkIconInvalid"
         case .expended: return ""
         case .expendedAsPopup: return "blueCrossIcon"
         }

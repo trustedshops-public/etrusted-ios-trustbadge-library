@@ -13,6 +13,7 @@ struct ProductGradeView: View {
     
     var height: CGFloat
     var currentState: TrustbadgeState
+    var isTrustmarkValid: Bool = false
 
     // MARK: User interface
 
@@ -42,6 +43,6 @@ struct ProductGradeView: View {
                 }
             }
         }
-        .frame(width: self.currentState == .default ? 0 : 200, height: self.height)
+        .frame(width: self.currentState == .default(self.isTrustmarkValid) ? 0 : 200, height: self.height)
     }
 }

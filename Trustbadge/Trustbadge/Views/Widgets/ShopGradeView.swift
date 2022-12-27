@@ -14,6 +14,7 @@ struct ShopGradeView: View {
     //var shopGradeDetails: ShopGradeDetailsModel
     var height: CGFloat
     var currentState: TrustbadgeState
+    var isTrustmarkValid: Bool = false
 
     // MARK: User interface
 
@@ -45,6 +46,6 @@ struct ShopGradeView: View {
                 }
             }
         }
-        .frame(width: self.currentState == .default ? 0 : 200, height: self.height)
+        .frame(width: self.currentState == .default(self.isTrustmarkValid) ? 0 : 200, height: self.height)
     }
 }

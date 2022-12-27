@@ -21,9 +21,10 @@ public struct TrustbadgeView: View {
 
     // MARK: Private properties
     @StateObject private var trustmarkDataService = TrustmarkDataService()
-    @State private var currentState: TrustbadgeState = .default
+    @State private var currentState: TrustbadgeState = .default(false)
+    @State private var isTrustmarkValid: Bool = false
     @State private var shouldShowExpendedStateContent: Bool = false
-    @State private var iconName: String = TrustbadgeState.default.iconName
+    @State private var iconName: String = TrustbadgeState.default(false).iconName
 
     private var tsid: String?
     private var context: TrustbadgeContext
@@ -35,8 +36,7 @@ public struct TrustbadgeView: View {
 
     public var body: some View {
         HStack(alignment: .center) {
-            if let trustMarkDetails = self.trustmarkDataService.trustMarkDetails,
-                trustMarkDetails.trustMark.isValid {
+            if let trustMarkDetails = self.trustmarkDataService.trustMarkDetails {
                 ZStack(alignment: .leading) {
                     // Expendable view
                     ZStack(alignment: .center) {
@@ -44,7 +44,7 @@ public struct TrustbadgeView: View {
                         RoundedRectangle(cornerRadius: self.badgeIconBackgroundHeight * 0.5)
                             .fill(Color.white)
                             .frame(
-                                width: self.currentState == .default ? self.badgeIconBackgroundHeight : UIScreen.main.bounds.width - 40,
+                                width: self.currentState == .default(self.isTrustmarkValid) ? self.badgeIconBackgroundHeight : UIScreen.main.bounds.width - 40,
                                 height: self.badgeIconBackgroundHeight
                             )
                             .animation(.easeOut(duration: 0.3))
@@ -55,18 +55,21 @@ public struct TrustbadgeView: View {
                             if self.context == .shopGrade {
                                 ShopGradeView(
                                     height: self.badgeIconBackgroundHeight,
-                                    currentState: self.currentState
+                                    currentState: self.currentState,
+                                    isTrustmarkValid: self.isTrustmarkValid
                                 )
                             } else if self.context == .productGrade {
                                 ProductGradeView(
                                     height: self.badgeIconBackgroundHeight,
-                                    currentState: self.currentState
+                                    currentState: self.currentState,
+                                    isTrustmarkValid: self.isTrustmarkValid
                                 )
 
                             } else if self.context == .buyerProtection {
                                 BuyerProtectionView(
                                     height: self.badgeIconBackgroundHeight,
-                                    currentState: self.currentState
+                                    currentState: self.currentState,
+                                    isTrustmarkValid: self.isTrustmarkValid
                                 )
                             }
                         }
@@ -89,9 +92,6 @@ public struct TrustbadgeView: View {
                     }
                     .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                 }
-                Spacer()
-            } else {
-                // Icon showing invalid trustmark state
                 Spacer()
             }
         }
@@ -129,27 +129,36 @@ public struct TrustbadgeView: View {
     private func getTrustmarkDetails() {
         guard let shopId = self.tsid else {
             TSConsoleLogger.log(
-                messege: "Error showing the trustbadge due to missing tsid",
+                messege: "Error showing trustbadge due to missing tsid",
                 severity: .error
             )
             return
         }
 
         self.trustmarkDataService.getTrustmarkDetails(for: shopId) { didLoadDetails in
-            guard didLoadDetails else { return }
+            guard didLoadDetails else {
+                TSConsoleLogger.log(
+                    messege: "Error loading trustmark details for shop with tsid: \(self.tsid ?? "")",
+                    severity: .error
+                )
+                return
+            }
             TSConsoleLogger.log(
                 messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid ?? "")",
                 severity: .info
             )
 
             let trustMarkDetails = self.trustmarkDataService.trustMarkDetails
-            let isTrustmarkValid = trustMarkDetails?.trustMark.isValid ?? false
+            self.isTrustmarkValid = trustMarkDetails?.trustMark.isValid ?? false
+            self.currentState = TrustbadgeState.default(isTrustmarkValid)
+
             let validityString = isTrustmarkValid ? "is valid": "isn't valid!"
             TSConsoleLogger.log(
                 messege: "Trustmark for shop with tsid: \(self.tsid ?? "") \(validityString)",
                 severity: .info
             )
 
+            self.setIconForState()
             self.showBadgeAnimationIfNeeded()
         }
     }
@@ -172,17 +181,17 @@ public struct TrustbadgeView: View {
                 self.shouldShowExpendedStateContent = false
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.2) {
-                self.currentState = .default
+                self.currentState = .default(self.isTrustmarkValid)
                 self.setIconForState()
             }
         }
     }
 
     /**
-     Sets the icon name for the current state
+     Sets icon name for the current state
      */
     private func setIconForState() {
-        if self.currentState == .default {
+        if self.currentState == .default(self.isTrustmarkValid) {
             self.iconName = self.currentState.iconName
 
         } else if self.currentState == .expended {
