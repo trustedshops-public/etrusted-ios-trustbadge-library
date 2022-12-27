@@ -172,10 +172,14 @@ struct ProductDetailsView: View {
             // Trustbadge and it's container view
             VStack {
                 Spacer()
-                TrustbadgeView(tsid: "X330A2E7D449E31E467D2F53A55DDD070", context: .productGrade)
-                    .frame(height: 100)
-                    .opacity(self.isTrustbadgeVisible ? 1 : 0)
-                    .animation(.easeOut(duration: 0.3))
+                TrustbadgeView(
+                    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+                    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+                    context: .productGrade
+                )
+                .frame(height: 100)
+                .opacity(self.isTrustbadgeVisible ? 1 : 0)
+                .animation(.easeOut(duration: 0.3), value: self.isTrustbadgeVisible)
             }
             .padding(.bottom, 25)
         }

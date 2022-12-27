@@ -16,7 +16,7 @@ class ShopGradeDataService: TSNetworkDataService, ObservableObject {
 
     // MARK: Public properties
 
-    @Published var shopGradeDetails: ShopGradeDetailsModel?
+    @Published var shopAggregateRatings: ShopAggregateRatingsModel?
 
     // MARK: Public methods
 
@@ -24,30 +24,35 @@ class ShopGradeDataService: TSNetworkDataService, ObservableObject {
      Calls Trustedshop's backend API for getting shop grade and rating details for the given `tsid`,
      handles response/error as returned by the backend and then responds back with `BoolResponseHandler`
      */
-    func getShopGradeDetails(for tsid: String, responseHandler: @escaping ResponseHandler<Bool>) {
-        guard let url = self.backendServiceURL.getShopGradeServiceUrl(for: tsid) else {
+    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<Bool>) {
+        guard let url = self.backendServiceURL.getAggregateRatingServiceUrl(for: shopId),
+              let accessToken = TSAuthenticationService.shared.accessToken,
+              var headerFields = self.headerFields else {
             responseHandler(false)
             return
         }
+
+        let authorizationValue = String(format: TSNetworkServiceHeaderFieldValue.authorizationBearerToken,
+                                        arguments: [accessToken])
+        headerFields[TSNetworkServiceHeaderField.authorization] = authorizationValue
 
         let networkRequest = TSNetworkServiceRequest(
             url: url,
             method: TSNetworkServiceMethod.get,
             parameters: nil,
             body: nil,
-            headerValues: nil)
+            headerValues: headerFields)
 
-        let apiResponseHandler: TSNetworkServiceResponseHandler<ShopGradeBackendResponseModel> = { response, error in
+        let apiResponseHandler: TSNetworkServiceResponseHandler<ShopAggregateRatingsModel> = { response, error in
             guard let backendResponse = response,
-                  let trustmarkResponse = backendResponse.first,
+                  let aggregateRatings = backendResponse.first,
                   error == nil else {
-                print("Error loading trustmark details \(error?.type.description ?? "")")
                 responseHandler(false)
                 return
             }
 
             DispatchQueue.main.async {
-                self.shopGradeDetails = trustmarkResponse.response.data.shop
+                self.shopAggregateRatings = aggregateRatings
                 responseHandler(true)
             }
         }

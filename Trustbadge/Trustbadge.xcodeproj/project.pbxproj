@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C132DBE4295B13B00029E086 /* ShopAggregateRatingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132DBE3295B13B00029E086 /* ShopAggregateRatingsModel.swift */; };
 		C13B2AA9291932FC006B7DD3 /* Trustbadge.docc in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */; };
 		C13B2AAF291932FC006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */; };
 		C13B2AB4291932FC006B7DD3 /* TrustbadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AB3291932FC006B7DD3 /* TrustbadgeTests.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C132DBE3295B13B00029E086 /* ShopAggregateRatingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAggregateRatingsModel.swift; sourceTree = "<group>"; };
 		C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustbadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2AA7291932FC006B7DD3 /* Trustbadge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trustbadge.h; sourceTree = "<group>"; };
 		C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Trustbadge.docc; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				C1ECD781292F615E00C33E7F /* TrustbadgeContext.swift */,
 				C13B2BC5291D6DB2006B7DD3 /* TrustmarkDetailsModel.swift */,
 				C1ECD77D292F4B0800C33E7F /* ShopGradeDetailsModel.swift */,
+				C132DBE3295B13B00029E086 /* ShopAggregateRatingsModel.swift */,
 				C1D59EF3293FA37C00A33E31 /* AuthenticationTokenModel.swift */,
 			);
 			path = Models;
@@ -472,6 +475,7 @@
 				C1D59EF2293F36E000A33E31 /* TSAuthenticationService.swift in Sources */,
 				C1ECD77E292F4B0800C33E7F /* ShopGradeDetailsModel.swift in Sources */,
 				C13B2BB6291D4A25006B7DD3 /* TSBackendServiceURL.swift in Sources */,
+				C132DBE4295B13B00029E086 /* ShopAggregateRatingsModel.swift in Sources */,
 				C13B2BD2291E3822006B7DD3 /* TrustbadgeImage.swift in Sources */,
 				C1ECD780292F5E9C00C33E7F /* TrustbadgeState.swift in Sources */,
 				C13B2BA0291D43B5006B7DD3 /* TrustbadgeView.swift in Sources */,

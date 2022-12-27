@@ -16,6 +16,39 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
 
     // MARK: Public properties
 
+    /// Returns singleton instance of the TSAuthenticationService
+    static let shared = TSAuthenticationService()
+
+    /// Returns access token as recieved from TrustedShops authentication API
+    var accessToken: String? {
+        guard let token = self.authenticationToken else {
+            return nil
+        }
+        return token.accessToken
+    }
+
+    /// Returns true if time elapased since latest successful authentication is greater than or equal to
+    /// token exipration time
+    var isAccessTokenExpired: Bool {
+        guard let token = self.authenticationToken else {
+            return true
+        }
+        return token.isTokenExpired
+    }
+
+    // MARK: Private properties
+
+    private var clientId: String?
+    private var clientSecret: String?
+    private var authenticationToken: AuthenticationTokenModel?
+
+    // MARK: Initializer
+
+    private init() {
+        // TODO: Load client id and secret from the PLIST file
+        self.clientId = "d197ed41db84__etrusted-ios-sdk"
+        self.clientSecret = "96e87f24-230a-4704-997c-8f040849e5de"
+    }
 
     // MARK: Public methods
 
@@ -23,59 +56,52 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
      This method calls TrustedShop's OAuth API for getting authentication toke with
      the given shop's `client id` and `client secret`
      */
-    func getAuthenticationTokenFor(
-        clientId: String,
-        clientSecret: String,
-        responseHandler: @escaping ResponseHandler<Bool>) {
+    func getAuthenticationToken(responseHandler: @escaping ResponseHandler<Bool>) {
+        guard let clientId = self.clientId,
+              let clientSecret = self.clientSecret,
+              let url = self.backendServiceURL.authenticationServiceUrl else {
+                responseHandler(false)
+                return
+        }
 
-            guard let url = self.backendServiceURL.authenticationServiceUrl else {
+        let requestBodyString = "\(TSNetworkServiceBodyField.grantType)=\(TSNetworkServiceBodyFieldValue.clientCredentials)&\(TSNetworkServiceBodyField.audience)=\(TSNetworkServiceBodyFieldValue.trustedShopBackendApiUrl)&\(TSNetworkServiceBodyField.clientId)=\(clientId)&\(TSNetworkServiceBodyField.clientSecret)=\(clientSecret)"
+
+        guard let requestBodyData = requestBodyString.data(using: .utf8) else {
+            responseHandler(false)
+            return
+        }
+
+        let networkRequest = TSNetworkServiceRequest(
+            url: url,
+            method: TSNetworkServiceMethod.post,
+            parameters: nil,
+            body: requestBodyData,
+            headerValues: nil,
+            contentType: TSNetworkServiceHeaderFieldValue.contentTypeUrlEncoded
+        )
+
+        let apiResponseHandler: TSNetworkServiceResponseHandler<AuthenticationTokenModel> = { response, error in
+            guard let backendResponse = response,
+                  let authenticationToken = backendResponse.first,
+                  error == nil else {
                 responseHandler(false)
                 return
             }
+            self.authenticationToken = authenticationToken
+            responseHandler(true)
+        }
 
-            let requestBodyString = "\(TSNetworkServiceBodyField.grantType)=\(TSNetworkServiceBodyFieldValue.clientCredentials)&\(TSNetworkServiceBodyField.audience)=\(TSNetworkServiceBodyFieldValue.trustedShopBackendApiUrl)&\(TSNetworkServiceBodyField.clientId)=\(clientId)&\(TSNetworkServiceBodyField.clientSecret)=\(clientSecret)"
+        let responseConfiguration = TSNetworkServiceResponseConfiguration(
+            hasResponseData: true,
+            expectedResponseCode: .expected(200),
+            unexpectedResponseCode: .unexpected(400),
+            errorResponseCode: .error(500)
+        )
 
-            guard let requestBodyData = requestBodyString.data(using: .utf8) else {
-                responseHandler(false)
-                return
-            }
-
-            do {
-                let networkRequest = TSNetworkServiceRequest(
-                    url: url,
-                    method: TSNetworkServiceMethod.post,
-                    parameters: nil,
-                    body: requestBodyData,
-                    headerValues: nil,
-                    contentType: TSNetworkServiceHeaderFieldValue.contentTypeUrlEncoded
-                )
-
-                let apiResponseHandler: TSNetworkServiceResponseHandler<AuthenticationTokenModel> = { response, error in
-                    guard let backendResponse = response,
-                          let authenticationResponse = backendResponse.first,
-                          error == nil else {
-                        responseHandler(false)
-                        return
-                    }
-                    responseHandler(true)
-                }
-
-                let responseConfiguration = TSNetworkServiceResponseConfiguration(
-                    hasResponseData: true,
-                    expectedResponseCode: .expected(200),
-                    unexpectedResponseCode: .unexpected(400),
-                    errorResponseCode: .error(500)
-                )
-
-                let _ = self.getData(
-                    request: networkRequest,
-                    responseConfiguration: responseConfiguration,
-                    responseHandler: apiResponseHandler
-                )
-
-            } catch {
-                responseHandler(false)
-                return
-            }
+        let _ = self.getData(
+            request: networkRequest,
+            responseConfiguration: responseConfiguration,
+            responseHandler: apiResponseHandler
+        )
     }
 }
