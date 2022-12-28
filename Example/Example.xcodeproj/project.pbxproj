@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C132DBE6295C4AE30029E086 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132DBE5295C4AE30029E086 /* TrustbadgeConfiguration.plist */; };
 		C13B2ACB2919354F006B7DD3 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2ACA2919354F006B7DD3 /* ExampleApp.swift */; };
 		C13B2ACD2919354F006B7DD3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2ACC2919354F006B7DD3 /* HomeView.swift */; };
 		C13B2ACF29193553006B7DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13B2ACE29193553006B7DD3 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C132DBE5295C4AE30029E086 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 		C13B2AC72919354F006B7DD3 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2ACA2919354F006B7DD3 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		C13B2ACC2919354F006B7DD3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				C13B2ACA2919354F006B7DD3 /* ExampleApp.swift */,
 				C1ECD78F293080F100C33E7F /* OverlayContainerContext.swift */,
 				C1ECD7972930827B00C33E7F /* AppContext.swift */,
+				C132DBE5295C4AE30029E086 /* TrustbadgeConfiguration.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C132DBE6295C4AE30029E086 /* TrustbadgeConfiguration.plist in Resources */,
 				C13B2AD229193553006B7DD3 /* Preview Assets.xcassets in Resources */,
 				C13B2ACF29193553006B7DD3 /* Assets.xcassets in Resources */,
 			);

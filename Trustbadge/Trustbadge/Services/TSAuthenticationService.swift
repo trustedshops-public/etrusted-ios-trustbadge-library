@@ -45,9 +45,7 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
     // MARK: Initializer
 
     private init() {
-        // TODO: Load client id and secret from the PLIST file
-        self.clientId = "d197ed41db84__etrusted-ios-sdk"
-        self.clientSecret = "96e87f24-230a-4704-997c-8f040849e5de"
+        self.getClientDetailsFromConfigurationFile()
     }
 
     // MARK: Public methods
@@ -104,4 +102,39 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
             responseHandler: apiResponseHandler
         )
     }
+
+    // MARK: Private methods
+
+    /**
+     Client id and client secret are required values to authenticate client via the Trustedshop authentication API.
+     This method loads these details from the local configuration plist file.
+     */
+    private func getClientDetailsFromConfigurationFile() {
+        guard let path = Bundle.main.path(forResource: "TrustbadgeConfiguration", ofType: "plist"),
+              let configuration = NSDictionary(contentsOfFile: path),
+              let clientId = configuration[TrustbadgeConfigurationFileKeys.clientId] as? String,
+              let clientSecret = configuration[TrustbadgeConfigurationFileKeys.clientSecret] as? String else {
+            TSConsoleLogger.log(
+                messege: "Error loading client id and secret from the configuration file",
+                severity: .error
+            )
+            return
+        }
+
+        TSConsoleLogger.log(
+            messege: "Successfully loaded client id and secret from the configuration file",
+            severity: .info
+        )
+        self.clientId = clientId
+        self.clientSecret = clientSecret
+    }
+}
+
+/**
+ TrustbadgeConfigurationFileKeys defines key names used in the trustbadge configuration plist file.
+ These key names are used to collect values from the configuration plist file.
+ */
+struct TrustbadgeConfigurationFileKeys {
+    static let clientId = "ClientId"
+    static let clientSecret = "ClientSecret"
 }
