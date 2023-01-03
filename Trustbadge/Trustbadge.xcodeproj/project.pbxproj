@@ -33,6 +33,7 @@
 		C13B2BCB291E33C9006B7DD3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */; };
 		C13B2BCD291E3695006B7DD3 /* Image + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */; };
 		C13B2BD2291E3822006B7DD3 /* TrustbadgeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */; };
+		C182061E29643D4900D5E955 /* TrustbadgeViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C182061D29643D4900D5E955 /* TrustbadgeViewAlignment.swift */; };
 		C18AA4C029261280003B58AE /* TrustbadgeViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18AA4BF2926127F003B58AE /* TrustbadgeViewWrapper.swift */; };
 		C1D59EF2293F36E000A33E31 /* TSAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D59EF1293F36E000A33E31 /* TSAuthenticationService.swift */; };
 		C1D59EF4293FA37C00A33E31 /* AuthenticationTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D59EF3293FA37C00A33E31 /* AuthenticationTokenModel.swift */; };
@@ -95,6 +96,7 @@
 		C13B2BCA291E33C9006B7DD3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C13B2BCC291E3695006B7DD3 /* Image + Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image + Bundle.swift"; sourceTree = "<group>"; };
 		C13B2BD1291E3822006B7DD3 /* TrustbadgeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeImage.swift; sourceTree = "<group>"; };
+		C182061D29643D4900D5E955 /* TrustbadgeViewAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewAlignment.swift; sourceTree = "<group>"; };
 		C18AA4BF2926127F003B58AE /* TrustbadgeViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewWrapper.swift; sourceTree = "<group>"; };
 		C1D59EF1293F36E000A33E31 /* TSAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAuthenticationService.swift; sourceTree = "<group>"; };
 		C1D59EF3293FA37C00A33E31 /* AuthenticationTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenModel.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				C13B2BCE291E3785006B7DD3 /* Common */,
 				C1ECD77A292F49CE00C33E7F /* Widgets */,
 				C13B2B9F291D43B5006B7DD3 /* TrustbadgeView.swift */,
+				C182061D29643D4900D5E955 /* TrustbadgeViewAlignment.swift */,
 				C18AA4BF2926127F003B58AE /* TrustbadgeViewWrapper.swift */,
 			);
 			path = Views;
@@ -460,6 +463,7 @@
 				C1D59EF4293FA37C00A33E31 /* AuthenticationTokenModel.swift in Sources */,
 				C13B2BB8291D5521006B7DD3 /* TSNetworkServiceMethod.swift in Sources */,
 				C13B2BCD291E3695006B7DD3 /* Image + Bundle.swift in Sources */,
+				C182061E29643D4900D5E955 /* TrustbadgeViewAlignment.swift in Sources */,
 				C13B2BC4291D6C10006B7DD3 /* TrustmarkDataService.swift in Sources */,
 				C13B2B1A291AB016006B7DD3 /* TSLogSeverity.swift in Sources */,
 				C1ECD77C292F4A6800C33E7F /* ShopGradeDataService.swift in Sources */,

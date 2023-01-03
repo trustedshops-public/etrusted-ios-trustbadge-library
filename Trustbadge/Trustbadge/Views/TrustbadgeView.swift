@@ -14,10 +14,15 @@ public struct TrustbadgeView: View {
 
     // MARK: Initializer
 
-    public init(tsid: String, channelId: String, context: TrustbadgeContext) {
-        self.tsid = tsid
-        self.channelId = channelId
-        self.context = context
+    public init(
+        tsid: String,
+        channelId: String,
+        context: TrustbadgeContext,
+        alignment: TrustbadgeViewAlignment = .leading) {
+            self.tsid = tsid
+            self.channelId = channelId
+            self.context = context
+            self.alignment = alignment
     }
 
     // MARK: Private properties
@@ -30,6 +35,7 @@ public struct TrustbadgeView: View {
 
     private var tsid: String
     private var channelId: String
+    private var alignment: TrustbadgeViewAlignment
     private var context: TrustbadgeContext
 
     private let badgeIconBackgroundHeight: CGFloat = 64
@@ -39,8 +45,12 @@ public struct TrustbadgeView: View {
 
     public var body: some View {
         HStack(alignment: .center) {
+            if self.alignment == .trailing {
+                Spacer()
+            }
             if self.trustmarkDataService.trustMarkDetails != nil {
-                ZStack(alignment: .leading) {
+                ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
+
                     // Expendable view
                     ZStack(alignment: .center) {
                         // Background
@@ -97,6 +107,8 @@ public struct TrustbadgeView: View {
                     }
                     .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                 }
+            }
+            if self.alignment == .leading {
                 Spacer()
             }
         }
@@ -115,13 +127,13 @@ public struct TrustbadgeView: View {
         self.trustmarkDataService.getTrustmarkDetails(for: self.tsid) { didLoadDetails in
             guard didLoadDetails else {
                 TSConsoleLogger.log(
-                    messege: "Error loading trustmark details for shop with tsid: \(self.tsid ?? "")",
+                    messege: "Error loading trustmark details for shop with tsid: \(self.tsid)",
                     severity: .error
                 )
                 return
             }
             TSConsoleLogger.log(
-                messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid ?? "")",
+                messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid)",
                 severity: .info
             )
 
@@ -131,7 +143,7 @@ public struct TrustbadgeView: View {
 
             let validityString = isTrustmarkValid ? "is valid": "isn't valid!"
             TSConsoleLogger.log(
-                messege: "Trustmark for shop with tsid: \(self.tsid ?? "") \(validityString)",
+                messege: "Trustmark for shop with tsid: \(self.tsid) \(validityString)",
                 severity: .info
             )
 
