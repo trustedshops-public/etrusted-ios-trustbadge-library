@@ -12,17 +12,13 @@ import SwiftUI
  */
 public struct TrustbadgeView: View {
 
-    // MARK: Initializer
+    // MARK: Public properties
 
-    public init(
-        tsid: String,
-        channelId: String,
-        context: TrustbadgeContext,
-        alignment: TrustbadgeViewAlignment = .leading) {
-            self.tsid = tsid
-            self.channelId = channelId
-            self.context = context
-            self.alignment = alignment
+    /// This boolean property controls the visibility of the trustbadge view
+    public var isHidden: Bool = false {
+        willSet {
+            self.currentState = newValue == true ? .invisible : .default(self.isTrustmarkValid)
+        }
     }
 
     // MARK: Private properties
@@ -41,13 +37,30 @@ public struct TrustbadgeView: View {
     private let badgeIconBackgroundHeight: CGFloat = 64
     private let badgeIconHeight: CGFloat = 48
 
+    // MARK: Initializer
+
+    public init(
+        tsid: String,
+        channelId: String,
+        context: TrustbadgeContext,
+        alignment: TrustbadgeViewAlignment = .leading) {
+            self.tsid = tsid
+            self.channelId = channelId
+            self.context = context
+            self.alignment = alignment
+    }
+
     // MARK: User interface
 
     public var body: some View {
         HStack(alignment: .center) {
+
+            // This spacer helps in keeping the trustmark icon and expanding view
+            // aligned to the right
             if self.alignment == .trailing {
                 Spacer()
             }
+
             if self.trustmarkDataService.trustMarkDetails != nil {
                 ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
 
@@ -108,11 +121,16 @@ public struct TrustbadgeView: View {
                     .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
                 }
             }
+
+            // This spacer helps in keeping the trustmark icon and expanding view
+            // aligned to the left
             if self.alignment == .leading {
                 Spacer()
             }
         }
         .frame(width: UIScreen.main.bounds.width - 32)
+        .opacity(self.isHidden ? 0 : 1)
+        .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .onAppear {
             self.getTrustmarkDetails()
         }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "trustmarkIconInvalidCertificate.png",
+      "filename" : "trustmarkIconInvalidCertificate@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "trustmarkIconInvalidCertificate-1.png",
+      "filename" : "trustmarkIconInvalidCertificate@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "trustmarkIconInvalidCertificate-2.png",
+      "filename" : "trustmarkIconInvalidCertificate@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
