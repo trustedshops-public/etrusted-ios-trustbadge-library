@@ -34,8 +34,7 @@ public struct TrustbadgeView: View {
     private var alignment: TrustbadgeViewAlignment
     private var context: TrustbadgeContext
 
-    private let badgeIconBackgroundHeight: CGFloat = 64
-    private let badgeIconHeight: CGFloat = 48
+    private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
 
     // MARK: Initializer
 
@@ -53,82 +52,89 @@ public struct TrustbadgeView: View {
     // MARK: User interface
 
     public var body: some View {
-        HStack(alignment: .center) {
+        GeometryReader { geoReader in
 
-            // This spacer helps in keeping the trustmark icon and expanding view
-            // aligned to the right
-            if self.alignment == .trailing {
-                Spacer()
-            }
+            let proposedWidth = geoReader.frame(in: .global).width
+            let proposedHeight = geoReader.frame(in: .global).height
+            HStack(alignment: .center) {
 
-            if self.trustmarkDataService.trustMarkDetails != nil {
-                ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
+                // This spacer helps in keeping the trustmark icon and expanding view
+                // aligned to the right
+                if self.alignment == .trailing {
+                    Spacer()
+                }
 
-                    // Expendable view
-                    ZStack(alignment: .center) {
-                        // Background
-                        RoundedRectangle(cornerRadius: self.badgeIconBackgroundHeight * 0.5)
-                            .fill(Color.white)
-                            .frame(
-                                width: self.currentState == .default(self.isTrustmarkValid) ? self.badgeIconBackgroundHeight : UIScreen.main.bounds.width - 40,
-                                height: self.badgeIconBackgroundHeight
-                            )
-                            .animation(.easeOut(duration: 0.3), value: self.currentState)
-                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
+                if self.trustmarkDataService.trustMarkDetails != nil {
+                    ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
 
-                        // Content - Shop grade, product grade, etc
-                        ZStack {
-                            if self.context == .shopGrade {
-                                ShopGradeView(
-                                    channelId: self.channelId,
-                                    currentState: self.currentState,
-                                    isTrustmarkValid: self.isTrustmarkValid,
-                                    height: self.badgeIconBackgroundHeight,
-                                    delegate: self
+                        // Expendable view
+                        ZStack(alignment: .center) {
+                            // Background
+                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                .fill(Color.white)
+                                .frame(
+                                    width: self.currentState == .default(self.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                    height: proposedHeight
                                 )
-                            } else if self.context == .productGrade {
-                                ProductGradeView(
-                                    height: self.badgeIconBackgroundHeight,
-                                    currentState: self.currentState,
-                                    isTrustmarkValid: self.isTrustmarkValid
-                                )
+                                .animation(.easeOut(duration: 0.3), value: self.currentState)
+                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
-                            } else if self.context == .buyerProtection {
-                                BuyerProtectionView(
-                                    height: self.badgeIconBackgroundHeight,
-                                    currentState: self.currentState,
-                                    isTrustmarkValid: self.isTrustmarkValid
-                                )
+                            // Content - Shop grade, product grade, etc
+                            ZStack {
+                                if self.context == .shopGrade {
+                                    ShopGradeView(
+                                        channelId: self.channelId,
+                                        currentState: self.currentState,
+                                        isTrustmarkValid: self.isTrustmarkValid,
+                                        height: proposedHeight,
+                                        width: proposedWidth,
+                                        alignment: self.alignment,
+                                        delegate: self
+                                    )
+                                } else if self.context == .productGrade {
+                                    ProductGradeView(
+                                        currentState: self.currentState,
+                                        isTrustmarkValid: self.isTrustmarkValid,
+                                        height: proposedHeight
+                                    )
+
+                                } else if self.context == .buyerProtection {
+                                    BuyerProtectionView(
+                                        currentState: self.currentState,
+                                        isTrustmarkValid: self.isTrustmarkValid,
+                                        height: proposedHeight
+                                    )
+                                }
                             }
+                            .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
+                            .animation(.easeIn(duration: 0.2), value: self.shouldShowExpendedStateContent)
                         }
-                        .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
-                        .animation(.easeIn(duration: 0.2), value: self.shouldShowExpendedStateContent)
-                    }
 
-                    // Trustbadge Icon
-                    ZStack(alignment: .center) {
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
-                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
+                        // Trustbadge Icon
+                        ZStack(alignment: .center) {
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: proposedWidth, height: proposedHeight)
+                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
-                        TrustbadgeImage(
-                            assetName: self.iconName,
-                            width: self.badgeIconHeight,
-                            height: self.badgeIconHeight
-                        )
+                            TrustbadgeImage(
+                                assetName: self.iconName,
+                                width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle,
+                                height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle
+                            )
+                        }
+                        .frame(width: proposedHeight, height: proposedHeight)
                     }
-                    .frame(width: self.badgeIconBackgroundHeight, height: self.badgeIconBackgroundHeight)
+                }
+
+                // This spacer helps in keeping the trustmark icon and expanding view
+                // aligned to the left
+                if self.alignment == .leading {
+                    Spacer()
                 }
             }
-
-            // This spacer helps in keeping the trustmark icon and expanding view
-            // aligned to the left
-            if self.alignment == .leading {
-                Spacer()
-            }
+            .frame(width: proposedWidth)
         }
-        .frame(width: UIScreen.main.bounds.width - 32)
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .onAppear {
@@ -170,6 +176,18 @@ public struct TrustbadgeView: View {
     }
 
     /**
+     Sets icon name for the current state
+     */
+    private func setIconForState() {
+        if self.currentState == .default(self.isTrustmarkValid) {
+            self.iconName = self.currentState.iconName
+
+        } else if self.currentState == .expended {
+            self.iconName = self.context.iconName
+        }
+    }
+
+    /**
      Animates trustbadge UI components to show a subtle experience
      It first animates the expended background view. When the background view animation is completed,
      it then sets the visibility flag on for the expended view content like shop grade, product grade, etc
@@ -190,18 +208,6 @@ public struct TrustbadgeView: View {
                 self.currentState = .default(self.isTrustmarkValid)
                 self.setIconForState()
             }
-        }
-    }
-
-    /**
-     Sets icon name for the current state
-     */
-    private func setIconForState() {
-        if self.currentState == .default(self.isTrustmarkValid) {
-            self.iconName = self.currentState.iconName
-
-        } else if self.currentState == .expended {
-            self.iconName = self.context.iconName
         }
     }
 }

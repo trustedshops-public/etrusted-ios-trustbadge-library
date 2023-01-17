@@ -28,43 +28,80 @@ struct ShopGradeView: View {
     var currentState: TrustbadgeState
     var isTrustmarkValid: Bool = false
     var height: CGFloat
+    var width: CGFloat
+    var alignment: TrustbadgeViewAlignment
     var delegate: ShopGradeViewDelegate?
 
     // MARK: Private properties
 
     @StateObject private var shopGradeDataService = ShopGradeDataService()
+    private let horizontalPadding: CGFloat = 12
+    private let textScaleFactor = 0.5
 
     // MARK: User interface
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            if let aggregateRating = self.shopGradeDataService.shopAggregateRatings {
-                // Shop Grade Text
-                HStack(alignment: .center, spacing: 5) {
-                    Text("\(aggregateRating.overallRating.grade)")
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .semibold))
-                    Text(NSLocalizedString("shops reviews",
-                                           comment: "Trustbadge: Shop grade title"))
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .regular))
-                }
+        HStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 5) {
+                if let aggregateRating = self.shopGradeDataService.shopAggregateRatings {
+                    // Shop Grade Text
+                    HStack(alignment: .center, spacing: 5) {
+                        if self.alignment == .trailing {
+                            Spacer()
+                        }
 
-                // Star Rating View
-                HStack(alignment: .center, spacing: 10) {
-                    StarRatingView(rating: aggregateRating.overallRating.rating)
-                    HStack(alignment: .center, spacing: 0) {
-                        Text("\(aggregateRating.overallRating.rating.formatted())")
+                        Text("\(aggregateRating.overallRating.grade)")
                             .foregroundColor(.black)
                             .font(.system(size: 14, weight: .semibold))
-                        Text("/5.00")
+                            .lineLimit(1)
+                            .minimumScaleFactor(self.textScaleFactor)
+                        Text(NSLocalizedString("shops reviews",
+                                               comment: "Trustbadge: Shop grade title"))
                             .foregroundColor(.black)
                             .font(.system(size: 14, weight: .regular))
+                            .lineLimit(1)
+                            .minimumScaleFactor(self.textScaleFactor)
+
+                        if self.alignment == .leading {
+                            Spacer()
+                        }
                     }
+                    .padding(.leading, self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding)
+                    .padding(.trailing, self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding)
+
+                    // Star Rating View
+                    HStack(alignment: .center, spacing: 5) {
+                        if self.alignment == .trailing {
+                            Spacer()
+                        }
+
+                        StarRatingView(rating: aggregateRating.overallRating.rating)
+                        HStack(alignment: .center, spacing: 0) {
+                            Text("\(aggregateRating.overallRating.rating.formatted())")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14, weight: .semibold))
+                                .lineLimit(1)
+                                .minimumScaleFactor(self.textScaleFactor)
+                            Text("/5.00")
+                                .foregroundColor(.black)
+                                .font(.system(size: 14, weight: .regular))
+                                .lineLimit(1)
+                                .minimumScaleFactor(self.textScaleFactor)
+                        }
+
+                        if self.alignment == .leading {
+                            Spacer()
+                        }
+                    }
+                    .padding(.leading, self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding)
+                    .padding(.trailing, self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding)
                 }
             }
         }
-        .frame(width: self.currentState == .default(self.isTrustmarkValid) ? 0 : 200, height: self.height)
+        .frame(
+            width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
+            height: self.height
+        )
         .onAppear {
             self.loadAggregateRating()
         }
@@ -76,14 +113,20 @@ struct ShopGradeView: View {
      Calls Trustedshops aggregate ratings API to get shop's grade details
      */
     private func loadAggregateRating() {
-        guard !self.channelId.isEmpty else { return }
+        guard !self.channelId.isEmpty else {
+            TSConsoleLogger.log(
+                messege: "Error loading shop grade details due to invalid channel id",
+                severity: .info
+            )
+            return
+        }
         self.getAuthenticationTokenIfNeeded { didGetToken in
             guard didGetToken else { return }
             self.shopGradeDataService.getAggregateRatings(for: self.channelId) { didGetRatings in
                 guard didGetRatings else {
                     TSConsoleLogger.log(
                         messege: "Error loading shop grade details",
-                        severity: .info
+                        severity: .error
                     )
                     return
                 }
@@ -95,6 +138,7 @@ struct ShopGradeView: View {
             }
         }
     }
+
     /**
      Calls Trustedshops authentication service to obtain authentication token required for
      API calls that return details like shop grade, product grade, etc

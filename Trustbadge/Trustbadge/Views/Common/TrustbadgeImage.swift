@@ -29,7 +29,7 @@ struct TrustbadgeImage: View {
               bundle: Bundle(identifier:"com.etrusted.ios.trustbadge")
         )
         .resizable()
-        //.scaledToFit()
+        .scaledToFit()
         .frame(width: self.width, height: self.height)
     }
 }
