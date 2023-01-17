@@ -123,9 +123,9 @@ struct ProductCheckoutView: View {
                     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
                     context: .buyerProtection
                 )
-                .frame(height: 100)
+                .frame(height: 75)
                 .padding(.leading, 16)
-                .padding(.bottom, 27)
+                .padding(.bottom, 40)
                 .opacity(self.isTrustbadgeVisible ? 1 : 0)
                 .animation(.easeOut(duration: 0.3), value: self.isTrustbadgeVisible)
             }

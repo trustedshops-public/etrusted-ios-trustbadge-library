@@ -109,11 +109,12 @@ struct HomeView: View {
                     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
                     context: .shopGrade
                 )
-                .frame(height: 100)
+                .frame(height: 75)
                 .opacity(self.isTrustbadgeVisible ? 1 : 0)
                 .animation(.easeOut(duration: 0.3), value: self.isTrustbadgeVisible)
             }
-            .padding(.bottom, 110)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 120)
         }
         .ignoresSafeArea(.all)
         .onAppear {
