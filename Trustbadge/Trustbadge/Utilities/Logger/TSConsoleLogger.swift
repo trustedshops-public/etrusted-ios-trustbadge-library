@@ -35,7 +35,7 @@ public class TSConsoleLogger: TSLogger {
         let dateStamp = now.toStringWithYearMonthAndDate()
         let timeStamp = now.toStringWithHourMinuteAndSecond()
 
-        print("[\(dateStamp) \(timeStamp)] \(filename):\(methodName) \(severity.label):\(messege)")
+        print("[\(dateStamp) \(timeStamp)] [Trustbadge] \(filename):\(methodName) \(severity.label):\(messege)")
     }
 
     // MARK: Private methods

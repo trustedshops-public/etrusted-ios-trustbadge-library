@@ -1,0 +1,11 @@
+framework module Trustbadge {
+  umbrella header "Trustbadge.h"
+
+  export *
+  module * { export * }
+}
+
+module Trustbadge.Swift {
+    header "Trustbadge-Swift.h"
+    requires objc
+}
