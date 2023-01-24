@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12B31F8297F968C00E39EB9 /* TrustbadgeConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B31F7297F968C00E39EB9 /* TrustbadgeConfigurationService.swift */; };
+		C12B31FA297F998900E39EB9 /* TrustbadgeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B31F9297F998900E39EB9 /* TrustbadgeLibrary.swift */; };
+		C12B31FD297F9F2E00E39EB9 /* TrustbadgeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B31FC297F9F2E00E39EB9 /* TrustbadgeError.swift */; };
 		C132DBE4295B13B00029E086 /* ShopAggregateRatingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132DBE3295B13B00029E086 /* ShopAggregateRatingsModel.swift */; };
 		C13B2AA9291932FC006B7DD3 /* Trustbadge.docc in Sources */ = {isa = PBXBuildFile; fileRef = C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */; };
 		C13B2AAF291932FC006B7DD3 /* Trustbadge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */; };
@@ -63,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C12B31F7297F968C00E39EB9 /* TrustbadgeConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationService.swift; sourceTree = "<group>"; };
+		C12B31F9297F998900E39EB9 /* TrustbadgeLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeLibrary.swift; sourceTree = "<group>"; };
+		C12B31FC297F9F2E00E39EB9 /* TrustbadgeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeError.swift; sourceTree = "<group>"; };
 		C132DBE3295B13B00029E086 /* ShopAggregateRatingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAggregateRatingsModel.swift; sourceTree = "<group>"; };
 		C13B2AA4291932FC006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustbadge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2AA7291932FC006B7DD3 /* Trustbadge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trustbadge.h; sourceTree = "<group>"; };
@@ -134,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C12B31FB297F9F1100E39EB9 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C12B31FC297F9F2E00E39EB9 /* TrustbadgeError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		C13B2A9A291932FB006B7DD3 = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +174,13 @@
 				C13B2B11291AA248006B7DD3 /* Views */,
 				C13B2B12291AA259006B7DD3 /* Models */,
 				C13B2B13291AA262006B7DD3 /* Services */,
+				C12B31FB297F9F1100E39EB9 /* Errors */,
 				C13B2B14291AA286006B7DD3 /* Utilities */,
 				C13B2B1C291AB3B1006B7DD3 /* Extensions */,
 				C13B2B0629194638006B7DD3 /* Localization */,
 				C13B2AA7291932FC006B7DD3 /* Trustbadge.h */,
 				C13B2AA8291932FC006B7DD3 /* Trustbadge.docc */,
+				C12B31F9297F998900E39EB9 /* TrustbadgeLibrary.swift */,
 			);
 			path = Trustbadge;
 			sourceTree = "<group>";
@@ -243,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				C13B2BB4291D4A13006B7DD3 /* Base */,
+				C12B31F7297F968C00E39EB9 /* TrustbadgeConfigurationService.swift */,
 				C1D59EF1293F36E000A33E31 /* TSAuthenticationService.swift */,
 				C13B2BC3291D6C10006B7DD3 /* TrustmarkDataService.swift */,
 				C1ECD77B292F4A6800C33E7F /* ShopGradeDataService.swift */,
@@ -469,6 +486,7 @@
 				C1ECD77C292F4A6800C33E7F /* ShopGradeDataService.swift in Sources */,
 				C1ECD784292F7F8300C33E7F /* ShopGradeView.swift in Sources */,
 				C13B2B18291AA3D2006B7DD3 /* TSConsoleLogger.swift in Sources */,
+				C12B31FD297F9F2E00E39EB9 /* TrustbadgeError.swift in Sources */,
 				C1ECD7A429309D3400C33E7F /* StarView.swift in Sources */,
 				C13B2BBA291D558F006B7DD3 /* TSNetworkServiceHeaderField.swift in Sources */,
 				C1ECD7A229309CB600C33E7F /* Color + TsColors.swift in Sources */,
@@ -477,9 +495,11 @@
 				C1ECD79D29309BBE00C33E7F /* StarRatingView.swift in Sources */,
 				C1ECD786292F7FA900C33E7F /* ProductGradeView.swift in Sources */,
 				C1D59EF2293F36E000A33E31 /* TSAuthenticationService.swift in Sources */,
+				C12B31F8297F968C00E39EB9 /* TrustbadgeConfigurationService.swift in Sources */,
 				C1ECD77E292F4B0800C33E7F /* ShopGradeDetailsModel.swift in Sources */,
 				C13B2BB6291D4A25006B7DD3 /* TSBackendServiceURL.swift in Sources */,
 				C132DBE4295B13B00029E086 /* ShopAggregateRatingsModel.swift in Sources */,
+				C12B31FA297F998900E39EB9 /* TrustbadgeLibrary.swift in Sources */,
 				C13B2BD2291E3822006B7DD3 /* TrustbadgeImage.swift in Sources */,
 				C1ECD780292F5E9C00C33E7F /* TrustbadgeState.swift in Sources */,
 				C13B2BA0291D43B5006B7DD3 /* TrustbadgeView.swift in Sources */,

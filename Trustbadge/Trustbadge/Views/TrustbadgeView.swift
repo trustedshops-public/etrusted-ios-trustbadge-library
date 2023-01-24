@@ -67,47 +67,53 @@ public struct TrustbadgeView: View {
                 if self.trustmarkDataService.trustMarkDetails != nil {
                     ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
 
-                        // Expendable view
-                        ZStack(alignment: .center) {
-                            // Background
-                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
-                                .fill(Color.white)
-                                .frame(
-                                    width: self.currentState == .default(self.isTrustmarkValid) ? proposedHeight : proposedWidth,
-                                    height: proposedHeight
-                                )
-                                .animation(.easeOut(duration: 0.3), value: self.currentState)
-                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
+                        // Expendable view is added to the view only if the client id and
+                        // client secret details were loaded from the configuration file
+                        // which are reuired for showing shop grade, product grade, etc
+                        
+                        if TrustbadgeConfigurationService.shared.clientId != nil, TrustbadgeConfigurationService.shared.clientSecret != nil {
 
-                            // Content - Shop grade, product grade, etc
-                            ZStack {
-                                if self.context == .shopGrade {
-                                    ShopGradeView(
-                                        channelId: self.channelId,
-                                        currentState: self.currentState,
-                                        isTrustmarkValid: self.isTrustmarkValid,
-                                        height: proposedHeight,
-                                        width: proposedWidth,
-                                        alignment: self.alignment,
-                                        delegate: self
-                                    )
-                                } else if self.context == .productGrade {
-                                    ProductGradeView(
-                                        currentState: self.currentState,
-                                        isTrustmarkValid: self.isTrustmarkValid,
+                            ZStack(alignment: .center) {
+                                // Background
+                                RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                    .fill(Color.white)
+                                    .frame(
+                                        width: self.currentState == .default(self.isTrustmarkValid) ? proposedHeight : proposedWidth,
                                         height: proposedHeight
                                     )
+                                    .animation(.easeOut(duration: 0.3), value: self.currentState)
+                                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
-                                } else if self.context == .buyerProtection {
-                                    BuyerProtectionView(
-                                        currentState: self.currentState,
-                                        isTrustmarkValid: self.isTrustmarkValid,
-                                        height: proposedHeight
-                                    )
+                                // Content - Shop grade, product grade, etc
+                                ZStack {
+                                    if self.context == .shopGrade {
+                                        ShopGradeView(
+                                            channelId: self.channelId,
+                                            currentState: self.currentState,
+                                            isTrustmarkValid: self.isTrustmarkValid,
+                                            height: proposedHeight,
+                                            width: proposedWidth,
+                                            alignment: self.alignment,
+                                            delegate: self
+                                        )
+                                    } else if self.context == .productGrade {
+                                        ProductGradeView(
+                                            currentState: self.currentState,
+                                            isTrustmarkValid: self.isTrustmarkValid,
+                                            height: proposedHeight
+                                        )
+
+                                    } else if self.context == .buyerProtection {
+                                        BuyerProtectionView(
+                                            currentState: self.currentState,
+                                            isTrustmarkValid: self.isTrustmarkValid,
+                                            height: proposedHeight
+                                        )
+                                    }
                                 }
+                                .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
+                                .animation(.easeIn(duration: 0.2), value: self.shouldShowExpendedStateContent)
                             }
-                            .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
-                            .animation(.easeIn(duration: 0.2), value: self.shouldShowExpendedStateContent)
                         }
 
                         // Trustbadge Icon
@@ -148,6 +154,8 @@ public struct TrustbadgeView: View {
      Calls backend API to download trustbadge details for the given tsid
      */
     private func getTrustmarkDetails() {
+        guard self.trustmarkDataService.trustMarkDetails == nil else { return }
+        
         self.trustmarkDataService.getTrustmarkDetails(for: self.tsid) { didLoadDetails in
             guard didLoadDetails else {
                 TSConsoleLogger.log(

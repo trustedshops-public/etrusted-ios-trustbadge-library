@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import Trustbadge
 
 @main
 struct ExampleApp: App {
+
+    // MARK: Private properties
+
     @StateObject private var overlayContainerContext = OverlayContainerContext()
     @StateObject private var appContext = AppContext()
     @StateObject private var shoppingCart = ShoppingCart(checkoutItems: [])
 
+    // MARK: Initializeer
+
+    init() {
+        TrustbadgeLibrary.configure()
+    }
+
+    // MARK: User interface
+    
     var body: some Scene {
         WindowGroup {
             TabBarView()
