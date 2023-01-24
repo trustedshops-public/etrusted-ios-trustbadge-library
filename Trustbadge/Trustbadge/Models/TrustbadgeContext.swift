@@ -15,8 +15,6 @@ import Foundation
 public enum TrustbadgeContext {
     case trustMark
     case shopGrade
-    case productGrade
-    case buyerProtection
 
     // MARK: Public properties
 
@@ -25,8 +23,6 @@ public enum TrustbadgeContext {
         switch self {
         case .trustMark: return "trustmarkIcon"
         case .shopGrade: return "shopGradeIcon"
-        case .productGrade: return "productGradeIcon"
-        case .buyerProtection: return "buyerProtectionIcon"
         }
     }
 }

@@ -21,7 +21,6 @@ struct ProductDetailsView: View {
 
     @Environment(\.presentationMode) private var presentationMode
     @State private var selectedQuantity: Int = 1
-    @State private var isTrustbadgeVisible: Bool = true
 
     /**
      Returns product image based on its availability
@@ -151,38 +150,13 @@ struct ProductDetailsView: View {
                             }
                         )
                         .padding(.top, 20)
-
-                        GeometryReader { proxy in
-                            let offset = proxy.frame(in: .named("scroll")).minY
-                            Color.clear.preference(key: ScrollViewOffsetPreferenceKey.self, value: offset)
-                        }
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 140)
                 }
-                .coordinateSpace(name: "scroll")
-                .onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
-                    let targetScrollOffset: CGFloat = 300
-                    self.isTrustbadgeVisible = value >= targetScrollOffset
-                }
             }
             .padding(.top, 60)
             .ignoresSafeArea()
-
-            // Trustbadge and it's container view
-            VStack {
-                Spacer()
-                TrustbadgeView(
-                    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-                    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
-                    context: .productGrade
-                )
-                .frame(height: 75)
-                .opacity(self.isTrustbadgeVisible ? 1 : 0)
-                .animation(.easeOut(duration: 0.3), value: self.isTrustbadgeVisible)
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 40)
         }
         .navigationBarHidden(true)
     }

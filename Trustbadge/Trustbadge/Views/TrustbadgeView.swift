@@ -96,19 +96,6 @@ public struct TrustbadgeView: View {
                                             alignment: self.alignment,
                                             delegate: self
                                         )
-                                    } else if self.context == .productGrade {
-                                        ProductGradeView(
-                                            currentState: self.currentState,
-                                            isTrustmarkValid: self.isTrustmarkValid,
-                                            height: proposedHeight
-                                        )
-
-                                    } else if self.context == .buyerProtection {
-                                        BuyerProtectionView(
-                                            currentState: self.currentState,
-                                            isTrustmarkValid: self.isTrustmarkValid,
-                                            height: proposedHeight
-                                        )
                                     }
                                 }
                                 .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
