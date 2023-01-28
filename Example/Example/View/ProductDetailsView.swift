@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Trustbadge
+import Trustylib
 
 struct ProductDetailsView: View {
 

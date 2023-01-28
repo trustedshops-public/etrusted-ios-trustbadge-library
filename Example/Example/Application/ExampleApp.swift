@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Trustbadge
+import Trustylib
 
 @main
 struct ExampleApp: App {
@@ -20,7 +20,7 @@ struct ExampleApp: App {
     // MARK: Initializeer
 
     init() {
-        TrustbadgeLibrary.configure()
+        TrustyLibrary.configure()
     }
 
     // MARK: User interface

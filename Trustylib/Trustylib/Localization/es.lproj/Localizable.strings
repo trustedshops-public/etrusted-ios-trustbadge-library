@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Trustylib
+
+  Created by Prem Pratap Singh on 07/11/22.
+  
+*/
+
+"Trustbadge Library" = "Trustbadge Library";
+
+"Poor" = "Poor";
+"Good" = "Good";
+"Excellant" = "Excellant";
+"shops reviews" = "shops reviews";
+"product reviews" = "product reviews";
+"Independent guarantee" = "Independent guarantee";
+"Your purchase is protected up to €%d" = "Your purchase is protected up to €%d";
