@@ -31,7 +31,7 @@ public struct TrustbadgeView: View {
 
     private var tsid: String
     private var channelId: String
-    private var alignment: TrustbadgeViewAlignment
+    private var alignment: TrustbadgeViewAlignment = .leading
     private var context: TrustbadgeContext
 
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
@@ -41,12 +41,10 @@ public struct TrustbadgeView: View {
     public init(
         tsid: String,
         channelId: String,
-        context: TrustbadgeContext,
-        alignment: TrustbadgeViewAlignment = .leading) {
+        context: TrustbadgeContext) {
             self.tsid = tsid
             self.channelId = channelId
             self.context = context
-            self.alignment = alignment
     }
 
     // MARK: User interface
@@ -126,7 +124,6 @@ public struct TrustbadgeView: View {
                     Spacer()
                 }
             }
-            .frame(width: proposedWidth)
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
