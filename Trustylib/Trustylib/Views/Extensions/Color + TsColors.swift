@@ -15,19 +15,11 @@ extension Color {
 
     /// Trustedshops gray 100 color
     static var tsGray100: Color {
-        let uiColor = UIColor(
-            named: "TsGray100",
-            in: Bundle(identifier:"com.etrusted.ios.trustylib"),
-            compatibleWith: nil)
-        return Color(uiColor: uiColor ?? .gray)
+        return Color("TsGray100", bundle: Bundle.init(path: "com.etrusted.ios.trustylib"))
     }
 
     /// Trustedshops pineapple 500 color
     static var tsPineapple500: Color {
-        let uiColor = UIColor(
-            named: "TsPineapple500",
-            in: Bundle(identifier:"com.etrusted.ios.trustylib"),
-            compatibleWith: nil)
-        return Color(uiColor: uiColor ?? .yellow)
+        return Color("TsPineapple500", bundle: Bundle.init(path: "com.etrusted.ios.trustylib"))
     }
 }
