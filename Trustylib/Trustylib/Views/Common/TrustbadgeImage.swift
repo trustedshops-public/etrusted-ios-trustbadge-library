@@ -25,8 +25,9 @@ struct TrustbadgeImage: View {
     // MARK: User interface
     
     var body: some View {
+        //Image(self.assetName)
         Image(self.assetName,
-              bundle: Bundle(identifier:"com.etrusted.ios.trustylib")
+              bundle: Bundle(identifier: "com.etrusted.ios.trustylib")
         )
         .resizable()
         .scaledToFit()
