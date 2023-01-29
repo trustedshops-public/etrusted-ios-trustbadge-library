@@ -11,7 +11,7 @@ import SwiftUI
 /**
  This extension defines custom Trustedshops colors
  */
-extension Color {
+public extension Color {
 
     /// Trustedshops gray 100 color
     static var tsGray100: Color {
