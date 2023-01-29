@@ -15,16 +15,11 @@ public extension Color {
 
     /// Trustedshops gray 100 color
     static var tsGray100: Color {
-        return Color("TsGray100", bundle: Bundle(identifier: "com.etrusted.ios.trustylib"))
-        //return Color("TsGray100", bundle: Bundle.init(path: "com.etrusted.ios.trustylib"))
-        //return Color("TsGray100", in: .module, compatibleWith: nil)
-        //return Color("TsGray100")
+        return Color(red: 0.90, green: 0.97, blue: 0.98)
     }
 
     /// Trustedshops pineapple 500 color
     static var tsPineapple500: Color {
-        return Color("TsPineapple500", bundle: Bundle(identifier: "com.etrusted.ios.trustylib"))
-        //return Color("TsPineapple500", bundle: Bundle.init(path: "com.etrusted.ios.trustylib"))
-        //return Color("TsPineapple500")
+        return Color(red: 1, green: 0.86, blue: 0.05)
     }
 }
