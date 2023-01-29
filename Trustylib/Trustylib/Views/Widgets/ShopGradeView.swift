@@ -77,7 +77,7 @@ struct ShopGradeView: View {
 
                         StarRatingView(rating: aggregateRating.overallRating.rating)
                         HStack(alignment: .center, spacing: 0) {
-                            Text("\(aggregateRating.overallRating.rating.formatted())")
+                            Text("\(aggregateRating.overallRating.ratingFormatted)")
                                 .foregroundColor(.black)
                                 .font(.system(size: 14, weight: .semibold))
                                 .lineLimit(1)

@@ -42,4 +42,10 @@ class AggregateRatingModel: Codable {
         }
         return NSLocalizedString("Poor", comment: "Poor shop grade text")
     }
+
+    /// Returns rating value rounded to 2 decimal points
+    var ratingFormatted: String {
+        let string = String(format: "%.2f", self.rating)
+        return string
+    }
 }
