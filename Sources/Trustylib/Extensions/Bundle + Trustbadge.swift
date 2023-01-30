@@ -11,6 +11,6 @@ extension Bundle {
 
     /// Returns reference of the trustbadge bundle id
     static var trustbadgeBundle: Bundle? {
-        return Bundle(identifier: "com.etrusted.ios.trustylib")
+        return Bundle.module
     }
 }
