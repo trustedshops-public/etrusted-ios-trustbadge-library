@@ -48,12 +48,15 @@
 		C11922712985531A00A550C7 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11922432985531900A550C7 /* TypeAliases.swift */; };
 		C11922722985531A00A550C7 /* Date + Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11922452985531900A550C7 /* Date + Formatting.swift */; };
 		C11922732985531A00A550C7 /* Image + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11922462985531900A550C7 /* Image + Bundle.swift */; };
-		C11922742985531A00A550C7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C11922482985531900A550C7 /* Colors.xcassets */; };
-		C11922752985531A00A550C7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C11922492985531900A550C7 /* Icons.xcassets */; };
 		C11922762985531A00A550C7 /* trustcard_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C119224B2985531900A550C7 /* trustcard_page.html */; };
 		C11922772985531A00A550C7 /* checkout_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C119224C2985531900A550C7 /* checkout_page.html */; };
 		C11922782985531A00A550C7 /* fontawesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C119224E2985531900A550C7 /* fontawesome.ttf */; };
 		C119227A2985536D00A550C7 /* TrustyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11922792985536D00A550C7 /* TrustyLibrary.swift */; };
+		C189B46229875EF8007A7064 /* trustmarkIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C189B46129875EF8007A7064 /* trustmarkIcon.png */; };
+		C189B46529876160007A7064 /* shopGradeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C189B46329876160007A7064 /* shopGradeIcon.png */; };
+		C189B46629876160007A7064 /* trustmarkIconInvalidCertificate.png in Resources */ = {isa = PBXBuildFile; fileRef = C189B46429876160007A7064 /* trustmarkIconInvalidCertificate.png */; };
+		C189B46829876811007A7064 /* Bundle + Trustbadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189B46729876811007A7064 /* Bundle + Trustbadge.swift */; };
+		C189B46A298768A7007A7064 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189B469298768A7007A7064 /* ResourceExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,12 +112,15 @@
 		C11922432985531900A550C7 /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		C11922452985531900A550C7 /* Date + Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Formatting.swift"; sourceTree = "<group>"; };
 		C11922462985531900A550C7 /* Image + Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image + Bundle.swift"; sourceTree = "<group>"; };
-		C11922482985531900A550C7 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		C11922492985531900A550C7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C119224B2985531900A550C7 /* trustcard_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trustcard_page.html; sourceTree = "<group>"; };
 		C119224C2985531900A550C7 /* checkout_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = checkout_page.html; sourceTree = "<group>"; };
 		C119224E2985531900A550C7 /* fontawesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontawesome.ttf; sourceTree = "<group>"; };
 		C11922792985536D00A550C7 /* TrustyLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustyLibrary.swift; sourceTree = "<group>"; };
+		C189B46129875EF8007A7064 /* trustmarkIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustmarkIcon.png; sourceTree = "<group>"; };
+		C189B46329876160007A7064 /* shopGradeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopGradeIcon.png; sourceTree = "<group>"; };
+		C189B46429876160007A7064 /* trustmarkIconInvalidCertificate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustmarkIconInvalidCertificate.png; sourceTree = "<group>"; };
+		C189B46729876811007A7064 /* Bundle + Trustbadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Trustbadge.swift"; sourceTree = "<group>"; };
+		C189B469298768A7007A7064 /* ResourceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +316,7 @@
 			children = (
 				C11922452985531900A550C7 /* Date + Formatting.swift */,
 				C11922462985531900A550C7 /* Image + Bundle.swift */,
+				C189B46729876811007A7064 /* Bundle + Trustbadge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,10 +324,10 @@
 		C11922472985531900A550C7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C189B421298688A3007A7064 /* Images */,
 				C119224D2985531900A550C7 /* Fonts */,
 				C119224A2985531900A550C7 /* Html */,
-				C11922482985531900A550C7 /* Colors.xcassets */,
-				C11922492985531900A550C7 /* Icons.xcassets */,
+				C189B469298768A7007A7064 /* ResourceExtension.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -340,6 +347,16 @@
 				C119224E2985531900A550C7 /* fontawesome.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C189B421298688A3007A7064 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C189B46129875EF8007A7064 /* trustmarkIcon.png */,
+				C189B46329876160007A7064 /* shopGradeIcon.png */,
+				C189B46429876160007A7064 /* trustmarkIconInvalidCertificate.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,10 +458,11 @@
 			files = (
 				C119226F2985531A00A550C7 /* Localizable.strings in Resources */,
 				C11922772985531A00A550C7 /* checkout_page.html in Resources */,
-				C11922752985531A00A550C7 /* Icons.xcassets in Resources */,
+				C189B46529876160007A7064 /* shopGradeIcon.png in Resources */,
 				C11922782985531A00A550C7 /* fontawesome.ttf in Resources */,
+				C189B46229875EF8007A7064 /* trustmarkIcon.png in Resources */,
+				C189B46629876160007A7064 /* trustmarkIconInvalidCertificate.png in Resources */,
 				C11922762985531A00A550C7 /* trustcard_page.html in Resources */,
-				C11922742985531A00A550C7 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,9 +488,11 @@
 				C11922702985531A00A550C7 /* TrustylibError.swift in Sources */,
 				C11922572985531A00A550C7 /* StarRatingView.swift in Sources */,
 				C119224F2985531900A550C7 /* TSLogger.swift in Sources */,
+				C189B46829876811007A7064 /* Bundle + Trustbadge.swift in Sources */,
 				C119226A2985531A00A550C7 /* ShopAggregateRatingsModel.swift in Sources */,
 				C11922682985531A00A550C7 /* TSBackendServiceURL.swift in Sources */,
 				C11922722985531A00A550C7 /* Date + Formatting.swift in Sources */,
+				C189B46A298768A7007A7064 /* ResourceExtension.swift in Sources */,
 				C11922612985531A00A550C7 /* TSNetworkServiceMethod.swift in Sources */,
 				C11922652985531A00A550C7 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
 				C119226C2985531A00A550C7 /* TrustbadgeState.swift in Sources */,

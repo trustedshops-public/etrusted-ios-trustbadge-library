@@ -26,9 +26,9 @@ enum TrustbadgeState: Equatable {
     // MARK: Public properties
 
     /// Icon name for the state
-    var iconName: String {
+    var iconImageName: String {
         switch self {
-        case .default(let isValid): return isValid ? "trustmarkIcon" : "trustmarkIconInvalid"
+        case .default(let isValid): return isValid ? "trustmarkIcon" : "trustmarkIconInvalidCertificate"
         case .expended: return ""
         case .expendedAsPopup: return "blueCrossIcon"
         case .invisible: return ""

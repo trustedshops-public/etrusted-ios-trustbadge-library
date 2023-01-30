@@ -34,20 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C119220B2985352100A550C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C11922062985352100A550C7 /* Trustylib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C119217C29852A1400A550C7;
-			remoteInfo = Trustylib;
-		};
-		C119220D2985352100A550C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C11922062985352100A550C7 /* Trustylib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C119218629852A1400A550C7;
-			remoteInfo = TrustylibTests;
-		};
 		C13B2AD829193554006B7DD3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C13B2ABF2919354F006B7DD3 /* Project object */;
@@ -61,6 +47,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = C13B2AC62919354F006B7DD3;
 			remoteInfo = Example;
+		};
+		C189B49529876F61007A7064 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C119217C29852A1400A550C7;
+			remoteInfo = Trustylib;
+		};
+		C189B49729876F61007A7064 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C119218629852A1400A550C7;
+			remoteInfo = TrustylibTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -80,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		C11922022985350B00A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Trustylib.framework; path = "../../../../../../../../../../../../../Users/prempratapsingh/Library/Developer/Xcode/DerivedData/Trustylib-endjlizkbwkyprffwxxfawytmwvh/Build/Products/Debug-iphonesimulator/Trustylib.framework"; sourceTree = "<group>"; };
-		C11922062985352100A550C7 /* Trustylib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Trustylib.xcodeproj; path = ../Trustylib/Trustylib.xcodeproj; sourceTree = "<group>"; };
 		C132DBE5295C4AE30029E086 /* TrustylibConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TrustylibConfiguration.plist; sourceTree = "<group>"; };
 		C13B2AC72919354F006B7DD3 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B2ACA2919354F006B7DD3 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		C13B2B95291CDF16006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
 		C13B2B99291CDF1D006B7DD3 /* Trustbadge.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Trustbadge.framework.dSYM; sourceTree = "<group>"; };
 		C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
+		C189B49029876F61007A7064 /* Trustylib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Trustylib.xcodeproj; path = ../../Trustylib/Trustylib.xcodeproj; sourceTree = "<group>"; };
 		C19244AE2934F6D700F42ABC /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		C19244B02935F31500F42ABC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C19244B22935F38D00F42ABC /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -142,19 +142,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C11922072985352100A550C7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C119220C2985352100A550C7 /* Trustylib.framework */,
-				C119220E2985352100A550C7 /* TrustylibTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C13B2ABE2919354F006B7DD3 = {
 			isa = PBXGroup;
 			children = (
-				C11922062985352100A550C7 /* Trustylib.xcodeproj */,
 				C13B2AC92919354F006B7DD3 /* Example */,
 				C13B2ADA29193554006B7DD3 /* ExampleTests */,
 				C13B2AE429193554006B7DD3 /* ExampleUITests */,
@@ -176,6 +166,7 @@
 		C13B2AC92919354F006B7DD3 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				C189B49029876F61007A7064 /* Trustylib.xcodeproj */,
 				C13B2AF42919360C006B7DD3 /* Application */,
 				C13B2AF52919361D006B7DD3 /* View */,
 				C19244AD2934F6BB00F42ABC /* ViewModel */,
@@ -286,6 +277,15 @@
 			);
 			name = "Release-iphonesimulator";
 			path = "../../../../../../../../../../../../../Users/prempratapsingh/Library/Developer/Xcode/DerivedData/Trustbadge-dywienjnojeylsctkifnzqgljirv/Build/Products/Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		C189B49129876F61007A7064 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C189B49629876F61007A7064 /* Trustylib.framework */,
+				C189B49829876F61007A7064 /* TrustylibTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C19244AA2934F6AB00F42ABC /* Model */ = {
@@ -416,8 +416,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C11922072985352100A550C7 /* Products */;
-					ProjectRef = C11922062985352100A550C7 /* Trustylib.xcodeproj */;
+					ProductGroup = C189B49129876F61007A7064 /* Products */;
+					ProjectRef = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -430,18 +430,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C119220C2985352100A550C7 /* Trustylib.framework */ = {
+		C189B49629876F61007A7064 /* Trustylib.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Trustylib.framework;
-			remoteRef = C119220B2985352100A550C7 /* PBXContainerItemProxy */;
+			remoteRef = C189B49529876F61007A7064 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C119220E2985352100A550C7 /* TrustylibTests.xctest */ = {
+		C189B49829876F61007A7064 /* TrustylibTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = TrustylibTests.xctest;
-			remoteRef = C119220D2985352100A550C7 /* PBXContainerItemProxy */;
+			remoteRef = C189B49729876F61007A7064 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

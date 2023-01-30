@@ -27,7 +27,8 @@ public struct TrustbadgeView: View {
     @State private var currentState: TrustbadgeState = .default(false)
     @State private var isTrustmarkValid: Bool = false
     @State private var shouldShowExpendedStateContent: Bool = false
-    @State private var iconName: String = TrustbadgeState.default(false).iconName
+    @State private var iconImageName: String = TrustbadgeState.default(false).iconImageName
+    @State private var iconImage: UIImage?
 
     private var tsid: String
     private var channelId: String
@@ -108,11 +109,15 @@ public struct TrustbadgeView: View {
                                 .frame(width: proposedWidth, height: proposedHeight)
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
-                            TrustbadgeImage(
-                                assetName: self.iconName,
-                                width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle,
-                                height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle
-                            )
+                            if let image = self.iconImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(
+                                        width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle,
+                                        height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle
+                                    )
+                            }
                         }
                         .frame(width: proposedHeight, height: proposedHeight)
                     }
@@ -172,11 +177,19 @@ public struct TrustbadgeView: View {
      */
     private func setIconForState() {
         if self.currentState == .default(self.isTrustmarkValid) {
-            self.iconName = self.currentState.iconName
+            self.iconImageName = self.currentState.iconImageName
 
         } else if self.currentState == .expended {
-            self.iconName = self.context.iconName
+            self.iconImageName = self.context.iconImageName
         }
+
+        guard let bundle = Bundle.trustbadgeBundle,
+              let imgPath = bundle.path(forResource: self.iconImageName,
+                                                         ofType: ResourceExtension.png),
+              let image = UIImage(contentsOfFile: imgPath) else {
+            return
+        }
+        self.iconImage = image
     }
 
     /**
