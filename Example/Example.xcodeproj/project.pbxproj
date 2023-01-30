@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C11922032985350B00A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11922022985350B00A550C7 /* Trustylib.framework */; };
-		C11922042985350B00A550C7 /* Trustylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C11922022985350B00A550C7 /* Trustylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C108CE9429878A5D00603875 /* Trustylib in Frameworks */ = {isa = PBXBuildFile; productRef = C108CE9329878A5D00603875 /* Trustylib */; };
 		C132DBE6295C4AE30029E086 /* TrustylibConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132DBE5295C4AE30029E086 /* TrustylibConfiguration.plist */; };
 		C13B2ACB2919354F006B7DD3 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2ACA2919354F006B7DD3 /* ExampleApp.swift */; };
 		C13B2ACD2919354F006B7DD3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B2ACC2919354F006B7DD3 /* HomeView.swift */; };
@@ -48,35 +47,7 @@
 			remoteGlobalIDString = C13B2AC62919354F006B7DD3;
 			remoteInfo = Example;
 		};
-		C189B49529876F61007A7064 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C119217C29852A1400A550C7;
-			remoteInfo = Trustylib;
-		};
-		C189B49729876F61007A7064 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C119218629852A1400A550C7;
-			remoteInfo = TrustylibTests;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C11922052985350C00A550C7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C11922042985350B00A550C7 /* Trustylib.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C11922022985350B00A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Trustylib.framework; path = "../../../../../../../../../../../../../Users/prempratapsingh/Library/Developer/Xcode/DerivedData/Trustylib-endjlizkbwkyprffwxxfawytmwvh/Build/Products/Debug-iphonesimulator/Trustylib.framework"; sourceTree = "<group>"; };
@@ -99,7 +70,6 @@
 		C13B2B95291CDF16006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
 		C13B2B99291CDF1D006B7DD3 /* Trustbadge.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Trustbadge.framework.dSYM; sourceTree = "<group>"; };
 		C13B2B9A291CDF1D006B7DD3 /* Trustbadge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Trustbadge.framework; sourceTree = "<group>"; };
-		C189B49029876F61007A7064 /* Trustylib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Trustylib.xcodeproj; path = ../../Trustylib/Trustylib.xcodeproj; sourceTree = "<group>"; };
 		C19244AE2934F6D700F42ABC /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		C19244B02935F31500F42ABC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C19244B22935F38D00F42ABC /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -121,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11922032985350B00A550C7 /* Trustylib.framework in Frameworks */,
+				C108CE9429878A5D00603875 /* Trustylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +136,6 @@
 		C13B2AC92919354F006B7DD3 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				C189B49029876F61007A7064 /* Trustylib.xcodeproj */,
 				C13B2AF42919360C006B7DD3 /* Application */,
 				C13B2AF52919361D006B7DD3 /* View */,
 				C19244AD2934F6BB00F42ABC /* ViewModel */,
@@ -279,15 +248,6 @@
 			path = "../../../../../../../../../../../../../Users/prempratapsingh/Library/Developer/Xcode/DerivedData/Trustbadge-dywienjnojeylsctkifnzqgljirv/Build/Products/Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
-		C189B49129876F61007A7064 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C189B49629876F61007A7064 /* Trustylib.framework */,
-				C189B49829876F61007A7064 /* TrustylibTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C19244AA2934F6AB00F42ABC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,13 +293,15 @@
 				C13B2AC32919354F006B7DD3 /* Sources */,
 				C13B2AC42919354F006B7DD3 /* Frameworks */,
 				C13B2AC52919354F006B7DD3 /* Resources */,
-				C11922052985350C00A550C7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Example;
+			packageProductDependencies = (
+				C108CE9329878A5D00603875 /* Trustylib */,
+			);
 			productName = Example;
 			productReference = C13B2AC72919354F006B7DD3 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -412,14 +374,11 @@
 				Base,
 			);
 			mainGroup = C13B2ABE2919354F006B7DD3;
+			packageReferences = (
+				C108CE9229878A5D00603875 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */,
+			);
 			productRefGroup = C13B2AC82919354F006B7DD3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C189B49129876F61007A7064 /* Products */;
-					ProjectRef = C189B49029876F61007A7064 /* Trustylib.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				C13B2AC62919354F006B7DD3 /* Example */,
@@ -428,23 +387,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C189B49629876F61007A7064 /* Trustylib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Trustylib.framework;
-			remoteRef = C189B49529876F61007A7064 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C189B49829876F61007A7064 /* TrustylibTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TrustylibTests.xctest;
-			remoteRef = C189B49729876F61007A7064 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C13B2AC52919354F006B7DD3 /* Resources */ = {
@@ -820,6 +762,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C108CE9229878A5D00603875 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/trustedshops-public/etrusted-ios-trustbadge-library";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C108CE9329878A5D00603875 /* Trustylib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C108CE9229878A5D00603875 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */;
+			productName = Trustylib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C13B2ABF2919354F006B7DD3 /* Project object */;
 }
