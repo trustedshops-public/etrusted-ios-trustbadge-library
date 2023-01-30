@@ -70,7 +70,7 @@ public struct TrustbadgeView: View {
                         // client secret details were loaded from the configuration file
                         // which are reuired for showing shop grade, product grade, etc
                         
-                        if TrustylibConfigurationService.shared.clientId != nil, TrustylibConfigurationService.shared.clientSecret != nil {
+                        if TrustbadgeConfigurationService.shared.clientId != nil, TrustbadgeConfigurationService.shared.clientSecret != nil {
 
                             ZStack(alignment: .center) {
                                 // Background

@@ -50,8 +50,8 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
      the given shop's `client id` and `client secret`
      */
     func getAuthenticationToken(responseHandler: @escaping ResponseHandler<Bool>) {
-        guard let clientId = TrustylibConfigurationService.shared.clientId,
-              let clientSecret = TrustylibConfigurationService.shared.clientSecret,
+        guard let clientId = TrustbadgeConfigurationService.shared.clientId,
+              let clientSecret = TrustbadgeConfigurationService.shared.clientSecret,
               let url = self.backendServiceURL.authenticationServiceUrl else {
                 responseHandler(false)
                 return

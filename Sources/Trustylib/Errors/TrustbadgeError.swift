@@ -1,5 +1,5 @@
 //
-//  TrustylibError.swift
+//  TrustbadgeError.swift
 //  Trustylib
 //
 //  Created by Prem Pratap Singh on 24/01/23.
@@ -8,9 +8,9 @@
 import Foundation
 
 /**
- TrustylibError enumeration defines common error codes related to the libary workflows
+ TrustbadgeError enumeration defines common error codes related to the libary workflows
  */
-enum TrustylibError: Error {
+enum TrustbadgeError: Error {
 
     // MARK: Library configuration related error codes
 
