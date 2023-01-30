@@ -20,7 +20,7 @@ struct ExampleApp: App {
     // MARK: Initializeer
 
     init() {
-        TrustyLibrary.configure()
+        Trustbadge.configure()
     }
 
     // MARK: User interface
