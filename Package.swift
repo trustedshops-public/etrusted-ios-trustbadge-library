@@ -21,7 +21,6 @@ let package = Package(
         .target(
             name: "Trustylib",
             dependencies: [],
-            exclude: ["Example"],
             resources: [
                   .process("Resources/Images")
             ]
