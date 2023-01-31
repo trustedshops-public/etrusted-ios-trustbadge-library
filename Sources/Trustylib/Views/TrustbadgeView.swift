@@ -183,9 +183,8 @@ public struct TrustbadgeView: View {
             self.iconImageName = self.context.iconImageName
         }
 
-        guard let bundle = Bundle.trustbadgeBundle,
-              let imgPath = bundle.path(forResource: self.iconImageName,
-                                                         ofType: ResourceExtension.png),
+        guard let imgPath = TrustbadgeResources.resourceBundle.path(forResource: self.iconImageName,
+                                                                    ofType: ResourceExtension.png),
               let image = UIImage(contentsOfFile: imgPath) else {
             return
         }

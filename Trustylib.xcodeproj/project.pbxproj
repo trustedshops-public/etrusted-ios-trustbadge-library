@@ -54,6 +54,7 @@
 		C11CE87329881DA8000D6083 /* TSBackendServiceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83F29881DA8000D6083 /* TSBackendServiceURL.swift */; };
 		C11CE87429881DA8000D6083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11CE84129881DA8000D6083 /* Localizable.strings */; };
 		C11CE87629881E1A000D6083 /* Trustylib.h in Headers */ = {isa = PBXBuildFile; fileRef = C11CE87529881E1A000D6083 /* Trustylib.h */; };
+		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		C11CE84629881DA8000D6083 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE84729881DA8000D6083 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
+		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				C11CE80A29881DA8000D6083 /* Html */,
 				C11CE80D29881DA8000D6083 /* ResourceExtension.swift */,
 				C11CE80E29881DA8000D6083 /* Fonts */,
+				C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 			files = (
 				C11CE86F29881DA8000D6083 /* TSNetworkServiceBodyField.swift in Sources */,
 				C11CE85129881DA8000D6083 /* ShopAggregateRatingsModel.swift in Sources */,
+				C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */,
 				C11CE86D29881DA8000D6083 /* TSNetworkServiceHeaderField.swift in Sources */,
 				C11CE85A29881DA8000D6083 /* TSLogSeverity.swift in Sources */,
 				C11CE85C29881DA8000D6083 /* TrustbadgeError.swift in Sources */,
