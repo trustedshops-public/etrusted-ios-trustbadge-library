@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "Trustylib"
-  spec.version      = "0.1.5"
+  spec.version      = "1.0.0"
   spec.summary      = "Trusted shops library for the iOS platform"
   spec.description  = <<-DESC
   Trustylib iOS library provides UI widgets for displaying trustmark logo and shop reviews in iOS applications. It provides an easy integration for these widgets with very little amount of code, please see the readme section for more details.
