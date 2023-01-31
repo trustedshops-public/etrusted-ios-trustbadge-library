@@ -12,8 +12,6 @@
 		C11CE84929881DA8000D6083 /* trustmarkIconInvalidCertificate.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80729881DA8000D6083 /* trustmarkIconInvalidCertificate.png */; };
 		C11CE84A29881DA8000D6083 /* shopGradeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80829881DA8000D6083 /* shopGradeIcon.png */; };
 		C11CE84B29881DA8000D6083 /* trustmarkIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80929881DA8000D6083 /* trustmarkIcon.png */; };
-		C11CE84C29881DA8000D6083 /* trustcard_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80B29881DA8000D6083 /* trustcard_page.html */; };
-		C11CE84D29881DA8000D6083 /* checkout_page.html in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80C29881DA8000D6083 /* checkout_page.html */; };
 		C11CE84E29881DA8000D6083 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE80D29881DA8000D6083 /* ResourceExtension.swift */; };
 		C11CE84F29881DA8000D6083 /* fontawesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80F29881DA8000D6083 /* fontawesome.ttf */; };
 		C11CE85029881DA8000D6083 /* ShopGradeDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81129881DA8000D6083 /* ShopGradeDetailsModel.swift */; };
@@ -35,9 +33,7 @@
 		C11CE86129881DA8000D6083 /* TrustbadgeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82A29881DA8000D6083 /* TrustbadgeImage.swift */; };
 		C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82B29881DA8000D6083 /* StarRatingView.swift */; };
 		C11CE86329881DA8000D6083 /* TrustbadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82C29881DA8000D6083 /* TrustbadgeView.swift */; };
-		C11CE86429881DA8000D6083 /* BuyerProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82E29881DA8000D6083 /* BuyerProtectionView.swift */; };
 		C11CE86529881DA8000D6083 /* TrustMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82F29881DA8000D6083 /* TrustMarkView.swift */; };
-		C11CE86629881DA8000D6083 /* ProductGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83029881DA8000D6083 /* ProductGradeView.swift */; };
 		C11CE86729881DA8000D6083 /* ShopGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83129881DA8000D6083 /* ShopGradeView.swift */; };
 		C11CE86829881DA8000D6083 /* TrustbadgeConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83329881DA8000D6083 /* TrustbadgeConfigurationService.swift */; };
 		C11CE86929881DA8000D6083 /* TrustmarkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */; };
@@ -73,8 +69,6 @@
 		C11CE80729881DA8000D6083 /* trustmarkIconInvalidCertificate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustmarkIconInvalidCertificate.png; sourceTree = "<group>"; };
 		C11CE80829881DA8000D6083 /* shopGradeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopGradeIcon.png; sourceTree = "<group>"; };
 		C11CE80929881DA8000D6083 /* trustmarkIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustmarkIcon.png; sourceTree = "<group>"; };
-		C11CE80B29881DA8000D6083 /* trustcard_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = trustcard_page.html; sourceTree = "<group>"; };
-		C11CE80C29881DA8000D6083 /* checkout_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = checkout_page.html; sourceTree = "<group>"; };
 		C11CE80D29881DA8000D6083 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		C11CE80F29881DA8000D6083 /* fontawesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontawesome.ttf; sourceTree = "<group>"; };
 		C11CE81129881DA8000D6083 /* ShopGradeDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopGradeDetailsModel.swift; sourceTree = "<group>"; };
@@ -96,9 +90,7 @@
 		C11CE82A29881DA8000D6083 /* TrustbadgeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeImage.swift; sourceTree = "<group>"; };
 		C11CE82B29881DA8000D6083 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		C11CE82C29881DA8000D6083 /* TrustbadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeView.swift; sourceTree = "<group>"; };
-		C11CE82E29881DA8000D6083 /* BuyerProtectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerProtectionView.swift; sourceTree = "<group>"; };
 		C11CE82F29881DA8000D6083 /* TrustMarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustMarkView.swift; sourceTree = "<group>"; };
-		C11CE83029881DA8000D6083 /* ProductGradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductGradeView.swift; sourceTree = "<group>"; };
 		C11CE83129881DA8000D6083 /* ShopGradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopGradeView.swift; sourceTree = "<group>"; };
 		C11CE83329881DA8000D6083 /* TrustbadgeConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationService.swift; sourceTree = "<group>"; };
 		C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustmarkDataService.swift; sourceTree = "<group>"; };
@@ -183,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				C11CE80629881DA8000D6083 /* Images */,
-				C11CE80A29881DA8000D6083 /* Html */,
 				C11CE80E29881DA8000D6083 /* Fonts */,
 				C11CE80D29881DA8000D6083 /* ResourceExtension.swift */,
 				C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */,
@@ -199,15 +190,6 @@
 				C11CE80929881DA8000D6083 /* trustmarkIcon.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		C11CE80A29881DA8000D6083 /* Html */ = {
-			isa = PBXGroup;
-			children = (
-				C11CE80B29881DA8000D6083 /* trustcard_page.html */,
-				C11CE80C29881DA8000D6083 /* checkout_page.html */,
-			);
-			path = Html;
 			sourceTree = "<group>";
 		};
 		C11CE80E29881DA8000D6083 /* Fonts */ = {
@@ -307,9 +289,7 @@
 		C11CE82D29881DA8000D6083 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				C11CE82E29881DA8000D6083 /* BuyerProtectionView.swift */,
 				C11CE82F29881DA8000D6083 /* TrustMarkView.swift */,
-				C11CE83029881DA8000D6083 /* ProductGradeView.swift */,
 				C11CE83129881DA8000D6083 /* ShopGradeView.swift */,
 			);
 			path = Widgets;
@@ -448,11 +428,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C11CE84A29881DA8000D6083 /* shopGradeIcon.png in Resources */,
-				C11CE84D29881DA8000D6083 /* checkout_page.html in Resources */,
 				C11CE84B29881DA8000D6083 /* trustmarkIcon.png in Resources */,
 				C11CE87429881DA8000D6083 /* Localizable.strings in Resources */,
 				C11CE84F29881DA8000D6083 /* fontawesome.ttf in Resources */,
-				C11CE84C29881DA8000D6083 /* trustcard_page.html in Resources */,
 				C11CE84929881DA8000D6083 /* trustmarkIconInvalidCertificate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +463,6 @@
 				C11CE86A29881DA8000D6083 /* TSAuthenticationService.swift in Sources */,
 				C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */,
 				C11CE87029881DA8000D6083 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
-				C11CE86429881DA8000D6083 /* BuyerProtectionView.swift in Sources */,
 				C11CE86829881DA8000D6083 /* TrustbadgeConfigurationService.swift in Sources */,
 				C11CE85D29881DA8000D6083 /* TrustbadgeViewAlignment.swift in Sources */,
 				C11CE86029881DA8000D6083 /* StarView.swift in Sources */,
@@ -501,7 +478,6 @@
 				C11CE86929881DA8000D6083 /* TrustmarkDataService.swift in Sources */,
 				C11CE86B29881DA8000D6083 /* ShopGradeDataService.swift in Sources */,
 				C11CE87229881DA8000D6083 /* TSNetworkDataService.swift in Sources */,
-				C11CE86629881DA8000D6083 /* ProductGradeView.swift in Sources */,
 				C11CE85929881DA8000D6083 /* TSConsoleLogger.swift in Sources */,
 				C11CE86129881DA8000D6083 /* TrustbadgeImage.swift in Sources */,
 				C11CE87329881DA8000D6083 /* TSBackendServiceURL.swift in Sources */,

@@ -6,10 +6,9 @@
   
 */
 
-"Poor" = "Poor";
-"Good" = "Good";
 "Excellant" = "Excellant";
+"Good" = "Good";
+"Fair" = "Fair";
+"Poor" = "Poor";
+"Very poor" = "Very poor";
 "shops reviews" = "shops reviews";
-"product reviews" = "product reviews";
-"Independent guarantee" = "Independent guarantee";
-"Your purchase is protected up to €%d" = "Your purchase is protected up to €%d";

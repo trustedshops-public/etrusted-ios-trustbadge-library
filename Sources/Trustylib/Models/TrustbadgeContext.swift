@@ -12,7 +12,7 @@ import Foundation
  These context helps in setting the right UI appearance (shop grade, proudct grade, trustmark, etc)
  and underlying behavior for the Trustbadge view
  */
-public enum TrustbadgeContext {
+@objc public enum TrustbadgeContext: Int {
     case trustMark
     case shopGrade
 
