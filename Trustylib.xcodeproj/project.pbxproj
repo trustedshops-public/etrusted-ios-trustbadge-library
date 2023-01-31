@@ -23,7 +23,6 @@
 		C11CE85429881DA8000D6083 /* TrustbadgeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81529881DA8000D6083 /* TrustbadgeContext.swift */; };
 		C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81629881DA8000D6083 /* TrustmarkDetailsModel.swift */; };
 		C11CE85629881DA8000D6083 /* Date + Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81829881DA8000D6083 /* Date + Formatting.swift */; };
-		C11CE85729881DA8000D6083 /* Bundle + Trustbadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81929881DA8000D6083 /* Bundle + Trustbadge.swift */; };
 		C11CE85829881DA8000D6083 /* TSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81C29881DA8000D6083 /* TSLogger.swift */; };
 		C11CE85929881DA8000D6083 /* TSConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81D29881DA8000D6083 /* TSConsoleLogger.swift */; };
 		C11CE85A29881DA8000D6083 /* TSLogSeverity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE81E29881DA8000D6083 /* TSLogSeverity.swift */; };
@@ -85,7 +84,6 @@
 		C11CE81529881DA8000D6083 /* TrustbadgeContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeContext.swift; sourceTree = "<group>"; };
 		C11CE81629881DA8000D6083 /* TrustmarkDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustmarkDetailsModel.swift; sourceTree = "<group>"; };
 		C11CE81829881DA8000D6083 /* Date + Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Formatting.swift"; sourceTree = "<group>"; };
-		C11CE81929881DA8000D6083 /* Bundle + Trustbadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle + Trustbadge.swift"; sourceTree = "<group>"; };
 		C11CE81C29881DA8000D6083 /* TSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSLogger.swift; sourceTree = "<group>"; };
 		C11CE81D29881DA8000D6083 /* TSConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSConsoleLogger.swift; sourceTree = "<group>"; };
 		C11CE81E29881DA8000D6083 /* TSLogSeverity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSLogSeverity.swift; sourceTree = "<group>"; };
@@ -114,12 +112,7 @@
 		C11CE83D29881DA8000D6083 /* TSNetworkServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSNetworkServiceError.swift; sourceTree = "<group>"; };
 		C11CE83E29881DA8000D6083 /* TSNetworkDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSNetworkDataService.swift; sourceTree = "<group>"; };
 		C11CE83F29881DA8000D6083 /* TSBackendServiceURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSBackendServiceURL.swift; sourceTree = "<group>"; };
-		C11CE84229881DA8000D6083 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE84329881DA8000D6083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C11CE84429881DA8000D6083 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C11CE84529881DA8000D6083 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C11CE84629881DA8000D6083 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C11CE84729881DA8000D6083 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,8 +184,8 @@
 			children = (
 				C11CE80629881DA8000D6083 /* Images */,
 				C11CE80A29881DA8000D6083 /* Html */,
-				C11CE80D29881DA8000D6083 /* ResourceExtension.swift */,
 				C11CE80E29881DA8000D6083 /* Fonts */,
+				C11CE80D29881DA8000D6083 /* ResourceExtension.swift */,
 				C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */,
 			);
 			path = Resources;
@@ -242,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				C11CE81829881DA8000D6083 /* Date + Formatting.swift */,
-				C11CE81929881DA8000D6083 /* Bundle + Trustbadge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,7 +485,6 @@
 				C11CE86A29881DA8000D6083 /* TSAuthenticationService.swift in Sources */,
 				C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */,
 				C11CE87029881DA8000D6083 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
-				C11CE85729881DA8000D6083 /* Bundle + Trustbadge.swift in Sources */,
 				C11CE86429881DA8000D6083 /* BuyerProtectionView.swift in Sources */,
 				C11CE86829881DA8000D6083 /* TrustbadgeConfigurationService.swift in Sources */,
 				C11CE85D29881DA8000D6083 /* TrustbadgeViewAlignment.swift in Sources */,
@@ -542,12 +533,7 @@
 		C11CE84129881DA8000D6083 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C11CE84229881DA8000D6083 /* de */,
 				C11CE84329881DA8000D6083 /* en */,
-				C11CE84429881DA8000D6083 /* es */,
-				C11CE84529881DA8000D6083 /* it */,
-				C11CE84629881DA8000D6083 /* pl */,
-				C11CE84729881DA8000D6083 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
