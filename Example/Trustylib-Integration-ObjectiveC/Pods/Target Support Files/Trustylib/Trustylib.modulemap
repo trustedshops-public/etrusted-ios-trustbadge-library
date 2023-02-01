@@ -1,0 +1,6 @@
+framework module Trustylib {
+  umbrella header "Trustylib-umbrella.h"
+
+  export *
+  module * { export * }
+}
