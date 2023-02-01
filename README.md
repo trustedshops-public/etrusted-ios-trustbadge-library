@@ -21,7 +21,8 @@ Shop Grade widget expands to show shop rating and status with a nice animation e
 
 ## 1. Installation ##
 
-Trustylib can be added to your iOS projects via both [Swift Package Manager](https://www.swift.org/package-manager/) and [Cocoapods](https://cocoapods.org/). Here is how you should do it,
+Trustylib can be added to your iOS projects via both [Swift Package Manager](https://www.swift.org/package-manager/) and [Cocoapods](https://cocoapods.org/).<br> 
+[Example projects](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/tree/main/Example) have working integration of the Trustylib library for different iOS technology stacks.
 
 #### *Swift Package Manager*
 Trustylib library can easily be added to xcode projects via Swift Package Manager. Here is how it is done,
