@@ -37,6 +37,7 @@ Trustylib library can easily be added to xcode projects via Swift Package Manage
 You need to install Cocoapods first, if not already installed. Cocoapods [usase guides](https://guides.cocoapods.org/using/using-cocoapods.html) have details about installing and using it. 
 
 After installation, you need to include `Trustylib` library as a pod in the podfile,
+
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.0'
@@ -48,6 +49,7 @@ end
 ```
 
 And then run pod install command in the terminal,
+
 ```
 pod install
 ```
@@ -57,7 +59,8 @@ You should now have the latest version of Trustylib library added to your xcode 
 ## 2. Configuration ##
 Once Trustylib library is added to your xcode project, one configuration file named `TrustbadgeConfiguration.plist` needs to be added to the project. 
 This configuration file has details about your `client id` and `secret` which the library needs for authentication purpose. This is how the configuration file looks like, 
-```
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -76,7 +79,7 @@ This Trusted Shop's [documentation](https://developers.etrusted.com/solutions/ap
 
 After adding this required configuration file, you need to call `Trustbadge.configure()` method prefferable in the AppDelegate (UIKit) or the App struct (SwiftUI).
 
-```
+```swift
 import Trustylib
 import UIKit
 
@@ -89,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-```
+```swift
 import Trustylib
 import SwiftUI
 
@@ -111,7 +114,8 @@ struct LibTest24App: App {
 Trustylib has one `TrustbadgeView` view which makes it very easy to present both `Trustmark` and `Shop Grade` widgets. We just need to provide the `channel id`, `TSID` and `context`, based on these inputs TrustbadgeView presents the required widgets.
 
 This is how, the Trustmark widget is created,
-```
+
+```swift
 TrustbadgeView(
     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
@@ -120,7 +124,8 @@ TrustbadgeView(
 ```
 
 These lines of code create the Shop Grade widget,
-```
+
+```swift
 TrustbadgeView(
     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
@@ -139,7 +144,7 @@ Displaying Trustmark widget to your iOS app is pretty easy after you have instal
 #### *Swift with SwiftUI*
 Trustylib widgets are created using SwiftUI, hence its pretty straight forward to use them in SwiftUI projects.
 
-```
+```swift
 import Trustylib
 import SwiftUI
 
@@ -162,7 +167,7 @@ struct ContentView: View {
 #### *Swift with UIKit*
 Trustylib widgets are created using SwiftUI framework, therefore we need to wrap the Trustbadge widget with [UIHostingController](https://developer.apple.com/documentation/swiftui/uihostingcontroller) so that the widget could be added to the views created with UIKit framework. Here is how it is done,
 
-```
+```swift
 import UIKit
 import SwiftUI
 import Trustylib
@@ -201,7 +206,7 @@ class RootViewController: UIViewController {
 #### *Objective-C with UIKit*
 Trustylib library has [TrustbadgeViewWrapper](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/Sources/Trustylib/Views/TrustbadgeViewWrapper.swift) for adding Trustbadge views to Objective-C code. Below code shows, how it is done,
 
-```
+```objective-c
 #import "RootViewControllerObjectiveC.h"
 #import <Trustylib/Trustylib-Swift.h>
 
@@ -238,7 +243,7 @@ To display the Shop Grade widget, you just need to pass `shopGrade` context to t
 
 #### *Swift with SwiftUI*
 
-```
+```swift
 TrustbadgeView(
    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
@@ -250,7 +255,7 @@ TrustbadgeView(
 
 #### *Swift with UIKit*
 
-```
+```swift
 private lazy var trustbadgeView: UIHostingController = {
     let trustbadge = TrustbadgeView(
         tsid: "X330A2E7D449E31E467D2F53A55DDD070",
@@ -277,7 +282,7 @@ private func addTrustbadgeView() {
 
 #### *Objective-C with UIKit*
 
-```
+```objective-c
 UIViewController *trustbadgeViewController = [
     TrustbadgeViewWrapper
         createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
