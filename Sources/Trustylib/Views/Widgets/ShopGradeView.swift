@@ -50,7 +50,7 @@ struct ShopGradeView: View {
                             Spacer()
                         }
 
-                        Text("\(aggregateRating.overallRating.grade)")
+                        Text("\(aggregateRating.oneYearRating.grade)")
                             .foregroundColor(.black)
                             .font(.system(size: 14, weight: .semibold))
                             .lineLimit(1)
@@ -75,9 +75,9 @@ struct ShopGradeView: View {
                             Spacer()
                         }
 
-                        StarRatingView(rating: aggregateRating.overallRating.rating)
+                        StarRatingView(rating: aggregateRating.oneYearRating.rating)
                         HStack(alignment: .center, spacing: 0) {
-                            Text("\(aggregateRating.overallRating.ratingFormatted)")
+                            Text("\(aggregateRating.oneYearRating.ratingFormatted)")
                                 .foregroundColor(.black)
                                 .font(.system(size: 14, weight: .semibold))
                                 .lineLimit(1)
