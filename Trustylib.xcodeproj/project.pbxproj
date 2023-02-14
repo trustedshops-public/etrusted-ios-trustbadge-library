@@ -52,6 +52,7 @@
 		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
 		C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
+		C1C33E98299B7DFD00676059 /* ClientAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
 		C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationTests.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
+		C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAuthenticationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +350,7 @@
 			children = (
 				C132413E299B607000C36A11 /* TestResources */,
 				C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */,
+				C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C33E98299B7DFD00676059 /* ClientAuthenticationTests.swift in Sources */,
 				C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
