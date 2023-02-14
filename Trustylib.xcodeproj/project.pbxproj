@@ -50,6 +50,8 @@
 		C11CE87429881DA8000D6083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11CE84129881DA8000D6083 /* Localizable.strings */; };
 		C11CE87629881E1A000D6083 /* Trustylib.h in Headers */ = {isa = PBXBuildFile; fileRef = C11CE87529881E1A000D6083 /* Trustylib.h */; };
 		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
+		C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */; };
+		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,8 @@
 		C11CE84329881DA8000D6083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
+		C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationTests.swift; sourceTree = "<group>"; };
+		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				C11CE80229881DA8000D6083 /* Sources */,
+				C1324137299B572800C36A11 /* Tests */,
 				C119217D29852A1400A550C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -330,6 +335,31 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		C1324137299B572800C36A11 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C1324138299B572800C36A11 /* TrustylibTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		C1324138299B572800C36A11 /* TrustylibTests */ = {
+			isa = PBXGroup;
+			children = (
+				C132413E299B607000C36A11 /* TestResources */,
+				C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */,
+			);
+			path = TrustylibTests;
+			sourceTree = "<group>";
+		};
+		C132413E299B607000C36A11 /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */,
+			);
+			path = TestResources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -405,11 +435,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
-				es,
-				it,
-				pl,
-				fr,
 			);
 			mainGroup = C119217229852A1300A550C7;
 			productRefGroup = C119217D29852A1400A550C7 /* Products */;
@@ -439,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +595,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -625,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
