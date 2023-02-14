@@ -6,30 +6,42 @@
 //
 
 import XCTest
+@testable import Trustylib
 
+/**
+ This test suite tests clent authentication worklow with `TSAuthenticationService`
+ for different use cases.
+ */
 final class ClientAuthenticationTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testClientAuthenticationFailsWithoutTrustbadgeConfiguration() throws {
+        // Attempting to authenticate client without required trustbadge configuration
+        TSAuthenticationService.shared.getAuthenticationToken { didAuthenticate in
+            XCTAssertFalse(didAuthenticate,
+                           "Client authentication should fail without prior trustbadge configuration")
         }
     }
 
+    func testClientAuthenticationSucceedsAfterTrustbadgeConfiguration() throws {
+        do {
+            // Loading trustbadge configuration
+            let bundle = Bundle(for: type(of: self))
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
+
+            // Authenticating client
+            let accessTokenExpectation = expectation(description: "Client authentication returns valid access token")
+            TSAuthenticationService.shared.getAuthenticationToken { didAuthenticate in
+                XCTAssertTrue(didAuthenticate, "Client authentication should succeed after trustbadge configuration")
+                accessTokenExpectation.fulfill()
+            }
+
+            waitForExpectations(timeout: 3)
+            XCTAssertNotNil(TSAuthenticationService.shared.accessToken,
+                            "Client authentication failed to fetch access token")
+            XCTAssertFalse(TSAuthenticationService.shared.isAccessTokenExpired,
+                           "Client authentication failed to fetch valid token expiry time")
+        } catch {
+            XCTFail("Client authentication failed due to missing trustbadge configuration")
+        }
+    }
 }
