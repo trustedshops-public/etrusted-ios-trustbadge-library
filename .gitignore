@@ -2,6 +2,9 @@
 ## User settings
 xcuserdata/
 
+## Test reports
+test_output/
+
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
