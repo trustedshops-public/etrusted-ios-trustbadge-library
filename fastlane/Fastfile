@@ -1,0 +1,31 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Run Trustylib unit tests"
+  lane :unit_tests do
+    # add actions here: https://docs.fastlane.tools/actions
+    test_args = {
+        scheme: "TrustylibUnitTests",
+        device: "iPhone 11",
+        clean: true,
+        code_coverage: true,
+        output_directory: "test_output/"
+    }
+    scan(test_args)
+  end
+end
