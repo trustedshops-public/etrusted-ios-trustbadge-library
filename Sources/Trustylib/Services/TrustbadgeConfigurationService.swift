@@ -55,6 +55,16 @@ class TrustbadgeConfigurationService {
         self.clientId = clientId
         self.clientSecret = clientSecret
     }
+
+    /**
+     Resets the trustbadge configuration details to default values.
+     This is used while running the tests which require default configuration, like testing the authentication failure
+     without valid trustbadge configuration.
+     */
+    func resetConfiguration() {
+        self.clientId = nil
+        self.clientSecret = nil
+    }
 }
 
 /**
