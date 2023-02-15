@@ -15,9 +15,12 @@ import XCTest
 
 final class ClientAuthenticationTests: XCTestCase {
 
+    override func setUpWithError() throws {
+        TrustbadgeConfigurationService.shared.resetConfiguration()
+    }
+
     func testClientAuthenticationFailsWithoutTrustbadgeConfiguration() throws {
         // Attempting to authenticate client without required trustbadge configuration
-        TrustbadgeConfigurationService.shared.resetConfiguration()
         TSAuthenticationService.shared.getAuthenticationToken { didAuthenticate in
             XCTAssertFalse(didAuthenticate,
                            "Client authentication should fail without prior trustbadge configuration")
