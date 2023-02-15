@@ -15,6 +15,8 @@ final class ShopGradeDataServiceTests: XCTestCase {
 
     override func setUpWithError() throws {
         self.didLoadShopGradeDetails = false
+        TrustbadgeConfigurationService.shared.resetConfiguration()
+        TSAuthenticationService.shared.resetAuthenticationToken()
     }
 
     func testShopGradeServiceFailsWithoutTrustbadgeConfigurationAndAuthentication() throws {
