@@ -53,6 +53,15 @@
 		C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
 		C1C33E98299B7DFD00676059 /* ClientAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */; };
+		C1C33E9A299B8DA800676059 /* TrustmarkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33E99299B8DA800676059 /* TrustmarkDataServiceTests.swift */; };
+		C1C33E9C299B950E00676059 /* ShopGradeDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33E9B299B950E00676059 /* ShopGradeDataServiceTests.swift */; };
+		C1C33E9E299BE11D00676059 /* authentication_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C33E9D299BE11C00676059 /* authentication_service_response.json */; };
+		C1C33EA0299BE15700676059 /* AuthenticationTokenModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33E9F299BE15700676059 /* AuthenticationTokenModelTests.swift */; };
+		C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33EA2299BE5A800676059 /* FileDataLoader.swift */; };
+		C1C33EA5299CAD0C00676059 /* aggregate_rating_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C33EA4299CAD0B00676059 /* aggregate_rating_service_response.json */; };
+		C1C33EA7299CAD7000676059 /* AggregateRatingsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33EA6299CAD7000676059 /* AggregateRatingsModelTests.swift */; };
+		C1C33EA9299CB1C000676059 /* TrustmarkDetailsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33EA8299CB1C000676059 /* TrustmarkDetailsModelTests.swift */; };
+		C1C33EAD299CB55700676059 /* trustmark_details_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +122,15 @@
 		C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationTests.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 		C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAuthenticationTests.swift; sourceTree = "<group>"; };
+		C1C33E99299B8DA800676059 /* TrustmarkDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDataServiceTests.swift; sourceTree = "<group>"; };
+		C1C33E9B299B950E00676059 /* ShopGradeDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeDataServiceTests.swift; sourceTree = "<group>"; };
+		C1C33E9D299BE11C00676059 /* authentication_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = authentication_service_response.json; sourceTree = "<group>"; };
+		C1C33E9F299BE15700676059 /* AuthenticationTokenModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenModelTests.swift; sourceTree = "<group>"; };
+		C1C33EA2299BE5A800676059 /* FileDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataLoader.swift; sourceTree = "<group>"; };
+		C1C33EA4299CAD0B00676059 /* aggregate_rating_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aggregate_rating_service_response.json; sourceTree = "<group>"; };
+		C1C33EA6299CAD7000676059 /* AggregateRatingsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateRatingsModelTests.swift; sourceTree = "<group>"; };
+		C1C33EA8299CB1C000676059 /* TrustmarkDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDetailsModelTests.swift; sourceTree = "<group>"; };
+		C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trustmark_details_service_response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,9 +366,15 @@
 		C1324138299B572800C36A11 /* TrustylibTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1C33EA1299BE56000676059 /* TestUtils */,
 				C132413E299B607000C36A11 /* TestResources */,
-				C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */,
 				C1C33E97299B7DFD00676059 /* ClientAuthenticationTests.swift */,
+				C132413C299B57B600C36A11 /* TrustbadgeConfigurationTests.swift */,
+				C1C33E99299B8DA800676059 /* TrustmarkDataServiceTests.swift */,
+				C1C33E9B299B950E00676059 /* ShopGradeDataServiceTests.swift */,
+				C1C33E9F299BE15700676059 /* AuthenticationTokenModelTests.swift */,
+				C1C33EA6299CAD7000676059 /* AggregateRatingsModelTests.swift */,
+				C1C33EA8299CB1C000676059 /* TrustmarkDetailsModelTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -358,9 +382,20 @@
 		C132413E299B607000C36A11 /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
+				C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */,
+				C1C33EA4299CAD0B00676059 /* aggregate_rating_service_response.json */,
+				C1C33E9D299BE11C00676059 /* authentication_service_response.json */,
 				C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */,
 			);
 			path = TestResources;
+			sourceTree = "<group>";
+		};
+		C1C33EA1299BE56000676059 /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+				C1C33EA2299BE5A800676059 /* FileDataLoader.swift */,
+			);
+			path = TestUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,7 +502,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C33E9E299BE11D00676059 /* authentication_service_response.json in Resources */,
+				C1C33EA5299CAD0C00676059 /* aggregate_rating_service_response.json in Resources */,
 				C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */,
+				C1C33EAD299CB55700676059 /* trustmark_details_service_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +560,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C33E98299B7DFD00676059 /* ClientAuthenticationTests.swift in Sources */,
+				C1C33EA7299CAD7000676059 /* AggregateRatingsModelTests.swift in Sources */,
+				C1C33E9C299B950E00676059 /* ShopGradeDataServiceTests.swift in Sources */,
+				C1C33E9A299B8DA800676059 /* TrustmarkDataServiceTests.swift in Sources */,
+				C1C33EA9299CB1C000676059 /* TrustmarkDetailsModelTests.swift in Sources */,
 				C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */,
+				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,
+				C1C33EA0299BE15700676059 /* AuthenticationTokenModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

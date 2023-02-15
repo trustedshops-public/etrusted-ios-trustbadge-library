@@ -13,6 +13,7 @@ import XCTest
  the `TrustbadgeConfiguration.plist` file and fetching valid client id and client secret
  values from this plist file
  */
+
 final class TrustbadgeConfigurationTests: XCTestCase {
 
     // MARK: Trustbadge configuration values
