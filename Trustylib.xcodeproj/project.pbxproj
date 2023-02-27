@@ -33,7 +33,6 @@
 		C11CE86129881DA8000D6083 /* TrustbadgeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82A29881DA8000D6083 /* TrustbadgeImage.swift */; };
 		C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82B29881DA8000D6083 /* StarRatingView.swift */; };
 		C11CE86329881DA8000D6083 /* TrustbadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82C29881DA8000D6083 /* TrustbadgeView.swift */; };
-		C11CE86529881DA8000D6083 /* TrustMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE82F29881DA8000D6083 /* TrustMarkView.swift */; };
 		C11CE86729881DA8000D6083 /* ShopGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83129881DA8000D6083 /* ShopGradeView.swift */; };
 		C11CE86829881DA8000D6083 /* TrustbadgeConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83329881DA8000D6083 /* TrustbadgeConfigurationService.swift */; };
 		C11CE86929881DA8000D6083 /* TrustmarkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */; };
@@ -102,7 +101,6 @@
 		C11CE82A29881DA8000D6083 /* TrustbadgeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeImage.swift; sourceTree = "<group>"; };
 		C11CE82B29881DA8000D6083 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		C11CE82C29881DA8000D6083 /* TrustbadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeView.swift; sourceTree = "<group>"; };
-		C11CE82F29881DA8000D6083 /* TrustMarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustMarkView.swift; sourceTree = "<group>"; };
 		C11CE83129881DA8000D6083 /* ShopGradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopGradeView.swift; sourceTree = "<group>"; };
 		C11CE83329881DA8000D6083 /* TrustbadgeConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeConfigurationService.swift; sourceTree = "<group>"; };
 		C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustmarkDataService.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 		C11CE82D29881DA8000D6083 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				C11CE82F29881DA8000D6083 /* TrustMarkView.swift */,
 				C11CE83129881DA8000D6083 /* ShopGradeView.swift */,
 			);
 			path = Widgets;
@@ -525,7 +522,6 @@
 				C11CE85629881DA8000D6083 /* Date + Formatting.swift in Sources */,
 				C11CE85F29881DA8000D6083 /* Color + TsColors.swift in Sources */,
 				C11CE86329881DA8000D6083 /* TrustbadgeView.swift in Sources */,
-				C11CE86529881DA8000D6083 /* TrustMarkView.swift in Sources */,
 				C11CE84829881DA8000D6083 /* Trustbadge.swift in Sources */,
 				C11CE86A29881DA8000D6083 /* TSAuthenticationService.swift in Sources */,
 				C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */,
