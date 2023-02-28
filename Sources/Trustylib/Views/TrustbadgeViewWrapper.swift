@@ -8,6 +8,13 @@
 import UIKit
 import SwiftUI
 
+/**
+ TrustbadgeViewWrapper is a wrapper view for adding TrustbadgeView to UIKit based
+ Objective-C applications.
+ 
+ Please see https://github.com/trustedshops-public/etrusted-ios-trustbadge-library Readme for
+ more details
+ */
 @available(iOS 13.0.0, *)
 @objc public class TrustbadgeViewWrapper : NSObject {
 

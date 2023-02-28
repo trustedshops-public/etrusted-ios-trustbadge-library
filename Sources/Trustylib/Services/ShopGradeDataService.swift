@@ -12,23 +12,19 @@ import Foundation
  with given `tsid`. Based on the backend API response, it then responds back via `BoolResponseHandler`,
  indicating if the shop grade and rating details could successfully be loaded or failed due to some error.
  */
-class ShopGradeDataService: TSNetworkDataService, ObservableObject {
-
-    // MARK: Public properties
-
-    @Published var shopAggregateRatings: ShopAggregateRatingsModel?
+class ShopGradeDataService: TSNetworkDataService {
 
     // MARK: Public methods
 
     /**
      Calls Trustedshop's backend API for getting shop grade and rating details for the given `tsid`,
-     handles response/error as returned by the backend and then responds back with `BoolResponseHandler`
+     handles response/error as returned by the backend and then responds back via response handler callback
      */
-    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<Bool>) {
+    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<ShopAggregateRatingsModel?>) {
         guard let url = self.backendServiceURL.getAggregateRatingServiceUrl(for: shopId),
               let accessToken = TSAuthenticationService.shared.accessToken,
               var headerFields = self.headerFields else {
-            responseHandler(false)
+            responseHandler(nil)
             return
         }
 
@@ -47,13 +43,12 @@ class ShopGradeDataService: TSNetworkDataService, ObservableObject {
             guard let backendResponse = response,
                   let aggregateRatings = backendResponse.first,
                   error == nil else {
-                responseHandler(false)
+                responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                self.shopAggregateRatings = aggregateRatings
-                responseHandler(true)
+                responseHandler(aggregateRatings)
             }
         }
 
