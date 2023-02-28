@@ -10,24 +10,23 @@ import Combine
 
 /**
  TrustmarkDataService connects to the Trustedshop's backend API for getting trustmark details for the shop
- with given `tsid`. Based on the backend API response, it then responds back via `BoolResponseHandler`,
+ with given `tsid`. Based on the backend API response, it then responds back via response handler callback,
  indicating if the trustmark details could successfully be loaded or failed due to some error.
  */
-class TrustmarkDataService: TSNetworkDataService, ObservableObject {
-
-    // MARK: Public properties
-
-    @Published var trustMarkDetails: TrustmarkDetailsModel?
-
+class TrustmarkDataService: TSNetworkDataService {
+    
     // MARK: Public methods
 
     /**
      Calls Trustedshop's backend API for getting trustmark details for the given `tsid`, handles response/error
      as returned by the backend and then responds back with `BoolResponseHandler`
      */
-    func getTrustmarkDetails(for tsid: String, responseHandler: @escaping ResponseHandler<Bool>) {
+    func getTrustmarkDetails(
+        for tsid: String,
+        responseHandler: @escaping ResponseHandler<TrustmarkDetailsModel?>) {
+            
         guard let url = self.backendServiceURL.getTrustmarkServiceUrl(for: tsid) else {
-            responseHandler(false)
+            responseHandler(nil)
             return
         }
 
@@ -42,13 +41,12 @@ class TrustmarkDataService: TSNetworkDataService, ObservableObject {
             guard let backendResponse = response,
                   let trustmarkResponse = backendResponse.first,
                   error == nil else {
-                responseHandler(false)
+                responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                self.trustMarkDetails = trustmarkResponse.response.data.shop
-                responseHandler(true)
+                responseHandler(trustmarkResponse.response.data.shop)
             }
         }
 
