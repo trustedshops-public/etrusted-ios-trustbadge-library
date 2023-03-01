@@ -13,7 +13,7 @@ import XCTest
  state management and data load.
  */
 final class TrustbadgeViewModelTests: XCTestCase {
-
+    
     func testTrustbadgeViewModelInitializesWithCorrectContext() throws {
         let viewModel = TrustbadgeViewModel(context: .shopGrade)
         XCTAssert(
@@ -25,6 +25,40 @@ final class TrustbadgeViewModelTests: XCTestCase {
         XCTAssert(
             viewModel1.activeContext != .shopGrade,
             "TrustbadgeViewModel context isn't set correctly during initialization"
+        )
+    }
+    
+    func testTrustbadgeViewModelLoadsValidTrustMarkDetails() throws {
+        let viewModel = TrustbadgeViewModel(context: .shopGrade)
+        let trustMarkDetailsExpectation = expectation(description: "TrustbadgeViewModel response expectation")
+        
+        viewModel.getTrustmarkDetails(for: "X330A2E7D449E31E467D2F53A55DDD070") { _ in
+            trustMarkDetailsExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertNotNil(
+            viewModel.trustMarkDetails,
+            "TrustbadgeViewModel should load trustmark details successfully for given TSID"
+        )
+    }
+    
+    func testTrustbadgeViewModelSetsCorrectIconNameForState() throws {
+        let viewModel = TrustbadgeViewModel(context: .trustMark)
+        viewModel.setIconForState()
+        
+        XCTAssert(
+            viewModel.iconImageName == "trustmarkIconInvalidCertificate",
+            "TrustbadgeViewModel should set correct icon image name for the current badge state"
+        )
+        
+        let trustMarkDetailsExpectation = expectation(description: "TrustbadgeViewModel response expectation")
+        viewModel.getTrustmarkDetails(for: "X330A2E7D449E31E467D2F53A55DDD070") { _ in
+            trustMarkDetailsExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssert(
+            viewModel.iconImageName == "trustmarkIcon",
+            "TrustbadgeViewModel should set correct icon image name for the current badge state"
         )
     }
     
