@@ -146,3 +146,24 @@ extension TrustbadgeView: ShopGradeViewDelegate {
         self.viewModel.expandBadgeToShowDetails()
     }
 }
+
+// MARK: Helper properties/methods for tests
+
+extension TrustbadgeView {
+    
+    var currentViewModel: TrustbadgeViewModel {
+        return self.viewModel
+    }
+    
+    var trustedShopId: String {
+        return self.tsid
+    }
+    
+    var currentChannelId: String {
+        return self.channelId
+    }
+    
+    var currentContext: TrustbadgeContext {
+        return self.context
+    }
+}

@@ -39,8 +39,9 @@ class TrustbadgeViewModel: ObservableObject {
     /**
      Calls backend API to download trustbadge details for the given tsid
      */
-    func getTrustmarkDetails(for tsid: String) {
+    func getTrustmarkDetails(for tsid: String, responseHandler: ResponseHandler<Bool>? = nil) {
         guard self.trustMarkDetails == nil else {
+            responseHandler?(false)
             return
         }
         
@@ -50,6 +51,7 @@ class TrustbadgeViewModel: ObservableObject {
                     messege: "Error loading trustmark details for shop with tsid: \(tsid)",
                     severity: .error
                 )
+                responseHandler?(false)
                 return
             }
             
@@ -69,6 +71,7 @@ class TrustbadgeViewModel: ObservableObject {
             )
             
             self.setIconForState()
+            responseHandler?(true)
         }
     }
     
@@ -78,7 +81,6 @@ class TrustbadgeViewModel: ObservableObject {
     func setIconForState() {
         if self.currentState == .default(self.isTrustmarkValid) {
             self.iconImageName = self.currentState.iconImageName
-
         } else if self.currentState == .expended {
             self.iconImageName = self.context.iconImageName
         }
@@ -113,5 +115,13 @@ class TrustbadgeViewModel: ObservableObject {
                 self.setIconForState()
             }
         }
+    }
+}
+
+// MARK: Helper properties/methods for tests
+
+extension TrustbadgeViewModel {
+    var activeContext: TrustbadgeContext {
+        return self.context
     }
 }

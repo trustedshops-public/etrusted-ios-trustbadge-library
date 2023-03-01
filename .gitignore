@@ -5,6 +5,9 @@ xcuserdata/
 ## Test reports
 test_output/
 
+## Fastlane reports
+fastlane/report.xml
+
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout

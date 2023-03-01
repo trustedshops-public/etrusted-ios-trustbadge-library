@@ -119,3 +119,24 @@ struct ShopGradeView: View {
         }
     }
 }
+
+// MARK: Helper properties/methods for tests
+
+extension ShopGradeView {
+    
+    var currentViewModel: ShopGradeViewModel {
+        return self.viewModel
+    }
+    
+    var lPadding: CGFloat {
+        return self.leadingPadding
+    }
+    
+    var tPadding: CGFloat {
+        return self.trailingPadding
+    }
+    
+    var hPadding: CGFloat {
+        return self.horizontalPadding
+    }
+}
