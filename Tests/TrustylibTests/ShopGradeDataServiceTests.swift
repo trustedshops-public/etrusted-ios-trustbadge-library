@@ -20,9 +20,9 @@ final class ShopGradeDataServiceTests: XCTestCase {
     }
 
     func testShopGradeServiceFailsWithoutTrustbadgeConfigurationAndAuthentication() throws {
-        self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { didLoadGrades in
-            XCTAssertFalse(
-                didLoadGrades,
+        self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { aggregateRatings in
+            XCTAssertNil(
+                aggregateRatings,
                 "ShopGradeDataService should fail without trustbadge configuration and successful client authentication"
             )
         }
@@ -43,12 +43,12 @@ final class ShopGradeDataServiceTests: XCTestCase {
 
             // Fetching shop grade with ShopGradeDataService
             let shopGradeExpectation = expectation(description: "ShopGradeDataService response expectation")
-            self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { didLoadGrades in
-                self.didLoadShopGradeDetails = didLoadGrades
+            self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { ratings in
+                self.didLoadShopGradeDetails = ratings != nil
                 shopGradeExpectation.fulfill()
             }
             waitForExpectations(timeout: 5)
-            XCTAssertNotNil(self.shopGradeDataService.shopAggregateRatings,
+            XCTAssertTrue(self.didLoadShopGradeDetails,
                             "ShopGradeDataService should return shop grade after successful trustbadge configuration and authentication")
         } catch {
             XCTFail("Failed to load shop grades due to missing trustbadge configuration")

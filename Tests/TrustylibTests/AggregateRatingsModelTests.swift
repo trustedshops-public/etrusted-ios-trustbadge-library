@@ -39,10 +39,21 @@ final class AggregateRatingsModelTests: XCTestCase {
                        "Aggregate ratings data object should have valid rating for oneYearRating")
         XCTAssertTrue(aggregateRatings.thirtyDaysRating.count == 0,
                        "Aggregate ratings data object should have valid count for thirtyDaysRating")
+        XCTAssertTrue(aggregateRatings.thirtyDaysRating.grade == "Very poor",
+                       "Aggregate ratings data object should have valid grade for thirtyDaysRating")
+        
         XCTAssertTrue(aggregateRatings.nintyDaysRating.rating == 3.5,
                        "Aggregate ratings data object should have valid rating for nintyDaysRating")
+        XCTAssertTrue(aggregateRatings.nintyDaysRating.grade == "Good",
+                       "Aggregate ratings data object should have valid grade for nintyDaysRating")
+        
         XCTAssertTrue(aggregateRatings.oneYearRating.rating == 4.4,
                        "Aggregate ratings data object should have valid rating for oneYearRating")
+        XCTAssertTrue(aggregateRatings.oneYearRating.grade == "Good",
+                       "Aggregate ratings data object should have valid rating for oneYearRating")
+        XCTAssertTrue(aggregateRatings.oneYearRating.ratingFormatted == "4.40",
+                       "Aggregate ratings data object should have correct formatted rating for oneYearRating")
+        
         XCTAssertTrue(aggregateRatings.overallRating.count == 70,
                        "Aggregate ratings data object should have valid count for overallRating")
     }

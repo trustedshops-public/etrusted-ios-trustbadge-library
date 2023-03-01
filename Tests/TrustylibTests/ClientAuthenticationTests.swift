@@ -30,6 +30,7 @@ final class ClientAuthenticationTests: XCTestCase {
     func testClientAuthenticationSucceedsAfterTrustbadgeConfiguration() throws {
         do {
             // Loading trustbadge configuration
+            TrustbadgeConfigurationService.shared.resetConfiguration()
             let bundle = Bundle(for: type(of: self))
             try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
 
