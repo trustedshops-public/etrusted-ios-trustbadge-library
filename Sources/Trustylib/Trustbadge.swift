@@ -24,7 +24,7 @@ public class Trustbadge {
      */
     public static func configure() {
         do {
-            try TrustbadgeConfigurationService.shared.loadConfiguration()
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: Bundle.main)
         } catch {
             TSConsoleLogger.log(
                 messege: "Error loading trustbadge configuration. Please check if the application has valid TrustbadgeConfiguration.plist file with required key value pairs. Trustylib library's Git project readme has more details about the required configuration file.",

@@ -2,11 +2,17 @@
 ## User settings
 xcuserdata/
 
+## Test reports
+test_output/
+
+## Fastlane reports
+fastlane/report.xml
+
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
 
-### Xcode Patch ###
+## Xcode Patch ##
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
@@ -14,3 +20,6 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+### Other Configurations ###
+.DS_Store
