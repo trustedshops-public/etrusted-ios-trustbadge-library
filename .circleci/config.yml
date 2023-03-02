@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build:
+    macos:
+      xcode: 14.2.0
+
+    steps:
+      - checkout
+      - run:
+          name: Run fastlane
+          command: |
+            sudo bundle update
+            bundle exec fastlane unit_tests
+
+      - store_test_results:
+          path: test_output
+      - store_artifacts:
+          path: test_output
+          destination: scan-output
+
+workflows:
+  sample:
+    jobs:
+      - build
