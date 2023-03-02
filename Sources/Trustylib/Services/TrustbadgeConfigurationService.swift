@@ -33,8 +33,8 @@ class TrustbadgeConfigurationService {
      This method looks for TrustbadgeConfiguration.plist file to load badge configuration details.
      If the file is not found, it throws an error to notify the host application about missing configuration file.
      */
-    func loadConfiguration() throws {
-        guard let path = Bundle.main.path(forResource: TrustbadgeConfigurationFileKeys.fileName,
+    func loadConfiguration(from bundle: Bundle) throws {
+        guard let path = bundle.path(forResource: TrustbadgeConfigurationFileKeys.fileName,
                                           ofType: TrustbadgeConfigurationFileKeys.fileExtension),
               let configuration = NSDictionary(contentsOfFile: path) else {
             throw TrustbadgeError.configurationFileNotFound
@@ -54,6 +54,15 @@ class TrustbadgeConfigurationService {
         )
         self.clientId = clientId
         self.clientSecret = clientSecret
+    }
+
+    /**
+     Resets the trustbadge configuration details to default values.
+     This is used while running the tests which require to test service call failure without valid trustbadge configuration.
+     */
+    func resetConfiguration() {
+        self.clientId = nil
+        self.clientSecret = nil
     }
 }
 

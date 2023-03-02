@@ -22,7 +22,7 @@ struct StarRatingView: View {
     private let fullCount: Int
     private let emptyCount: Int
     private let halfFullCount: Int
-
+    
     private var fullStar: some View {
         StarView(corners: 5, smoothness: 0.45)
             .fill(StarRatingView.filledStarColor)
@@ -80,5 +80,21 @@ struct StarRatingView: View {
 struct B2CStarRatingView_Previews: PreviewProvider {
     static var previews: some View {
         StarRatingView(rating: 3.5)
+    }
+}
+
+// MARK: Helper methods/properties for tests
+
+extension StarRatingView {
+    var fullStarView: any View {
+        return self.fullStar
+    }
+    
+    var halfFullStarView: any View {
+        return self.halfFullStar
+    }
+    
+    var emptyStarView: any View {
+        return self.emptyStar
     }
 }

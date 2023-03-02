@@ -97,4 +97,12 @@ class TSAuthenticationService: TSNetworkDataService, ObservableObject {
             responseHandler: apiResponseHandler
         )
     }
+
+    /**
+     Resets the authorization token to default values.
+     This is used while running the tests which require to test service call failure without valid authentication token.
+     */
+    func resetAuthenticationToken() {
+        self.authenticationToken = nil
+    }
 }

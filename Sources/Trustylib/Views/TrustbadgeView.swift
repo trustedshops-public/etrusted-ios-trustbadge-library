@@ -8,7 +8,13 @@
 import SwiftUI
 
 /**
- TrustbadgeView shows trust badge image for the shop
+ TrustbadgeView is the main container view for showing different types of widgets like,
+ 1. TrustMark
+ 2. ShopGrade
+ 
+ It expects TSID, channel id and context (.trustMark, .shopGrade, etc) during initialization. Based on these
+ inputs, it communicates with the TrustedShop's authentication and data API for downloading given shop's
+ detaills and presents on screen with a rich UI.
  */
 public struct TrustbadgeView: View {
 
@@ -17,24 +23,18 @@ public struct TrustbadgeView: View {
     /// This boolean property controls the visibility of the trustbadge view
     public var isHidden: Bool = false {
         willSet {
-            self.currentState = newValue == true ? .invisible : .default(self.isTrustmarkValid)
+            self.viewModel.currentState = newValue == true ? .invisible : .default(self.viewModel.isTrustmarkValid)
         }
     }
 
     // MARK: Private properties
     
-    @StateObject private var trustmarkDataService = TrustmarkDataService()
-    @State private var currentState: TrustbadgeState = .default(false)
-    @State private var isTrustmarkValid: Bool = false
-    @State private var shouldShowExpendedStateContent: Bool = false
-    @State private var iconImageName: String = TrustbadgeState.default(false).iconImageName
-    @State private var iconImage: UIImage?
-
+    @StateObject private var viewModel: TrustbadgeViewModel
+    
     private var tsid: String
     private var channelId: String
     private var alignment: TrustbadgeViewAlignment = .leading
     private var context: TrustbadgeContext
-
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
 
     // MARK: Initializer
@@ -46,6 +46,7 @@ public struct TrustbadgeView: View {
             self.tsid = tsid
             self.channelId = channelId
             self.context = context
+            self._viewModel = StateObject(wrappedValue: TrustbadgeViewModel(context: context))
     }
 
     // MARK: User interface
@@ -63,7 +64,7 @@ public struct TrustbadgeView: View {
                     Spacer()
                 }
 
-                if self.trustmarkDataService.trustMarkDetails != nil {
+                if self.viewModel.trustMarkDetails != nil {
                     ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
 
                         // Expendable view is added to the view only if the client id and
@@ -77,10 +78,10 @@ public struct TrustbadgeView: View {
                                 RoundedRectangle(cornerRadius: proposedHeight * 0.5)
                                     .fill(Color.white)
                                     .frame(
-                                        width: self.currentState == .default(self.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                        width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
                                         height: proposedHeight
                                     )
-                                    .animation(.easeOut(duration: 0.3), value: self.currentState)
+                                    .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
                                     .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
                                 // Content - Shop grade, product grade, etc
@@ -88,17 +89,17 @@ public struct TrustbadgeView: View {
                                     if self.context == .shopGrade {
                                         ShopGradeView(
                                             channelId: self.channelId,
-                                            currentState: self.currentState,
-                                            isTrustmarkValid: self.isTrustmarkValid,
+                                            currentState: self.viewModel.currentState,
+                                            alignment: self.alignment,
+                                            isTrustmarkValid: self.viewModel.isTrustmarkValid,
                                             height: proposedHeight,
                                             width: proposedWidth,
-                                            alignment: self.alignment,
                                             delegate: self
                                         )
                                     }
                                 }
-                                .opacity(self.shouldShowExpendedStateContent ? 1 : 0)
-                                .animation(.easeIn(duration: 0.2), value: self.shouldShowExpendedStateContent)
+                                .opacity(self.viewModel.shouldShowExpendedStateContent ? 1 : 0)
+                                .animation(.easeIn(duration: 0.2), value: self.viewModel.shouldShowExpendedStateContent)
                             }
                         }
 
@@ -109,7 +110,7 @@ public struct TrustbadgeView: View {
                                 .frame(width: proposedWidth, height: proposedHeight)
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
 
-                            if let image = self.iconImage {
+                            if let image = self.viewModel.iconImage {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
@@ -133,85 +134,7 @@ public struct TrustbadgeView: View {
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .onAppear {
-            self.getTrustmarkDetails()
-        }
-    }
-
-    // MARK: Private methods
-
-    /**
-     Calls backend API to download trustbadge details for the given tsid
-     */
-    private func getTrustmarkDetails() {
-        guard self.trustmarkDataService.trustMarkDetails == nil else { return }
-        
-        self.trustmarkDataService.getTrustmarkDetails(for: self.tsid) { didLoadDetails in
-            guard didLoadDetails else {
-                TSConsoleLogger.log(
-                    messege: "Error loading trustmark details for shop with tsid: \(self.tsid)",
-                    severity: .error
-                )
-                return
-            }
-            TSConsoleLogger.log(
-                messege: "Successfully loaded trustmark details for shop with tsid: \(self.tsid)",
-                severity: .info
-            )
-
-            let trustMarkDetails = self.trustmarkDataService.trustMarkDetails
-            self.isTrustmarkValid = trustMarkDetails?.trustMark.isValid ?? false
-            self.currentState = TrustbadgeState.default(isTrustmarkValid)
-
-            let validityString = isTrustmarkValid ? "is valid": "isn't valid!"
-            TSConsoleLogger.log(
-                messege: "Trustmark for shop with tsid: \(self.tsid) \(validityString)",
-                severity: .info
-            )
-
-            self.setIconForState()
-        }
-    }
-
-    /**
-     Sets icon name for the current state
-     */
-    private func setIconForState() {
-        if self.currentState == .default(self.isTrustmarkValid) {
-            self.iconImageName = self.currentState.iconImageName
-
-        } else if self.currentState == .expended {
-            self.iconImageName = self.context.iconImageName
-        }
-
-        guard let imgPath = TrustbadgeResources.resourceBundle.path(forResource: self.iconImageName,
-                                                                    ofType: ResourceExtension.png),
-              let image = UIImage(contentsOfFile: imgPath) else {
-            return
-        }
-        self.iconImage = image
-    }
-
-    /**
-     Animates trustbadge UI components to show a subtle experience
-     It first animates the expended background view. When the background view animation is completed,
-     it then sets the visibility flag on for the expended view content like shop grade, product grade, etc
-     */
-    private func expandBadgeToShowDetails() {
-        guard self.context != .trustMark else { return }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
-            self.shouldShowExpendedStateContent = true
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.currentState = .expended
-            self.setIconForState()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                self.shouldShowExpendedStateContent = false
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.2) {
-                self.currentState = .default(self.isTrustmarkValid)
-                self.setIconForState()
-            }
+            self.viewModel.getTrustmarkDetails(for: self.tsid)
         }
     }
 }
@@ -220,6 +143,27 @@ public struct TrustbadgeView: View {
 
 extension TrustbadgeView: ShopGradeViewDelegate {
     func didLoadShopGrades() {
-        self.expandBadgeToShowDetails()
+        self.viewModel.expandBadgeToShowDetails()
+    }
+}
+
+// MARK: Helper properties/methods for tests
+
+extension TrustbadgeView {
+    
+    var currentViewModel: TrustbadgeViewModel {
+        return self.viewModel
+    }
+    
+    var trustedShopId: String {
+        return self.tsid
+    }
+    
+    var currentChannelId: String {
+        return self.channelId
+    }
+    
+    var currentContext: TrustbadgeContext {
+        return self.context
     }
 }

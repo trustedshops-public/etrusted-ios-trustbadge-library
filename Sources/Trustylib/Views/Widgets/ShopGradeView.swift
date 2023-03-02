@@ -26,15 +26,24 @@ struct ShopGradeView: View {
 
     var channelId: String
     var currentState: TrustbadgeState
+    var alignment: TrustbadgeViewAlignment
     var isTrustmarkValid: Bool = false
     var height: CGFloat
     var width: CGFloat
-    var alignment: TrustbadgeViewAlignment
     var delegate: ShopGradeViewDelegate?
 
     // MARK: Private properties
 
-    @StateObject private var shopGradeDataService = ShopGradeDataService()
+    @StateObject private var viewModel = ShopGradeViewModel()
+    
+    private var leadingPadding: CGFloat {
+        return self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding
+    }
+    
+    private var trailingPadding: CGFloat {
+        return self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding
+    }
+    
     private let horizontalPadding: CGFloat = 12
     private let textScaleFactor = 0.5
 
@@ -43,7 +52,7 @@ struct ShopGradeView: View {
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 5) {
-                if let aggregateRating = self.shopGradeDataService.shopAggregateRatings {
+                if let aggregateRating = self.viewModel.shopAggregateRatings {
                     // Shop Grade Text
                     HStack(alignment: .center, spacing: 5) {
                         if self.alignment == .trailing {
@@ -66,8 +75,8 @@ struct ShopGradeView: View {
                             Spacer()
                         }
                     }
-                    .padding(.leading, self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding)
-                    .padding(.trailing, self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding)
+                    .padding(.leading, self.leadingPadding)
+                    .padding(.trailing, self.trailingPadding)
 
                     // Star Rating View
                     HStack(alignment: .center, spacing: 5) {
@@ -93,8 +102,8 @@ struct ShopGradeView: View {
                             Spacer()
                         }
                     }
-                    .padding(.leading, self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding)
-                    .padding(.trailing, self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding)
+                    .padding(.leading, self.leadingPadding)
+                    .padding(.trailing, self.trailingPadding)
                 }
             }
         }
@@ -103,66 +112,31 @@ struct ShopGradeView: View {
             height: self.height
         )
         .onAppear {
-            self.loadAggregateRating()
-        }
-    }
-
-    // MARK: Private methods
-
-    /**
-     Calls Trustedshops aggregate ratings API to get shop's grade details
-     */
-    private func loadAggregateRating() {
-        guard !self.channelId.isEmpty else {
-            TSConsoleLogger.log(
-                messege: "Error loading shop grade details due to invalid channel id",
-                severity: .info
-            )
-            return
-        }
-        self.getAuthenticationTokenIfNeeded { didGetToken in
-            guard didGetToken else { return }
-            self.shopGradeDataService.getAggregateRatings(for: self.channelId) { didGetRatings in
-                guard didGetRatings else {
-                    TSConsoleLogger.log(
-                        messege: "Error loading shop grade details",
-                        severity: .error
-                    )
-                    return
-                }
-                TSConsoleLogger.log(
-                    messege: "Successfully loaded shop grade details",
-                    severity: .info
-                )
+            self.viewModel.loadAggregateRating(for: self.channelId) { didLoadDetails in
+                guard didLoadDetails else { return }
                 self.delegate?.didLoadShopGrades()
             }
         }
     }
+}
 
-    /**
-     Calls Trustedshops authentication service to obtain authentication token required for
-     API calls that return details like shop grade, product grade, etc
-     */
-    private func getAuthenticationTokenIfNeeded(responseHandler: @escaping ResponseHandler<Bool>) {
-        guard TSAuthenticationService.shared.isAccessTokenExpired else {
-            responseHandler(true)
-            return
-        }
-        TSAuthenticationService.shared.getAuthenticationToken { didAuthenticate in
-            guard didAuthenticate else {
-                TSConsoleLogger.log(
-                    messege: "Authentication error, failed to obtain authentication token",
-                    severity: .error
-                )
-                responseHandler(false)
-                return
-            }
+// MARK: Helper properties/methods for tests
 
-            TSConsoleLogger.log(
-                messege: "Successfully recieved authentication token",
-                severity: .info
-            )
-            responseHandler(true)
-        }
+extension ShopGradeView {
+    
+    var currentViewModel: ShopGradeViewModel {
+        return self.viewModel
+    }
+    
+    var lPadding: CGFloat {
+        return self.leadingPadding
+    }
+    
+    var tPadding: CGFloat {
+        return self.trailingPadding
+    }
+    
+    var hPadding: CGFloat {
+        return self.horizontalPadding
     }
 }
