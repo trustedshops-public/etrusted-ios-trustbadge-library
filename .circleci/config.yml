@@ -1,9 +1,11 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@3.2.4
 
 jobs:
   build:
     macos:
-      xcode: 12.5.1
+      xcode: 14.2.0
       resource_class: macos.x86.medium.gen2
 
     steps:
@@ -13,6 +15,7 @@ jobs:
           command: |
             sudo bundle update
             bundle exec fastlane unit_tests
+      - codecov/upload
 
       - store_test_results:
           path: test_output
