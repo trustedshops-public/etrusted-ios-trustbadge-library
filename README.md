@@ -74,7 +74,7 @@ This configuration file has details about your `client id` and `secret` which th
 </plist>
 ```
 
-Here is an [example configuration file](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/Example/Example/Application/TrustbadgeConfiguration.plist) with one demo shop's client id and secret details.
+Please contact us at mobileapp@trustedshops.com for a demo shop's client id and secret values which you can use to configure and run TrustyLib [example projects](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/tree/main/Example).
 
 This Trusted Shop's [documentation](https://developers.etrusted.com/solutions/api_credentials.html) has details about how to create your own client id and secret. For any help, please contact CSM via members@trustedshops.com
 
