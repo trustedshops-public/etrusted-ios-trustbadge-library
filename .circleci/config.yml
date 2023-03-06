@@ -3,17 +3,20 @@ orbs:
   codecov: codecov/codecov@3.2.4
 
 jobs:
-  build:
+  build-and-test:
     macos:
-      xcode: 14.2.0
+      xcode: "14.2.0"
       resource_class: macos.x86.medium.gen2
 
     steps:
       - checkout
       - run:
-          name: Run fastlane
+          name: Update bundle
           command: |
             sudo bundle update
+      - run:
+          name: Execute unit tests with fastlane
+          command: |
             bundle exec fastlane unit_tests
       - codecov/upload
 
@@ -24,6 +27,7 @@ jobs:
           destination: scan-output
 
 workflows:
-  sample:
+  version: 2
+  build-test:
     jobs:
-      - build
+      - build-and-test
