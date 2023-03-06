@@ -6,14 +6,27 @@ jobs:
   build-and-test:
     macos:
       xcode: "14.2.0"
-      resource_class: macos.x86.medium.gen2
+      #resource_class: macos.x86.medium.gen2
+    shell: /bin/bash --login -eo pipefail
 
     steps:
       - checkout
-      - run:
-          name: Update bundle
-          command: |
-            sudo bundle update
+      # Gems cache
+      - restore_cache:
+           key: 1-gems-{{ checksum "Gemfile" }}
+
+      - run: 
+          name: Check Gemfile
+          command:  bundle check || bundle install
+
+      - save_cache:
+           key: 1-gems-{{ checksum "Gemfile" }}
+           paths:
+             - vendor/bundle
+             - Gemfile.lock
+             - .bundle
+
+      # Build the app and run tests
       - run:
           name: Execute unit tests with fastlane
           command: |
