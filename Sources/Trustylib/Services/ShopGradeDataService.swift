@@ -66,21 +66,3 @@ class ShopGradeDataService: TSNetworkDataService {
         )
     }
 }
-
-/**
- Data object for the response returned by the shop grade and rating backend API
- */
-class ShopGradeBackendResponseModel: Codable {
-    let response: ShopGradeResponseModel
-}
-
-class ShopGradeResponseModel: Codable {
-    let code: Int
-    let data: ShopGradeResponseDataModel
-    let message: String
-    let status: String
-}
-
-class ShopGradeResponseDataModel: Codable {
-    let shop: ShopGradeDetailsModel
-}
