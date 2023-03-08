@@ -1,0 +1,17 @@
+name: iOS CI
+
+on: [push]
+
+jobs:
+
+  build-and-test:
+    runs-on: macOS-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: update bundler
+        run: sudo bundle update
+      - name: run unit tests
+        run: bundle exec fastlane unit_tests
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
