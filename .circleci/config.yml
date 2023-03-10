@@ -70,6 +70,12 @@ jobs:
       - attach_workspace:
           at: test_output/sonar
       - run:
+          name: Create fake report file if does not exist
+          command: |
+            if [[ ! -e test_output/sonar/report.llcov ]]; then
+              touch test_output/sonar/report.llcov
+            fi
+      - run:
           name: Fix paths in report file
           command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
       - sonarcloud/scan
