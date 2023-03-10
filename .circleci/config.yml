@@ -69,6 +69,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: test_output/sonar
+      - run: touch test_output/sonar/report.llcov
       - run:
           name: Fix paths in report file
           command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
