@@ -12,43 +12,34 @@ jobs:
     steps:
       - checkout
 
-      # Undate dependencies
       - run:
           name: Update bundle
           command: |
             sudo bundle update
 
-      # Build the app and run tests
       - run:
           name: Execute unit tests with fastlane
           command: |
             bundle exec fastlane unit_tests
       
-      # Create coverage reports
       - run:
           name: Create coverage reports
           command: bundle exec fastlane create_cov_reports
 
-      # Move report files to proper place summary
       - run: 
           name: Move summary file
           command: |
             mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
 
-      # Prepare special report for Sonar
       - run:
           name: Sonar report preparation
           command: |
             mkdir -p test_output/sonar && cp test_output/slather/report.llcov test_output/sonar/report.llcov
 
-      # Persist the code coverage file to workspace
       - persist_to_workspace:
           root: test_output/sonar
           paths: report.llcov
 
-      # Collect XML test results data to show in the UI,
-      # and save the same XML files under test-results folder
-      # in the Artifacts tab
       - store_test_results:
           path: test_output/summary
       - store_artifacts:
@@ -58,7 +49,6 @@ jobs:
           path: ~/Library/Logs/scan
           destination: scan-logs
 
-      # Upload reports.xml to codecov
       - codecov/upload: 
           file: test_output/summary/XCTest/report.xml
   
