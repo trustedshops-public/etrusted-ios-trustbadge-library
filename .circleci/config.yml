@@ -1,0 +1,87 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@3.2.4
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
+jobs:
+  build-and-test:
+    macos:
+      xcode: 13.4.1
+      resource_class: medium
+
+    steps:
+      - checkout
+
+      # Undate dependencies
+      - run:
+          name: Update bundle
+          command: |
+            sudo bundle update
+
+      # Build the app and run tests
+      - run:
+          name: Execute unit tests with fastlane
+          command: |
+            bundle exec fastlane unit_tests
+      
+      # Create coverage reports
+      - run:
+          name: Create coverage reports
+          command: bundle exec fastlane create_cov_reports
+
+      # Move report files to proper place summary
+      - run: 
+          name: Move summary file
+          command: |
+            mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
+
+      # Prepare special report for Sonar
+      - run:
+          name: Sonar report preparation
+          command: |
+            mkdir -p test_output/sonar && cp test_output/slather/report.llcov test_output/sonar/report.llcov
+
+      # Persist the code coverage file to workspace
+      - persist_to_workspace:
+          root: test_output/sonar
+          paths: report.llcov
+
+      # Collect XML test results data to show in the UI,
+      # and save the same XML files under test-results folder
+      # in the Artifacts tab
+      - store_test_results:
+          path: test_output/summary
+      - store_artifacts:
+          path: test_output/
+          destination: reports
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: scan-logs
+
+      # Upload reports.xml to codecov
+      - codecov/upload: 
+          file: test_output/summary/XCTest/report.xml
+  
+  sonar_analysis:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - attach_workspace:
+          at: test_output/sonar
+      - run:
+          name: Create fake report file if does not exist
+          command: |
+            if [[ ! -e test_output/sonar/report.llcov ]]; then
+              touch test_output/sonar/report.llcov
+            fi
+      - run:
+          name: Fix paths in report file
+          command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
+      - sonarcloud/scan
+
+workflows:
+  build-test:
+    jobs:
+      - build-and-test
+      - sonar_analysis
