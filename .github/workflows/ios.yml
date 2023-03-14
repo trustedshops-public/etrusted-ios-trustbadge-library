@@ -9,8 +9,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: Update bundler
-        run: sudo bundle update
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - name: Update bundler dependencies
+        run: bundle update
       - name: Run unit tests
         run: bundle exec fastlane unit_tests
       - name: Create coverage reports
