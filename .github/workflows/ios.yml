@@ -14,7 +14,7 @@ jobs:
           ruby-version: '3.0'
           bundler-cache: true
       - name: Update bundler dependencies
-        run: bundle update
+        run: bundle install
       - name: Run unit tests
         run: bundle exec fastlane unit_tests
       - name: Create coverage reports
