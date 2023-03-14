@@ -55,7 +55,7 @@ class AggregateRatingModel: Codable {
     /// Returns grade text based on rating
     var grade: String {
         if self.rating >= 4.5 {
-            return NSLocalizedString("Excellant", comment: "Excellant shop grade text")
+            return NSLocalizedString("Excellent", comment: "Excellent shop grade text")
         } else if self.rating >= 3.5 && self.rating < 4.5 {
             return NSLocalizedString("Good", comment: "Good shop grade text")
         } else if self.rating >= 2.5 && self.rating < 3.5 {
