@@ -3,6 +3,12 @@
 [![Platform](https://img.shields.io/cocoapods/p/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![Version](https://img.shields.io/cocoapods/v/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/LICENSE)
+[![codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/main/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=bugs)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
+
 
 > This project is currently work in progress and used only be a few
 > customers. APIs might not be stable yet and might change without
