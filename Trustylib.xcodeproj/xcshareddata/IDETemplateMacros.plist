@@ -1,5 +1,10 @@
-//
-//  Copyright (C) 2023 Trusted Shops GmbH
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>FILEHEADER</key>
+<string>
+//  Copyright (C) ___YEAR___ Trusted Shops GmbH
 //
 //  MIT License
 //
@@ -21,20 +26,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 08/11/22.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
 //
-
-import Foundation
-
-/**
- TSLogger protocol defines the commong API to be used in
- different logger types
- */
-internal protocol TSLogger {
-    static func log(
-        messege: String,
-        severity: TSLogSeverity,
-        file: String,
-        method: String
-    )
-}
+</string>
+</dict>
+</plist>
