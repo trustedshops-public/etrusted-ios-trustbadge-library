@@ -114,14 +114,14 @@ class TSBackendServiceURL {
     /// Environment value determines the backend service endpoint URLs and other run environment specific details
     private func configureEnvironment() {
         guard let launchEnvKey = ProcessInfo.processInfo.environment[self.buildEnvKey] else {
-            self.environment = .stage
+            self.environment = .prod
             return
         }
 
         switch launchEnvKey {
         case buildEnvValueStage: self.environment = .stage
         case buildEnvValueProd: self.environment = .prod
-        default: self.environment = .stage
+        default: self.environment = .prod
         }
     }
 
