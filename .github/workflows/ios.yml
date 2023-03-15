@@ -32,6 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Create codecov-compatible coverage reports
+        run: bundle exec fastlane create_codecov_reports
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
