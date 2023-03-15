@@ -23,15 +23,16 @@ jobs:
         run: mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
       - name: Sonar report preparation
         run: mkdir -p test_output/sonar && cp test_output/slather/report.llcov test_output/sonar/report.llcov
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
       - name: Prepare config file for Sonar scanner
         run: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
       - name: Run Sonar Scan
         run: |
           brew install sonar-scanner
           sonar-scanner
-        #uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: test_output/slather/cobertura.xml
