@@ -34,7 +34,8 @@ platform :ios do
         scheme: "TrustylibUnitTests",
         proj: "Trustylib.xcodeproj",
         output_directory: "test_output/slather",
-        llvm_cov: true
+        llvm_cov: true,
+        cobertura_xml: true
     }
     slather(slather_args)
 
