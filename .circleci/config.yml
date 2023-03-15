@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@3.2.4
-  sonarcloud: sonarsource/sonarcloud@1.0.3
+  sonarcloud: sonarsource/sonarcloud@1.1.1
 
 jobs:
   build-and-test:
