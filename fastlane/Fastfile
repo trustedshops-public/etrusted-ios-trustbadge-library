@@ -56,4 +56,14 @@ platform :ios do
     slather(slather_args)
   end
 
+  lane :create_sonar_reports do
+    slather_args = {
+        scheme: "TrustylibUnitTests",
+        proj: "Trustylib.xcodeproj",
+        output_directory: "test_output/sonar",
+        sonarqube_xml: true
+    }
+    slather(slather_args)
+  end
+
 end
