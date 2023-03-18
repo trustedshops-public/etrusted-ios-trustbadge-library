@@ -30,6 +30,9 @@ jobs:
       - run: 
           name: Sonar report preparation
           command: bundle exec fastlane create_sonar_reports
+      - run: 
+          name: Create codecov-compatible coverage reports
+          command: bundle exec fastlane create_codecov_reports
       - persist_to_workspace:
           root: test_output/sonar
           paths: sonarqube-generic-coverage.xml
