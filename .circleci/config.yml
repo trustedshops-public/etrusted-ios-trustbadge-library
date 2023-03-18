@@ -11,46 +11,36 @@ jobs:
 
     steps:
       - checkout
-
       - run:
           name: Update bundle
           command: |
             sudo bundle update
-
       - run:
           name: Execute unit tests with fastlane
           command: |
             bundle exec fastlane unit_tests
-      
       - run:
           name: Create coverage reports
           command: bundle exec fastlane create_cov_reports
-
       - run: 
-          name: Move summary file
-          command: |
-            mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
-
-      - run:
-          name: Sonar report preparation
-          command: |
-            mkdir -p test_output/sonar && cp test_output/slather/report.llcov test_output/sonar/report.llcov
-
-      - persist_to_workspace:
-          root: test_output/sonar
-          paths: report.llcov
-
+          name: CircleCI test summary preparation
+          command: mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
       - store_test_results:
           path: test_output/summary
+      - run: 
+          name: Sonar report preparation
+          command: bundle exec fastlane create_sonar_reports
+      - persist_to_workspace:
+          root: test_output/sonar
+          paths: sonarqube-generic-coverage.xml
       - store_artifacts:
           path: test_output/
           destination: reports
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
-
-      - codecov/upload: 
-          file: test_output/summary/XCTest/report.xml
+      - codecov/upload:
+          file: test_output/slather/cobertura.xml
   
   sonar_analysis:
     docker:
@@ -62,16 +52,18 @@ jobs:
       - run:
           name: Create fake report file if does not exist
           command: |
-            if [[ ! -e test_output/sonar/report.llcov ]]; then
-              touch test_output/sonar/report.llcov
+            if [[ ! -e test_output/sonar/sonarqube-generic-coverage.xml ]]; then
+              touch test_output/sonar/sonarqube-generic-coverage.xml
             fi
       - run:
           name: Fix paths in report file
-          command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
+          command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/sonarqube-generic-coverage.xml
       - sonarcloud/scan
 
 workflows:
   build-test:
     jobs:
       - build-and-test
-      - sonar_analysis
+      - sonar_analysis:
+          requires:
+            - build-and-test
