@@ -3,7 +3,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![Version](https://img.shields.io/cocoapods/v/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/LICENSE)
-[![codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/main/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
+[![codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/develop/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop)
 
 > This project is currently work in progress and used only be a few
