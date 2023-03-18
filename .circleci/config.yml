@@ -3,6 +3,11 @@ orbs:
   codecov: codecov/codecov@3.2.4
   sonarcloud: sonarsource/sonarcloud@1.1.1
 
+executors:
+  linux-docker:
+    docker:
+      - image: cimg/base:2023.03
+
 jobs:
   build-and-test:
     macos:
@@ -21,52 +26,55 @@ jobs:
             bundle exec fastlane unit_tests
       - run:
           name: Create coverage reports
-          command: bundle exec fastlane create_cov_reports
+          command: |
+            bundle exec fastlane create_xcov_reports
+            bundle exec fastlane create_sonar_reports
+            bundle exec fastlane create_codecov_reports
       - run: 
           name: CircleCI test summary preparation
           command: mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
       - store_test_results:
           path: test_output/summary
-      - run: 
-          name: Sonar report preparation
-          command: bundle exec fastlane create_sonar_reports
-      - run: 
-          name: Create codecov-compatible coverage reports
-          command: bundle exec fastlane create_codecov_reports
       - persist_to_workspace:
           root: test_output/sonar
           paths: sonarqube-generic-coverage.xml
+      - persist_to_workspace:
+          root: test_output/slather
+          paths: cobertura.xml
       - store_artifacts:
           path: test_output/
           destination: reports
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
-      - codecov/upload:
-          file: test_output/slather/cobertura.xml
   
   sonar_analysis:
-    docker:
-      - image: cimg/base:2023.03
+    executor: linux-docker
     steps:
       - checkout
       - attach_workspace:
           at: test_output/sonar
       - run:
-          name: Create fake report file if does not exist
-          command: |
-            if [[ ! -e test_output/sonar/sonarqube-generic-coverage.xml ]]; then
-              touch test_output/sonar/sonarqube-generic-coverage.xml
-            fi
-      - run:
           name: Fix paths in report file
           command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/sonarqube-generic-coverage.xml
       - sonarcloud/scan
+
+  codecov_upload:
+    executor: linux-docker
+    steps:
+      - checkout
+      - attach_workspace:
+          at: test_output/slather
+      - codecov/upload:
+          file: test_output/slather/cobertura.xml
 
 workflows:
   build-test:
     jobs:
       - build-and-test
       - sonar_analysis:
+          requires:
+            - build-and-test
+      - codecov_upload:
           requires:
             - build-and-test
