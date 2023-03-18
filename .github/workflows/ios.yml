@@ -18,13 +18,9 @@ jobs:
       - name: Run unit tests
         run: bundle exec fastlane unit_tests
       - name: Create coverage reports
-        run: bundle exec fastlane create_cov_reports
-      - name: Move summary file
-        run: mkdir -p test_output/summary/XCTest && cp test_output/report.junit test_output/summary/XCTest/report.xml
-      - name: Sonar report preparation
-        run: mkdir -p test_output/sonar && cp test_output/slather/report.llcov test_output/sonar/report.llcov
-      - name: Prepare config file for Sonar scanner
-        run: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/report.llcov
+        run: |
+          bundle exec fastlane create_sonar_reports
+          bundle exec fastlane create_codecov_reports
       - name: Run Sonar Scan
         run: |
           brew install sonar-scanner
@@ -32,8 +28,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: Create codecov-compatible coverage reports
-        run: bundle exec fastlane create_codecov_reports
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
