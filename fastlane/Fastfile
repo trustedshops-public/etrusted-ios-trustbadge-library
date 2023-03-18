@@ -29,15 +29,7 @@ platform :ios do
     scan(test_args)
   end
 
-  lane :create_cov_reports do
-    slather_args = {
-        scheme: "Trustylib",
-        proj: "Trustylib.xcodeproj",
-        output_directory: "test_output/slather",
-        llvm_cov: true,
-    }
-    slather(slather_args)
-
+  lane :create_xcov_reports do
     xcov_args = {
         scheme: "Trustylib",
         output_directory: "test_output/xcov",
