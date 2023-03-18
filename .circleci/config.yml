@@ -54,9 +54,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: test_output/sonar
-      - run:
-          name: Fix paths in report file
-          command: sed -i -e 's#/Users/distiller/project/#/root/project/#g' test_output/sonar/sonarqube-generic-coverage.xml
       - sonarcloud/scan
 
   codecov_upload:
