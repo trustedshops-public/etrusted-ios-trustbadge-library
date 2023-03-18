@@ -20,7 +20,7 @@ platform :ios do
   lane :unit_tests do
     # add actions here: https://docs.fastlane.tools/actions
     test_args = {
-        scheme: "TrustylibUnitTests",
+        scheme: "Trustylib",
         device: "iPhone 11",
         clean: true,
         code_coverage: true,
@@ -31,7 +31,7 @@ platform :ios do
 
   lane :create_cov_reports do
     slather_args = {
-        scheme: "TrustylibUnitTests",
+        scheme: "Trustylib",
         proj: "Trustylib.xcodeproj",
         output_directory: "test_output/slather",
         llvm_cov: true,
@@ -39,7 +39,7 @@ platform :ios do
     slather(slather_args)
 
     xcov_args = {
-        scheme: "TrustylibUnitTests",
+        scheme: "Trustylib",
         output_directory: "test_output/xcov",
         only_project_targets: true
     }
@@ -48,7 +48,7 @@ platform :ios do
 
   lane :create_codecov_reports do
     slather_args = {
-        scheme: "TrustylibUnitTests",
+        scheme: "Trustylib",
         proj: "Trustylib.xcodeproj",
         output_directory: "test_output/slather",
         cobertura_xml: true
@@ -58,7 +58,7 @@ platform :ios do
 
   lane :create_sonar_reports do
     slather_args = {
-        scheme: "TrustylibUnitTests",
+        scheme: "Trustylib",
         proj: "Trustylib.xcodeproj",
         output_directory: "test_output/sonar",
         sonarqube_xml: true
