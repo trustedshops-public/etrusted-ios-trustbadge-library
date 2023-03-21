@@ -61,10 +61,12 @@ public struct TrustbadgeView: View {
     public init(
         tsid: String,
         channelId: String,
-        context: TrustbadgeContext) {
+        context: TrustbadgeContext,
+        alignment: TrustbadgeViewAlignment = .leading) {
             self.tsid = tsid
             self.channelId = channelId
             self.context = context
+            self.alignment = alignment
             self._viewModel = StateObject(wrappedValue: TrustbadgeViewModel(context: context))
         }
     
