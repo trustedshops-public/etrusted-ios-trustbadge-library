@@ -28,12 +28,13 @@ import Foundation
 
 /**
  TrustbadgeContext enumeration defines the context of the Trustbadge view.
- These context helps in setting the right UI appearance (shop grade, proudct grade, trustmark, etc)
+ These context helps in setting the right UI appearance (shop grade, proudct grade, buyer protection, etc)
  and underlying behavior for the Trustbadge view
  */
 @objc public enum TrustbadgeContext: Int {
     case trustMark
     case shopGrade
+    case buyerProtection
 
     // MARK: Public properties
 
@@ -42,6 +43,7 @@ import Foundation
         switch self {
         case .trustMark: return "trustmarkIcon"
         case .shopGrade: return "shopGradeIcon"
+        case .buyerProtection: return "buyerProtectionIcon"
         }
     }
 }
