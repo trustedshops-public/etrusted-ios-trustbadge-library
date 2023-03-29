@@ -115,6 +115,16 @@ public struct TrustbadgeView: View {
                                             width: proposedWidth,
                                             delegate: self
                                         )
+                                    } else if self.context == .buyerProtection {
+                                        BuyerProtectionView(
+                                            tsid: self.tsid,
+                                            currentState: self.viewModel.currentState,
+                                            alignment: self.alignment,
+                                            isTrustmarkValid: self.viewModel.isTrustmarkValid,
+                                            height: proposedHeight,
+                                            width: proposedWidth,
+                                            delegate: self
+                                        )
                                     }
                                 }
                                 .opacity(self.viewModel.shouldShowExpendedStateContent ? 1 : 0)
@@ -162,6 +172,14 @@ public struct TrustbadgeView: View {
 
 extension TrustbadgeView: ShopGradeViewDelegate {
     func didLoadShopGrades() {
+        self.viewModel.expandBadgeToShowDetails()
+    }
+}
+
+// MARK: BuyerProtectionViewDelegate methods
+
+extension TrustbadgeView: BuyerProtectionViewDelegate {
+    func didLoadBuyerProtectionDetails() {
         self.viewModel.expandBadgeToShowDetails()
     }
 }
