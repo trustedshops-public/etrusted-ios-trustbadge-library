@@ -27,10 +27,19 @@
 
 import SwiftUI
 
+/**
+ BuyerProtectionViewDelegate performs actions as delegated from the buyer protection widget view.
+ For example, when the shop's buyer protection details are loaded, the parent view is informed about the event
+ so that the required actions be taken.
+ */
 protocol BuyerProtectionViewDelegate {
     func didLoadBuyerProtectionDetails()
 }
 
+/**
+ BuyerProtectionView calls Trustedshops backend API to load shop's buyer protection details and
+ on successful load, it then shows the details with graphics and animated effects.
+ */
 struct BuyerProtectionView: View {
     
     // MARK: Public properties
@@ -58,10 +67,16 @@ struct BuyerProtectionView: View {
         return self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding
     }
     
+    // MARK: User interface
+    
     var body: some View {
         HStack(spacing: 0) {
             if let buyerProtectionDetails = self.viewModel.buyerProtectionDetails {
-                VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 5) {
+                if self.alignment == .trailing {
+                    Spacer()
+                }
+                
+                VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 4) {
                     Text(NSLocalizedString("Independent guarantee",
                                            comment: "Trustbadge: Buyer protection title"))
                     .foregroundColor(.black)
@@ -69,15 +84,27 @@ struct BuyerProtectionView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(self.textScaleFactor)
                     
-                    Text(NSLocalizedString("Your purchase is protected up to €\(buyerProtectionDetails.guarantee.maxProtectionAmount)",
-                                           comment: "Trustbadge: Buyer protection description"))
-                    .foregroundColor(.black)
-                    .font(.system(size: 12, weight: .regular))
-                    .lineLimit(1)
-                    .minimumScaleFactor(self.textScaleFactor)
+                    HStack(alignment: .center, spacing: 3) {
+                        Text(NSLocalizedString("Your purchase is protected up to",
+                                               comment: "Trustbadge: Buyer protection description"))
+                        .foregroundColor(.black)
+                        .font(.system(size: 12, weight: .regular))
+                        .lineLimit(1)
+                        .minimumScaleFactor(self.textScaleFactor)
+                        
+                        Text("€\(buyerProtectionDetails.guarantee.protectionAmountFormatted)")
+                        .foregroundColor(.black)
+                        .font(.system(size: 12, weight: .semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(self.textScaleFactor)
+                    }
                 }
                 .padding(.leading, self.leadingPadding)
                 .padding(.trailing, self.trailingPadding)
+                
+                if self.alignment == .leading {
+                    Spacer()
+                }
             }
         }
         .frame(
@@ -85,10 +112,19 @@ struct BuyerProtectionView: View {
             height: self.height
         )
         .onAppear {
-            self.viewModel.loadBuyerProtectionDetails(for: self.tsid) { didLoadDetails in
-                guard didLoadDetails else { return }
-                self.delegate?.didLoadBuyerProtectionDetails()
-            }
+            self.loadBuyerProtectionDetails()
+        }
+    }
+    
+    // MARK: Private methods
+    
+    /**
+     Calls view model to load buyer protection details
+     */
+    private func loadBuyerProtectionDetails() {
+        self.viewModel.loadBuyerProtectionDetails(for: self.tsid) { didLoadDetails in
+            guard didLoadDetails else { return }
+            self.delegate?.didLoadBuyerProtectionDetails()
         }
     }
 }
