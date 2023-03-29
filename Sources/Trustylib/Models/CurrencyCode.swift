@@ -21,43 +21,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 28/03/23.
+//  Created by Prem Pratap Singh on 29/03/23.
 //
+
 
 import Foundation
 
 /**
- BuyerProtectionDetailsModel contains details about a shop's id, name and
- buyer protection (guarantee) support
+ CurrencyCode enum contains details like currency code, symbol, etc
  */
-class BuyerProtectionDetailsModel: Codable {
-    let tsId: String
-    let name: String
-    let guarantee: BuyerProtectionDetails
-}
-
-/**
- BuyerProtectionDetails contains details about a shop's
- buyer protection support like protection amount, currency and duration for coverage.
- */
-class BuyerProtectionDetails: Codable {
-    let mainProtectionCurrency: String
-    let maxProtectionAmount: String
-    let maxProtectionDuration: String
+enum CurrencyCode: Codable {
+    case euro, gbp
     
-    /// Returns buyer protection amount rounded to 2 decimal points
-    var protectionAmountFormatted: String {
-        guard let protectionAmount = Float(self.maxProtectionAmount) else {
-            return self.maxProtectionAmount
+    // MARK: Public properties
+    
+    /**
+     Returns currency code
+     */
+    var code: String {
+        switch self {
+        case .euro: return "EURO"
+        case .gbp: return "GBP"
         }
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.usesGroupingSeparator = true
-        formatter.currencyCode = CurrencyCode.euro.code
-        formatter.maximumFractionDigits = 0
-
-        let number = NSNumber(value: protectionAmount)
-        return formatter.string(from: number)!
     }
 }

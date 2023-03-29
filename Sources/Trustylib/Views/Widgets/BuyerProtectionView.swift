@@ -92,7 +92,7 @@ struct BuyerProtectionView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(self.textScaleFactor)
                         
-                        Text("€\(buyerProtectionDetails.guarantee.protectionAmountFormatted)")
+                        Text("\(buyerProtectionDetails.guarantee.protectionAmountFormatted)")
                         .foregroundColor(.black)
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1)
