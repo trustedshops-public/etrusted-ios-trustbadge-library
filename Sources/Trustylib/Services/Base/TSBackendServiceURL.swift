@@ -107,6 +107,15 @@ class TSBackendServiceURL {
         let endpointWithShopId = String(format: endpoint, arguments: [shopId])
         return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.trustedShopsServiceBaseUrlString)
     }
+    
+    /*
+     Returns buyer protection service url for the given tsid
+     */
+    func getBuyerProtectionServiceUrl(for tsid: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.trustmark.name
+        let endpointWithTsid = String(format: endpoint, arguments: [tsid])
+        return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
+    }
 
     // MARK: Private methods
 
