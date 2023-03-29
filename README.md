@@ -21,6 +21,9 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 Shop Grade widget expands to show shop rating and status with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop reviews' details. <br>
 <img src="https://user-images.githubusercontent.com/27926337/215702099-a4a99457-23e6-41b9-9811-f91282a1f4fc.jpg" height="100">
 
+Buyer Protection widget shows details about protection amount. It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
+<img src="https://user-images.githubusercontent.com/27926337/228453246-e96a43d4-daf9-4622-9828-42fc11ec855a.png" height="100">
+
 ## 1. Installation ##
 
 Trustylib can be added to your iOS projects via both [Swift Package Manager](https://www.swift.org/package-manager/) and [Cocoapods](https://cocoapods.org/).<br> 
@@ -68,10 +71,10 @@ This configuration file has details about your `client id` and `secret` which th
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ClientId</key>
-	<string><YOUR_CLIENT_ID></string>
-	<key>ClientSecret</key>
-	<string><YOUR_CLIENT_SECRET></string>
+    <key>ClientId</key>
+    <string><YOUR_CLIENT_ID></string>
+    <key>ClientSecret</key>
+    <string><YOUR_CLIENT_SECRET></string>
 </dict>
 </plist>
 ```
@@ -133,6 +136,16 @@ TrustbadgeView(
     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
     context: .shopGrade
+)
+```
+
+The Buyer Protection widget can be created with these lines of code,
+
+```swift
+TrustbadgeView(
+    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+    context: .buyerProtection
 )
 ```
 
@@ -296,7 +309,63 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 6. Support ##
+## 6. Display Buyer Protection widget ##
+
+To display the Buyer Protection widget, you just need to pass `buyerProtection` context to the TrustbadgeView in above code examples.
+
+#### *Swift with SwiftUI*
+
+```swift
+TrustbadgeView(
+   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+   context: .buyerProtection
+)
+.frame(height: 75)
+
+```
+
+#### *Swift with UIKit*
+
+```swift
+private lazy var trustbadgeView: UIHostingController = {
+    let trustbadge = TrustbadgeView(
+        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+        context: .buyerProtection
+    )
+    return UIHostingController(rootView: trustbadge)
+}()
+    
+private func addTrustbadgeView() {
+    self.addChild(self.trustbadgeView)
+    self.view.addSubview(self.trustbadgeView.view)
+
+    /// Setup the constraints to update the SwiftUI view boundaries.
+    self.trustbadgeView.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+        self.trustbadgeView.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        self.trustbadgeView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+        self.trustbadgeView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+        self.trustbadgeView.view.heightAnchor.constraint(equalToConstant: 75)
+    ])
+}
+```
+
+#### *Objective-C with UIKit*
+
+```objective-c
+UIViewController *trustbadgeViewController = [
+    TrustbadgeViewWrapper
+        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
+        context: TrustbadgeContextBuyerProtection
+];
+[self addChildViewController: trustbadgeViewController];
+[self.view addSubview: trustbadgeViewController.view];
+```
+
+## 7. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
 
