@@ -21,45 +21,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 27/12/22.
+//  Created by Prem Pratap Singh on 31/03/23.
 //
 
-import Foundation
+
+import XCTest
+@testable import Trustylib
 
 /**
- ShopAggregateRatingsModel contains rating details for a shop from
- different period of tme like 7 days, 30 days, 90 days, one year and overall.
+ GradeCalculatorTests tests the grade and rating related functionality for GradeCalculator utility class
  */
-class ShopAggregateRatingsModel: Codable {
-    let sevenDaysRating: AggregateRatingModel
-    let thirtyDaysRating: AggregateRatingModel
-    let nintyDaysRating: AggregateRatingModel
-    let oneYearRating: AggregateRatingModel
-    let overallRating: AggregateRatingModel
+final class GradeCalculatorTests: XCTestCase {
 
-    enum CodingKeys: String, CodingKey {
-        case sevenDaysRating = "7days"
-        case thirtyDaysRating = "30days"
-        case nintyDaysRating = "90days"
-        case oneYearRating = "365days"
-        case overallRating = "overall"
-    }
-}
-
-class AggregateRatingModel: Codable {
-    let count: Int
-    let rating: Float
-
-    // MARK: Public properties
-
-    /// Returns grade text based on rating
-    var grade: String {
-        return GradeCalculator.getGradeForRating(self.rating)
-    }
-
-    /// Returns rating value rounded to 2 decimal points
-    var ratingFormatted: String {
-        let string = String(format: "%.2f", self.rating)
-        return string
+    func testGradeCalculatorReturnsCorrectGradeForRating() {
+        let assertionFailedMessege = "GradeCalculator should return correct grade for given rating"
+        
+        XCTAssertTrue(GradeCalculator.getGradeForRating(4.8) == "Excellent", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(4.1) == "Good", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(3.2) == "Fair", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(1.8) == "Poor", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(1.3) == "Very poor", assertionFailedMessege)
     }
 }

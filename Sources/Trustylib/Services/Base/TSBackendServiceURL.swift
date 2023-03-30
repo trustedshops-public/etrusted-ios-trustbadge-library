@@ -134,13 +134,6 @@ class TSBackendServiceURL {
         }
     }
 
-    /// Returns qualified URL for the given endpoint and base URL string
-    private func getQualifiedURL(for endpoint: TSBackendServiceEndpoint, baseURLString: String) -> URL? {
-        let qualifiedURLString = baseURLString.appending(endpoint.name)
-        let qualifiedURL = URL(string: qualifiedURLString)
-        return qualifiedURL
-    }
-
     private func getQualifiedURL(for endpoint: String, baseURLString: String) -> URL? {
         let qualifiedURLString = baseURLString.appending(endpoint)
         let qualifiedURL = URL(string: qualifiedURLString)
