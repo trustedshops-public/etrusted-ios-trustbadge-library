@@ -128,3 +128,24 @@ struct BuyerProtectionView: View {
         }
     }
 }
+
+// MARK: Helper properties/methods for tests
+
+extension BuyerProtectionView {
+    
+    var currentViewModel: BuyerProtectionViewModel {
+        return self.viewModel
+    }
+    
+    var lPadding: CGFloat {
+        return self.leadingPadding
+    }
+    
+    var tPadding: CGFloat {
+        return self.trailingPadding
+    }
+    
+    var hPadding: CGFloat {
+        return self.horizontalPadding
+    }
+}
