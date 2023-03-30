@@ -21,45 +21,32 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 27/12/22.
+//  Created by Prem Pratap Singh on 31/03/23.
 //
+
 
 import Foundation
 
 /**
- ShopAggregateRatingsModel contains rating details for a shop from
- different period of tme like 7 days, 30 days, 90 days, one year and overall.
+ GradeCalculator is a utility class that provides functionality related to ratings and grades
  */
-class ShopAggregateRatingsModel: Codable {
-    let sevenDaysRating: AggregateRatingModel
-    let thirtyDaysRating: AggregateRatingModel
-    let nintyDaysRating: AggregateRatingModel
-    let oneYearRating: AggregateRatingModel
-    let overallRating: AggregateRatingModel
+class GradeCalculator {
+    
+    /**
+     Returns grade for given rating value based on Trustedshop's logic shared across different platforms
+     */
+    static func getGradeForRating(_ rating: Float) -> String {
+        if rating >= 4.5 {
+            return NSLocalizedString("Excellent", comment: "Excellent shop grade text")
+        } else if rating >= 3.5 && rating < 4.5 {
+            return NSLocalizedString("Good", comment: "Good shop grade text")
+        } else if rating >= 2.5 && rating < 3.5 {
+            return NSLocalizedString("Fair", comment: "Fair shop grade text")
+        } else if rating >= 1.5 && rating < 2.5 {
+            return NSLocalizedString("Poor", comment: "Poor shop grade text")
+        }
 
-    enum CodingKeys: String, CodingKey {
-        case sevenDaysRating = "7days"
-        case thirtyDaysRating = "30days"
-        case nintyDaysRating = "90days"
-        case oneYearRating = "365days"
-        case overallRating = "overall"
-    }
-}
-
-class AggregateRatingModel: Codable {
-    let count: Int
-    let rating: Float
-
-    // MARK: Public properties
-
-    /// Returns grade text based on rating
-    var grade: String {
-        return GradeCalculator.getGradeForRating(self.rating)
-    }
-
-    /// Returns rating value rounded to 2 decimal points
-    var ratingFormatted: String {
-        let string = String(format: "%.2f", self.rating)
-        return string
+        // If rating is less than 1.5
+        return NSLocalizedString("Very poor", comment: "Very poor shop grade text")
     }
 }

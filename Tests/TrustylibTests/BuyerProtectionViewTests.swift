@@ -92,20 +92,24 @@ final class BuyerProtectionViewTests: XCTestCase {
             delegate: nil
         )
         
-        let protectionDetailsExpectation = expectation(
-            description: "Shop buyer protection details expectation"
-        )
-        
-        buyerProtectionView.currentViewModel.loadBuyerProtectionDetails(
-            for: "X330A2E7D449E31E467D2F53A55DDD070"
-        ) { _ in
-            protectionDetailsExpectation.fulfill()
+        let responseHandler: BuyerProtectionDetailsServiceResponseHandler = { response, error in
+            guard error == nil,
+                  let dataResponse = response,
+                  let buyerProtectionDetailsResponseModel = dataResponse.first else {
+                return
+            }
+            buyerProtectionView.currentViewModel.buyerProtectionDetails = buyerProtectionDetailsResponseModel.response.data.shop
+            XCTAssertNotNil(
+                buyerProtectionView.body,
+                "BuyerProtectionView body value should not be nil"
+            )
         }
-        
-        waitForExpectations(timeout: 5)
-        XCTAssertNotNil(
-            buyerProtectionView.body,
-            "BuyerProtectionView body value should not be nil"
+
+        let fileDataLoader = FileDataLoader()
+        fileDataLoader.getData(
+            for: .buyerProtectionDetailsServiceResponse,
+            extenson: .json,
+            responseHandler: responseHandler
         )
     }
 }
