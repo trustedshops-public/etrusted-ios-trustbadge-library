@@ -28,6 +28,9 @@ import XCTest
 import SwiftUI
 @testable import Trustylib
 
+/**
+ This test suite tests initialization workflow for TrustbadgeViewWrapper view component
+ */
 final class TrustbadgeViewWrapperTests: XCTestCase {
 
     func testTrustbadgeViewWrapperInstantiatesValidTrustbadgeView() throws {
@@ -37,7 +40,6 @@ final class TrustbadgeViewWrapperTests: XCTestCase {
             context: .trustMark
         )
         
-        print(trustbadgeView)
         XCTAssertNotNil(
             trustbadgeView,
             "TrustbadgeViewWrapper should instantiate a valid trustbadge view"
