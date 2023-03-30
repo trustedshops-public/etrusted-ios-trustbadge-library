@@ -40,7 +40,7 @@ final class ShopGradeViewModelTests: XCTestCase {
         )
     }
     
-    func testShopGradeViewModelReturnsValidAggregateRatingsForGivenChannel() throws {
+    func testShopGradeViewModelReturnsValidAggregateRatingsForGivenChannelId() throws {
         do {
             // Loading trustbadge configuration
             let bundle = Bundle(for: type(of: self))
@@ -62,7 +62,7 @@ final class ShopGradeViewModelTests: XCTestCase {
         }
     }
     
-    func testShopGradeViewModelReturnsNilAggregateRatingsForInvalidChannel() throws {
+    func testShopGradeViewModelReturnsNilAggregateRatingsForInvalidChannelId() throws {
         do {
             // Loading trustbadge configuration
             let bundle = Bundle(for: type(of: self))
@@ -71,6 +71,28 @@ final class ShopGradeViewModelTests: XCTestCase {
             let viewModel = ShopGradeViewModel()
             let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
             viewModel.loadAggregateRating(for: "TestChannel") { _ in
+                aggregateRatingExpectation.fulfill()
+            }
+            
+            waitForExpectations(timeout: 6)
+            XCTAssert(
+                viewModel.shopAggregateRatings == nil,
+                "ShopGradeViewModel should return nil aggregate rating for an invalid channel"
+            )
+        } catch {
+            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+        }
+    }
+    
+    func testShopGradeViewModelReturnsNilAggregateRatingsForEmptyChannelId() throws {
+        do {
+            // Loading trustbadge configuration
+            let bundle = Bundle(for: type(of: self))
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
+
+            let viewModel = ShopGradeViewModel()
+            let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
+            viewModel.loadAggregateRating(for: "") { _ in
                 aggregateRatingExpectation.fulfill()
             }
             
