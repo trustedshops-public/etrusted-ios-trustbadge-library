@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
