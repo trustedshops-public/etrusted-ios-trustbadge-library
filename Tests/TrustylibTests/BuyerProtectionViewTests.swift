@@ -92,24 +92,10 @@ final class BuyerProtectionViewTests: XCTestCase {
             delegate: nil
         )
         
-        let responseHandler: BuyerProtectionDetailsServiceResponseHandler = { response, error in
-            guard error == nil,
-                  let dataResponse = response,
-                  let buyerProtectionDetailsResponseModel = dataResponse.first else {
-                return
-            }
-            buyerProtectionView.currentViewModel.buyerProtectionDetails = buyerProtectionDetailsResponseModel.response.data.shop
-            XCTAssertNotNil(
-                buyerProtectionView.body,
-                "BuyerProtectionView body value should not be nil"
-            )
-        }
-
-        let fileDataLoader = FileDataLoader()
-        fileDataLoader.getData(
-            for: .buyerProtectionDetailsServiceResponse,
-            extenson: .json,
-            responseHandler: responseHandler
+        buyerProtectionView.loadDetailsForTests()
+        XCTAssertNotNil(
+            buyerProtectionView.body,
+            "BuyerProtectionView body value should not be nil"
         )
     }
 }

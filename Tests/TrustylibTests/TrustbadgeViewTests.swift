@@ -63,14 +63,57 @@ final class TrustbadgeViewTests: XCTestCase {
         )
     }
     
-    func testTrustbadgeViewBodyIsNotNil() {
+    func testTrustbadgeViewBodyIsnotNilForShopGradeContext() {
         let trustbadgeView = TrustbadgeView(
             tsid: self.tsid,
             channelId: self.channelId,
+            context: .shopGrade)
+        
+        do {
+            // Loading trustbadge configuration
+            let bundle = Bundle(for: type(of: self))
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
+
+            let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+            XCTAssertNotNil(
+                view,
+                "TrustbadgeView body should not be nil for shop grade context"
+            )
+        } catch {
+            XCTFail("Failed to load trustbadge view due to missing trustbadge configuration")
+        }
+    }
+    
+    func testTrustbadgeViewBodyIsnotNilForBuyerProtectionContext() {
+        let trustbadgeView = TrustbadgeView(
+            tsid: self.tsid,
+            channelId: self.channelId,
+            context: .buyerProtection)
+        
+        do {
+            // Loading trustbadge configuration
+            let bundle = Bundle(for: type(of: self))
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
+
+            let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+            XCTAssertNotNil(
+                view,
+                "TrustbadgeView body should not be nil for buyer protection context"
+            )
+        } catch {
+            XCTFail("Failed to load trustbadge view due to missing trustbadge configuration")
+        }
+    }
+    
+    func testTrustbadgeViewStateChangesToInvisibleWhenIsHiddenSetToTrue() {
+        var trustbadgeView = TrustbadgeView(
+            tsid: self.tsid,
+            channelId: self.channelId,
             context: self.context)
-        XCTAssertNotNil(
-            trustbadgeView.body,
-            "TrustbadgeView body value should not be nil"
+        trustbadgeView.isHidden = true
+        XCTAssertTrue(
+            trustbadgeView.currentViewModel.currentState != .default(true),
+            "Trustbadge view state should change to invisible when isHidden set to true"
         )
     }
 }
