@@ -34,11 +34,11 @@ import XCTest
  */
 final class BuyerProtectionViewModelTests: XCTestCase {
 
-    func testBuyerProtectionViewModelInitializesWithNilBuyerProtectionDetails() {
+    func testBuyerProtectionViewModelInitializesWithDefaultBuyerProtectionDetails() {
         let viewModel = BuyerProtectionViewModel()
-        XCTAssertNil(
-            viewModel.buyerProtectionDetails,
-            "BuyerProtectionViewModel should be initialized with nil value for buyer protection details"
+        XCTAssert(
+            viewModel.protectionAmountFormatted == "",
+            "BuyerProtectionViewModel should be initialized with empty protection details"
         )
     }
     
@@ -52,17 +52,13 @@ final class BuyerProtectionViewModelTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 5)
-        guard let buyerProtectionDetails = viewModel.buyerProtectionDetails else {
-            XCTFail("BuyerProtectionViewModel should return valid buyer protection details for the given TSID")
-            return
-        }
         XCTAssert(
-            buyerProtectionDetails.tsId == "X330A2E7D449E31E467D2F53A55DDD070",
+            viewModel.protectionAmountFormatted != "",
             "BuyerProtectionViewModel should load protection details for correct TSID"
         )
     }
     
-    func testBuyerProtectionViewModelReturnsReturnsNilForInvalidTSID() throws {
+    func testBuyerProtectionViewModelDoesntReturnDetailsForInvalidTSID() throws {
         let viewModel = BuyerProtectionViewModel()
         let protectionDetailsExpectation = expectation(
             description: "Shop buyer protection details expectation"
@@ -72,9 +68,25 @@ final class BuyerProtectionViewModelTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 5)
-        XCTAssertNil(
-            viewModel.buyerProtectionDetails,
+        XCTAssert(
+            viewModel.protectionAmountFormatted == "",
             "BuyerProtectionViewModel shouldn't return buyer protection details for invalid TSID"
+        )
+    }
+    
+    func testBuyerProtectionViewModelDoesntReturnDetailsForEmptyTSID() throws {
+        let viewModel = BuyerProtectionViewModel()
+        let protectionDetailsExpectation = expectation(
+            description: "Shop buyer protection details expectation"
+        )
+        viewModel.loadBuyerProtectionDetails(for: "") { _ in
+            protectionDetailsExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssert(
+            viewModel.protectionAmountFormatted == "",
+            "BuyerProtectionViewModel shouldn't return buyer protection details for empty TSID"
         )
     }
 }

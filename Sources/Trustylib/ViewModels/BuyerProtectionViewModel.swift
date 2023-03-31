@@ -34,7 +34,7 @@ class BuyerProtectionViewModel: ObservableObject {
     
     // MARK: Public properties
     
-    @Published var buyerProtectionDetails: BuyerProtectionDetailsModel?
+    @Published var protectionAmountFormatted: String = ""
     
     /**
      Calls Trustedshops buyer protection details API to get details for a given shop
@@ -56,7 +56,7 @@ class BuyerProtectionViewModel: ObservableObject {
                 messege: "Successfully loaded buyer protection details for shop with tsid: \(tsid)",
                 severity: .info
             )
-            strongSelf.buyerProtectionDetails = buyerProtectionDetails
+            strongSelf.protectionAmountFormatted = buyerProtectionDetails.guarantee.protectionAmountFormatted
             responseHandler(true)
         }
     }

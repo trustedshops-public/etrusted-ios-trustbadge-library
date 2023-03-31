@@ -34,7 +34,9 @@ class ShopGradeViewModel: ObservableObject {
         
     // MARK: Public properties
     
-    @Published var shopAggregateRatings: ShopAggregateRatingsModel?
+    @Published var shopGrade: String = ""
+    @Published var shopRating: Float = 0
+    @Published var shopRatingFormatted: String = ""
     
     /**
      Calls Trustedshops aggregate ratings API to get shop's grade details
@@ -71,7 +73,10 @@ class ShopGradeViewModel: ObservableObject {
                     messege: "Successfully loaded shop grade details for channel \(channelId)",
                     severity: .info
                 )
-                strongSelf.shopAggregateRatings = aggregateRatings
+                
+                strongSelf.shopGrade = aggregateRatings.oneYearRating.grade
+                strongSelf.shopRating = aggregateRatings.oneYearRating.rating
+                strongSelf.shopRatingFormatted = aggregateRatings.oneYearRating.ratingFormatted
                 responseHandler(true)
             }
         }
