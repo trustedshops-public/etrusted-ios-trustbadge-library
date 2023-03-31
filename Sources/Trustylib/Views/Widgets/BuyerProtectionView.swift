@@ -71,40 +71,38 @@ struct BuyerProtectionView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if let buyerProtectionDetails = self.viewModel.buyerProtectionDetails {
-                if self.alignment == .trailing {
-                    Spacer()
-                }
+            if self.alignment == .trailing {
+                Spacer()
+            }
+            
+            VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 4) {
+                Text(NSLocalizedString("Independent guarantee",
+                                       comment: "Trustbadge: Buyer protection title"))
+                .foregroundColor(.black)
+                .font(.system(size: 14, weight: .semibold))
+                .lineLimit(1)
+                .minimumScaleFactor(self.textScaleFactor)
                 
-                VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 4) {
-                    Text(NSLocalizedString("Independent guarantee",
-                                           comment: "Trustbadge: Buyer protection title"))
+                HStack(alignment: .center, spacing: 3) {
+                    Text(NSLocalizedString("Your purchase is protected up to",
+                                           comment: "Trustbadge: Buyer protection description"))
                     .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 12, weight: .regular))
                     .lineLimit(1)
                     .minimumScaleFactor(self.textScaleFactor)
                     
-                    HStack(alignment: .center, spacing: 3) {
-                        Text(NSLocalizedString("Your purchase is protected up to",
-                                               comment: "Trustbadge: Buyer protection description"))
-                        .foregroundColor(.black)
-                        .font(.system(size: 12, weight: .regular))
-                        .lineLimit(1)
-                        .minimumScaleFactor(self.textScaleFactor)
-                        
-                        Text("\(buyerProtectionDetails.guarantee.protectionAmountFormatted)")
+                    Text("\(self.viewModel.protectionAmountFormatted)")
                         .foregroundColor(.black)
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(self.textScaleFactor)
-                    }
                 }
-                .padding(.leading, self.leadingPadding)
-                .padding(.trailing, self.trailingPadding)
-                
-                if self.alignment == .leading {
-                    Spacer()
-                }
+            }
+            .padding(.leading, self.leadingPadding)
+            .padding(.trailing, self.trailingPadding)
+            
+            if self.alignment == .leading {
+                Spacer()
             }
         }
         .frame(
@@ -147,5 +145,9 @@ extension BuyerProtectionView {
     
     var hPadding: CGFloat {
         return self.horizontalPadding
+    }
+    
+    func loadDetailsForTests() {
+        self.loadBuyerProtectionDetails()
     }
 }

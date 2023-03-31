@@ -40,9 +40,9 @@ protocol ShopGradeViewDelegate: Any {
  on load, it then shows the shop grade details with graphics and animated effects.
  */
 struct ShopGradeView: View {
-
+    
     // MARK: Public properties
-
+    
     var channelId: String
     var currentState: TrustbadgeState
     var alignment: TrustbadgeViewAlignment
@@ -50,9 +50,9 @@ struct ShopGradeView: View {
     var height: CGFloat
     var width: CGFloat
     var delegate: ShopGradeViewDelegate?
-
+    
     // MARK: Private properties
-
+    
     @StateObject private var viewModel = ShopGradeViewModel()
     
     private var leadingPadding: CGFloat {
@@ -65,65 +65,63 @@ struct ShopGradeView: View {
     
     private let horizontalPadding: CGFloat = 12
     private let textScaleFactor = 0.5
-
+    
     // MARK: User interface
-
+    
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 5) {
-                if let aggregateRating = self.viewModel.shopAggregateRatings {
-                    // Shop Grade Text
-                    HStack(alignment: .center, spacing: 5) {
-                        if self.alignment == .trailing {
-                            Spacer()
-                        }
-
-                        Text("\(aggregateRating.oneYearRating.grade)")
+                // Shop Grade Text
+                HStack(alignment: .center, spacing: 5) {
+                    if self.alignment == .trailing {
+                        Spacer()
+                    }
+                    
+                    Text("\(self.viewModel.shopGrade)")
+                        .foregroundColor(.black)
+                        .font(.system(size: 14, weight: .semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(self.textScaleFactor)
+                    Text(NSLocalizedString("shops reviews",
+                                           comment: "Trustbadge: Shop grade title"))
+                    .foregroundColor(.black)
+                    .font(.system(size: 14, weight: .regular))
+                    .lineLimit(1)
+                    .minimumScaleFactor(self.textScaleFactor)
+                    
+                    if self.alignment == .leading {
+                        Spacer()
+                    }
+                }
+                .padding(.leading, self.leadingPadding)
+                .padding(.trailing, self.trailingPadding)
+                
+                // Star Rating View
+                HStack(alignment: .center, spacing: 5) {
+                    if self.alignment == .trailing {
+                        Spacer()
+                    }
+                    
+                    StarRatingView(rating: self.viewModel.shopRating)
+                    HStack(alignment: .center, spacing: 0) {
+                        Text("\(self.viewModel.shopRatingFormatted)")
                             .foregroundColor(.black)
                             .font(.system(size: 14, weight: .semibold))
                             .lineLimit(1)
                             .minimumScaleFactor(self.textScaleFactor)
-                        Text(NSLocalizedString("shops reviews",
-                                               comment: "Trustbadge: Shop grade title"))
+                        Text("/5.00")
                             .foregroundColor(.black)
                             .font(.system(size: 14, weight: .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(self.textScaleFactor)
-
-                        if self.alignment == .leading {
-                            Spacer()
-                        }
                     }
-                    .padding(.leading, self.leadingPadding)
-                    .padding(.trailing, self.trailingPadding)
-
-                    // Star Rating View
-                    HStack(alignment: .center, spacing: 5) {
-                        if self.alignment == .trailing {
-                            Spacer()
-                        }
-
-                        StarRatingView(rating: aggregateRating.oneYearRating.rating)
-                        HStack(alignment: .center, spacing: 0) {
-                            Text("\(aggregateRating.oneYearRating.ratingFormatted)")
-                                .foregroundColor(.black)
-                                .font(.system(size: 14, weight: .semibold))
-                                .lineLimit(1)
-                                .minimumScaleFactor(self.textScaleFactor)
-                            Text("/5.00")
-                                .foregroundColor(.black)
-                                .font(.system(size: 14, weight: .regular))
-                                .lineLimit(1)
-                                .minimumScaleFactor(self.textScaleFactor)
-                        }
-
-                        if self.alignment == .leading {
-                            Spacer()
-                        }
+                    
+                    if self.alignment == .leading {
+                        Spacer()
                     }
-                    .padding(.leading, self.leadingPadding)
-                    .padding(.trailing, self.trailingPadding)
                 }
+                .padding(.leading, self.leadingPadding)
+                .padding(.trailing, self.trailingPadding)
             }
         }
         .frame(
