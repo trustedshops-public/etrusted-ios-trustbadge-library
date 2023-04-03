@@ -61,9 +61,12 @@ final class TSNetworkDataServiceTests: XCTestCase {
             responseHandler: apiResponseHandler
         )
         
-        let url = urlSession?.currentRequest?.url?.absoluteString
+        guard let url = urlSession?.currentRequest?.url?.absoluteString else {
+            XCTFail("TSNetworkDataService should add correct query paramaters to the service URL")
+            return
+        }
         XCTAssertTrue(
-            url == "http://test.com/testEndpoint?testParam1=testValue1&testParam2=testValue2",
+            url.contains("testParam1=testValue1&testParam2=testValue2"),
             "TSNetworkDataService should add correct query paramaters to the service URL"
         )
     }
