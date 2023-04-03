@@ -21,45 +21,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 27/12/22.
+//  Created by Prem Pratap Singh on 31/03/23.
 //
 
-import Foundation
+
+import XCTest
+@testable import Trustylib
 
 /**
- ShopAggregateRatingsModel contains rating details for a shop from
- different period of tme like 7 days, 30 days, 90 days, one year and overall.
+ StarRatingViewTests tests the UI workflows for star rating view component
  */
-class ShopAggregateRatingsModel: Codable {
-    let sevenDaysRating: AggregateRatingModel
-    let thirtyDaysRating: AggregateRatingModel
-    let nintyDaysRating: AggregateRatingModel
-    let oneYearRating: AggregateRatingModel
-    let overallRating: AggregateRatingModel
-
-    enum CodingKeys: String, CodingKey {
-        case sevenDaysRating = "7days"
-        case thirtyDaysRating = "30days"
-        case nintyDaysRating = "90days"
-        case oneYearRating = "365days"
-        case overallRating = "overall"
-    }
-}
-
-class AggregateRatingModel: Codable {
-    let count: Int
-    let rating: Float
-
-    // MARK: Public properties
-
-    /// Returns grade text based on rating
-    var grade: String {
-        return GradeCalculator.getGradeForRating(self.rating)
-    }
-
-    /// Returns rating value rounded to 2 decimal points
-    var ratingFormatted: String {
-        let string = String(format: "%.2f", self.rating)
-        return string
+final class StarRatingViewTests: XCTestCase {
+    func testStarRatingViewBodyIsNotNil() {
+        let starRatingView = StarRatingView(rating: 2.5)
+        XCTAssertNotNil(
+            starRatingView.body,
+            "StarRatingView should build valid view for the given rating"
+        )
     }
 }

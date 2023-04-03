@@ -1,0 +1,24 @@
+{
+	"response": {
+		"code": 200,
+		"data": {
+			"shop": {
+				"tsId": "X330A2E7D449E31E467D2F53A55DDD070",
+				"name": "Trusted Shops DemoShop CH",
+				"url": "demoshop.trustedshops.com/ch",
+				"languageISO2": "de",
+				"targetMarketISO3": "EUO",
+				"guarantee": {
+					"mainProtectionCurrency": "CHF",
+					"maxProtectionAmount": "4000.00",
+					"maxProtectionDuration": "30"
+				}
+			}
+		},
+		"message": "SUCCESS",
+		"responseInfo": {
+			"apiVersion": "1.3.37"
+		},
+		"status": "SUCCESS"
+	}
+}

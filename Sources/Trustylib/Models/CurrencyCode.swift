@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
@@ -21,45 +21,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 27/12/22.
+//  Created by Prem Pratap Singh on 29/03/23.
 //
+
 
 import Foundation
 
 /**
- ShopAggregateRatingsModel contains rating details for a shop from
- different period of tme like 7 days, 30 days, 90 days, one year and overall.
+ CurrencyCode enum contains details like currency code, symbol, etc
  */
-class ShopAggregateRatingsModel: Codable {
-    let sevenDaysRating: AggregateRatingModel
-    let thirtyDaysRating: AggregateRatingModel
-    let nintyDaysRating: AggregateRatingModel
-    let oneYearRating: AggregateRatingModel
-    let overallRating: AggregateRatingModel
-
-    enum CodingKeys: String, CodingKey {
-        case sevenDaysRating = "7days"
-        case thirtyDaysRating = "30days"
-        case nintyDaysRating = "90days"
-        case oneYearRating = "365days"
-        case overallRating = "overall"
-    }
-}
-
-class AggregateRatingModel: Codable {
-    let count: Int
-    let rating: Float
-
+enum CurrencyCode: Codable {
+    case euro, gbp
+    
     // MARK: Public properties
-
-    /// Returns grade text based on rating
-    var grade: String {
-        return GradeCalculator.getGradeForRating(self.rating)
-    }
-
-    /// Returns rating value rounded to 2 decimal points
-    var ratingFormatted: String {
-        let string = String(format: "%.2f", self.rating)
-        return string
+    
+    /**
+     Returns currency code
+     */
+    var code: String {
+        switch self {
+        case .euro: return "EURO"
+        case .gbp: return "GBP"
+        }
     }
 }

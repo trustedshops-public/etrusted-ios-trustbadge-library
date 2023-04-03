@@ -96,12 +96,6 @@ struct StarRatingView: View {
     }
 }
 
-struct B2CStarRatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        StarRatingView(rating: 3.5)
-    }
-}
-
 // MARK: Helper methods/properties for tests
 
 extension StarRatingView {

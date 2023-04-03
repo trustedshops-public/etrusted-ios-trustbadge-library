@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
@@ -21,28 +21,32 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 28/02/23.
+//  Created by Prem Pratap Singh on 31/03/23.
 //
 
-import XCTest
-import SwiftUI
-@testable import Trustylib
+
+import Foundation
 
 /**
- This test suite tests initialization workflow for TrustbadgeViewWrapper view component
+ GradeCalculator is a utility class that provides functionality related to ratings and grades
  */
-final class TrustbadgeViewWrapperTests: XCTestCase {
+class GradeCalculator {
+    
+    /**
+     Returns grade for given rating value based on Trustedshop's logic shared across different platforms
+     */
+    static func getGradeForRating(_ rating: Float) -> String {
+        if rating >= 4.5 {
+            return NSLocalizedString("Excellent", comment: "Excellent shop grade text")
+        } else if rating >= 3.5 && rating < 4.5 {
+            return NSLocalizedString("Good", comment: "Good shop grade text")
+        } else if rating >= 2.5 && rating < 3.5 {
+            return NSLocalizedString("Fair", comment: "Fair shop grade text")
+        } else if rating >= 1.5 && rating < 2.5 {
+            return NSLocalizedString("Poor", comment: "Poor shop grade text")
+        }
 
-    func testTrustbadgeViewWrapperInstantiatesValidTrustbadgeView() throws {
-        let trustbadgeView = TrustbadgeViewWrapper.createTrustbadgeView(
-            tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-            channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
-            context: .trustMark
-        )
-        
-        XCTAssertNotNil(
-            trustbadgeView,
-            "TrustbadgeViewWrapper should instantiate a valid trustbadge view"
-        )
+        // If rating is less than 1.5
+        return NSLocalizedString("Very poor", comment: "Very poor shop grade text")
     }
 }

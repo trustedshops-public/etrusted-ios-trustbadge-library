@@ -32,15 +32,23 @@ import XCTest
  */
 final class ShopGradeViewModelTests: XCTestCase {
 
-    func testShopGradeViewModelInitializesWithNilAggregateRating() {
+    func testShopGradeViewModelInitializesWithDefaultRatingAndGrade() {
         let viewModel = ShopGradeViewModel()
-        XCTAssertNil(
-            viewModel.shopAggregateRatings,
-            "ShopGradeViewModel should be initialized with nil value for aggregate rating"
+        XCTAssert(
+            viewModel.shopGrade == "",
+            "ShopGradeViewModel should be initialized with empty grade text"
+        )
+        XCTAssert(
+            viewModel.shopRating == 0,
+            "ShopGradeViewModel should be initialized with 0 rating"
+        )
+        XCTAssert(
+            viewModel.shopRatingFormatted == "",
+            "ShopGradeViewModel should be initialized with empty shopRatingFormatted text"
         )
     }
     
-    func testShopGradeViewModelReturnsValidAggregateRatingsForGivenChannel() throws {
+    func testShopGradeViewModelReturnsValidAggregateRatingsForGivenChannelId() throws {
         do {
             // Loading trustbadge configuration
             let bundle = Bundle(for: type(of: self))
@@ -54,15 +62,15 @@ final class ShopGradeViewModelTests: XCTestCase {
             
             waitForExpectations(timeout: 6)
             XCTAssert(
-                viewModel.shopAggregateRatings != nil,
-                "ShopGradeViewModel should return valid aggregate rating for the given channel"
+                viewModel.shopRating != 0,
+                "ShopGradeViewModel should return valid aggregate rating for the given channel id"
             )
         } catch {
             XCTFail("Failed to load shop grades due to missing trustbadge configuration")
         }
     }
     
-    func testShopGradeViewModelReturnsNilAggregateRatingsForInvalidChannel() throws {
+    func testShopGradeViewModelDoesntReturnsAggregateRatingsForInvalidChannelId() throws {
         do {
             // Loading trustbadge configuration
             let bundle = Bundle(for: type(of: self))
@@ -76,8 +84,30 @@ final class ShopGradeViewModelTests: XCTestCase {
             
             waitForExpectations(timeout: 6)
             XCTAssert(
-                viewModel.shopAggregateRatings == nil,
-                "ShopGradeViewModel should return nil aggregate rating for an invalid channel"
+                viewModel.shopRating == 0,
+                "ShopGradeViewModel should not return aggregate rating for an invalid channel id"
+            )
+        } catch {
+            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+        }
+    }
+    
+    func testShopGradeViewModelDoesntReturnsAggregateGradeForEmptyChannelId() throws {
+        do {
+            // Loading trustbadge configuration
+            let bundle = Bundle(for: type(of: self))
+            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
+
+            let viewModel = ShopGradeViewModel()
+            let aggregateGradeExpectation = expectation(description: "Shop aggregate grade expectation")
+            viewModel.loadAggregateRating(for: "") { _ in
+                aggregateGradeExpectation.fulfill()
+            }
+            
+            waitForExpectations(timeout: 6)
+            XCTAssert(
+                viewModel.shopGrade == "",
+                "ShopGradeViewModel should not return aggregate grade for an empty channel id"
             )
         } catch {
             XCTFail("Failed to load shop grades due to missing trustbadge configuration")
@@ -101,10 +131,10 @@ final class ShopGradeViewModelTests: XCTestCase {
             waitForExpectations(timeout: 5)
             XCTAssertTrue(
                 didAuthenticateSuccessfully,
-                "TrustbadgeViewModel shouldn't set expended state for the trustmark context"
+                "ShopGradeViewModel should be able to fetch valid client authentication token"
             )
         } catch {
-            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+            XCTFail("ShopGradeViewModel failed to fetch client authentication token")
         }
     }
 }

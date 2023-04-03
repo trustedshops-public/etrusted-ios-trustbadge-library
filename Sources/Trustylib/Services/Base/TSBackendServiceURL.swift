@@ -107,6 +107,15 @@ class TSBackendServiceURL {
         let endpointWithShopId = String(format: endpoint, arguments: [shopId])
         return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.trustedShopsServiceBaseUrlString)
     }
+    
+    /*
+     Returns buyer protection service url for the given tsid
+     */
+    func getBuyerProtectionServiceUrl(for tsid: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.trustmark.name
+        let endpointWithTsid = String(format: endpoint, arguments: [tsid])
+        return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
+    }
 
     // MARK: Private methods
 
@@ -123,13 +132,6 @@ class TSBackendServiceURL {
         case buildEnvValueProd: self.environment = .prod
         default: self.environment = .prod
         }
-    }
-
-    /// Returns qualified URL for the given endpoint and base URL string
-    private func getQualifiedURL(for endpoint: TSBackendServiceEndpoint, baseURLString: String) -> URL? {
-        let qualifiedURLString = baseURLString.appending(endpoint.name)
-        let qualifiedURL = URL(string: qualifiedURLString)
-        return qualifiedURL
     }
 
     private func getQualifiedURL(for endpoint: String, baseURLString: String) -> URL? {

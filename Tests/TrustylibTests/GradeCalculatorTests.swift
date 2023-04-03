@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
@@ -21,28 +21,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 28/02/23.
+//  Created by Prem Pratap Singh on 31/03/23.
 //
 
+
 import XCTest
-import SwiftUI
 @testable import Trustylib
 
 /**
- This test suite tests initialization workflow for TrustbadgeViewWrapper view component
+ GradeCalculatorTests tests the grade and rating related functionality for GradeCalculator utility class
  */
-final class TrustbadgeViewWrapperTests: XCTestCase {
+final class GradeCalculatorTests: XCTestCase {
 
-    func testTrustbadgeViewWrapperInstantiatesValidTrustbadgeView() throws {
-        let trustbadgeView = TrustbadgeViewWrapper.createTrustbadgeView(
-            tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-            channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
-            context: .trustMark
-        )
+    func testGradeCalculatorReturnsCorrectGradeForRating() {
+        let assertionFailedMessege = "GradeCalculator should return correct grade for given rating"
         
-        XCTAssertNotNil(
-            trustbadgeView,
-            "TrustbadgeViewWrapper should instantiate a valid trustbadge view"
-        )
+        XCTAssertTrue(GradeCalculator.getGradeForRating(4.8) == "Excellent", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(4.1) == "Good", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(3.2) == "Fair", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(1.8) == "Poor", assertionFailedMessege)
+        XCTAssertTrue(GradeCalculator.getGradeForRating(1.3) == "Very poor", assertionFailedMessege)
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1148D1129D6E51700851428 /* TSDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSDataServiceTests.swift */; };
+		C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */; };
 		C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C119217C29852A1400A550C7 /* Trustylib.framework */; };
 		C11CE84829881DA8000D6083 /* Trustbadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE80429881DA8000D6083 /* Trustbadge.swift */; };
 		C11CE84929881DA8000D6083 /* trustmarkIconInvalidCertificate.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80729881DA8000D6083 /* trustmarkIconInvalidCertificate.png */; };
@@ -51,7 +53,20 @@
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
 		C163FBED29ACA3810090548F /* TrustbadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */; };
 		C163FBEF29AD02F30090548F /* ShopGradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */; };
+		C16E4BE729D317BD00039933 /* buyerProtectionIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */; };
+		C16E4BE929D318F100039933 /* BuyerProtectionDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16E4BE829D318F100039933 /* BuyerProtectionDetailsModel.swift */; };
+		C16E4BEB29D31A5800039933 /* BuyerProtectionDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16E4BEA29D31A5800039933 /* BuyerProtectionDataService.swift */; };
+		C16E4BF129D3500500039933 /* BuyerProtectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16E4BF029D3500500039933 /* BuyerProtectionViewModel.swift */; };
 		C170E34829ADE5C300CC55B4 /* TrustbadgeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170E34729ADE5C300CC55B4 /* TrustbadgeViewModelTests.swift */; };
+		C190462129D38A6C0054BEE4 /* BuyerProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190462029D38A6C0054BEE4 /* BuyerProtectionView.swift */; };
+		C190462329D416260054BEE4 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190462229D416260054BEE4 /* CurrencyCode.swift */; };
+		C190464C29D58D040054BEE4 /* buyer_protection_details_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C190464B29D58D040054BEE4 /* buyer_protection_details_service_response.json */; };
+		C190464E29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190464D29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift */; };
+		C190465029D598460054BEE4 /* BuyerProtectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190464F29D598460054BEE4 /* BuyerProtectionViewModelTests.swift */; };
+		C190465229D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190465129D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift */; };
+		C190465429D5A59D0054BEE4 /* BuyerProtectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190465329D5A59D0054BEE4 /* BuyerProtectionViewTests.swift */; };
+		C190465629D64A0F0054BEE4 /* GradeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190465529D64A0F0054BEE4 /* GradeCalculator.swift */; };
+		C190465829D64B530054BEE4 /* GradeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190465729D64B530054BEE4 /* GradeCalculatorTests.swift */; };
 		C1B99E5229AE0A9B00F80599 /* ShopGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5129AE0A9B00F80599 /* ShopGradeViewModelTests.swift */; };
 		C1B99E5429AE102B00F80599 /* TrustbadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5329AE102B00F80599 /* TrustbadgeTests.swift */; };
 		C1B99E5629AE282900F80599 /* TrustbadgeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5529AE282900F80599 /* TrustbadgeViewTests.swift */; };
@@ -82,6 +97,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1148D1029D6E51700851428 /* TSDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDataServiceTests.swift; sourceTree = "<group>"; };
+		C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewTests.swift; sourceTree = "<group>"; };
 		C119217C29852A1400A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C119218629852A1400A550C7 /* TrustylibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustylibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11CE80429881DA8000D6083 /* Trustbadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trustbadge.swift; sourceTree = "<group>"; };
@@ -127,7 +144,20 @@
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 		C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewModel.swift; sourceTree = "<group>"; };
 		C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewModel.swift; sourceTree = "<group>"; };
+		C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyerProtectionIcon.png; sourceTree = "<group>"; };
+		C16E4BE829D318F100039933 /* BuyerProtectionDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionDetailsModel.swift; sourceTree = "<group>"; };
+		C16E4BEA29D31A5800039933 /* BuyerProtectionDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionDataService.swift; sourceTree = "<group>"; };
+		C16E4BF029D3500500039933 /* BuyerProtectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionViewModel.swift; sourceTree = "<group>"; };
 		C170E34729ADE5C300CC55B4 /* TrustbadgeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewModelTests.swift; sourceTree = "<group>"; };
+		C190462029D38A6C0054BEE4 /* BuyerProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionView.swift; sourceTree = "<group>"; };
+		C190462229D416260054BEE4 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
+		C190464B29D58D040054BEE4 /* buyer_protection_details_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buyer_protection_details_service_response.json; sourceTree = "<group>"; };
+		C190464D29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionDetailsModelTests.swift; sourceTree = "<group>"; };
+		C190464F29D598460054BEE4 /* BuyerProtectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionViewModelTests.swift; sourceTree = "<group>"; };
+		C190465129D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionDataServiceTests.swift; sourceTree = "<group>"; };
+		C190465329D5A59D0054BEE4 /* BuyerProtectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProtectionViewTests.swift; sourceTree = "<group>"; };
+		C190465529D64A0F0054BEE4 /* GradeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCalculator.swift; sourceTree = "<group>"; };
+		C190465729D64B530054BEE4 /* GradeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCalculatorTests.swift; sourceTree = "<group>"; };
 		C1B99E5129AE0A9B00F80599 /* ShopGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1B99E5329AE102B00F80599 /* TrustbadgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeTests.swift; sourceTree = "<group>"; };
 		C1B99E5529AE282900F80599 /* TrustbadgeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewTests.swift; sourceTree = "<group>"; };
@@ -225,6 +255,7 @@
 		C11CE80629881DA8000D6083 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */,
 				C11CE80729881DA8000D6083 /* trustmarkIconInvalidCertificate.png */,
 				C11CE80829881DA8000D6083 /* shopGradeIcon.png */,
 				C11CE80929881DA8000D6083 /* trustmarkIcon.png */,
@@ -248,6 +279,8 @@
 				C11CE81429881DA8000D6083 /* TrustbadgeState.swift */,
 				C11CE81529881DA8000D6083 /* TrustbadgeContext.swift */,
 				C11CE81629881DA8000D6083 /* TrustmarkDetailsModel.swift */,
+				C16E4BE829D318F100039933 /* BuyerProtectionDetailsModel.swift */,
+				C190462229D416260054BEE4 /* CurrencyCode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				C11CE81B29881DA8000D6083 /* Logger */,
+				C190465529D64A0F0054BEE4 /* GradeCalculator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -328,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				C11CE83129881DA8000D6083 /* ShopGradeView.swift */,
+				C190462029D38A6C0054BEE4 /* BuyerProtectionView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -339,6 +374,7 @@
 				C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */,
 				C11CE83529881DA8000D6083 /* TSAuthenticationService.swift */,
 				C11CE83629881DA8000D6083 /* ShopGradeDataService.swift */,
+				C16E4BEA29D31A5800039933 /* BuyerProtectionDataService.swift */,
 				C11CE83729881DA8000D6083 /* Base */,
 			);
 			path = Services;
@@ -395,6 +431,13 @@
 				C1B99E5929AE345500F80599 /* CustomComponentsTests.swift */,
 				C1B99E7529AF2C1800F80599 /* TSErrorTypeTests.swift */,
 				C1B99E5B29AE3F1A00F80599 /* TrustbadgeViewWrapperTests.swift */,
+				C190464D29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift */,
+				C190464F29D598460054BEE4 /* BuyerProtectionViewModelTests.swift */,
+				C190465129D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift */,
+				C190465329D5A59D0054BEE4 /* BuyerProtectionViewTests.swift */,
+				C190465729D64B530054BEE4 /* GradeCalculatorTests.swift */,
+				C1148D1029D6E51700851428 /* TSDataServiceTests.swift */,
+				C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -404,6 +447,7 @@
 			children = (
 				C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */,
 				C1C33EA4299CAD0B00676059 /* aggregate_rating_service_response.json */,
+				C190464B29D58D040054BEE4 /* buyer_protection_details_service_response.json */,
 				C1C33E9D299BE11C00676059 /* authentication_service_response.json */,
 				C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */,
 			);
@@ -415,6 +459,7 @@
 			children = (
 				C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */,
 				C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */,
+				C16E4BF029D3500500039933 /* BuyerProtectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -524,6 +569,7 @@
 				C11CE87429881DA8000D6083 /* Localizable.strings in Resources */,
 				C11CE84F29881DA8000D6083 /* fontawesome.ttf in Resources */,
 				C11CE84929881DA8000D6083 /* trustmarkIconInvalidCertificate.png in Resources */,
+				C16E4BE729D317BD00039933 /* buyerProtectionIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C33E9E299BE11D00676059 /* authentication_service_response.json in Resources */,
+				C190464C29D58D040054BEE4 /* buyer_protection_details_service_response.json in Resources */,
 				C1C33EA5299CAD0C00676059 /* aggregate_rating_service_response.json in Resources */,
 				C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */,
 				C1C33EAD299CB55700676059 /* trustmark_details_service_response.json in Resources */,
@@ -562,13 +609,18 @@
 				C11CE86829881DA8000D6083 /* TrustbadgeConfigurationService.swift in Sources */,
 				C11CE85D29881DA8000D6083 /* TrustbadgeViewAlignment.swift in Sources */,
 				C11CE86029881DA8000D6083 /* StarView.swift in Sources */,
+				C16E4BF129D3500500039933 /* BuyerProtectionViewModel.swift in Sources */,
 				C11CE85329881DA8000D6083 /* TrustbadgeState.swift in Sources */,
 				C11CE86729881DA8000D6083 /* ShopGradeView.swift in Sources */,
+				C16E4BE929D318F100039933 /* BuyerProtectionDetailsModel.swift in Sources */,
 				C11CE84E29881DA8000D6083 /* ResourceExtension.swift in Sources */,
 				C11CE86C29881DA8000D6083 /* TSNetworkServiceMethod.swift in Sources */,
 				C11CE85429881DA8000D6083 /* TrustbadgeContext.swift in Sources */,
 				C11CE85229881DA8000D6083 /* AuthenticationTokenModel.swift in Sources */,
+				C16E4BEB29D31A5800039933 /* BuyerProtectionDataService.swift in Sources */,
 				C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */,
+				C190462329D416260054BEE4 /* CurrencyCode.swift in Sources */,
+				C190462129D38A6C0054BEE4 /* BuyerProtectionView.swift in Sources */,
 				C11CE85829881DA8000D6083 /* TSLogger.swift in Sources */,
 				C11CE87129881DA8000D6083 /* TSNetworkServiceError.swift in Sources */,
 				C11CE86929881DA8000D6083 /* TrustmarkDataService.swift in Sources */,
@@ -578,6 +630,7 @@
 				C11CE87329881DA8000D6083 /* TSBackendServiceURL.swift in Sources */,
 				C11CE85B29881DA8000D6083 /* TypeAliases.swift in Sources */,
 				C11CE86E29881DA8000D6083 /* TSNetworkServiceRequest.swift in Sources */,
+				C190465629D64A0F0054BEE4 /* GradeCalculator.swift in Sources */,
 				C163FBED29ACA3810090548F /* TrustbadgeViewModel.swift in Sources */,
 				C11CE85E29881DA8000D6083 /* TrustbadgeViewWrapper.swift in Sources */,
 			);
@@ -587,6 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C190465229D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift in Sources */,
 				C1C33E98299B7DFD00676059 /* ClientAuthenticationTests.swift in Sources */,
 				C1B99E5C29AE3F1A00F80599 /* TrustbadgeViewWrapperTests.swift in Sources */,
 				C1C33EA7299CAD7000676059 /* AggregateRatingsModelTests.swift in Sources */,
@@ -598,10 +652,16 @@
 				C1B99E5A29AE345500F80599 /* CustomComponentsTests.swift in Sources */,
 				C1C33EA9299CB1C000676059 /* TrustmarkDetailsModelTests.swift in Sources */,
 				C170E34829ADE5C300CC55B4 /* TrustbadgeViewModelTests.swift in Sources */,
+				C190465829D64B530054BEE4 /* GradeCalculatorTests.swift in Sources */,
+				C190465029D598460054BEE4 /* BuyerProtectionViewModelTests.swift in Sources */,
+				C190465429D5A59D0054BEE4 /* BuyerProtectionViewTests.swift in Sources */,
 				C1B99E5629AE282900F80599 /* TrustbadgeViewTests.swift in Sources */,
 				C132413D299B57B600C36A11 /* TrustbadgeConfigurationTests.swift in Sources */,
+				C190464E29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift in Sources */,
+				C1148D1129D6E51700851428 /* TSDataServiceTests.swift in Sources */,
 				C1B99E5429AE102B00F80599 /* TrustbadgeTests.swift in Sources */,
 				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,
+				C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */,
 				C1C33EA0299BE15700676059 /* AuthenticationTokenModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
