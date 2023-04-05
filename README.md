@@ -21,7 +21,7 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 Shop Grade widget expands to show shop rating and status with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop reviews' details. <br>
 <img src="https://user-images.githubusercontent.com/27926337/215702099-a4a99457-23e6-41b9-9811-f91282a1f4fc.jpg" height="100">
 
-Buyer Protection widget shows details about protection amount. It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
+Buyer Protection widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`). It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
 <img src="https://user-images.githubusercontent.com/27926337/228453246-e96a43d4-daf9-4622-9828-42fc11ec855a.png" height="100">
 
 ## 1. Installation ##
@@ -365,7 +365,31 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 7. Support ##
+## 7. Setting widget horizontal alignment ##
+You can set the widget horizontal alignment to leading or trailing to match with your design specifications. This feature is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).
+
+TrustbadgeView has an optional `alignment` parameter that accepts either `.leading` or `.trailing` values. If you don't pass `alignment` parameter, the widget uses `.leading` as a default value. 
+
+Here is how, you can configure TrustbadgeView with alignment parameter, 
+
+```swift
+TrustbadgeView(
+     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+     context: .shopGrade,
+     alignment: .trailing
+)
+```
+
+Trustbadge view considers the alignment value for expanding itself towards the correct direction to show widget details. If the alignment is set to .leading, trustbadge content expends towards right whereas for .trailing alignment, content are expended towards left.
+
+Here is how the shop grade widget presents its contents for leading and trailing alignment,<Br>
+<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" height="100" width="400"><br>
+<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" height="100" width="400">
+
+_Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
+
+## 8. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
 
