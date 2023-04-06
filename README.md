@@ -1,10 +1,9 @@
 # Trusted shops library for the iOS platform #
 
-[![Platform](https://img.shields.io/cocoapods/p/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
-[![Version](https://img.shields.io/cocoapods/v/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/LICENSE)
-[![codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/develop/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
+[![Codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/develop/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
 
 > This project is currently work in progress and used only be a few
 > customers. APIs might not be stable yet and might change without
