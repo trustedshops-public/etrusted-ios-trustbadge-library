@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "Trusted Shops AG" => "https://www.trustedshops.com/" }
 
-  spec.platform     = :ios, "13.0"
+  spec.platform     = :ios, "14.0"
   spec.swift_versions = "5.3"
   spec.source = { :git => "https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git", :tag => "#{spec.version}"}
   spec.source_files = "Sources/Trustylib/**/*.{swift}"
