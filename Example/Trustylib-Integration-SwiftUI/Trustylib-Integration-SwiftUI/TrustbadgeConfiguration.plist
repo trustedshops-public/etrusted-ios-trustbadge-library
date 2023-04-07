@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>ClientId</key>
-	<string>d197ed41db84__etrusted-ios-sdk</string>
+	<string>YOUR_CLIENT_ID</string>
 	<key>ClientSecret</key>
-	<string>96e87f24-230a-4704-997c-8f040849e5de</string>
+	<string>YOUR_CLIENT_SECRET</string>
 </dict>
 </plist>

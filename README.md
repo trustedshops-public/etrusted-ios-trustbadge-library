@@ -1,8 +1,9 @@
 # Trusted shops library for the iOS platform #
 
-[![Platform](https://img.shields.io/cocoapods/p/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
-[![Version](https://img.shields.io/cocoapods/v/Trustylib.svg?style=flat)](http://cocoapods.org/pods/Trustylib)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/LICENSE)
+[![Codecov](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library/branch/develop/graph/badge.svg?token=QXzc8Z3UXF)](https://codecov.io/gh/trustedshops-public/etrusted-ios-trustbadge-library)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/trustedshops-public/etrusted-ios-trustbadge-library/tree/develop)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=trustedshops-public_etrusted-ios-trustbadge-library&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=trustedshops-public_etrusted-ios-trustbadge-library)
 
 > This project is currently work in progress and used only be a few
 > customers. APIs might not be stable yet and might change without
@@ -18,6 +19,9 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 
 Shop Grade widget expands to show shop rating and status with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop reviews' details. <br>
 <img src="https://user-images.githubusercontent.com/27926337/215702099-a4a99457-23e6-41b9-9811-f91282a1f4fc.jpg" height="100">
+
+Buyer Protection widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`). It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
+<img src="https://user-images.githubusercontent.com/27926337/228453246-e96a43d4-daf9-4622-9828-42fc11ec855a.png" height="100">
 
 ## 1. Installation ##
 
@@ -66,15 +70,15 @@ This configuration file has details about your `client id` and `secret` which th
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ClientId</key>
-	<string><YOUR_CLIENT_ID></string>
-	<key>ClientSecret</key>
-	<string><YOUR_CLIENT_SECRET></string>
+    <key>ClientId</key>
+    <string><YOUR_CLIENT_ID></string>
+    <key>ClientSecret</key>
+    <string><YOUR_CLIENT_SECRET></string>
 </dict>
 </plist>
 ```
 
-Here is an [example configuration file](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/blob/main/Example/Example/Application/TrustbadgeConfiguration.plist) with one demo shop's client id and secret details.
+Please contact us at mobileapp@trustedshops.com for a demo shop's client id and secret values which you can use to configure and run TrustyLib [example projects](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/tree/main/Example).
 
 This Trusted Shop's [documentation](https://developers.etrusted.com/solutions/api_credentials.html) has details about how to create your own client id and secret. For any help, please contact CSM via members@trustedshops.com
 
@@ -131,6 +135,16 @@ TrustbadgeView(
     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
     context: .shopGrade
+)
+```
+
+The Buyer Protection widget can be created with these lines of code,
+
+```swift
+TrustbadgeView(
+    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+    context: .buyerProtection
 )
 ```
 
@@ -294,7 +308,87 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 6. Support ##
+## 6. Display Buyer Protection widget ##
+
+To display the Buyer Protection widget, you just need to pass `buyerProtection` context to the TrustbadgeView in above code examples.
+
+#### *Swift with SwiftUI*
+
+```swift
+TrustbadgeView(
+   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+   context: .buyerProtection
+)
+.frame(height: 75)
+
+```
+
+#### *Swift with UIKit*
+
+```swift
+private lazy var trustbadgeView: UIHostingController = {
+    let trustbadge = TrustbadgeView(
+        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+        context: .buyerProtection
+    )
+    return UIHostingController(rootView: trustbadge)
+}()
+    
+private func addTrustbadgeView() {
+    self.addChild(self.trustbadgeView)
+    self.view.addSubview(self.trustbadgeView.view)
+
+    /// Setup the constraints to update the SwiftUI view boundaries.
+    self.trustbadgeView.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+        self.trustbadgeView.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        self.trustbadgeView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+        self.trustbadgeView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+        self.trustbadgeView.view.heightAnchor.constraint(equalToConstant: 75)
+    ])
+}
+```
+
+#### *Objective-C with UIKit*
+
+```objective-c
+UIViewController *trustbadgeViewController = [
+    TrustbadgeViewWrapper
+        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
+        context: TrustbadgeContextBuyerProtection
+];
+[self addChildViewController: trustbadgeViewController];
+[self.view addSubview: trustbadgeViewController.view];
+```
+
+## 7. Setting widget horizontal alignment ##
+You can set the widget horizontal alignment to leading or trailing to match with your design specifications. This feature is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).
+
+TrustbadgeView has an optional `alignment` parameter that accepts either `.leading` or `.trailing` values. If you don't pass `alignment` parameter, the widget uses `.leading` as a default value. 
+
+Here is how, you can configure TrustbadgeView with alignment parameter, 
+
+```swift
+TrustbadgeView(
+     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
+     context: .shopGrade,
+     alignment: .trailing
+)
+```
+
+Trustbadge view considers the alignment value for expanding itself towards the correct direction to show widget details. If the alignment is set to .leading, trustbadge content expends towards right whereas for .trailing alignment, content are expended towards left.
+
+Here is how the shop grade widget presents its contents for leading and trailing alignment,<Br>
+<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" height="100" width="400"><br>
+<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" height="100" width="400">
+
+_Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
+
+## 8. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
 

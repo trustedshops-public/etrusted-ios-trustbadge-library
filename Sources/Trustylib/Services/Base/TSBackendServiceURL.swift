@@ -1,6 +1,25 @@
 //
-//  TSBackendServiceURL.swift
-//  Trustylib
+//  Copyright (C) 2023 Trusted Shops AG
+//
+//  MIT License
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 //  Created by Prem Pratap Singh on 10/11/22.
 //
@@ -88,6 +107,15 @@ class TSBackendServiceURL {
         let endpointWithShopId = String(format: endpoint, arguments: [shopId])
         return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.trustedShopsServiceBaseUrlString)
     }
+    
+    /*
+     Returns buyer protection service url for the given tsid
+     */
+    func getBuyerProtectionServiceUrl(for tsid: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.trustmark.name
+        let endpointWithTsid = String(format: endpoint, arguments: [tsid])
+        return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
+    }
 
     // MARK: Private methods
 
@@ -95,22 +123,15 @@ class TSBackendServiceURL {
     /// Environment value determines the backend service endpoint URLs and other run environment specific details
     private func configureEnvironment() {
         guard let launchEnvKey = ProcessInfo.processInfo.environment[self.buildEnvKey] else {
-            self.environment = .stage
+            self.environment = .prod
             return
         }
 
         switch launchEnvKey {
         case buildEnvValueStage: self.environment = .stage
         case buildEnvValueProd: self.environment = .prod
-        default: self.environment = .stage
+        default: self.environment = .prod
         }
-    }
-
-    /// Returns qualified URL for the given endpoint and base URL string
-    private func getQualifiedURL(for endpoint: TSBackendServiceEndpoint, baseURLString: String) -> URL? {
-        let qualifiedURLString = baseURLString.appending(endpoint.name)
-        let qualifiedURL = URL(string: qualifiedURLString)
-        return qualifiedURL
     }
 
     private func getQualifiedURL(for endpoint: String, baseURLString: String) -> URL? {
