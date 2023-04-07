@@ -98,7 +98,7 @@ public struct TrustbadgeView: View {
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the right
             if self.alignment == .trailing {
-                Spacer()
+                Spacer(minLength: 0)
             }
             
             ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
@@ -174,7 +174,7 @@ public struct TrustbadgeView: View {
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the left
             if self.alignment == .leading {
-                Spacer()
+                Spacer(minLength: 0)
             }
         }
     }
