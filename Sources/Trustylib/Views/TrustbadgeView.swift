@@ -49,26 +49,27 @@ public struct TrustbadgeView: View {
     // MARK: Private properties
     
     @StateObject private var viewModel: TrustbadgeViewModel
-    
-    private var tsid: String
-    private var channelId: String
-    private var alignment: TrustbadgeViewAlignment = .leading
-    private var context: TrustbadgeContext
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
     
     // MARK: Initializer
     
     public init(
-        tsid: String,
-        channelId: String,
+        tsId: String,
+        channelId: String? = nil,
+        productId: String? = nil,
         context: TrustbadgeContext,
-        alignment: TrustbadgeViewAlignment = .leading) {
-            self.tsid = tsid
-            self.channelId = channelId
-            self.context = context
-            self.alignment = alignment
-            self._viewModel = StateObject(wrappedValue: TrustbadgeViewModel(context: context))
-        }
+        alignment: TrustbadgeViewAlignment = .leading
+    ) {
+        self._viewModel = StateObject(
+            wrappedValue: TrustbadgeViewModel(
+                tsId: tsId,
+                channelId: channelId,
+                productId: productId,
+                context: context,
+                alignment: alignment
+            )
+        )
+    }
     
     // MARK: User interface
     
@@ -82,7 +83,7 @@ public struct TrustbadgeView: View {
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .onAppear {
-            self.viewModel.getTrustmarkDetails(for: self.tsid)
+            self.viewModel.getTrustmarkDetails()
         }
     }
     
@@ -97,18 +98,19 @@ public struct TrustbadgeView: View {
             
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the right
-            if self.alignment == .trailing {
+            if self.viewModel.alignment == .trailing {
                 Spacer(minLength: 0)
             }
             
-            ZStack(alignment: self.alignment == .leading ? .leading : .trailing) {
+            ZStack(alignment: self.viewModel.alignment == .leading ? .leading : .trailing) {
                 
                 // Expendable view is added to the view only if the client id and
                 // client secret details were loaded from the configuration file
                 // which are reuired for showing shop grade, product grade, etc
                 
                 if TrustbadgeConfigurationService.shared.clientId != nil,
-                   TrustbadgeConfigurationService.shared.clientSecret != nil {
+                   TrustbadgeConfigurationService.shared.clientSecret != nil,
+                   self.viewModel.areBadgeInputsValid {
                     
                     ZStack(alignment: .center) {
                         // Background
@@ -123,21 +125,21 @@ public struct TrustbadgeView: View {
                         
                         // Content - Shop grade, product grade, etc
                         ZStack {
-                            if self.context == .shopGrade {
+                            if self.viewModel.context == .shopGrade {
                                 ShopGradeView(
-                                    channelId: self.channelId,
+                                    channelId: self.viewModel.channelId!,
                                     currentState: self.viewModel.currentState,
-                                    alignment: self.alignment,
+                                    alignment: self.viewModel.alignment,
                                     isTrustmarkValid: self.viewModel.isTrustmarkValid,
                                     height: proposedHeight,
                                     width: proposedWidth,
                                     delegate: self
                                 )
-                            } else if self.context == .buyerProtection {
+                            } else if self.viewModel.context == .buyerProtection {
                                 BuyerProtectionView(
-                                    tsid: self.tsid,
+                                    tsid: self.viewModel.tsId,
                                     currentState: self.viewModel.currentState,
-                                    alignment: self.alignment,
+                                    alignment: self.viewModel.alignment,
                                     isTrustmarkValid: self.viewModel.isTrustmarkValid,
                                     height: proposedHeight,
                                     width: proposedWidth,
@@ -173,7 +175,7 @@ public struct TrustbadgeView: View {
             
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the left
-            if self.alignment == .leading {
+            if self.viewModel.alignment == .leading {
                 Spacer(minLength: 0)
             }
         }
@@ -202,18 +204,6 @@ extension TrustbadgeView {
     
     var currentViewModel: TrustbadgeViewModel {
         return self.viewModel
-    }
-    
-    var trustedShopId: String {
-        return self.tsid
-    }
-    
-    var currentChannelId: String {
-        return self.channelId
-    }
-    
-    var currentContext: TrustbadgeContext {
-        return self.context
     }
     
     func getTestRootViewWith(proposedWidth: CGFloat, proposedHeight: CGFloat) -> some View {

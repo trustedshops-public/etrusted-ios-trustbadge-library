@@ -34,15 +34,17 @@ import Foundation
 @objc public enum TrustbadgeContext: Int {
     case trustMark
     case shopGrade
+    case productGrade
     case buyerProtection
 
     // MARK: Public properties
 
     /// Icon name for the context
-    var iconImageName: String {
+    var iconImageName: String? {
         switch self {
         case .trustMark: return "trustmarkIcon"
         case .shopGrade: return "shopGradeIcon"
+        case .productGrade: return nil
         case .buyerProtection: return "buyerProtectionIcon"
         }
     }

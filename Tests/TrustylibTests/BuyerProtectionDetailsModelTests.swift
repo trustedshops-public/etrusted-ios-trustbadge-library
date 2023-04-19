@@ -77,7 +77,7 @@ final class BuyerProtectionDetailsModelTests: XCTestCase {
         
         XCTAssertTrue(buyerProtectionDetailsModel.guarantee.maxProtectionAmount == "4000.00",
                        "Buyer protection details object should have correct protection amount")
-        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionAmountFormatted == "€4,000",
+        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionAmountFormatted == "4,000 €",
                        "Buyer protection details object should return valid formatted protection amount")
     }
 

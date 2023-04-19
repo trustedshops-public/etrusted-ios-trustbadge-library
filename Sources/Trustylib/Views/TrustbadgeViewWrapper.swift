@@ -41,11 +41,17 @@ import SwiftUI
      Creates wrapper view for TrustbadgeView and return the same
      */
     @objc public static func createTrustbadgeView(
-        tsid: String,
-        channelId: String,
+        tsId: String,
+        channelId: String? = nil,
+        productId: String? = nil,
         context: TrustbadgeContext) -> UIViewController {
         return UIHostingController(
-            rootView: TrustbadgeView(tsid: tsid, channelId: channelId, context: context)
+            rootView: TrustbadgeView(
+                tsId: tsId,
+                channelId: channelId,
+                productId: productId,
+                context: context
+            )
         )
     }
 }
