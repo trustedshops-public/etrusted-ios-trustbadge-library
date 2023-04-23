@@ -99,6 +99,7 @@ class TrustbadgeViewModel: ObservableObject {
     // MARK: Private properties
     
     private var trustmarkDataService = TrustmarkDataService()
+    private var productImage: UIImage?
     
     // MARK: Initializer
     
@@ -131,7 +132,7 @@ class TrustbadgeViewModel: ObservableObject {
             guard let strongSelf = self,
                   let tmDetails = details else {
                 TSConsoleLogger.log(
-                    messege: "Error loading trustmark details for shop with tsid: \(self?.tsId)",
+                    messege: "Error loading trustmark details for shop with tsid: \(self?.tsId ?? "")",
                     severity: .error
                 )
                 responseHandler?(false)
@@ -164,8 +165,13 @@ class TrustbadgeViewModel: ObservableObject {
     func setIconForState() {
         if self.currentState == .default(self.isTrustmarkValid) {
             self.iconImageName = self.currentState.iconImageName
-        } else if self.currentState == .expended, let imageName = self.context.iconImageName {
-            self.iconImageName = imageName
+        } else if self.currentState == .expended {
+            if self.context == .productGrade, let productImage = self.productImage {
+                self.iconImage = productImage
+                return
+            } else if let imageName = self.context.iconImageName {
+                self.iconImageName = imageName
+            }
         }
 
         guard let imageName = self.iconImageName,
@@ -177,6 +183,32 @@ class TrustbadgeViewModel: ObservableObject {
             return
         }
         self.iconImage = image
+    }
+    
+    /**
+     Attempts to load product image from the given url and set the loaded image as Trustbadge icon
+     */
+    func loadProductImageAndSetAsBadgeIcon(url: String, responseBandler: @escaping ResponseHandler<Bool>) {
+        guard let imageUrl = URL(string: url) else {
+            responseBandler(false)
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            guard let strongSelf = self,
+                  let data = try? Data(contentsOf: imageUrl),
+                  let image = UIImage(data: data) else {
+                TSConsoleLogger.log(
+                    messege: "Error loading product image from url \(url)",
+                    severity: .error
+                )
+                responseBandler(false)
+                return
+            }
+            DispatchQueue.main.async {
+                strongSelf.productImage = image
+                responseBandler(true)
+            }
+        }
     }
     
     /**

@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops AG
+//  Copyright (C) 2023 Trusted Shops GmbH
 //
 //  MIT License
 //
@@ -21,15 +21,35 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 07/11/22.
+//  Created by Prem Pratap Singh on 21/04/23.
 //
 
-"Excellent" = "Excellent";
-"Good" = "Good";
-"Fair" = "Fair";
-"Poor" = "Poor";
-"Very poor" = "Very poor";
-"shops reviews" = "shops reviews";
-"Independent guarantee" = "Independent guarantee";
-"Your purchase is protected up to" = "Your purchase is protected up to";
-"product reviews" = "product reviews";
+
+import Foundation
+
+/**
+ ProductDetailsModel data object contains product details like id, product name, image urls, gtin, mpn, sku, etc
+ */
+class ProductDetailsModel: Codable {
+    let id: String
+    let channelId: String
+    let accountId: String
+    let name: String
+    let url: String?
+    let sku: String?
+    let gtin: String?
+    let mpn: String?
+    let image: ProductImageModel?
+}
+
+class ProductImageModel: Codable {
+    let original: ImageModel?
+    let productReviewQuestionnaire: ImageModel?
+    let hubPage: ImageModel?
+}
+
+class ImageModel: Codable {
+    let url: String
+    let width: Int
+    let height: Int
+}

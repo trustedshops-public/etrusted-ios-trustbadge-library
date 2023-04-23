@@ -145,6 +145,20 @@ public struct TrustbadgeView: View {
                                     width: proposedWidth,
                                     delegate: self
                                 )
+                            } else if self.viewModel.context == .productGrade {
+                                if let channelId = self.viewModel.channelId,
+                                   let productId = self.viewModel.productId {
+                                    ProductGradeView(
+                                        channelId: channelId,
+                                        productId: productId,
+                                        currentState: self.viewModel.currentState,
+                                        alignment: self.viewModel.alignment,
+                                        isTrustmarkValid: self.viewModel.isTrustmarkValid,
+                                        height: proposedHeight,
+                                        width: proposedWidth,
+                                        delegate: self
+                                    )
+                                }
                             }
                         }
                         .opacity(self.viewModel.shouldShowExpendedStateContent ? 1 : 0)
@@ -187,6 +201,16 @@ public struct TrustbadgeView: View {
 extension TrustbadgeView: ShopGradeViewDelegate {
     func didLoadShopGrades() {
         self.viewModel.expandBadgeToShowDetails()
+    }
+}
+
+// MARK: ProductGradeViewDelegate methods
+
+extension TrustbadgeView: ProductGradeViewDelegate {
+    func didLoadProductDetails(imageUrl: String) {
+        self.viewModel.loadProductImageAndSetAsBadgeIcon(url: imageUrl) { _ in
+            self.viewModel.expandBadgeToShowDetails()
+        }
     }
 }
 

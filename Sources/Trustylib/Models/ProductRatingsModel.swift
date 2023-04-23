@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops AG
+//  Copyright (C) 2023 Trusted Shops GmbH
 //
 //  MIT License
 //
@@ -21,15 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 07/11/22.
+//  Created by Prem Pratap Singh on 20/04/23.
 //
 
-"Excellent" = "Excellent";
-"Good" = "Good";
-"Fair" = "Fair";
-"Poor" = "Poor";
-"Very poor" = "Very poor";
-"shops reviews" = "shops reviews";
-"Independent guarantee" = "Independent guarantee";
-"Your purchase is protected up to" = "Your purchase is protected up to";
-"product reviews" = "product reviews";
+
+import Foundation
+
+/**
+ ProductRatingsModel is  data object that contains product rating details for duration like
+ weekly, monthly, yearly and other
+ */
+class ProductRatingsModel: Codable {
+    let grades: AggregateRatingsModel
+}
