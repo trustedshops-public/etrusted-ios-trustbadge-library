@@ -189,7 +189,7 @@ class TrustbadgeViewModel: ObservableObject {
      Attempts to load product image from the given url and set the loaded image as Trustbadge icon
      */
     func loadProductImageAndSetAsBadgeIcon(url: String, responseBandler: @escaping ResponseHandler<Bool>) {
-        guard let imageUrl = URL(string: url) else {
+        guard !url.isEmpty, let imageUrl = URL(string: url) else {
             responseBandler(false)
             return
         }

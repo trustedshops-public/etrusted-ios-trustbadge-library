@@ -82,6 +82,9 @@ enum LocalDataFile: String {
     case trustmarkDetailsServiceResponse = "trustmark_details_service_response"
     case aggregateRatingsServiceResponse = "aggregate_rating_service_response"
     case buyerProtectionDetailsServiceResponse = "buyer_protection_details_service_response"
+    case productDetailsServiceResponseWithImages = "product_details_service_response_with_images"
+    case productDetailsServiceResponseWithoutImages = "product_details_service_response_without_images"
+    case productRatingsServiceResponse = "product_ratings_service_response"
 
     // MARK: Public properties
 

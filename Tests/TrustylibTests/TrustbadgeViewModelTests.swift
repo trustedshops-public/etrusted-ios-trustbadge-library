@@ -202,4 +202,53 @@ final class TrustbadgeViewModelTests: XCTestCase {
             "TrustbadgeViewModel should reset to the default state after the expended state"
         )
     }
+    
+    func testTrustbadgeViewModelLoadsProductImageFromValidUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        let imageUrl = "https://productimages.etrusted.com/products/prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa/1/original.jpg"
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: imageUrl) { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
+    
+    func testTrustbadgeViewModelDoesnotLoadProductImageFromEmptyUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: "") { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertFalse(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
+    
+    func testTrustbadgeViewModelDoesnotLoadProductImageFromInvalidUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: "www.unknown.com/iAmNotAnImage.png") { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertFalse(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
 }

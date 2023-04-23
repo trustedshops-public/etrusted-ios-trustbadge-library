@@ -1,0 +1,27 @@
+{
+	"id": "prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa",
+	"name": "Dresser \"Peter\" :",
+	"url": "https://demoshop.trustedshops.com/en/Home-Living/Dresser-Peter.html?force_sid=1ee07lg7p66rf7u1cqgbdl0el2",
+	"channelId": "chl-1b759973-80bb-4399-864b-0ab03cae7e8f",
+	"accountId": "acc-c861f540-c669-47cd-a8d4-9a47ff9cc668",
+	"sku": "1001",
+	"gtin": "0123456789123456789",
+	"mpn": "TS-1122334",
+	"image": {
+		"original": {
+			"url": "https://productimages.etrusted.com/products/prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa/1/original.jpg",
+			"width": 292,
+			"height": 250
+		},
+		"productReviewQuestionnaire": {
+			"url": "https://productimages.etrusted.com/products/prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa/1/productReviewQuestionnaire.jpg",
+			"width": 600,
+			"height": 514
+		},
+		"hubPage": {
+			"url": "https://productimages.etrusted.com/products/prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa/1/hubPage.jpg",
+			"width": 240,
+			"height": 205
+		}
+	}
+}
