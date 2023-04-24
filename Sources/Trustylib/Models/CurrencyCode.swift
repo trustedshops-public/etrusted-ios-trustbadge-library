@@ -69,9 +69,7 @@ enum CurrencyCode: String, Codable {
         case .eur: return "€"
         case .gbp: return "£"
         case .pln: return "zł"
-        case .nok: return "kr"
-        case .sek: return "kr"
-        case .dkk: return "kr"
+        case .nok, .sek, .dkk: return "kr"
         case .ron: return "L"
         case .czk: return "Kč"
         }
