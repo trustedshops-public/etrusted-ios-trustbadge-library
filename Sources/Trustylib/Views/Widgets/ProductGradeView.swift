@@ -58,74 +58,19 @@ struct ProductGradeView: View {
     
     @StateObject private var viewModel = ProductGradeViewModel()
     
-    private var leadingPadding: CGFloat {
-        return self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding
-    }
-    
-    private var trailingPadding: CGFloat {
-        return self.alignment == .leading ? self.horizontalPadding : self.height + self.horizontalPadding
-    }
-    
-    private let horizontalPadding: CGFloat = 12
-    private let textScaleFactor = 0.5
-    
     // MARK: User interface
     
     var body: some View {
         HStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 5) {
-                // Product Grade Text
-                HStack(alignment: .center, spacing: 5) {
-                    if self.alignment == .trailing {
-                        Spacer()
-                    }
-                    
-                    Text("\(self.viewModel.productGrade)")
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .semibold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(self.textScaleFactor)
-                    Text(NSLocalizedString("product reviews",
-                                           comment: "Trustbadge: Product grade title"))
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular))
-                    .lineLimit(1)
-                    .minimumScaleFactor(self.textScaleFactor)
-                    
-                    if self.alignment == .leading {
-                        Spacer()
-                    }
-                }
-                .padding(.leading, self.leadingPadding)
-                .padding(.trailing, self.trailingPadding)
-                
-                // Star Rating View
-                HStack(alignment: .center, spacing: 5) {
-                    if self.alignment == .trailing {
-                        Spacer()
-                    }
-                    
-                    StarRatingView(rating: self.viewModel.productRating)
-                    HStack(alignment: .center, spacing: 0) {
-                        Text("\(self.viewModel.productRatingFormatted)")
-                            .foregroundColor(.black)
-                            .font(.system(size: 14, weight: .semibold))
-                            .lineLimit(1)
-                            .minimumScaleFactor(self.textScaleFactor)
-                        Text("/5.00")
-                            .foregroundColor(.black)
-                            .font(.system(size: 14, weight: .regular))
-                            .lineLimit(1)
-                            .minimumScaleFactor(self.textScaleFactor)
-                    }
-                    
-                    if self.alignment == .leading {
-                        Spacer()
-                    }
-                }
-                .padding(.leading, self.leadingPadding)
-                .padding(.trailing, self.trailingPadding)
-            }
+            GradeAndRatingView(
+                grade: self.viewModel.productGrade,
+                gradeTitle: NSLocalizedString("product reviews", comment: "Trustbadge: Product grade title"),
+                rating: self.viewModel.productRating,
+                ratingFormatted: self.viewModel.productRatingFormatted,
+                alignment: self.alignment,
+                height: self.height,
+                width: self.width
+            )
         }
         .frame(
             width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
@@ -142,11 +87,15 @@ struct ProductGradeView: View {
      Calls view model to load product details and ratings.
      On successful load of the  details and ratings, it then calls delegate to show product details and ratings.
      */
-    private func getProductDetailsAndRatings() {
+    private func getProductDetailsAndRatings(responseHandler: ResponseHandler<Bool>? = nil) {
         self.viewModel.loadProductRating(for: self.channelId, productId: self.productId) { didLoadRatings in
-            guard didLoadRatings else { return }
+            guard didLoadRatings else {
+                responseHandler?(false)
+                return
+            }
             self.viewModel.loadProductDetails(for: self.channelId, productId: self.productId) { _ in
                 self.delegate?.didLoadProductDetails(imageUrl: self.viewModel.productImageUrl)
+                responseHandler?(true)
             }
         }
     }
@@ -155,20 +104,11 @@ struct ProductGradeView: View {
 // MARK: Helper properties/methods for tests
 
 extension ProductGradeView {
-    
     var currentViewModel: ProductGradeViewModel {
         return self.viewModel
     }
     
-    var lPadding: CGFloat {
-        return self.leadingPadding
-    }
-    
-    var tPadding: CGFloat {
-        return self.trailingPadding
-    }
-    
-    var hPadding: CGFloat {
-        return self.horizontalPadding
+    func testLoadingOfProductDetailsAndRating(responseHandler: @escaping ResponseHandler<Bool>) {
+        self.getProductDetailsAndRatings(responseHandler: responseHandler)
     }
 }

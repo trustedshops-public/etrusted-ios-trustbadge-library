@@ -39,9 +39,10 @@ final class ProductGradeViewTests: XCTestCase {
     let alignment: TrustbadgeViewAlignment = .leading
     let width: CGFloat = 300
     let height: CGFloat = 75
+    var productGradeView: ProductGradeView?
     
-    func testProductGradeViewInitializesWithCorrectValues() throws {
-        let productGradeView = ProductGradeView(
+    override func setUpWithError() throws {
+        self.productGradeView = ProductGradeView(
             channelId: self.channelId,
             productId: self.productId,
             currentState: self.state,
@@ -51,51 +52,49 @@ final class ProductGradeViewTests: XCTestCase {
             width: self.width,
             delegate: nil
         )
-        
+    }
+    
+    override func tearDownWithError() throws {
+        self.productGradeView = nil
+    }
+    
+    func testProductGradeViewInitializesWithCorrectValues() throws {
         XCTAssert(
-            productGradeView.channelId == self.channelId,
+            self.productGradeView?.channelId == self.channelId,
             "ProductGradeView should set correct channel id during initialization"
         )
         XCTAssert(
-            productGradeView.currentState == self.state,
+            self.productGradeView?.currentState == self.state,
             "ProductGradeView should set correct state during initialization"
         )
         XCTAssert(
-            productGradeView.alignment == self.alignment,
+            self.productGradeView?.alignment == self.alignment,
             "ProductGradeView should set correct alignment during initialization"
         )
         XCTAssertNotNil(
-            productGradeView.currentViewModel,
+            self.productGradeView?.currentViewModel,
             "ProductGradeView should initialize ProductGradeViewModel during initialization"
-        )
-        
-        let lPadding = productGradeView.alignment == .leading ? productGradeView.height + productGradeView.hPadding : productGradeView.hPadding
-        XCTAssert(
-            productGradeView.lPadding == lPadding,
-            "ProductGradeView should calcualate leading padding correctly based on the alignment property"
-        )
-        
-        let tPadding = productGradeView.alignment == .leading ? productGradeView.hPadding : productGradeView.height + productGradeView.hPadding
-        XCTAssert(
-            productGradeView.tPadding == tPadding,
-            "ProductGradeView should calcualate trailing padding correctly based on the alignment property"
         )
     }
     
     func testProductGradeViewBodyIsNotNil() {
-        let productGradeView = ProductGradeView(
-            channelId: self.channelId,
-            productId: self.productId,
-            currentState: self.state,
-            alignment: self.alignment,
-            isTrustmarkValid: false,
-            height: self.height,
-            width: self.width,
-            delegate: nil
-        )
         XCTAssertNotNil(
-            productGradeView.body,
+            self.productGradeView?.body,
             "ProductGradeView body value should not be nil"
+        )
+    }
+    
+    func testProductDetailsAndRatingLoad() {
+        let productDetailsExpectation = expectation(description: "Product details expectation")
+        var didLoadDetails = false
+        self.productGradeView!.testLoadingOfProductDetailsAndRating { _ in
+            didLoadDetails = true
+            productDetailsExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(
+            didLoadDetails,
+            "ProductGradeViewM should load accurate product details for the given channel and product ids"
         )
     }
 }
