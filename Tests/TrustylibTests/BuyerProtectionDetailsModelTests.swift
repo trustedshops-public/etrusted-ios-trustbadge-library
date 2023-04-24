@@ -67,6 +67,12 @@ final class BuyerProtectionDetailsModelTests: XCTestCase {
                        "Buyer protection details object should have correct currency code")
         XCTAssertTrue(buyerProtectionDetailsModel.guarantee.maxProtectionDuration == "30",
                        "Buyer protection details object should have correct protection duration")
+        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionCurrency == .chf,
+                       "Buyer protection details object should have correct protection currency")
+        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionCurrency.code == "CHF",
+                       "Buyer protection details object should have correct protection currency code")
+        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionCurrency.symbol == "CHF",
+                       "Buyer protection details object should have correct protection currency symbol")
     }
     
     func testBuyerProtectionDetailsReturnsCorrectFormattedStringForProtectionAmount() {
@@ -77,7 +83,8 @@ final class BuyerProtectionDetailsModelTests: XCTestCase {
         
         XCTAssertTrue(buyerProtectionDetailsModel.guarantee.maxProtectionAmount == "4000.00",
                        "Buyer protection details object should have correct protection amount")
-        XCTAssertTrue(buyerProtectionDetailsModel.guarantee.protectionAmountFormatted == "€4,000",
+        let protectionAmountFormatted = buyerProtectionDetailsModel.guarantee.protectionAmountFormatted
+        XCTAssertTrue(protectionAmountFormatted.contains("CHF 4,000"),
                        "Buyer protection details object should return valid formatted protection amount")
     }
 

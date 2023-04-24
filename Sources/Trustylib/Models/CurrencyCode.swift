@@ -30,8 +30,16 @@ import Foundation
 /**
  CurrencyCode enum contains details like currency code, symbol, etc
  */
-enum CurrencyCode: Codable {
-    case euro, gbp
+enum CurrencyCode: String, Codable {
+    case chf // Swiss Franc
+    case eur // Euro
+    case gbp // Pound Sterling
+    case pln // Polish złoty
+    case nok // Norwegian krone
+    case sek // Swedish krona
+    case dkk // Danish krone
+    case ron // Romanian leu
+    case czk // Czech koruna
     
     // MARK: Public properties
     
@@ -40,8 +48,32 @@ enum CurrencyCode: Codable {
      */
     var code: String {
         switch self {
-        case .euro: return "EURO"
+        case .chf: return "CHF"
+        case .eur: return "EURO"
         case .gbp: return "GBP"
+        case .pln: return "PLN"
+        case .nok: return "NOK"
+        case .sek: return "SEK"
+        case .dkk: return "DKK"
+        case .ron: return "RON"
+        case .czk: return "CZK"
+        }
+    }
+    
+    /**
+     Returns currency code
+     */
+    var symbol: String {
+        switch self {
+        case .chf: return "CHF"
+        case .eur: return "€"
+        case .gbp: return "£"
+        case .pln: return "zł"
+        case .nok: return "kr"
+        case .sek: return "kr"
+        case .dkk: return "kr"
+        case .ron: return "L"
+        case .czk: return "Kč"
         }
     }
 }
