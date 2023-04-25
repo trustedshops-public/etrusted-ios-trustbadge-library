@@ -125,7 +125,7 @@ This is how, the Trustmark widget is created,
 
 ```swift
 TrustbadgeView(
-    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    tsId: "X330A2E7D449E31E467D2F53A55DDD070",
     context: .trustMark
 )
 ```
@@ -134,7 +134,7 @@ These lines of code create the Shop Grade widget,
 
 ```swift
 TrustbadgeView(
-    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    tsId: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
     context: .shopGrade
 )
@@ -144,7 +144,7 @@ The Buyer Protection widget can be created with these lines of code,
 
 ```swift
 TrustbadgeView(
-    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    tsId: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
     context: .buyerProtection
 )
@@ -154,7 +154,7 @@ This is how, Product Grade widget is added,
 
 ```swift
 TrustbadgeView(
-    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    tsId: "X330A2E7D449E31E467D2F53A55DDD070",
     channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
     productId: "31303033",
     context: .productGrade
@@ -183,7 +183,7 @@ struct ContentView: View {
         VStack {
             Spacer()
             TrustbadgeView(
-                tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+                tsId: "X330A2E7D449E31E467D2F53A55DDD070",
                 context: .trustMark
             )
             .frame(height: 75)
@@ -204,7 +204,7 @@ import Trustylib
 class RootViewController: UIViewController {
     private lazy var trustbadgeView: UIHostingController = {
         let trustbadge = TrustbadgeView(
-            tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+            tsId: "X330A2E7D449E31E467D2F53A55DDD070",
             context: .trustMark
         )
         return UIHostingController(rootView: trustbadge)
@@ -249,7 +249,7 @@ Trustylib library has [TrustbadgeViewWrapper](https://github.com/trustedshops-pu
     [super viewDidAppear:animated];
     UIViewController *trustbadgeViewController = [
         TrustbadgeViewWrapper
-            createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+            createTrustbadgeViewWithTsId:@"X330A2E7D449E31E467D2F53A55DDD070"
             context: TrustbadgeContextTrustMark
     ];
     [self addChildViewController: trustbadgeViewController];
@@ -272,7 +272,7 @@ To display the Shop Grade widget, you just need to pass `shopGrade` context to t
 
 ```swift
 TrustbadgeView(
-   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   tsId: "X330A2E7D449E31E467D2F53A55DDD070",
    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
    context: .shopGrade
 )
@@ -285,7 +285,7 @@ TrustbadgeView(
 ```swift
 private lazy var trustbadgeView: UIHostingController = {
     let trustbadge = TrustbadgeView(
-        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        tsId: "X330A2E7D449E31E467D2F53A55DDD070",
         channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
         context: .shopGrade
     )
@@ -312,7 +312,7 @@ private func addTrustbadgeView() {
 ```objective-c
 UIViewController *trustbadgeViewController = [
     TrustbadgeViewWrapper
-        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        createTrustbadgeViewWithTsId:@"X330A2E7D449E31E467D2F53A55DDD070"
         channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
         context: TrustbadgeContextShopGrade
 ];
@@ -328,7 +328,7 @@ To display the Buyer Protection widget, you just need to pass `buyerProtection` 
 
 ```swift
 TrustbadgeView(
-   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   tsId: "X330A2E7D449E31E467D2F53A55DDD070",
    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
    context: .buyerProtection
 )
@@ -341,7 +341,7 @@ TrustbadgeView(
 ```swift
 private lazy var trustbadgeView: UIHostingController = {
     let trustbadge = TrustbadgeView(
-        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        tsId: "X330A2E7D449E31E467D2F53A55DDD070",
         channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
         context: .buyerProtection
     )
@@ -368,7 +368,7 @@ private func addTrustbadgeView() {
 ```objective-c
 UIViewController *trustbadgeViewController = [
     TrustbadgeViewWrapper
-        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        createTrustbadgeViewWithTsId:@"X330A2E7D449E31E467D2F53A55DDD070"
         channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
         context: TrustbadgeContextBuyerProtection
 ];
@@ -384,7 +384,7 @@ This is how, Product Grade widget can be added depending on the iOS technologies
 
 ```swift
 TrustbadgeView(
-   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   tsId: "X330A2E7D449E31E467D2F53A55DDD070",
    channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
    productId: "31303033",
    context: .productGrade
@@ -398,7 +398,7 @@ TrustbadgeView(
 ```swift
 private lazy var trustbadgeView: UIHostingController = {
     let trustbadge = TrustbadgeView(
-        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        tsId: "X330A2E7D449E31E467D2F53A55DDD070",
         channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
         productId: "31303033",
         context: .productGrade
@@ -426,7 +426,7 @@ private func addTrustbadgeView() {
 ```objective-c
 UIViewController *trustbadgeViewController = [
     TrustbadgeViewWrapper
-        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        createTrustbadgeViewWithTsId:@"X330A2E7D449E31E467D2F53A55DDD070"
         channelId:@"chl-c0ad29ff-a086-4191-a663-82fed64f6f65"
         productId:@"31303033"
         context: TrustbadgeContextProductGrade
@@ -444,7 +444,7 @@ Here is how, you can configure TrustbadgeView with alignment parameter,
 
 ```swift
 TrustbadgeView(
-     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+     tsId: "X330A2E7D449E31E467D2F53A55DDD070",
      channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
      context: .shopGrade,
      alignment: .trailing
