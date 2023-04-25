@@ -9,19 +9,24 @@
 > customers. APIs might not be stable yet and might change without
 > further notice
 
-Trustylib library helps you integrate Trusted Shops `Trustmark` and `Shop Grade` UI widgets in your iOS apps with an easy configuration and small piece of code. 
+Trustylib library helps you integrate Trusted Shops `Trustmark`, `Shop Grade`, `Product Grade` and `Buyer Protection` UI widgets in your iOS apps with an easy to do configuration and minimum lines of code. 
 
-Trustmark widget shows the validity of your trust certificate issues by Trusted Shop.<br>
+`Trustmark` widget shows the validity of your trust certificate issued by Trusted Shop.<br>
 <img src="https://user-images.githubusercontent.com/27926337/215702112-ae9ea5c8-76f1-479c-8d2c-fc6726204f06.jpg" height="90">
 
 In case, your trust certificate gets expired, the Trustmark widgets is presented like this,<br>
 <img src="https://user-images.githubusercontent.com/27926337/215715480-a614bee6-20f8-4012-bba0-5ddbf2be46d5.png" height="90">
 
-Shop Grade widget expands to show shop rating and status with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop reviews' details. <br>
-<img src="https://user-images.githubusercontent.com/27926337/215702099-a4a99457-23e6-41b9-9811-f91282a1f4fc.jpg" height="100">
+`Shop Grade` widget expands to show shop rating and status (Excellent, Good, Fair, etc) with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop actual reviews' details like review text, review date, attachments, etc. <br>
+![shop-grade](https://user-images.githubusercontent.com/27926337/233945935-5002f633-3fef-49d2-9da4-ebd5d648495b.gif)
 
-Buyer Protection widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`). It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
-<img src="https://user-images.githubusercontent.com/27926337/228453246-e96a43d4-daf9-4622-9828-42fc11ec855a.png" height="100">
+
+`Buyer Protection` widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`). It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
+![buyer-protection](https://user-images.githubusercontent.com/27926337/233946329-21ef1b31-7d06-492a-b0db-ced72eeddb23.gif)
+
+`Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available in `CocoadPod version 1.2.0+` and `Swift Package version 1.2.0+`).<br>
+![product-grade](https://user-images.githubusercontent.com/27926337/233946381-e363ecd9-8e8b-4cc0-beb2-0d8797113f2a.gif)
+
 
 ## 1. Installation ##
 
@@ -32,7 +37,7 @@ Trustylib can be added to your iOS projects via both [Swift Package Manager](htt
 Trustylib library can easily be added to xcode projects via Swift Package Manager. Here is how it is done,
 
 1. While xcode project is open, go to `File > Add Packages... >`<br>
-2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number.<br>
+2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.0`<br>
 <img width="500" src="https://user-images.githubusercontent.com/27926337/215734320-5441934d-7aa3-4d38-9720-812a1a656e11.png"><br> 
 3. Click on `Add package` button. Xcode will clone the Trustylib git repository and attach to the xcode project, it should look like this,<br>
 <img width="250" src="https://user-images.githubusercontent.com/27926337/215734354-9c807b84-aa46-4ad3-937a-31f33c21d8b9.png"><br>
@@ -59,7 +64,7 @@ And then run pod install command in the terminal,
 pod install
 ```
 
-You should now have the latest version of Trustylib library added to your xcode project!
+You should now have the latest version i.e. `1.2.0` of Trustylib library added to your xcode project!
 
 ## 2. Configuration ##
 Once Trustylib library is added to your xcode project, one configuration file named `TrustbadgeConfiguration.plist` needs to be added to the project. 
@@ -123,7 +128,6 @@ This is how, the Trustmark widget is created,
 ```swift
 TrustbadgeView(
     tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-    channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
     context: .trustMark
 )
 ```
@@ -148,6 +152,19 @@ TrustbadgeView(
 )
 ```
 
+This is how, Product Grade widget is added,
+
+```swift
+TrustbadgeView(
+    tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+    channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
+    productId: "31303033",
+    context: .productGrade
+)
+```
+
+Product id is needed only for product grade widget and it represents product SKU. For any help realted to product id, please contact Trsuted Shop's CSM via email: members@trustedshops.comMobile.
+
 Your `TSID` is generally shared during the onboarding process with Trusted Shops. If in case, you don't have it, please contact Trsuted Shop's CSM via email: members@trustedshops.comMobile. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
 
 `ChannelId` is available in the Trusted Shop's [Control Center](https://app.etrusted.com/) URL for a shop. For example, in this URL https://app.etrusted.com/etrusted/reviews/inbox?channels=chl-2bf4346e-9897-4e3c-8793-bdbf15c007ae, the channel id is `chl-2bf4346e-9897-4e3c-8793-bdbf15c007ae`. Here is how it looks in the Control Center URL,<br>
@@ -169,7 +186,6 @@ struct ContentView: View {
             Spacer()
             TrustbadgeView(
                 tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-                channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
                 context: .trustMark
             )
             .frame(height: 75)
@@ -191,7 +207,6 @@ class RootViewController: UIViewController {
     private lazy var trustbadgeView: UIHostingController = {
         let trustbadge = TrustbadgeView(
             tsid: "X330A2E7D449E31E467D2F53A55DDD070",
-            channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
             context: .trustMark
         )
         return UIHostingController(rootView: trustbadge)
@@ -237,7 +252,6 @@ Trustylib library has [TrustbadgeViewWrapper](https://github.com/trustedshops-pu
     UIViewController *trustbadgeViewController = [
         TrustbadgeViewWrapper
             createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
-            channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
             context: TrustbadgeContextTrustMark
     ];
     [self addChildViewController: trustbadgeViewController];
@@ -364,7 +378,66 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 7. Setting widget horizontal alignment ##
+## 7. Display Product Grade widget ##
+
+This is how, Product Grade widget can be added depending on the iOS technologies stack being used for the app,
+
+#### *Swift with SwiftUI*
+
+```swift
+TrustbadgeView(
+   tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+   channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
+   productId: "31303033",
+   context: .productGrade
+)
+.frame(height: 75)
+
+```
+
+#### *Swift with UIKit*
+
+```swift
+private lazy var trustbadgeView: UIHostingController = {
+    let trustbadge = TrustbadgeView(
+        tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+        channelId: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
+        productId: "31303033",
+        context: .productGrade
+    )
+    return UIHostingController(rootView: trustbadge)
+}()
+    
+private func addTrustbadgeView() {
+    self.addChild(self.trustbadgeView)
+    self.view.addSubview(self.trustbadgeView.view)
+
+    /// Setup the constraints to update the SwiftUI view boundaries.
+    self.trustbadgeView.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+        self.trustbadgeView.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        self.trustbadgeView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+        self.trustbadgeView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+        self.trustbadgeView.view.heightAnchor.constraint(equalToConstant: 75)
+    ])
+}
+```
+
+#### *Objective-C with UIKit*
+
+```objective-c
+UIViewController *trustbadgeViewController = [
+    TrustbadgeViewWrapper
+        createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+        channelId:@"chl-c0ad29ff-a086-4191-a663-82fed64f6f65"
+        productId:@"31303033"
+        context: TrustbadgeContextProductGrade
+];
+[self addChildViewController: trustbadgeViewController];
+[self.view addSubview: trustbadgeViewController.view];
+```
+
+## 8. Setting widget horizontal alignment ##
 You can set the widget horizontal alignment to leading or trailing to match with your design specifications. This feature is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).
 
 TrustbadgeView has an optional `alignment` parameter that accepts either `.leading` or `.trailing` values. If you don't pass `alignment` parameter, the widget uses `.leading` as a default value. 
@@ -388,7 +461,7 @@ Here is how the shop grade widget presents its contents for leading and trailing
 
 _Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
 
-## 8. Support ##
+## 9. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
 

@@ -28,7 +28,7 @@ import Foundation
 
 /**
  ShopGradeDataService connects to the Trustedshop's backend API for getting grade and rating details for the shop
- with given `tsid`. Based on the backend API response, it then responds back via `BoolResponseHandler`,
+ with given `shopId`. Based on the backend API response, it then responds back via the responseHandler,
  indicating if the shop grade and rating details could successfully be loaded or failed due to some error.
  */
 class ShopGradeDataService: TSNetworkDataService {
@@ -36,10 +36,10 @@ class ShopGradeDataService: TSNetworkDataService {
     // MARK: Public methods
 
     /**
-     Calls Trustedshop's backend API for getting shop grade and rating details for the given `tsid`,
+     Calls Trustedshop's backend API for getting shop grade and rating details for the given `shopId`,
      handles response/error as returned by the backend and then responds back via response handler callback
      */
-    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<ShopAggregateRatingsModel?>) {
+    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<AggregateRatingsModel?>) {
         guard let url = self.backendServiceURL.getAggregateRatingServiceUrl(for: shopId),
               let accessToken = TSAuthenticationService.shared.accessToken,
               var headerFields = self.headerFields else {
@@ -58,7 +58,7 @@ class ShopGradeDataService: TSNetworkDataService {
             body: nil,
             headerValues: headerFields)
 
-        let apiResponseHandler: TSNetworkServiceResponseHandler<ShopAggregateRatingsModel> = { response, error in
+        let apiResponseHandler: TSNetworkServiceResponseHandler<AggregateRatingsModel> = { response, error in
             guard let backendResponse = response,
                   let aggregateRatings = backendResponse.first,
                   error == nil else {

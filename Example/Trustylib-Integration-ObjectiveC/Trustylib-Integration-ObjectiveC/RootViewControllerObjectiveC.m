@@ -45,7 +45,7 @@
 
     UIViewController *trustbadgeViewController = [
         TrustbadgeViewWrapper
-            createTrustbadgeViewWithTsid:@"X330A2E7D449E31E467D2F53A55DDD070"
+            createTrustbadgeViewWithTsId:@"X330A2E7D449E31E467D2F53A55DDD070"
             channelId:@"chl-b309535d-baa0-40df-a977-0b375379a3cc"
             context: TrustbadgeContextShopGrade
     ];

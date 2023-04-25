@@ -33,25 +33,97 @@ import XCTest
  */
 final class TrustbadgeViewModelTests: XCTestCase {
     
+    private let tsId = "X330A2E7D449E31E467D2F53A55DDD070"
+    private let channelId = "chl-b309535d-baa0-40df-a977-0b375379a3cc"
+    private let productId = "31303031"
+    
     func testTrustbadgeViewModelInitializesWithCorrectContext() throws {
-        let viewModel = TrustbadgeViewModel(context: .shopGrade)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .shopGrade)
         XCTAssert(
             viewModel.activeContext == .shopGrade,
             "TrustbadgeViewModel context isn't set correctly during initialization"
         )
         
-        let viewModel1 = TrustbadgeViewModel(context: .trustMark)
+        let viewModel1 = TrustbadgeViewModel(tsId: self.tsId, context: .trustMark)
         XCTAssert(
             viewModel1.activeContext != .shopGrade,
             "TrustbadgeViewModel context isn't set correctly during initialization"
         )
     }
     
+    func testTrustbadgeViewModelValidationSucceedsWithValidTrustmarkInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .trustMark)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == true,
+            "TrustbadgeViewModel validation should pass for valid trustmark context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationFailsWithoutValidTrustmarkInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: "", context: .trustMark)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == false,
+            "TrustbadgeViewModel validation should fail for invalid trustmark context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationSucceedsWithValidShopGradeInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, channelId: self.channelId, context: .shopGrade)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == true,
+            "TrustbadgeViewModel validation should pass for valid shop grade context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationFailsWithoutValidShopGradeInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .shopGrade)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == false,
+            "TrustbadgeViewModel validation should fail for invalid shop grade context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationSucceedsWithValidBuyerProtectionInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, channelId: self.channelId, context: .buyerProtection)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == true,
+            "TrustbadgeViewModel validation should pass for valid buyer protection context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationFailsWithoutValidBuyerProtectionInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .buyerProtection)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == false,
+            "TrustbadgeViewModel validation should fail for invalid buyer protection context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationSucceedsWithValidProductGradeInputs() {
+        let viewModel = TrustbadgeViewModel(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            productId: self.productId,
+            context: .buyerProtection)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == true,
+            "TrustbadgeViewModel validation should pass for valid product grade context parameters"
+        )
+    }
+    
+    func testTrustbadgeViewModelValidationFailsWithoutValidProductGradeInputs() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, channelId: self.channelId, context: .productGrade)
+        XCTAssert(
+            viewModel.areBadgeInputsValid == false,
+            "TrustbadgeViewModel validation should fail for invalid product grade context parameters"
+        )
+    }
+    
     func testTrustbadgeViewModelLoadsValidTrustMarkDetails() throws {
-        let viewModel = TrustbadgeViewModel(context: .shopGrade)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .shopGrade)
         let trustMarkDetailsExpectation = expectation(description: "TrustbadgeViewModel response expectation")
         
-        viewModel.getTrustmarkDetails(for: "X330A2E7D449E31E467D2F53A55DDD070") { _ in
+        viewModel.getTrustmarkDetails { _ in
             trustMarkDetailsExpectation.fulfill()
         }
         waitForExpectations(timeout: 5)
@@ -62,7 +134,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
     }
     
     func testTrustbadgeViewModelSetsCorrectIconNameForState() throws {
-        let viewModel = TrustbadgeViewModel(context: .trustMark)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .trustMark)
         viewModel.setIconForState()
         
         XCTAssert(
@@ -71,7 +143,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         )
         
         let trustMarkDetailsExpectation = expectation(description: "TrustbadgeViewModel response expectation")
-        viewModel.getTrustmarkDetails(for: "X330A2E7D449E31E467D2F53A55DDD070") { _ in
+        viewModel.getTrustmarkDetails { _ in
             trustMarkDetailsExpectation.fulfill()
         }
         waitForExpectations(timeout: 5)
@@ -84,7 +156,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
     }
     
     func testTrustbadgeViewModelDoesntSetExpendedStateForTrustmarkContext() throws {
-        let viewModel = TrustbadgeViewModel(context: .trustMark)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .trustMark)
         viewModel.expandBadgeToShowDetails()
         let trustMarkExpendedStateExpectation = expectation(description: "TrustbadgeViewModel expened state expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -98,7 +170,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
     }
     
     func testTrustbadgeViewModelSetsCorrectExpendedStateForShopGradeContext() throws {
-        let viewModel = TrustbadgeViewModel(context: .shopGrade)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .shopGrade)
         viewModel.expandBadgeToShowDetails()
         let trustMarkExpendedStateExpectation = expectation(description: "TrustbadgeViewModel expened state expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -112,7 +184,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
     }
     
     func testTrustbadgeViewModelResetsToDefaultStateAfterExpendedState() throws {
-        let viewModel = TrustbadgeViewModel(context: .shopGrade)
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .shopGrade)
         viewModel.expandBadgeToShowDetails()
         let trustMarkDefaultStateExpectation = expectation(description: "TrustbadgeViewModel default state expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -128,6 +200,55 @@ final class TrustbadgeViewModelTests: XCTestCase {
         XCTAssert(
             viewModel.currentState == .default(false),
             "TrustbadgeViewModel should reset to the default state after the expended state"
+        )
+    }
+    
+    func testTrustbadgeViewModelLoadsProductImageFromValidUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        let imageUrl = "https://productimages.etrusted.com/products/prt-a8042e61-a28d-42cd-9cbe-8c7339ad12fa/1/original.jpg"
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: imageUrl) { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
+    
+    func testTrustbadgeViewModelDoesnotLoadProductImageFromEmptyUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: "") { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertFalse(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
+    
+    func testTrustbadgeViewModelDoesnotLoadProductImageFromInvalidUrl() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let imageLoadExpectation = expectation(description: "Product load image expectation")
+        var didLoadProductImage = false
+        viewModel.loadProductImageAndSetAsBadgeIcon(url: "www.unknown.com/iAmNotAnImage.png") { didLoadImage in
+            didLoadProductImage = didLoadImage
+            imageLoadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertFalse(
+            didLoadProductImage,
+            "TrustbadgeViewModel should load product image from a valid image url"
         )
     }
 }

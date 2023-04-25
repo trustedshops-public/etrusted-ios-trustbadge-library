@@ -27,13 +27,13 @@
 import XCTest
 @testable import Trustylib
 
-typealias AggregateRatingsResponseHandler = ([ShopAggregateRatingsModel]?, Error?) -> Void
+typealias AggregateRatingsResponseHandler = ([AggregateRatingsModel]?, Error?) -> Void
 
 /**
  This test suite tests decoding of aggregate ratings service respons JSON to `ShopAggregateRatingsModel` data object
  */
 final class AggregateRatingsModelTests: XCTestCase {
-    private var aggregateRatingsModel: ShopAggregateRatingsModel?
+    private var aggregateRatingsModel: AggregateRatingsModel?
 
     override func setUpWithError() throws {
         self.getModalObjectForAggregateRatingsServiceMockResponse()

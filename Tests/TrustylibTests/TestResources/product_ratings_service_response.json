@@ -1,0 +1,98 @@
+{
+	"grades": {
+		"7days": {
+			"rating": 4.5,
+			"count": 2,
+			"distribution": {
+				"oneStar": 0,
+				"twoStars": 0,
+				"threeStars": 0,
+				"fourStars": 1,
+				"fiveStars": 1
+			},
+			"period": {
+				"start": "2023-03-16T00:00:00.000Z",
+				"end": "2023-03-23T23:59:59.999Z",
+				"calculatedAt": "2023-03-23T07:22:13.390Z",
+				"firstConsideredReviewSubmission": "2023-03-22T20:15:58.000Z",
+				"lastConsideredReviewSubmission": "2023-03-23T07:21:42.000Z",
+				"ratingTrend": "NEUTRAL"
+			}
+		},
+		"30days": {
+			"rating": 4.5,
+			"count": 2,
+			"distribution": {
+				"oneStar": 0,
+				"twoStars": 0,
+				"threeStars": 0,
+				"fourStars": 1,
+				"fiveStars": 1
+			},
+			"period": {
+				"start": "2023-02-21T00:00:00.000Z",
+				"end": "2023-03-23T23:59:59.999Z",
+				"calculatedAt": "2023-03-23T07:22:13.390Z",
+				"firstConsideredReviewSubmission": "2023-03-22T20:15:58.000Z",
+				"lastConsideredReviewSubmission": "2023-03-23T07:21:42.000Z",
+				"ratingTrend": "NEUTRAL"
+			}
+		},
+		"90days": {
+			"rating": 4.5,
+			"count": 2,
+			"distribution": {
+				"oneStar": 0,
+				"twoStars": 0,
+				"threeStars": 0,
+				"fourStars": 1,
+				"fiveStars": 1
+			},
+			"period": {
+				"start": "2022-12-23T00:00:00.000Z",
+				"end": "2023-03-23T23:59:59.999Z",
+				"calculatedAt": "2023-03-23T07:22:13.390Z",
+				"firstConsideredReviewSubmission": "2023-03-22T20:15:58.000Z",
+				"lastConsideredReviewSubmission": "2023-03-23T07:21:42.000Z",
+				"ratingTrend": "NEUTRAL"
+			}
+		},
+		"365days": {
+			"rating": 4.5,
+			"count": 2,
+			"distribution": {
+				"oneStar": 0,
+				"twoStars": 0,
+				"threeStars": 0,
+				"fourStars": 1,
+				"fiveStars": 1
+			},
+			"period": {
+				"start": "2022-03-23T00:00:00.000Z",
+				"end": "2023-03-23T23:59:59.999Z",
+				"calculatedAt": "2023-03-23T07:22:13.390Z",
+				"firstConsideredReviewSubmission": "2023-03-22T20:15:58.000Z",
+				"lastConsideredReviewSubmission": "2023-03-23T07:21:42.000Z",
+				"ratingTrend": "NEUTRAL"
+			}
+		},
+		"overall": {
+			"rating": 4.5,
+			"count": 2,
+			"distribution": {
+				"oneStar": 0,
+				"twoStars": 0,
+				"threeStars": 0,
+				"fourStars": 1,
+				"fiveStars": 1
+			},
+			"period": {
+				"start": "2023-03-22T20:15:58.000Z",
+				"end": "2023-03-23T23:59:59.999Z",
+				"calculatedAt": "2023-03-23T07:22:13.390Z",
+				"firstConsideredReviewSubmission": "2023-03-22T20:15:58.000Z",
+				"lastConsideredReviewSubmission": "2023-03-23T07:21:42.000Z"
+			}
+		}
+	}
+}
