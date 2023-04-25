@@ -53,7 +53,7 @@ class BuyerProtectionDetails: Codable {
     
     /// Returns buyer protection amount rounded to 2 decimal points
     var protectionAmountFormatted: String {
-        guard let protectionAmount = Float(self.maxProtectionAmount) else {
+        guard let protectionAmount = Double(self.maxProtectionAmount) else {
             return self.maxProtectionAmount
         }
         
@@ -62,7 +62,7 @@ class BuyerProtectionDetails: Codable {
         formatter.usesGroupingSeparator = true
         formatter.currencyCode = self.protectionCurrency.code
         formatter.currencySymbol = self.protectionCurrency.symbol
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
 
         let number = NSNumber(value: protectionAmount)
         return formatter.string(from: number)!
