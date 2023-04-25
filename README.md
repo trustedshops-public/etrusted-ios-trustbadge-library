@@ -20,13 +20,11 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 `Shop Grade` widget expands to show shop rating and status (Excellent, Good, Fair, etc) with a nice animation effect. The widget however shows the aggregate rating and status only, it doesn't show shop actual reviews' details like review text, review date, attachments, etc. <br>
 ![shop-grade](https://user-images.githubusercontent.com/27926337/233945935-5002f633-3fef-49d2-9da4-ebd5d648495b.gif)
 
-
-`Buyer Protection` widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`). It currently has support for `EURO` currency only, support for more currencies will be available soon.<br>
+`Buyer Protection` widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).<br>
 ![buyer-protection](https://user-images.githubusercontent.com/27926337/233946329-21ef1b31-7d06-492a-b0db-ced72eeddb23.gif)
 
 `Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available in `CocoadPod version 1.2.0+` and `Swift Package version 1.2.0+`).<br>
 ![product-grade](https://user-images.githubusercontent.com/27926337/233946381-e363ecd9-8e8b-4cc0-beb2-0d8797113f2a.gif)
-
 
 ## 1. Installation ##
 
