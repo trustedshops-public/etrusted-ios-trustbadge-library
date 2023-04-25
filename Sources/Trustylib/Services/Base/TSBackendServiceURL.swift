@@ -81,6 +81,12 @@ class TSBackendServiceURL {
         case .prod: return "https://cdn1.api.trustedshops.com"
         }
     }
+    
+    private var integrationServiceBaseUrlString: String {
+        switch self.environment {
+        case .stage, .prod: return "https://integrations.etrusted.com"
+        }
+    }
 
     // MARK: Initilizer
 
@@ -106,6 +112,24 @@ class TSBackendServiceURL {
         let endpoint = TSBackendServiceEndpoint.aggregateRating.name
         let endpointWithShopId = String(format: endpoint, arguments: [shopId])
         return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.trustedShopsServiceBaseUrlString)
+    }
+    
+    /*
+     Returns product ratings service url for the given channel and product ids
+     */
+    func getProductRatingServiceUrl(for channelId: String, productId: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.productRating.name
+        let endpointWithIds = String(format: endpoint, arguments: [channelId, productId])
+        return self.getQualifiedURL(for: endpointWithIds, baseURLString: self.integrationServiceBaseUrlString)
+    }
+    
+    /*
+     Returns product details service url for the given channel and product ids
+     */
+    func getProductDetailsServiceUrl(for channelId: String, productId: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.productDetails.name
+        let endpointWithIds = String(format: endpoint, arguments: [channelId, productId])
+        return self.getQualifiedURL(for: endpointWithIds, baseURLString: self.integrationServiceBaseUrlString)
     }
     
     /*
@@ -165,6 +189,12 @@ enum TSBackendServiceEndpoint: String {
 
     // Shop aggregate rating endpoint
     case aggregateRating = "/channels/%@/service-reviews/aggregate-rating"
+    
+    // Product rating endpoint
+    case productRating = "/feeds/grades/v1/channels/%@/products/sku/%@/feed.json"
+    
+    // Product details endpoint
+    case productDetails = "/feeds/products/v1/channels/%@/sku/%@/feed.json"
 
     // Product grade endpoint
     case productGrade = "/shops/%@/products/skus/%@/mobiles/v1/sdks/ios/quality/reviews.json"

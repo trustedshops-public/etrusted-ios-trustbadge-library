@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops AG
+//  Copyright (C) 2023 Trusted Shops GmbH
 //
 //  MIT License
 //
@@ -21,31 +21,35 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 21/04/23.
 //
+
 
 import Foundation
 
 /**
- TrustbadgeContext enumeration defines the context of the Trustbadge view.
- These context helps in setting the right UI appearance (shop grade, proudct grade, buyer protection, etc)
- and underlying behavior for the Trustbadge view
+ ProductDetailsModel data object contains product details like id, product name, image urls, gtin, mpn, sku, etc
  */
-@objc public enum TrustbadgeContext: Int {
-    case trustMark
-    case shopGrade
-    case productGrade
-    case buyerProtection
+class ProductDetailsModel: Codable {
+    let id: String
+    let channelId: String
+    let accountId: String
+    let name: String
+    let url: String?
+    let sku: String?
+    let gtin: String?
+    let mpn: String?
+    let image: ProductImageModel?
+}
 
-    // MARK: Public properties
+class ProductImageModel: Codable {
+    let original: ImageModel?
+    let productReviewQuestionnaire: ImageModel?
+    let hubPage: ImageModel?
+}
 
-    /// Icon name for the context
-    var iconImageName: String? {
-        switch self {
-        case .trustMark: return "trustmarkIcon"
-        case .shopGrade: return "shopGradeIcon"
-        case .productGrade: return nil
-        case .buyerProtection: return "buyerProtectionIcon"
-        }
-    }
+class ImageModel: Codable {
+    let url: String
+    let width: Int
+    let height: Int
 }

@@ -45,16 +45,23 @@ class BuyerProtectionDetails: Codable {
     let maxProtectionAmount: String
     let maxProtectionDuration: String
     
+    /// Returns protection currency enum
+    var protectionCurrency: CurrencyCode {
+        let currency = CurrencyCode(rawValue: self.mainProtectionCurrency.lowercased()) ?? .eur
+        return currency
+    }
+    
     /// Returns buyer protection amount rounded to 2 decimal points
     var protectionAmountFormatted: String {
-        guard let protectionAmount = Float(self.maxProtectionAmount) else {
+        guard let protectionAmount = Double(self.maxProtectionAmount) else {
             return self.maxProtectionAmount
         }
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.usesGroupingSeparator = true
-        formatter.currencyCode = CurrencyCode.euro.code
+        formatter.currencyCode = self.protectionCurrency.code
+        formatter.currencySymbol = self.protectionCurrency.symbol
         formatter.maximumFractionDigits = 0
 
         let number = NSNumber(value: protectionAmount)

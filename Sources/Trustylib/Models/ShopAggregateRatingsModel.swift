@@ -27,15 +27,15 @@
 import Foundation
 
 /**
- ShopAggregateRatingsModel contains rating details for a shop from
+ AggregateRatingsModel contains rating details for a shop from
  different period of tme like 7 days, 30 days, 90 days, one year and overall.
  */
-class ShopAggregateRatingsModel: Codable {
-    let sevenDaysRating: AggregateRatingModel
-    let thirtyDaysRating: AggregateRatingModel
-    let nintyDaysRating: AggregateRatingModel
-    let oneYearRating: AggregateRatingModel
-    let overallRating: AggregateRatingModel
+class AggregateRatingsModel: Codable {
+    let sevenDaysRating: RatingModel
+    let thirtyDaysRating: RatingModel
+    let nintyDaysRating: RatingModel
+    let oneYearRating: RatingModel
+    let overallRating: RatingModel
 
     enum CodingKeys: String, CodingKey {
         case sevenDaysRating = "7days"
@@ -46,7 +46,7 @@ class ShopAggregateRatingsModel: Codable {
     }
 }
 
-class AggregateRatingModel: Codable {
+class RatingModel: Codable {
     let count: Int
     let rating: Float
 

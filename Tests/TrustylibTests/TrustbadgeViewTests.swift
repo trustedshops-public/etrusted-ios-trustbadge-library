@@ -32,40 +32,40 @@ import SwiftUI
  This test suite tests `TrustbadgeView`'s initialization workflow and the UI structure
  */
 final class TrustbadgeViewTests: XCTestCase {
-    let tsid = "X330A2E7D449E31E467D2F53A55DDD070"
+    let tsId = "X330A2E7D449E31E467D2F53A55DDD070"
     let channelId = "chl-b309535d-baa0-40df-a977-0b375379a3cc"
     let context: TrustbadgeContext = .shopGrade
     
     func testTrustbadgeViewInitializesWithCorrectValues() throws {
         let trustbadgeView = TrustbadgeView(
-            tsid: self.tsid,
+            tsId: self.tsId,
             channelId: self.channelId,
             context: self.context)
-        
-        XCTAssert(
-            trustbadgeView.trustedShopId == self.tsid,
-            "TrustbadgeView should set correct tsid during initialization"
-        )
-        
-        XCTAssert(
-            trustbadgeView.currentChannelId == self.channelId,
-            "TrustbadgeView should set correct channel id during initialization"
-        )
-        
-        XCTAssert(
-            trustbadgeView.currentContext == self.context,
-            "TrustbadgeView should set correct context during initialization"
-        )
         
         XCTAssertNotNil(
             trustbadgeView.currentViewModel,
             "TrustbadgeView should initialize view model during initialization"
         )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.tsId == self.tsId,
+            "TrustbadgeView should set correct tsid during initialization"
+        )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.channelId == self.channelId,
+            "TrustbadgeView should set correct channel id during initialization"
+        )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.context == self.context,
+            "TrustbadgeView should set correct context during initialization"
+        )
     }
     
     func testTrustbadgeViewBodyIsnotNilForShopGradeContext() {
         let trustbadgeView = TrustbadgeView(
-            tsid: self.tsid,
+            tsId: self.tsId,
             channelId: self.channelId,
             context: .shopGrade)
         
@@ -86,7 +86,7 @@ final class TrustbadgeViewTests: XCTestCase {
     
     func testTrustbadgeViewBodyIsnotNilForBuyerProtectionContext() {
         let trustbadgeView = TrustbadgeView(
-            tsid: self.tsid,
+            tsId: self.tsId,
             channelId: self.channelId,
             context: .buyerProtection)
         
@@ -107,7 +107,7 @@ final class TrustbadgeViewTests: XCTestCase {
     
     func testTrustbadgeViewStateChangesToInvisibleWhenIsHiddenSetToTrue() {
         var trustbadgeView = TrustbadgeView(
-            tsid: self.tsid,
+            tsId: self.tsId,
             channelId: self.channelId,
             context: self.context)
         trustbadgeView.isHidden = true

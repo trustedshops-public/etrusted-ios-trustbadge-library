@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops AG
+//  Copyright (C) 2023 Trusted Shops GmbH
 //
 //  MIT License
 //
@@ -21,31 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 20/04/23.
 //
+
 
 import Foundation
 
 /**
- TrustbadgeContext enumeration defines the context of the Trustbadge view.
- These context helps in setting the right UI appearance (shop grade, proudct grade, buyer protection, etc)
- and underlying behavior for the Trustbadge view
+ ProductRatingsModel is  data object that contains product rating details for duration like
+ weekly, monthly, yearly and other
  */
-@objc public enum TrustbadgeContext: Int {
-    case trustMark
-    case shopGrade
-    case productGrade
-    case buyerProtection
-
-    // MARK: Public properties
-
-    /// Icon name for the context
-    var iconImageName: String? {
-        switch self {
-        case .trustMark: return "trustmarkIcon"
-        case .shopGrade: return "shopGradeIcon"
-        case .productGrade: return nil
-        case .buyerProtection: return "buyerProtectionIcon"
-        }
-    }
+class ProductRatingsModel: Codable {
+    let grades: AggregateRatingsModel
 }
