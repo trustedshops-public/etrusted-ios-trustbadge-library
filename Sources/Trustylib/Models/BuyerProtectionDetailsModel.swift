@@ -62,7 +62,7 @@ class BuyerProtectionDetails: Codable {
         formatter.usesGroupingSeparator = true
         formatter.currencyCode = self.protectionCurrency.code
         formatter.currencySymbol = self.protectionCurrency.symbol
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 0
 
         let number = NSNumber(value: protectionAmount)
         return formatter.string(from: number)!
