@@ -29,6 +29,6 @@ import Foundation
 /**
  TrustbadgeViewAlignment enum defines different positions for Trustbadge alignment
  */
-public enum TrustbadgeViewAlignment {
+@objc public enum TrustbadgeViewAlignment: Int {
     case leading, trailing
 }
