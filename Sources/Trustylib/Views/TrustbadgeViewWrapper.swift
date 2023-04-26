@@ -44,13 +44,15 @@ import SwiftUI
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
-        context: TrustbadgeContext) -> UIViewController {
+        context: TrustbadgeContext,
+        alignment: TrustbadgeViewAlignment = .leading) -> UIViewController {
         return UIHostingController(
             rootView: TrustbadgeView(
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
-                context: context
+                context: context,
+                alignment: alignment
             )
         )
     }
