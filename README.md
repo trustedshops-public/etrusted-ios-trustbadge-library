@@ -23,7 +23,7 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 `Buyer Protection` widget shows details about protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).<br>
 ![buyer-protection](https://user-images.githubusercontent.com/27926337/233946329-21ef1b31-7d06-492a-b0db-ced72eeddb23.gif)
 
-`Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available in `CocoadPod version 1.2.0+` and `Swift Package version 1.2.0+`).<br>
+`Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available in `CocoadPod version 1.2.1+` and `Swift Package version 1.2.1+`).<br>
 ![product-grade](https://user-images.githubusercontent.com/27926337/233946381-e363ecd9-8e8b-4cc0-beb2-0d8797113f2a.gif)
 
 ## 1. Installation ##
@@ -35,7 +35,7 @@ Trustylib can be added to your iOS projects via both [Swift Package Manager](htt
 Trustylib library can easily be added to xcode projects via Swift Package Manager. Here is how it is done,
 
 1. While xcode project is open, go to `File > Add Packages... >`<br>
-2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.0`<br>
+2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.1`<br>
 <img width="500" src="https://user-images.githubusercontent.com/27926337/215734320-5441934d-7aa3-4d38-9720-812a1a656e11.png"><br> 
 3. Click on `Add package` button. Xcode will clone the Trustylib git repository and attach to the xcode project, it should look like this,<br>
 <img width="250" src="https://user-images.githubusercontent.com/27926337/215734354-9c807b84-aa46-4ad3-937a-31f33c21d8b9.png"><br>
@@ -62,7 +62,7 @@ And then run pod install command in the terminal,
 pod install
 ```
 
-You should now have the latest version i.e. `1.2.0` of Trustylib library added to your xcode project!
+You should now have the latest version i.e. `1.2.1` of Trustylib library added to your xcode project!
 
 ## 2. Configuration ##
 Once Trustylib library is added to your xcode project, one configuration file named `TrustbadgeConfiguration.plist` needs to be added to the project. 
