@@ -82,7 +82,7 @@ final class ProductDetailsDataServiceTests: XCTestCase {
     }
     
     func testProductDetailsServiceFailsToLoadRatingsWithoutValidChannelAndProductIds() throws {
-        self.productDetailsDataService.getProductRatings(
+        self.productDetailsDataService.getProductGrade(
             for: "",
             productId: "") { productRatings in
             XCTAssertNil(
@@ -93,7 +93,7 @@ final class ProductDetailsDataServiceTests: XCTestCase {
     }
     
     func testProductDetailsServiceFailsToLoadRatingsWithWrongChannelAndProductIds() throws {
-        self.productDetailsDataService.getProductRatings(
+        self.productDetailsDataService.getProductGrade(
             for: "mock-channel-id",
             productId: "mock-product-id") { productRatings in
             XCTAssertNil(
@@ -105,7 +105,7 @@ final class ProductDetailsDataServiceTests: XCTestCase {
     
     func testProductDetailsServiceLoadsValidProductRatings() {
         let productRatingDetailsExpectation = expectation(description: "ProductDetailsDataService response expectation")
-        self.productDetailsDataService.getProductRatings(
+        self.productDetailsDataService.getProductGrade(
             for: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
             productId: "31303030") { details in
             self.didLoadProductRatings = details != nil

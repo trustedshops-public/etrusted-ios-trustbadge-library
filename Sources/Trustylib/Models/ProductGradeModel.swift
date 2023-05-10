@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
@@ -28,9 +28,9 @@
 import Foundation
 
 /**
- ProductRatingsModel is  data object that contains product rating details for duration like
+ ProductGradeModel is  data object that contains product rating details for duration like
  weekly, monthly, yearly and other
  */
-class ProductRatingsModel: Codable {
+class ProductGradeModel: Codable {
     let grades: AggregateRatingsModel
 }

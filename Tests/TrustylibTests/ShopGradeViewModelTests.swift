@@ -49,92 +49,44 @@ final class ShopGradeViewModelTests: XCTestCase {
     }
     
     func testShopGradeViewModelReturnsValidAggregateRatingsForGivenChannelId() throws {
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let viewModel = ShopGradeViewModel()
-            let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
-            viewModel.loadAggregateRating(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { _ in
-                aggregateRatingExpectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 6)
-            XCTAssert(
-                viewModel.shopRating != 0,
-                "ShopGradeViewModel should return valid aggregate rating for the given channel id"
-            )
-        } catch {
-            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+        let viewModel = ShopGradeViewModel()
+        let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
+        viewModel.loadShopGrade(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { _ in
+            aggregateRatingExpectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 6)
+        XCTAssert(
+            viewModel.shopRating != 0,
+            "ShopGradeViewModel should return valid aggregate rating for the given channel id"
+        )
     }
     
     func testShopGradeViewModelDoesntReturnsAggregateRatingsForInvalidChannelId() throws {
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let viewModel = ShopGradeViewModel()
-            let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
-            viewModel.loadAggregateRating(for: "TestChannel") { _ in
-                aggregateRatingExpectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 6)
-            XCTAssert(
-                viewModel.shopRating == 0,
-                "ShopGradeViewModel should not return aggregate rating for an invalid channel id"
-            )
-        } catch {
-            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+        let viewModel = ShopGradeViewModel()
+        let aggregateRatingExpectation = expectation(description: "Shop aggregate rating expectation")
+        viewModel.loadShopGrade(for: "TestChannel") { _ in
+            aggregateRatingExpectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 6)
+        XCTAssert(
+            viewModel.shopRating == 0,
+            "ShopGradeViewModel should not return aggregate rating for an invalid channel id"
+        )
     }
     
     func testShopGradeViewModelDoesntReturnsAggregateGradeForEmptyChannelId() throws {
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let viewModel = ShopGradeViewModel()
-            let aggregateGradeExpectation = expectation(description: "Shop aggregate grade expectation")
-            viewModel.loadAggregateRating(for: "") { _ in
-                aggregateGradeExpectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 6)
-            XCTAssert(
-                viewModel.shopGrade == "",
-                "ShopGradeViewModel should not return aggregate grade for an empty channel id"
-            )
-        } catch {
-            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+        let viewModel = ShopGradeViewModel()
+        let aggregateGradeExpectation = expectation(description: "Shop aggregate grade expectation")
+        viewModel.loadShopGrade(for: "") { _ in
+            aggregateGradeExpectation.fulfill()
         }
-    }
-    
-    func testShopGradeViewModelAuthenticatesSuccessfully() throws {
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let viewModel = ShopGradeViewModel()
-            var didAuthenticateSuccessfully = false
-            let authenticationExpectation = expectation(description: "Client authentication expectation")
-            viewModel.getAuthenticationTokenIfNeeded { didAuthenticate in
-                didAuthenticateSuccessfully = didAuthenticate
-                authenticationExpectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 5)
-            XCTAssertTrue(
-                didAuthenticateSuccessfully,
-                "ShopGradeViewModel should be able to fetch valid client authentication token"
-            )
-        } catch {
-            XCTFail("ShopGradeViewModel failed to fetch client authentication token")
-        }
+        
+        waitForExpectations(timeout: 6)
+        XCTAssert(
+            viewModel.shopGrade == "",
+            "ShopGradeViewModel should not return aggregate grade for an empty channel id"
+        )
     }
 }

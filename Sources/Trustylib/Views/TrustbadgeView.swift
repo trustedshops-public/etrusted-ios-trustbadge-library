@@ -49,7 +49,7 @@ public struct TrustbadgeView: View {
     // MARK: Private properties
     
     @StateObject private var viewModel: TrustbadgeViewModel
-    private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
+    private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.9
     
     // MARK: Initializer
     
@@ -90,7 +90,7 @@ public struct TrustbadgeView: View {
     // MARK: Private methods
     
     /**
-     Builds up trustbadge root view based on available width, height and view model data and returns the same
+     Builds up trustbadge root view based on available width, height, view model data and returns the same
      */
     private func getRootViewWith(proposedWidth: CGFloat, proposedHeight: CGFloat) -> some View {
         
@@ -108,9 +108,7 @@ public struct TrustbadgeView: View {
                 // client secret details were loaded from the configuration file
                 // which are reuired for showing shop grade, product grade, etc
                 
-                if TrustbadgeConfigurationService.shared.clientId != nil,
-                   TrustbadgeConfigurationService.shared.clientSecret != nil,
-                   self.viewModel.areBadgeInputsValid {
+                if self.viewModel.areBadgeInputsValid {
                     
                     ZStack(alignment: .center) {
                         // Background
@@ -126,15 +124,17 @@ public struct TrustbadgeView: View {
                         // Content - Shop grade, product grade, etc
                         ZStack {
                             if self.viewModel.context == .shopGrade {
-                                ShopGradeView(
-                                    channelId: self.viewModel.channelId!,
-                                    currentState: self.viewModel.currentState,
-                                    alignment: self.viewModel.alignment,
-                                    isTrustmarkValid: self.viewModel.isTrustmarkValid,
-                                    height: proposedHeight,
-                                    width: proposedWidth,
-                                    delegate: self
-                                )
+                                if let channelId = self.viewModel.channelId {
+                                    ShopGradeView(
+                                        channelId: channelId,
+                                        currentState: self.viewModel.currentState,
+                                        alignment: self.viewModel.alignment,
+                                        isTrustmarkValid: self.viewModel.isTrustmarkValid,
+                                        height: proposedHeight,
+                                        width: proposedWidth,
+                                        delegate: self
+                                    )
+                                }
                             } else if self.viewModel.context == .buyerProtection {
                                 BuyerProtectionView(
                                     tsid: self.viewModel.tsId,
@@ -180,6 +180,9 @@ public struct TrustbadgeView: View {
                             .frame(
                                 width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle,
                                 height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle
+                            )
+                            .clipShape(
+                                Circle()
                             )
                     }
                 }

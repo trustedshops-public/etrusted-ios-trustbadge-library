@@ -83,9 +83,9 @@ class ProductGradeViewModel: ObservableObject {
     }
     
     /**
-     Calls Trustedshops product grade ratings API to get product grade details
+     Calls Trustedshops product grade API to get product grade details
      */
-    func loadProductRating(
+    func loadProductGrade(
         for channelId: String,
         productId: String,
         responseHandler: @escaping ResponseHandler<Bool>) {
@@ -100,9 +100,9 @@ class ProductGradeViewModel: ObservableObject {
             }
             
             let productDetailsDataService = ProductDetailsDataService()
-            productDetailsDataService.getProductRatings(for: channelId, productId: productId) { [weak self] ratings in
+            productDetailsDataService.getProductGrade(for: channelId, productId: productId) { [weak self] grade in
                 guard let strongSelf = self,
-                      let productRatings = ratings else {
+                      let productGrade = grade else {
                     TSConsoleLogger.log(
                         messege: "Error loading product grade details for channel id \(channelId) and product id \(productId)",
                         severity: .error
@@ -116,9 +116,9 @@ class ProductGradeViewModel: ObservableObject {
                     severity: .info
                 )
                 
-                strongSelf.productGrade = productRatings.grades.oneYearRating.grade
-                strongSelf.productRating = productRatings.grades.oneYearRating.rating
-                strongSelf.productRatingFormatted = productRatings.grades.oneYearRating.ratingFormatted
+                strongSelf.productGrade = productGrade.grades.oneYearRating.grade
+                strongSelf.productRating = productGrade.grades.oneYearRating.rating
+                strongSelf.productRatingFormatted = productGrade.grades.oneYearRating.ratingFormatted
                 responseHandler(true)
             }
     }

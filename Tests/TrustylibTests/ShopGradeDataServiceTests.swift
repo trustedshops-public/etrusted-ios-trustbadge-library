@@ -34,43 +34,27 @@ final class ShopGradeDataServiceTests: XCTestCase {
 
     override func setUpWithError() throws {
         self.didLoadShopGradeDetails = false
-        TrustbadgeConfigurationService.shared.resetConfiguration()
-        TSAuthenticationService.shared.resetAuthenticationToken()
     }
 
-    func testShopGradeServiceFailsWithoutTrustbadgeConfigurationAndAuthentication() throws {
-        self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { aggregateRatings in
-            XCTAssertNil(
-                aggregateRatings,
-                "ShopGradeDataService should fail without trustbadge configuration and successful client authentication"
-            )
+    func testShopGradeServiceFailsToLoadRatingsForInvalidChannelId() throws {
+        let shopGradeExpectation = expectation(description: "ShopGradeDataService response expectation")
+        self.shopGradeDataService.getShopGrade(for: "testChannel123") { ratings in
+            self.didLoadShopGradeDetails = ratings != nil
+            shopGradeExpectation.fulfill()
         }
+        waitForExpectations(timeout: 5)
+        XCTAssertFalse(self.didLoadShopGradeDetails,
+                       "ShopGradeDataService should fail to load ratings for an invalid channel id")
     }
-
-    func testShopGradeServiceReturnsGradeAfterTrustbadgeConfigurationAndAuthentication() {
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            // Authenticating client
-            let accessTokenExpectation = expectation(description: "Client authentication returns valid access token")
-            TSAuthenticationService.shared.getAuthenticationToken { _ in
-                accessTokenExpectation.fulfill()
-            }
-            waitForExpectations(timeout: 3)
-
-            // Fetching shop grade with ShopGradeDataService
-            let shopGradeExpectation = expectation(description: "ShopGradeDataService response expectation")
-            self.shopGradeDataService.getAggregateRatings(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { ratings in
-                self.didLoadShopGradeDetails = ratings != nil
-                shopGradeExpectation.fulfill()
-            }
-            waitForExpectations(timeout: 5)
-            XCTAssertTrue(self.didLoadShopGradeDetails,
-                            "ShopGradeDataService should return shop grade after successful trustbadge configuration and authentication")
-        } catch {
-            XCTFail("Failed to load shop grades due to missing trustbadge configuration")
+    
+    func testShopGradeServiceLoadsRatingsForValidChannelId() throws {
+        let shopGradeExpectation = expectation(description: "ShopGradeDataService response expectation")
+        self.shopGradeDataService.getShopGrade(for: "chl-b309535d-baa0-40df-a977-0b375379a3cc") { ratings in
+            self.didLoadShopGradeDetails = ratings != nil
+            shopGradeExpectation.fulfill()
         }
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(self.didLoadShopGradeDetails,
+                       "ShopGradeDataService should load ratings for a valid channel id")
     }
 }

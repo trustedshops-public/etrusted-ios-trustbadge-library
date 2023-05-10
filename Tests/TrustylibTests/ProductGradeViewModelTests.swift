@@ -105,7 +105,7 @@ final class ProductGradeViewModelTests: XCTestCase {
     func testProductGradeViewModelLoadsProductRatingsForGivenChannelAndProductId() throws {
         let viewModel = ProductGradeViewModel()
         let productDetailsExpectation = expectation(description: "Product details expectation")
-        viewModel.loadProductRating(
+        viewModel.loadProductGrade(
             for: "chl-c0ad29ff-a086-4191-a663-82fed64f6f65",
             productId: "31303031") { _ in
                 productDetailsExpectation.fulfill()
@@ -121,7 +121,7 @@ final class ProductGradeViewModelTests: XCTestCase {
     func testProductGradeViewModelFailsToLoadsProductRatingsForWrongChannelAndProductId() throws {
         let viewModel = ProductGradeViewModel()
         let productDetailsExpectation = expectation(description: "Product details expectation")
-        viewModel.loadProductRating(
+        viewModel.loadProductGrade(
             for: "mock-channel-id",
             productId: "mock-product-id") { _ in
                 productDetailsExpectation.fulfill()
@@ -137,7 +137,7 @@ final class ProductGradeViewModelTests: XCTestCase {
     func testProductGradeViewModelFailsToLoadsProductRatingsForEmptyChannelAndProductId() throws {
         let viewModel = ProductGradeViewModel()
         let productDetailsExpectation = expectation(description: "Product details expectation")
-        viewModel.loadProductRating(
+        viewModel.loadProductGrade(
             for: "",
             productId: "") { _ in
                 productDetailsExpectation.fulfill()

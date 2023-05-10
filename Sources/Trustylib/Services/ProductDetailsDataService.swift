@@ -43,7 +43,8 @@ class ProductDetailsDataService: TSNetworkDataService {
     func getProductDetails(
         for channelId: String,
         productId: String,
-        responseHandler: @escaping ResponseHandler<ProductDetailsModel?>) {
+        responseHandler: @escaping ResponseHandler<ProductDetailsModel?>
+    ) {
         guard let url = self.backendServiceURL.getProductDetailsServiceUrl(for: channelId, productId: productId) else {
             responseHandler(nil)
             return
@@ -87,11 +88,15 @@ class ProductDetailsDataService: TSNetworkDataService {
      Calls Trustedshop's backend API for getting product grade and rating details for the given `channelId` and `productId`.
      It then handles API response/error and then responds back via response handler callback
      */
-    func getProductRatings(
+    func getProductGrade(
         for channelId: String,
         productId: String,
-        responseHandler: @escaping ResponseHandler<ProductRatingsModel?>) {
-        guard let url = self.backendServiceURL.getProductRatingServiceUrl(for: channelId, productId: productId) else {
+        responseHandler: @escaping ResponseHandler<ProductGradeModel?>
+    ) {
+        guard let url = self.backendServiceURL.getProductGradeServiceUrl(
+            for: channelId,
+            productId: productId
+        ) else {
             responseHandler(nil)
             return
         }
@@ -103,16 +108,16 @@ class ProductDetailsDataService: TSNetworkDataService {
             body: nil,
             headerValues: nil)
 
-        let apiResponseHandler: TSNetworkServiceResponseHandler<ProductRatingsModel> = { response, error in
+        let apiResponseHandler: TSNetworkServiceResponseHandler<ProductGradeModel> = { response, error in
             guard let backendResponse = response,
-                  let productRatings = backendResponse.first,
+                  let productGrade = backendResponse.first,
                   error == nil else {
                 responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                responseHandler(productRatings)
+                responseHandler(productGrade)
             }
         }
 

@@ -69,19 +69,11 @@ final class TrustbadgeViewTests: XCTestCase {
             channelId: self.channelId,
             context: .shopGrade)
         
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
-            XCTAssertNotNil(
-                view,
-                "TrustbadgeView body should not be nil for shop grade context"
-            )
-        } catch {
-            XCTFail("Failed to load trustbadge view due to missing trustbadge configuration")
-        }
+        let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+        XCTAssertNotNil(
+            view,
+            "TrustbadgeView body should not be nil for shop grade context"
+        )
     }
     
     func testTrustbadgeViewBodyIsnotNilForBuyerProtectionContext() {
@@ -89,20 +81,11 @@ final class TrustbadgeViewTests: XCTestCase {
             tsId: self.tsId,
             channelId: self.channelId,
             context: .buyerProtection)
-        
-        do {
-            // Loading trustbadge configuration
-            let bundle = Bundle(for: type(of: self))
-            try TrustbadgeConfigurationService.shared.loadConfiguration(from: bundle)
-
-            let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
-            XCTAssertNotNil(
-                view,
-                "TrustbadgeView body should not be nil for buyer protection context"
-            )
-        } catch {
-            XCTFail("Failed to load trustbadge view due to missing trustbadge configuration")
-        }
+        let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+        XCTAssertNotNil(
+            view,
+            "TrustbadgeView body should not be nil for buyer protection context"
+        )
     }
     
     func testTrustbadgeViewStateChangesToInvisibleWhenIsHiddenSetToTrue() {

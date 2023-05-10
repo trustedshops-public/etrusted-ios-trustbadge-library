@@ -62,7 +62,7 @@ struct ShopGradeView: View {
         HStack(spacing: 0) {
             GradeAndRatingView(
                 grade: self.viewModel.shopGrade,
-                gradeTitle: NSLocalizedString("shops reviews", comment: "Trustbadge: Shop grade title"),
+                gradeTitle: NSLocalizedString("shop reviews", comment: "Trustbadge: Shop grade title"),
                 rating: self.viewModel.shopRating,
                 ratingFormatted: self.viewModel.shopRatingFormatted,
                 alignment: self.alignment,
@@ -75,8 +75,8 @@ struct ShopGradeView: View {
             height: self.height
         )
         .onAppear {
-            self.viewModel.loadAggregateRating(for: self.channelId) { didLoadDetails in
-                guard didLoadDetails else { return }
+            self.viewModel.loadShopGrade(for: self.channelId) { didLoadGrade in
+                guard didLoadGrade else { return }
                 self.delegate?.didLoadShopGrades()
             }
         }

@@ -41,7 +41,7 @@ class TSNetworkServiceResponseConfiguration {
     // MARK: Public properties
     var hasResponseData = true
     var expectedResponseCode: TSNetworkServiceResponseCode = .expected(200)
-    var unexpectedResponseCode: TSNetworkServiceResponseCode = .unexpected(201)
+    var unexpectedResponseCode: TSNetworkServiceResponseCode = .unexpected(404)
     var errorResponseCode: TSNetworkServiceResponseCode = .error(501)
 
     // MARK: Initializer

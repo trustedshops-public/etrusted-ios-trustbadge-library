@@ -138,7 +138,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         viewModel.setIconForState()
         
         XCTAssert(
-            viewModel.iconImageName == "trustmarkIconInvalidCertificate",
+            viewModel.iconImageName == "trustMarkIconInvalidCertificate",
             "TrustbadgeViewModel should set correct icon image name for the current badge state"
         )
         
@@ -148,7 +148,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
         
-        let iconName = viewModel.isTrustmarkValid ? "trustmarkIcon": "trustmarkIconInvalidCertificate"
+        let iconName = viewModel.isTrustmarkValid ? "trustMarkIcon": "trustMarkIconInvalidCertificate"
         XCTAssert(
             viewModel.iconImageName == iconName,
             "TrustbadgeViewModel should set correct icon image name for the current badge state"

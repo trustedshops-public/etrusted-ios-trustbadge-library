@@ -31,8 +31,6 @@ import Foundation
  backend services
  */
 struct TSNetworkServiceHeaderField {
-    static let authorization = "Authorization"
-    static let accessToken = "Access-Token"
     static let contentType = "Content-Type"
     static let accept = "Accept"
 }
@@ -42,7 +40,6 @@ struct TSNetworkServiceHeaderField {
  backend services
  */
 struct TSNetworkServiceHeaderFieldValue {
-    static let authorizationBearerToken = "Bearer %@"
     static let contentTypeJson = "application/json"
     static let contentTypeUrlEncoded = "application/x-www-form-urlencoded"
     static let acceptAll = "*/*"
