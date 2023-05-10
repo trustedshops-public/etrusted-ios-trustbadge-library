@@ -41,15 +41,6 @@ class TSBackendServiceURL {
         return instance
     }
 
-    /*
-     Returns TrustedShop's authentication service url
-     */
-    var authenticationServiceUrl: URL? {
-        let endpoint = TSBackendServiceEndpoint.shopAuthentication.name
-        let qualifiedURLString = self.authenticationServiceBaseUrlString.appending(endpoint)
-        return URL(string: qualifiedURLString)
-    }
-
     // MARK: Private properties
 
     private static var instance: TSBackendServiceURL?
@@ -58,30 +49,14 @@ class TSBackendServiceURL {
     private let buildEnvValueStage = "STAGE"
     private let buildEnvValueProd = "PROD"
 
-    /// Returns base URL string for TrustedShop's authentication services
-    private var authenticationServiceBaseUrlString: String {
-        switch self.environment {
-        case .stage: return "https://login.etrusted.com"
-        case .prod: return "https://login.etrusted.com"
-        }
-    }
-
-    /// Returns base URL string for Trustedshop's backend services
-    private var trustedShopsServiceBaseUrlString: String {
-        switch self.environment {
-        case .stage: return "https://api.etrusted.com"
-        case .prod: return "https://api.etrusted.com"
-        }
-    }
-
     /// Returns base URL string for Trustedshop's CDN services
     private var cdnServiceBaseUrlString: String {
         switch self.environment {
-        case .stage: return "https://cdn1.api-qa.trustedshops.com"
-        case .prod: return "https://cdn1.api.trustedshops.com"
+        case .stage, .prod: return "https://cdn1.api.trustedshops.com"
         }
     }
     
+    /// Returns base URL string for Trustedshops grade and ratings feed API
     private var integrationServiceBaseUrlString: String {
         switch self.environment {
         case .stage, .prod: return "https://integrations.etrusted.com"
@@ -99,26 +74,26 @@ class TSBackendServiceURL {
     /*
      Returns trustmark service url for the given tsid
      */
-    func getTrustmarkServiceUrl(for tsid: String) -> URL? {
-        let endpoint = TSBackendServiceEndpoint.trustmark.name
+    func getTrustmarkDetailsServiceUrl(for tsid: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.trustmarkDetails.name
         let endpointWithTsid = String(format: endpoint, arguments: [tsid])
         return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
     }
 
     /*
-     Returns aggregate ratings service url for the given shop id
+     Returns shop grade service url for the given shop id
      */
-    func getAggregateRatingServiceUrl(for shopId: String) -> URL? {
-        let endpoint = TSBackendServiceEndpoint.aggregateRating.name
+    func getShopGradeServiceUrl(for shopId: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.shopGrade.name
         let endpointWithShopId = String(format: endpoint, arguments: [shopId])
-        return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.trustedShopsServiceBaseUrlString)
+        return self.getQualifiedURL(for: endpointWithShopId, baseURLString: self.integrationServiceBaseUrlString)
     }
     
     /*
-     Returns product ratings service url for the given channel and product ids
+     Returns product grade service url for the given channel and product ids
      */
-    func getProductRatingServiceUrl(for channelId: String, productId: String) -> URL? {
-        let endpoint = TSBackendServiceEndpoint.productRating.name
+    func getProductGradeServiceUrl(for channelId: String, productId: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.productGrade.name
         let endpointWithIds = String(format: endpoint, arguments: [channelId, productId])
         return self.getQualifiedURL(for: endpointWithIds, baseURLString: self.integrationServiceBaseUrlString)
     }
@@ -135,8 +110,8 @@ class TSBackendServiceURL {
     /*
      Returns buyer protection service url for the given tsid
      */
-    func getBuyerProtectionServiceUrl(for tsid: String) -> URL? {
-        let endpoint = TSBackendServiceEndpoint.trustmark.name
+    func getBuyerProtectionDetailsServiceUrl(for tsid: String) -> URL? {
+        let endpoint = TSBackendServiceEndpoint.trustmarkDetails.name
         let endpointWithTsid = String(format: endpoint, arguments: [tsid])
         return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
     }
@@ -178,29 +153,17 @@ enum TSEnvironmentKey {
  */
 enum TSBackendServiceEndpoint: String {
 
-    // Authentication endpoints
-    case shopAuthentication = "/oauth/token"
-
     // Trustbadge endpoint
-    case trustmark = "/shops/%@/mobiles/v1/sdks/ios/trustmarks.json"
+    case trustmarkDetails = "/shops/%@/mobiles/v1/sdks/ios/trustmarks.json"
 
     // Shop grade endpoint
-    case shopGrade = "/shops/%@/mobiles/v1/sdks/ios/quality/reviews.json"
-
-    // Shop aggregate rating endpoint
-    case aggregateRating = "/channels/%@/service-reviews/aggregate-rating"
+    case shopGrade = "/feeds/grades/v1/channels/%@/touchpoints/all/feed.json"
     
-    // Product rating endpoint
-    case productRating = "/feeds/grades/v1/channels/%@/products/sku/%@/feed.json"
+    // Product grade endpoint
+    case productGrade = "/feeds/grades/v1/channels/%@/products/sku/%@/feed.json"
     
     // Product details endpoint
     case productDetails = "/feeds/products/v1/channels/%@/sku/%@/feed.json"
-
-    // Product grade endpoint
-    case productGrade = "/shops/%@/products/skus/%@/mobiles/v1/sdks/ios/quality/reviews.json"
-
-    // Product review endpoint
-    case productReviews = "/shops/%@/products/skus/%@/mobiles/v1/sdks/ios/reviews.json"
 
     // Returns string typed name of the endpoint
     var name: String {

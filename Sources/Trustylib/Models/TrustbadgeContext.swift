@@ -42,7 +42,7 @@ import Foundation
     /// Icon name for the context
     var iconImageName: String? {
         switch self {
-        case .trustMark: return "trustmarkIcon"
+        case .trustMark: return "trustMarkIcon"
         case .shopGrade: return "shopGradeIcon"
         case .productGrade: return nil
         case .buyerProtection: return "buyerProtectionIcon"

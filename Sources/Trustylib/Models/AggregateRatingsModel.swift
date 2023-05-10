@@ -21,19 +21,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 09/11/22.
+//  Created by Prem Pratap Singh on 09/05/23.
 //
+
 
 import Foundation
 
-struct TSNetworkServiceBodyField {
-    static let grantType = "grant_type"
-    static let clientId = "client_id"
-    static let clientSecret = "client_secret"
-    static let audience = "https://api.etrusted.com"
+/**
+ AggregateRatingsModel contains rating details for a shop/product from
+ different period of tme like 7 days, 30 days, 90 days, one year and overall.
+ */
+class AggregateRatingsModel: Codable {
+    let sevenDaysRating: RatingModel
+    let thirtyDaysRating: RatingModel
+    let nintyDaysRating: RatingModel
+    let oneYearRating: RatingModel
+    let overallRating: RatingModel
+
+    enum CodingKeys: String, CodingKey {
+        case sevenDaysRating = "7days"
+        case thirtyDaysRating = "30days"
+        case nintyDaysRating = "90days"
+        case oneYearRating = "365days"
+        case overallRating = "overall"
+    }
 }
 
-struct TSNetworkServiceBodyFieldValue {
-    static let clientCredentials = "client_credentials"
-    static let trustedShopBackendApiUrl = "https://api.etrusted.com"
+class RatingModel: Codable {
+    let count: Int
+    let rating: Float
+
+    // MARK: Public properties
+
+    /// Returns grade text based on rating
+    var grade: String {
+        return GradeCalculator.getGradeForRating(self.rating)
+    }
+
+    /// Returns rating value rounded to 2 decimal points
+    var ratingFormatted: String {
+        let string = String(format: "%.2f", self.rating)
+        return string
+    }
 }

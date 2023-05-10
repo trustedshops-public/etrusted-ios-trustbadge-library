@@ -28,7 +28,7 @@ import Foundation
 
 /**
  ShopGradeViewModel serves ShopGradeView for managing view states and
- getting shop grade details for the given channel id.
+ getting shop ratings/grade details for the given channel id.
  */
 class ShopGradeViewModel: ObservableObject {
         
@@ -39,73 +39,38 @@ class ShopGradeViewModel: ObservableObject {
     @Published var shopRatingFormatted: String = ""
     
     /**
-     Calls Trustedshops aggregate ratings API to get shop's grade details
+     Calls Trustedshops API to get shop's rating and grade details
      */
-    func loadAggregateRating(for channelId: String, responseHandler: @escaping ResponseHandler<Bool>) {
+    func loadShopGrade(for channelId: String, responseHandler: @escaping ResponseHandler<Bool>) {
         guard !channelId.isEmpty else {
             TSConsoleLogger.log(
                 messege: "Error loading shop grade details due to invalid channel id",
-                severity: .info
+                severity: .error
             )
             responseHandler(false)
             return
         }
         
-        self.getAuthenticationTokenIfNeeded { [weak self] didGetToken in
-            guard didGetToken else {
-                responseHandler(false)
-                return
-            }
-            
-            let shopGradeDataService = ShopGradeDataService()
-            shopGradeDataService.getAggregateRatings(for: channelId) { [weak self] ratings in
-                guard let strongSelf = self,
-                      let aggregateRatings = ratings else {
-                    TSConsoleLogger.log(
-                        messege: "Error loading shop grade details",
-                        severity: .error
-                    )
-                    responseHandler(false)
-                    return
-                }
-                
+        let shopGradeDataService = ShopGradeDataService()
+        shopGradeDataService.getShopGrade(for: channelId) { [weak self] grade in
+            guard let strongSelf = self,
+                  let shopGrade = grade else {
                 TSConsoleLogger.log(
-                    messege: "Successfully loaded shop grade details for channel \(channelId)",
-                    severity: .info
-                )
-                
-                strongSelf.shopGrade = aggregateRatings.oneYearRating.grade
-                strongSelf.shopRating = aggregateRatings.oneYearRating.rating
-                strongSelf.shopRatingFormatted = aggregateRatings.oneYearRating.ratingFormatted
-                responseHandler(true)
-            }
-        }
-    }
-
-    /**
-     Calls Trustedshops authentication service to obtain authentication token required for
-     API calls that return details like shop grade, product grade, etc
-     */
-    func getAuthenticationTokenIfNeeded(responseHandler: @escaping ResponseHandler<Bool>) {
-        guard TSAuthenticationService.shared.isAccessTokenExpired else {
-            responseHandler(true)
-            return
-        }
-        
-        TSAuthenticationService.shared.getAuthenticationToken { didAuthenticate in
-            guard didAuthenticate else {
-                TSConsoleLogger.log(
-                    messege: "Authentication error, failed to obtain authentication token",
+                    messege: "Error loading shop grade details",
                     severity: .error
                 )
                 responseHandler(false)
                 return
             }
-
+            
             TSConsoleLogger.log(
-                messege: "Successfully recieved authentication token",
+                messege: "Successfully loaded shop grade details for channel \(channelId)",
                 severity: .info
             )
+            
+            strongSelf.shopGrade = shopGrade.grades.oneYearRating.grade
+            strongSelf.shopRating = shopGrade.grades.oneYearRating.rating
+            strongSelf.shopRatingFormatted = shopGrade.grades.oneYearRating.ratingFormatted
             responseHandler(true)
         }
     }
