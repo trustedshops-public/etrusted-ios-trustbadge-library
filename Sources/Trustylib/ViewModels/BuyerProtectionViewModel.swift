@@ -42,8 +42,7 @@ class BuyerProtectionViewModel: ObservableObject {
     func loadBuyerProtectionDetails(for tsid: String, responseHandler: @escaping ResponseHandler<Bool>) {
         let buyerProtectionDataService = BuyerProtectionDataService()
         buyerProtectionDataService.getBuyerProtectionDetails(for: tsid) { [weak self] details in
-            guard let strongSelf = self,
-                  let buyerProtectionDetails = details else {
+            guard let buyerProtectionDetails = details else {
                 TSConsoleLogger.log(
                     messege: "Error loading buyer protection details for shop with tsid: \(tsid)",
                     severity: .error
@@ -56,7 +55,7 @@ class BuyerProtectionViewModel: ObservableObject {
                 messege: "Successfully loaded buyer protection details for shop with tsid: \(tsid)",
                 severity: .info
             )
-            strongSelf.protectionAmountFormatted = buyerProtectionDetails.guarantee.protectionAmountFormatted
+            self?.protectionAmountFormatted = buyerProtectionDetails.guarantee.protectionAmountFormatted
             responseHandler(true)
         }
     }

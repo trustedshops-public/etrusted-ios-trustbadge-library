@@ -35,7 +35,7 @@ final class ShopGradeDataServiceTests: XCTestCase {
     override func setUpWithError() throws {
         self.didLoadShopGradeDetails = false
     }
-
+    
     func testShopGradeServiceFailsToLoadRatingsForInvalidChannelId() throws {
         let shopGradeExpectation = expectation(description: "ShopGradeDataService response expectation")
         self.shopGradeDataService.getShopGrade(for: "testChannel123") { ratings in

@@ -129,8 +129,7 @@ class TrustbadgeViewModel: ObservableObject {
         }
         
         self.trustmarkDataService.getTrustmarkDetails(for: self.tsId) { [weak self] details in
-            guard let strongSelf = self,
-                  let tmDetails = details else {
+            guard let tmDetails = details else {
                 TSConsoleLogger.log(
                     messege: "Error loading trustmark details for shop with tsid: \(self?.tsId ?? "")",
                     severity: .error
@@ -140,21 +139,21 @@ class TrustbadgeViewModel: ObservableObject {
             }
             
             TSConsoleLogger.log(
-                messege: "Successfully loaded trustmark details for shop with tsid: \(strongSelf.tsId)",
+                messege: "Successfully loaded trustmark details for shop with tsid: \(self?.tsId)",
                 severity: .info
             )
             
-            strongSelf.trustMarkDetails = tmDetails
-            strongSelf.isTrustmarkValid = tmDetails.trustMark.isValid
-            strongSelf.currentState = TrustbadgeState.default(strongSelf.isTrustmarkValid)
-            let validityString = strongSelf.isTrustmarkValid ? "is valid": "isn't valid!"
+            self?.trustMarkDetails = tmDetails
+            self?.isTrustmarkValid = tmDetails.trustMark.isValid
+            self?.currentState = TrustbadgeState.default(tmDetails.trustMark.isValid)
+            let validityString = tmDetails.trustMark.isValid ? "is valid": "isn't valid!"
             
             TSConsoleLogger.log(
-                messege: "Trustmark for shop with tsid: \(strongSelf.tsId) \(validityString)",
+                messege: "Trustmark for shop with tsid: \(self?.tsId) \(validityString)",
                 severity: .info
             )
             
-            strongSelf.setIconForState()
+            self?.setIconForState()
             responseHandler?(true)
         }
     }

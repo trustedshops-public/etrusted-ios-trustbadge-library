@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1148D1129D6E51700851428 /* TSDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSDataServiceTests.swift */; };
+		C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */; };
 		C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */; };
 		C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C119217C29852A1400A550C7 /* Trustylib.framework */; };
 		C11CE84929881DA8000D6083 /* trustMarkIconInvalidCertificate.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80729881DA8000D6083 /* trustMarkIconInvalidCertificate.png */; };
@@ -103,7 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C1148D1029D6E51700851428 /* TSDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDataServiceTests.swift; sourceTree = "<group>"; };
+		C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkDataServiceTests.swift; sourceTree = "<group>"; };
 		C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewTests.swift; sourceTree = "<group>"; };
 		C119217C29852A1400A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C119218629852A1400A550C7 /* TrustylibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustylibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -436,7 +436,7 @@
 				C190465129D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift */,
 				C190465329D5A59D0054BEE4 /* BuyerProtectionViewTests.swift */,
 				C190465729D64B530054BEE4 /* GradeCalculatorTests.swift */,
-				C1148D1029D6E51700851428 /* TSDataServiceTests.swift */,
+				C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */,
 				C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */,
 				C1A983F529F598DD00D83BBF /* ProductDetailsModelTests.swift */,
 				C1A983FA29F5A1B100D83BBF /* ProductRatingsModelTests.swift */,
@@ -674,7 +674,7 @@
 				C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */,
 				C190464E29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift in Sources */,
 				C1A983FB29F5A1B100D83BBF /* ProductRatingsModelTests.swift in Sources */,
-				C1148D1129D6E51700851428 /* TSDataServiceTests.swift in Sources */,
+				C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */,
 				C1A983F629F598DD00D83BBF /* ProductDetailsModelTests.swift in Sources */,
 				C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */,
 				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,

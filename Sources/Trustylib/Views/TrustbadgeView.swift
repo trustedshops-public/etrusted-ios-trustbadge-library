@@ -75,16 +75,11 @@ public struct TrustbadgeView: View {
     
     public var body: some View {
         GeometryReader { geoReader in
-            
-            let proposedWidth = geoReader.frame(in: .global).width
-            let proposedHeight = geoReader.frame(in: .global).height
-            self.getRootViewWith(proposedWidth: proposedWidth, proposedHeight: proposedHeight)
+            self.getRootViewWith(proposedWidth: geoReader.frame(in: .global).width, proposedHeight: geoReader.frame(in: .global).height)
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
-        .onAppear {
-            self.viewModel.getTrustmarkDetails()
-        }
+        .onAppear { self.viewModel.getTrustmarkDetails() }
     }
     
     // MARK: Private methods
@@ -98,9 +93,7 @@ public struct TrustbadgeView: View {
             
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the right
-            if self.viewModel.alignment == .trailing {
-                Spacer(minLength: 0)
-            }
+            if self.viewModel.alignment == .trailing { Spacer(minLength: 0) }
             
             ZStack(alignment: self.viewModel.alignment == .leading ? .leading : .trailing) {
                 
@@ -177,13 +170,8 @@ public struct TrustbadgeView: View {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
-                            .frame(
-                                width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle,
-                                height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle
-                            )
-                            .clipShape(
-                                Circle()
-                            )
+                            .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle)
+                            .clipShape(Circle())
                     }
                 }
                 .opacity(self.viewModel.trustMarkDetails != nil ? 1 : 0)
@@ -192,9 +180,7 @@ public struct TrustbadgeView: View {
             
             // This spacer helps in keeping the trustmark icon and expanding view
             // aligned to the left
-            if self.viewModel.alignment == .leading {
-                Spacer(minLength: 0)
-            }
+            if self.viewModel.alignment == .leading { Spacer(minLength: 0) }
         }
     }
 }
