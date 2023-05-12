@@ -71,9 +71,7 @@ struct BuyerProtectionView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if self.alignment == .trailing {
-                Spacer()
-            }
+            if self.alignment == .trailing { Spacer() }
             
             VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 4) {
                 Text(NSLocalizedString("Independent guarantee",
@@ -101,17 +99,13 @@ struct BuyerProtectionView: View {
             .padding(.leading, self.leadingPadding)
             .padding(.trailing, self.trailingPadding)
             
-            if self.alignment == .leading {
-                Spacer()
-            }
+            if self.alignment == .leading { Spacer() }
         }
         .frame(
             width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
             height: self.height
         )
-        .onAppear {
-            self.loadBuyerProtectionDetails()
-        }
+        .onAppear { self.loadBuyerProtectionDetails() }
     }
     
     // MARK: Private methods

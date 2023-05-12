@@ -50,8 +50,7 @@ final class TSNetworkDataServiceTests: XCTestCase {
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(400),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(400)
         )
 
         let testDataService = TestNetworkDataService()
@@ -69,6 +68,14 @@ final class TSNetworkDataServiceTests: XCTestCase {
         XCTAssertTrue(
             url.contains("testParam2=testValue2"),
             "TSNetworkDataService should add correct query paramaters to the service URL"
+        )
+    }
+    
+    func testNetworkDataServiceHasValidHeaderFields() {
+        let testDataService = TestNetworkDataService()
+        XCTAssertNotNil(
+            testDataService.headerFields,
+            "ShopGradeDataService should have valid header fields"
         )
     }
     
@@ -94,8 +101,7 @@ final class TSNetworkDataServiceTests: XCTestCase {
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(404),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(404)
         )
 
         let testDataService = TestNetworkDataService()
@@ -108,6 +114,45 @@ final class TSNetworkDataServiceTests: XCTestCase {
         waitForExpectations(timeout: 5)
         XCTAssertTrue(
             networkErrorCode == 404,
+            "TSNetworkDataService should return correct error code for unexpected response"
+        )
+    }
+    
+    func testNetworkDataServiceShouldReturnCorrectServerErrorCode() {
+        let networkRequest = TSNetworkServiceRequest(
+            url: URL(string: "https://cdn1.api.trustedshops.com/shops/TestTSID/mobiles/v1/sdks/ios/trustmarks.json")!,
+            method: TSNetworkServiceMethod.post,
+            parameters: nil,
+            body: nil,
+            headerValues: nil)
+
+        let networkErrorCodeExpectation = expectation(
+            description: "Data service network error code expectation"
+        )
+        var networkErrorCode = 0
+        let apiResponseHandler: TSNetworkServiceResponseHandler<Bool> = { _, error in
+            guard let error = error else {
+                return
+            }
+            networkErrorCode = error.code
+            networkErrorCodeExpectation.fulfill()
+        }
+        let responseConfiguration = TSNetworkServiceResponseConfiguration(
+            hasResponseData: true,
+            expectedResponseCode: .expected(200),
+            unexpectedResponseCode: .unexpected(404)
+        )
+
+        let testDataService = TestNetworkDataService()
+        let _ = testDataService.getData(
+            request: networkRequest,
+            responseConfiguration: responseConfiguration,
+            responseHandler: apiResponseHandler
+        )
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(
+            networkErrorCode == 500,
             "TSNetworkDataService should return correct error code for unexpected response"
         )
     }

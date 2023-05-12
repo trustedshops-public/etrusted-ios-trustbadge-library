@@ -50,7 +50,7 @@ protocol TSNetworkDataService: AnyObject {
     /// It then delegates back the response/error for further processing via the responseHandler
     func getData<T: Codable>(
         request: TSNetworkServiceRequest,
-        responseConfiguration: TSNetworkServiceResponseConfiguration?,
+        responseConfiguration: TSNetworkServiceResponseConfiguration,
         responseHandler: @escaping TSNetworkServiceResponseHandler<T>
     ) -> URLSessionDataTask?
 }
@@ -75,7 +75,7 @@ extension TSNetworkDataService {
 
     func getData<T: Codable>(
         request: TSNetworkServiceRequest,
-        responseConfiguration: TSNetworkServiceResponseConfiguration?,
+        responseConfiguration: TSNetworkServiceResponseConfiguration,
         responseHandler: @escaping TSNetworkServiceResponseHandler<T>) -> URLSessionDataTask? {
 
         // Initializing request object for setting up URL session data task
@@ -112,58 +112,22 @@ extension TSNetworkDataService {
         // Setting up data task for API call
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
-            guard error == nil else {
-                responseHandler(nil, TSNetworkServiceError(type: .serverError, code: 500))
-                return
-            }
-
-            guard let urlResponse = response as? HTTPURLResponse,
+            guard error == nil,
+                  let urlResponse = response as? HTTPURLResponse,
                   let responseData = data else {
                 responseHandler(nil, TSNetworkServiceError(type: .serverError, code: 500))
                 return
             }
 
-            if let responseConfiguration = responseConfiguration {
-                // If server returned expected response code but the response doesn't have JSON data to process,
-                // call the `responseHandler` with nil response and nil error
-                if urlResponse.statusCode == responseConfiguration.expectedResponseCode.code
-                    && !responseConfiguration.hasResponseData {
-                    responseHandler(nil, nil)
-                    return
-                }
-
-                // If server returned unexpected response code, call responseHandler with nil response data and
-                // unexpectedResponseError error type and response code
-                if urlResponse.statusCode == responseConfiguration.unexpectedResponseCode.code {
-                    responseHandler(
-                        nil,
-                        TSNetworkServiceError(
-                            type: .unexpectedResponseError,
-                            code: urlResponse.statusCode
-                        )
-                    )
-                    return
-                }
-
-                // If server returned error code, call responseHandler with nil response data and
-                // server error type and response code
-                if urlResponse.statusCode == responseConfiguration.errorResponseCode.code {
-                    responseHandler(
-                        nil,
-                        TSNetworkServiceError(
-                            type: .serverError,
-                            code: urlResponse.statusCode)
-                    )
-                    return
-                }
-            } else if urlResponse.statusCode != 200 {
-                // If server returned response code other then 200 (success response code),
-                // call responseHandler with nil response data and server error type and response code
+            // If server returned unexpected response code, call responseHandler with nil response data and
+            // unexpectedResponseError error type and response code
+            if urlResponse.statusCode == responseConfiguration.unexpectedResponseCode.code {
                 responseHandler(
                     nil,
                     TSNetworkServiceError(
-                        type: .serverError,
-                        code: urlResponse.statusCode)
+                        type: .unexpectedResponseError,
+                        code: urlResponse.statusCode
+                    )
                 )
                 return
             }
@@ -171,24 +135,12 @@ extension TSNetworkDataService {
             do {
                 // Attempting to parse response data
                 let decoder = JSONDecoder()
-                let jsonResponseData = try JSONSerialization.jsonObject(with: responseData, options: [])
+                //let jsonResponseData = try JSONSerialization.jsonObject(with: responseData, options: [])
                 var resultData = [T]()
 
-                // If the server response is a list of objects
-                if let listData = jsonResponseData as? [[String: Any]] {
-                    for item in listData {
-                        let itemData = try JSONSerialization.data(withJSONObject: item, options: [])
-                        let decodedItem = try decoder.decode(T.self, from: itemData)
-                        resultData.append(decodedItem)
-                    }
-                    responseHandler(resultData, nil)
-                }
-                // If the server response is a single object
-                else {
-                    let decodedItem = try decoder.decode(T.self, from: responseData)
-                    resultData.append(decodedItem)
-                    responseHandler(resultData, nil)
-                }
+                let decodedItem = try decoder.decode(T.self, from: responseData)
+                resultData.append(decodedItem)
+                responseHandler(resultData, nil)
             } catch {
                 // If response parsing fails, calling response handler with nil data
                 // and jsonParsingError type

@@ -34,6 +34,7 @@ import SwiftUI
 final class TrustbadgeViewTests: XCTestCase {
     let tsId = "X330A2E7D449E31E467D2F53A55DDD070"
     let channelId = "chl-b309535d-baa0-40df-a977-0b375379a3cc"
+    let productId = "46432d34333837383331"
     let context: TrustbadgeContext = .shopGrade
     
     func testTrustbadgeViewInitializesWithCorrectValues() throws {
@@ -63,12 +64,22 @@ final class TrustbadgeViewTests: XCTestCase {
         )
     }
     
-    func testTrustbadgeViewBodyIsnotNilForShopGradeContext() {
+    func testTrustbadgeViewBodyIsNotNilForShopGradeContext() {
         let trustbadgeView = TrustbadgeView(
             tsId: self.tsId,
             channelId: self.channelId,
             context: .shopGrade)
-        
+        XCTAssertNotNil(
+            trustbadgeView.body,
+            "TrustbadgeView body should not be nil for shop grade context"
+        )
+    }
+    
+    func testTrustbadgeViewRootViewIsNotNilForShopGradeContext() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: .shopGrade)
         let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
         XCTAssertNotNil(
             view,
@@ -76,7 +87,18 @@ final class TrustbadgeViewTests: XCTestCase {
         )
     }
     
-    func testTrustbadgeViewBodyIsnotNilForBuyerProtectionContext() {
+    func testTrustbadgeViewBodyIsNotNilForBuyerProtectionContext() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: .buyerProtection)
+        XCTAssertNotNil(
+            trustbadgeView.body,
+            "TrustbadgeView body should not be nil for buyer protection context"
+        )
+    }
+    
+    func testTrustbadgeViewRootViewIsNotNilForBuyerProtectionContext() {
         let trustbadgeView = TrustbadgeView(
             tsId: self.tsId,
             channelId: self.channelId,
@@ -85,6 +107,32 @@ final class TrustbadgeViewTests: XCTestCase {
         XCTAssertNotNil(
             view,
             "TrustbadgeView body should not be nil for buyer protection context"
+        )
+    }
+    
+    func testTrustbadgeViewRootViewIsnotNilForProductGradeContext() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            productId: self.productId,
+            context: .productGrade)
+        let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+        XCTAssertNotNil(
+            view,
+            "TrustbadgeView body should not be nil for product grade context"
+        )
+    }
+    
+    func testTrustbadgeViewRootViewIsNotNilForProductGradeContext() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            productId: self.productId,
+            context: .productGrade)
+        let view = trustbadgeView.getTestRootViewWith(proposedWidth: 200, proposedHeight: 50)
+        XCTAssertNotNil(
+            view,
+            "TrustbadgeView body should not be nil for product grade context"
         )
     }
     

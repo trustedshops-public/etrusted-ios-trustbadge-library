@@ -72,8 +72,7 @@ class TrustmarkDataService: TSNetworkDataService {
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(404),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(404)
         )
 
         let _ = self.getData(

@@ -53,8 +53,7 @@ class ShopGradeViewModel: ObservableObject {
         
         let shopGradeDataService = ShopGradeDataService()
         shopGradeDataService.getShopGrade(for: channelId) { [weak self] grade in
-            guard let strongSelf = self,
-                  let shopGrade = grade else {
+            guard let shopGrade = grade else {
                 TSConsoleLogger.log(
                     messege: "Error loading shop grade details",
                     severity: .error
@@ -68,9 +67,9 @@ class ShopGradeViewModel: ObservableObject {
                 severity: .info
             )
             
-            strongSelf.shopGrade = shopGrade.grades.oneYearRating.grade
-            strongSelf.shopRating = shopGrade.grades.oneYearRating.rating
-            strongSelf.shopRatingFormatted = shopGrade.grades.oneYearRating.ratingFormatted
+            self?.shopGrade = shopGrade.grades.oneYearRating.grade
+            self?.shopRating = shopGrade.grades.oneYearRating.rating
+            self?.shopRatingFormatted = shopGrade.grades.oneYearRating.ratingFormatted
             responseHandler(true)
         }
     }

@@ -76,9 +76,7 @@ struct ProductGradeView: View {
             width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
             height: self.height
         )
-        .onAppear {
-            self.getProductDetailsAndGrade()
-        }
+        .onAppear { self.getProductDetailsAndGrade() }
     }
     
     // MARK: Private methods

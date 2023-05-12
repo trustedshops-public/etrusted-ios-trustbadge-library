@@ -79,18 +79,9 @@ struct StarRatingView: View {
     
     var body: some View {
         HStack(spacing: 5) {
-            ForEach(0..<fullCount, id: \.self) { _ in
-                self.fullStar
-                    .frame(width: 17, height: 16)
-            }
-            ForEach(0..<halfFullCount, id: \.self) { _ in
-                self.halfFullStar
-                    .frame(width: 17, height: 16)
-            }
-            ForEach(0..<emptyCount, id: \.self) { _ in
-                self.emptyStar
-                    .frame(width: 17, height: 16)
-            }
+            ForEach(0..<fullCount, id: \.self) { _ in self.fullStar.frame(width: 17, height: 16) }
+            ForEach(0..<halfFullCount, id: \.self) { _ in self.halfFullStar.frame(width: 17, height: 16) }
+            ForEach(0..<emptyCount, id: \.self) { _ in self.emptyStar.frame(width: 17, height: 16) }
         }
         .frame(width: 105, height: 16)
     }
