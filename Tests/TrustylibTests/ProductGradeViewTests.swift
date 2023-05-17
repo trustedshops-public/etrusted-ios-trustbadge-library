@@ -71,6 +71,10 @@ final class ProductGradeViewTests: XCTestCase {
             self.productGradeView?.alignment == self.alignment,
             "ProductGradeView should set correct alignment during initialization"
         )
+        XCTAssert(
+            self.productGradeView?.isTrustmarkValid == false,
+            "ProductGradeView should set correct isTrustmarkValid value during initialization"
+        )
         XCTAssertNotNil(
             self.productGradeView?.currentViewModel,
             "ProductGradeView should initialize ProductGradeViewModel during initialization"
@@ -96,5 +100,37 @@ final class ProductGradeViewTests: XCTestCase {
             didLoadDetails,
             "ProductGradeViewM should load accurate product details for the given channel and product ids"
         )
+    }
+    
+    func testProductGradeViewLoadsDetailsSuccessfully() {
+        let productGradeDetailsExpectation = expectation(description: "Product grade details expectation")
+        let viewDelegate = MockProductGradeViewDelegate(expectation: productGradeDetailsExpectation)
+        
+        self.productGradeView?.delegate = viewDelegate
+        self.productGradeView?.testLoadingOfProductDetailsAndRating(responseHandler: {_ in })
+        
+        waitForExpectations(timeout: 6)
+        XCTAssertTrue(
+            viewDelegate.didLoadProductGradeDetails,
+            "ProductGradeView should load product grade details successfully"
+        )
+    }
+}
+
+/**
+ MockProductGradeViewDelegate helps in testing the product grade data load delegation workflow
+ */
+class MockProductGradeViewDelegate: ProductGradeViewDelegate {
+    var didLoadProductGradeDetails: Bool = false
+    
+    private var expectation: XCTestExpectation?
+    
+    init(expectation: XCTestExpectation) {
+        self.expectation = expectation
+    }
+    
+    func didLoadProductDetails(imageUrl: String) {
+        self.didLoadProductGradeDetails = true
+        self.expectation?.fulfill()
     }
 }

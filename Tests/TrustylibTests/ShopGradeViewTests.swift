@@ -32,7 +32,7 @@ import XCTest
  */
 final class ShopGradeViewTests: XCTestCase {
     
-    let channelId = "chl-b309535d-baa0-40df-a977-0b375379a3cc"
+    let channelId = "chl-ac2b600f-8a38-4f74-b2ec-ba8f99eb3c7f"
     let state: TrustbadgeState = .default(false)
     let alignment: TrustbadgeViewAlignment = .leading
     let width: CGFloat = 300
@@ -61,6 +61,10 @@ final class ShopGradeViewTests: XCTestCase {
             shopGradeView.alignment == self.alignment,
             "ShopGradeView should set correct alignment during initialization"
         )
+        XCTAssertFalse(
+            shopGradeView.isTrustmarkValid,
+            "ShopGradeView should set correct value for isTrustmarkValid"
+        )
         XCTAssertNotNil(
             shopGradeView.currentViewModel,
             "ShopGradeView should initialize ShopGradeViewModel during initialization"
@@ -81,5 +85,45 @@ final class ShopGradeViewTests: XCTestCase {
             shopGradeView.body,
             "ShopGradeView body value should not be nil"
         )
+    }
+    
+    func testShopGradeViewLoadsGradesSuccessfully() {
+        let shopGradeExpectation = expectation(description: "Shop grade expectation")
+        let shopGradeViewDelegate = MockShopGradeViewDelegate(expectation: shopGradeExpectation)
+        
+        let shopGradeView = ShopGradeView(
+            channelId: self.channelId,
+            currentState: self.state,
+            alignment: self.alignment,
+            isTrustmarkValid: false,
+            height: self.height,
+            width: self.width,
+            delegate: shopGradeViewDelegate
+        )
+        shopGradeView.testShopGradeLoad()
+        
+        waitForExpectations(timeout: 6)
+        XCTAssertTrue(
+            shopGradeViewDelegate.didLoadShopGradeDetails,
+            "ShopGradeView should load shop grade details successfully"
+        )
+    }
+}
+
+/**
+ MockShopGradeViewDelegate helps in testing the shop grade data load delegation workflow
+ */
+class MockShopGradeViewDelegate: ShopGradeViewDelegate {
+    var didLoadShopGradeDetails: Bool = false
+    
+    private var expectation: XCTestExpectation?
+    
+    init(expectation: XCTestExpectation) {
+        self.expectation = expectation
+    }
+    
+    func didLoadShopGrades() {
+        self.didLoadShopGradeDetails = true
+        self.expectation?.fulfill()
     }
 }

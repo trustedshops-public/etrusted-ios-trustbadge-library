@@ -39,43 +39,39 @@ class ShopGradeDataService: TSNetworkDataService {
      Calls Trustedshop's backend API for getting shop grade and rating details for the given `shopId`,
      handles response/error as returned by the backend and then responds back via response handler callback
      */
-    func getAggregateRatings(for shopId: String, responseHandler: @escaping ResponseHandler<AggregateRatingsModel?>) {
-        guard let url = self.backendServiceURL.getAggregateRatingServiceUrl(for: shopId),
-              let accessToken = TSAuthenticationService.shared.accessToken,
-              var headerFields = self.headerFields else {
+    func getShopGrade(
+        for shopId: String,
+        responseHandler: @escaping ResponseHandler<ShopGradeModel?>) {
+            
+        guard let url = self.backendServiceURL.getShopGradeServiceUrl(for: shopId) else {
             responseHandler(nil)
             return
         }
-
-        let authorizationValue = String(format: TSNetworkServiceHeaderFieldValue.authorizationBearerToken,
-                                        arguments: [accessToken])
-        headerFields[TSNetworkServiceHeaderField.authorization] = authorizationValue
 
         let networkRequest = TSNetworkServiceRequest(
             url: url,
             method: TSNetworkServiceMethod.get,
             parameters: nil,
             body: nil,
-            headerValues: headerFields)
+            headerValues: nil)
 
-        let apiResponseHandler: TSNetworkServiceResponseHandler<AggregateRatingsModel> = { response, error in
+        let apiResponseHandler: TSNetworkServiceResponseHandler<ShopGradeModel> = { response, error in
             guard let backendResponse = response,
-                  let aggregateRatings = backendResponse.first,
+                  let shopGrade = backendResponse.first,
                   error == nil else {
                 responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                responseHandler(aggregateRatings)
+                responseHandler(shopGrade)
             }
         }
 
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(400),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(404)
         )
 
         let _ = self.getData(

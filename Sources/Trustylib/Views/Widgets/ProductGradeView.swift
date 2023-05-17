@@ -76,20 +76,18 @@ struct ProductGradeView: View {
             width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
             height: self.height
         )
-        .onAppear {
-            self.getProductDetailsAndRatings()
-        }
+        .onAppear { self.getProductDetailsAndGrade() }
     }
     
     // MARK: Private methods
     
     /**
-     Calls view model to load product details and ratings.
-     On successful load of the  details and ratings, it then calls delegate to show product details and ratings.
+     Calls view model to load product details and grade.
+     On successful load of the details, it then calls its delegate to show product details and grade.
      */
-    private func getProductDetailsAndRatings(responseHandler: ResponseHandler<Bool>? = nil) {
-        self.viewModel.loadProductRating(for: self.channelId, productId: self.productId) { didLoadRatings in
-            guard didLoadRatings else {
+    private func getProductDetailsAndGrade(responseHandler: ResponseHandler<Bool>? = nil) {
+        self.viewModel.loadProductGrade(for: self.channelId, productId: self.productId) { didLoadGrade in
+            guard didLoadGrade else {
                 responseHandler?(false)
                 return
             }
@@ -109,6 +107,6 @@ extension ProductGradeView {
     }
     
     func testLoadingOfProductDetailsAndRating(responseHandler: @escaping ResponseHandler<Bool>) {
-        self.getProductDetailsAndRatings(responseHandler: responseHandler)
+        self.getProductDetailsAndGrade(responseHandler: responseHandler)
     }
 }

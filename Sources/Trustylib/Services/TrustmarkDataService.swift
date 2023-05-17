@@ -44,7 +44,7 @@ class TrustmarkDataService: TSNetworkDataService {
         for tsid: String,
         responseHandler: @escaping ResponseHandler<TrustmarkDetailsModel?>) {
             
-        guard let url = self.backendServiceURL.getTrustmarkServiceUrl(for: tsid) else {
+        guard let url = self.backendServiceURL.getTrustmarkDetailsServiceUrl(for: tsid) else {
             responseHandler(nil)
             return
         }
@@ -58,22 +58,21 @@ class TrustmarkDataService: TSNetworkDataService {
 
         let apiResponseHandler: TSNetworkServiceResponseHandler<TrustmarkBackendResponseModel> = { response, error in
             guard let backendResponse = response,
-                  let trustmarkResponse = backendResponse.first,
+                  let trustMarkDetailsResponse = backendResponse.first,
                   error == nil else {
                 responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                responseHandler(trustmarkResponse.response.data.shop)
+                responseHandler(trustMarkDetailsResponse.response.data.shop)
             }
         }
 
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(400),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(404)
         )
 
         let _ = self.getData(

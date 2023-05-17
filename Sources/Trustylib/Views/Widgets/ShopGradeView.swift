@@ -62,7 +62,7 @@ struct ShopGradeView: View {
         HStack(spacing: 0) {
             GradeAndRatingView(
                 grade: self.viewModel.shopGrade,
-                gradeTitle: NSLocalizedString("shops reviews", comment: "Trustbadge: Shop grade title"),
+                gradeTitle: NSLocalizedString("shop reviews", comment: "Trustbadge: Shop grade title"),
                 rating: self.viewModel.shopRating,
                 ratingFormatted: self.viewModel.shopRatingFormatted,
                 alignment: self.alignment,
@@ -74,11 +74,15 @@ struct ShopGradeView: View {
             width: self.currentState == .default(self.isTrustmarkValid) ? 0 : self.width,
             height: self.height
         )
-        .onAppear {
-            self.viewModel.loadAggregateRating(for: self.channelId) { didLoadDetails in
-                guard didLoadDetails else { return }
-                self.delegate?.didLoadShopGrades()
-            }
+        .onAppear { self.loadShopGrade() }
+    }
+    
+    // MARK: Private methods
+    
+    private func loadShopGrade() {
+        self.viewModel.loadShopGrade(for: self.channelId) { didLoadGrade in
+            guard didLoadGrade else { return }
+            self.delegate?.didLoadShopGrades()
         }
     }
 }
@@ -88,5 +92,9 @@ struct ShopGradeView: View {
 extension ShopGradeView {
     var currentViewModel: ShopGradeViewModel {
         return self.viewModel
+    }
+    
+    func testShopGradeLoad() {
+        self.loadShopGrade()
     }
 }

@@ -86,9 +86,7 @@ struct GradeAndRatingView: View {
             
             // Star Rating View
             HStack(alignment: .center, spacing: 5) {
-                if self.alignment == .trailing {
-                    Spacer()
-                }
+                if self.alignment == .trailing { Spacer() }
                 
                 StarRatingView(rating: self.rating)
                 HStack(alignment: .center, spacing: 0) {
@@ -104,9 +102,7 @@ struct GradeAndRatingView: View {
                         .minimumScaleFactor(self.textScaleFactor)
                 }
                 
-                if self.alignment == .leading {
-                    Spacer()
-                }
+                if self.alignment == .leading { Spacer() }
             }
             .padding(.leading, self.leadingPadding)
             .padding(.trailing, self.trailingPadding)

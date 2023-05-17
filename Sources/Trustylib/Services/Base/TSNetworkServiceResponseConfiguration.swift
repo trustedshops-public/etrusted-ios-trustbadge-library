@@ -41,20 +41,17 @@ class TSNetworkServiceResponseConfiguration {
     // MARK: Public properties
     var hasResponseData = true
     var expectedResponseCode: TSNetworkServiceResponseCode = .expected(200)
-    var unexpectedResponseCode: TSNetworkServiceResponseCode = .unexpected(201)
-    var errorResponseCode: TSNetworkServiceResponseCode = .error(501)
+    var unexpectedResponseCode: TSNetworkServiceResponseCode = .unexpected(404)
 
     // MARK: Initializer
     init(
         hasResponseData: Bool,
         expectedResponseCode: TSNetworkServiceResponseCode,
-        unexpectedResponseCode: TSNetworkServiceResponseCode,
-        errorResponseCode: TSNetworkServiceResponseCode) {
+        unexpectedResponseCode: TSNetworkServiceResponseCode) {
 
             self.hasResponseData = hasResponseData
             self.expectedResponseCode = expectedResponseCode
             self.unexpectedResponseCode = unexpectedResponseCode
-            self.errorResponseCode = errorResponseCode
         }
 }
 
@@ -70,15 +67,12 @@ class TSNetworkServiceResponseConfiguration {
 enum TSNetworkServiceResponseCode {
     case expected(Int)
     case unexpected(Int)
-    case error(Int)
 
     var code: Int {
         switch self {
         case .expected(let code):
             return code
         case .unexpected(let code):
-            return code
-        case .error(let code):
             return code
         }
     }

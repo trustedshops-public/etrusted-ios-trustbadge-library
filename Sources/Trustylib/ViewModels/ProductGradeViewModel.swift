@@ -59,8 +59,7 @@ class ProductGradeViewModel: ObservableObject {
             
             let productDetailsDataService = ProductDetailsDataService()
             productDetailsDataService.getProductDetails(for: channelId, productId: productId) { [weak self] details in
-                guard let strongSelf = self,
-                      let productDetails = details else {
+                guard let productDetails = details else {
                     TSConsoleLogger.log(
                         messege: "Error loading product details for channel id \(channelId) and product id \(productId)",
                         severity: .error
@@ -75,7 +74,7 @@ class ProductGradeViewModel: ObservableObject {
                 )
                 
                 if let productImage = productDetails.image, let originalImage = productImage.original {
-                    strongSelf.productImageUrl = originalImage.url
+                    self?.productImageUrl = originalImage.url
                 }
                 responseHandler(true)
             }
@@ -83,9 +82,9 @@ class ProductGradeViewModel: ObservableObject {
     }
     
     /**
-     Calls Trustedshops product grade ratings API to get product grade details
+     Calls Trustedshops product grade API to get product grade details
      */
-    func loadProductRating(
+    func loadProductGrade(
         for channelId: String,
         productId: String,
         responseHandler: @escaping ResponseHandler<Bool>) {
@@ -100,9 +99,8 @@ class ProductGradeViewModel: ObservableObject {
             }
             
             let productDetailsDataService = ProductDetailsDataService()
-            productDetailsDataService.getProductRatings(for: channelId, productId: productId) { [weak self] ratings in
-                guard let strongSelf = self,
-                      let productRatings = ratings else {
+            productDetailsDataService.getProductGrade(for: channelId, productId: productId) { [weak self] grade in
+                guard let productGrade = grade else {
                     TSConsoleLogger.log(
                         messege: "Error loading product grade details for channel id \(channelId) and product id \(productId)",
                         severity: .error
@@ -116,9 +114,9 @@ class ProductGradeViewModel: ObservableObject {
                     severity: .info
                 )
                 
-                strongSelf.productGrade = productRatings.grades.oneYearRating.grade
-                strongSelf.productRating = productRatings.grades.oneYearRating.rating
-                strongSelf.productRatingFormatted = productRatings.grades.oneYearRating.ratingFormatted
+                self?.productGrade = productGrade.grades.oneYearRating.grade
+                self?.productRating = productGrade.grades.oneYearRating.rating
+                self?.productRatingFormatted = productGrade.grades.oneYearRating.ratingFormatted
                 responseHandler(true)
             }
     }

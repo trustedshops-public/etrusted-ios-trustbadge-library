@@ -28,14 +28,14 @@
 import XCTest
 @testable import Trustylib
 
-typealias ProductRatingsResponseHandler = ([ProductRatingsModel]?, Error?) -> Void
+typealias ProductRatingsResponseHandler = ([ProductGradeModel]?, Error?) -> Void
 
 /**
  ProductRatingsModelTests tests json decoding workflow of the product ratings data object and also
  validates object properties
  */
 final class ProductRatingsModelTests: XCTestCase {
-    private var productRatingsModel: ProductRatingsModel?
+    private var productRatingsModel: ProductGradeModel?
 
     override func setUpWithError() throws {
         self.getModalObjectForProductRatingsServiceMockResponse()

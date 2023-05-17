@@ -92,10 +92,50 @@ final class BuyerProtectionViewTests: XCTestCase {
             delegate: nil
         )
         
-        buyerProtectionView.loadDetailsForTests()
+        
         XCTAssertNotNil(
             buyerProtectionView.body,
             "BuyerProtectionView body value should not be nil"
         )
+    }
+    
+    func testBuyerProtectionViewLoadsDetailsSuccessfully() {
+        let buyerProtectionDetailsExpectation = expectation(description: "Buyer protection expectation")
+        let viewDelegate = MockBuyerProtectionViewDelegate(expectation: buyerProtectionDetailsExpectation)
+        
+        let buyerProtectionView = BuyerProtectionView(
+            tsid: self.tsid,
+            currentState: self.state,
+            alignment: self.alignment,
+            isTrustmarkValid: false,
+            height: self.height,
+            width: self.width,
+            delegate: viewDelegate
+        )
+        buyerProtectionView.loadDetailsForTests()
+        
+        waitForExpectations(timeout: 6)
+        XCTAssertTrue(
+            viewDelegate.didLoadDetails,
+            "BuyerProtectionView should load buyer protection details successfully"
+        )
+    }
+}
+
+/**
+ MockBuyerProtectionViewDelegate helps in testing the buyer protection data load delegation workflow
+ */
+class MockBuyerProtectionViewDelegate: BuyerProtectionViewDelegate {
+    var didLoadDetails: Bool = false
+    
+    private var expectation: XCTestExpectation?
+    
+    init(expectation: XCTestExpectation) {
+        self.expectation = expectation
+    }
+    
+    func didLoadBuyerProtectionDetails() {
+        self.didLoadDetails = true
+        self.expectation?.fulfill()
     }
 }

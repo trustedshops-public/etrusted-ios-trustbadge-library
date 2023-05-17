@@ -43,9 +43,9 @@ class BuyerProtectionDataService: TSNetworkDataService {
      */
     func getBuyerProtectionDetails(
         for tsid: String,
-        responseHandler: @escaping ResponseHandler<BuyerProtectionDetailsModel?>) {
-            
-        guard let url = self.backendServiceURL.getBuyerProtectionServiceUrl(for: tsid) else {
+        responseHandler: @escaping ResponseHandler<BuyerProtectionDetailsModel?>
+    ) {
+        guard let url = self.backendServiceURL.getBuyerProtectionDetailsServiceUrl(for: tsid) else {
             responseHandler(nil)
             return
         }
@@ -59,22 +59,21 @@ class BuyerProtectionDataService: TSNetworkDataService {
 
         let apiResponseHandler: TSNetworkServiceResponseHandler<BuyerProtectionBackendResponseModel> = { response, error in
             guard let backendResponse = response,
-                  let buyerProtectionResponse = backendResponse.first,
+                  let buyerProtectionDetailsResponse = backendResponse.first,
                   error == nil else {
                 responseHandler(nil)
                 return
             }
 
             DispatchQueue.main.async {
-                responseHandler(buyerProtectionResponse.response.data.shop)
+                responseHandler(buyerProtectionDetailsResponse.response.data.shop)
             }
         }
 
         let responseConfiguration = TSNetworkServiceResponseConfiguration(
             hasResponseData: true,
             expectedResponseCode: .expected(200),
-            unexpectedResponseCode: .unexpected(400),
-            errorResponseCode: .error(500)
+            unexpectedResponseCode: .unexpected(404)
         )
 
         let _ = self.getData(
