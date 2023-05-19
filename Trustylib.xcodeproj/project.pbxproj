@@ -89,6 +89,7 @@
 		C1C33EA7299CAD7000676059 /* AggregateRatingsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33EA6299CAD7000676059 /* AggregateRatingsModelTests.swift */; };
 		C1C33EA9299CB1C000676059 /* TrustmarkDetailsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33EA8299CB1C000676059 /* TrustmarkDetailsModelTests.swift */; };
 		C1C33EAD299CB55700676059 /* trustmark_details_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */; };
+		C1DB631B2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */; };
 		C1EEADB22A0A347F007536C2 /* AggregateRatingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEADB12A0A347F007536C2 /* AggregateRatingsModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +187,7 @@
 		C1C33EA6299CAD7000676059 /* AggregateRatingsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateRatingsModelTests.swift; sourceTree = "<group>"; };
 		C1C33EA8299CB1C000676059 /* TrustmarkDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustmarkDetailsModelTests.swift; sourceTree = "<group>"; };
 		C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trustmark_details_service_response.json; sourceTree = "<group>"; };
+		C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBackendServiceURLTests.swift; sourceTree = "<group>"; };
 		C1EEADB12A0A347F007536C2 /* AggregateRatingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateRatingsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -445,6 +447,7 @@
 				C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */,
 				C1A401E729F6AA15008B1184 /* GradeAndRatingViewTests.swift */,
 				C1A401E929F6CCBC008B1184 /* CurrencyCodeTests.swift */,
+				C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				C190465429D5A59D0054BEE4 /* BuyerProtectionViewTests.swift in Sources */,
 				C1B99E5629AE282900F80599 /* TrustbadgeViewTests.swift in Sources */,
 				C1A401E829F6AA15008B1184 /* GradeAndRatingViewTests.swift in Sources */,
+				C1DB631B2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift in Sources */,
 				C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */,
 				C190464E29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift in Sources */,
 				C1A983FB29F5A1B100D83BBF /* ProductRatingsModelTests.swift in Sources */,

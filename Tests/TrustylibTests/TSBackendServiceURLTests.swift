@@ -26,30 +26,55 @@
 
 
 import XCTest
+@testable import Trustylib
 
+/**
+ TSBackendServiceURLTests tests library API url related workflows like
+ setting up of the current environment, accuracy of the API urls, etc.
+ */
 final class TSBackendServiceURLTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testTSBackendServiceURLSetsProductionAsDefaultEnvironment() {
+        XCTAssert(
+            TSBackendServiceURL.shared.currentEnvironment == .production,
+            "TSBackendServiceURL should set production as the deefault when compiler argument isn't found"
+        )
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testTSBackendServiceURLSetsCorrectEnvironmentForLaunchEnvValue() {
+        TSBackendServiceURL.shared.setEnvironment(forLaunchEnvValue: "development")
+        XCTAssert(
+            TSBackendServiceURL.shared.currentEnvironment == .development,
+            "TSBackendServiceURL should set correct environment for the given compiler argument"
+        )
+        
+        TSBackendServiceURL.shared.setEnvironment(forLaunchEnvValue: "stage")
+        XCTAssert(
+            TSBackendServiceURL.shared.currentEnvironment == .stage,
+            "TSBackendServiceURL should set correct environment for the given compiler argument"
+        )
+        
+        TSBackendServiceURL.shared.setEnvironment(forLaunchEnvValue: "production")
+        XCTAssert(
+            TSBackendServiceURL.shared.currentEnvironment == .production,
+            "TSBackendServiceURL should set correct environment for the given compiler argument"
+        )
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testTSBackendServiceURLReturnsCorrectAPIUrl() {
+        TSBackendServiceURL.shared.setEnvironment(forLaunchEnvValue: "development")
+        let serviceURLDev = TSBackendServiceURL.shared.getShopGradeServiceUrl(for: "TestChannel")?.absoluteString
+        XCTAssert(
+            serviceURLDev == "https://integrations.etrusted.koeln/feeds/grades/v1/channels/TestChannel/touchpoints/all/feed.json",
+            "TSBackendServiceURL should return correct API url for the given environment"
+        )
+        
+        TSBackendServiceURL.shared.setEnvironment(forLaunchEnvValue: "stage")
+        let serviceURLTest = TSBackendServiceURL.shared.getShopGradeServiceUrl(for: "TestChannel")?.absoluteString
+        XCTAssert(
+            serviceURLTest == "https://integrations.etrusted.site/feeds/grades/v1/channels/TestChannel/touchpoints/all/feed.json",
+            "TSBackendServiceURL should return correct API url for the given environment"
+        )
     }
 
 }
