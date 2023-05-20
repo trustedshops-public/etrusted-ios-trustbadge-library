@@ -64,7 +64,15 @@ pod install
 
 You should now have the latest version i.e. `1.2.2` of Trustylib library added to your xcode project!
 
-## 2. Adding Trustylib UI widgets
+## 2. Configuration ##
+Trustylib calls TrustedShops backend API for loading details like trust certificate validity, grade/rating, buyer protection, etc. TrustedShops backend API has three environments `development`, `stage` and `production` and Trustylib can be configured to connect to one of these environments for loading your shop and product grade/rating details.
+
+Trustylib looks for a runtime environment variable `Trustylib.Environment` with supported values as `development`, `stage` and `production`. If this environment variable is found with one of the supported values, library environment is set accordingly. Else, library's environment is set to `production` as default environment.
+
+This is how, you can set this runtime environment variable via your xcode project's `scheme` settings. More details could be found [here](https://www.swiftdevjournal.com/using-environment-variables-in-swift-apps/).<br>
+<img width="500" src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/7e166e74-f875-41bd-805a-87b76f6805af">
+
+## 3. Adding Trustylib UI widgets
 Trustylib has one `TrustbadgeView` view which makes it very easy to present `Trustmark`, `Shop Grade`, `Product Grade` and `Buyer Protection` widgets. We just need to provide inputs like `TSID`, `channel id`, `product id` and `context`, based on these inputs TrustbadgeView then presents the required widgets.
 
 This is how, the Trustmark widget is created,
@@ -114,7 +122,7 @@ Your `TSID` is generally shared during the onboarding process with Trusted Shops
 `ChannelId` is available in the Trusted Shop's [Control Center](https://app.etrusted.com/) URL for a shop. For example, in this URL https://app.etrusted.com/etrusted/reviews/inbox?channels=chl-2bf4346e-9897-4e3c-8793-bdbf15c007ae, the channel id is `chl-2bf4346e-9897-4e3c-8793-bdbf15c007ae`. Here is how it looks in the Control Center URL,<br>
 <img width="500" src="https://user-images.githubusercontent.com/27926337/215760110-6d00a5ec-3b0c-4458-a867-acf75d6afa8b.png">
 
-## 3. Display Trustmark widget ##
+## 4. Display Trustmark widget ##
 Displaying Trustmark widget in your iOS app is pretty easy after you have added the Trustylib library to your XCode project/s. Here are the code samples for adding widgets for different iOS technology stacks,
 
 #### *Swift with SwiftUI*
@@ -210,7 +218,7 @@ Trustylib library has [TrustbadgeViewWrapper](https://github.com/trustedshops-pu
 @end
 ```
 
-## 4. Display Shop Grade widget ##
+## 5. Display Shop Grade widget ##
 
 To display the Shop Grade widget, you just need to pass `shopGrade` context and a valid channel id to the TrustbadgeView in above code examples.
 
@@ -266,7 +274,7 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 5. Display Buyer Protection widget ##
+## 6. Display Buyer Protection widget ##
 
 To display the Buyer Protection widget, you just need to pass `buyerProtection` context to the TrustbadgeView in above code examples.
 
@@ -322,7 +330,7 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 6. Display Product Grade widget ##
+## 7. Display Product Grade widget ##
 
 This is how, Product Grade widget can be added depending on the iOS technologies stack being used for the app,
 
@@ -381,7 +389,7 @@ UIViewController *trustbadgeViewController = [
 [self.view addSubview: trustbadgeViewController.view];
 ```
 
-## 7. Setting widget horizontal alignment ##
+## 8. Setting widget horizontal alignment ##
 You can set the widget horizontal alignment to leading or trailing to match with your design specifications. This feature is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).
 
 TrustbadgeView has an optional `alignment` parameter that accepts either `.leading` or `.trailing` values. If you don't pass `alignment` parameter, the widget uses `.leading` as a default value. 
@@ -405,6 +413,6 @@ Here is how the shop grade widget presents its contents for leading and trailing
 
 _Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
 
-## 8. Support ##
+## 9. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
