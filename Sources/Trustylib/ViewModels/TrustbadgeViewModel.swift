@@ -139,7 +139,7 @@ class TrustbadgeViewModel: ObservableObject {
             }
             
             TSConsoleLogger.log(
-                messege: "Successfully loaded trustmark details for shop with tsid: \(self?.tsId)",
+                messege: "Successfully loaded trustmark details for shop with tsid: \(self?.tsId ?? "")",
                 severity: .info
             )
             
@@ -149,7 +149,7 @@ class TrustbadgeViewModel: ObservableObject {
             let validityString = tmDetails.trustMark.isValid ? "is valid": "isn't valid!"
             
             TSConsoleLogger.log(
-                messege: "Trustmark for shop with tsid: \(self?.tsId) \(validityString)",
+                messege: "Trustmark for shop with tsid: \(self?.tsId ?? "") \(validityString)",
                 severity: .info
             )
             
