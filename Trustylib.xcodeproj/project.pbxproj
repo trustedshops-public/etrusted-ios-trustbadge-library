@@ -10,7 +10,10 @@
 		C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */; };
 		C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */; };
 		C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C119217C29852A1400A550C7 /* Trustylib.framework */; };
-		C11CE84929881DA8000D6083 /* trustMarkIconInvalidCertificate.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80729881DA8000D6083 /* trustMarkIconInvalidCertificate.png */; };
+		C11BE9192A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */; };
+		C11BE9262A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C11BE9242A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png */; };
+		C11BE9272A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png in Resources */ = {isa = PBXBuildFile; fileRef = C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */; };
+		C11BE9312A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BE9302A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift */; };
 		C11CE84A29881DA8000D6083 /* shopGradeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80829881DA8000D6083 /* shopGradeIcon.png */; };
 		C11CE84B29881DA8000D6083 /* trustMarkIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CE80929881DA8000D6083 /* trustMarkIcon.png */; };
 		C11CE84E29881DA8000D6083 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE80D29881DA8000D6083 /* ResourceExtension.swift */; };
@@ -91,6 +94,7 @@
 		C1C33EAD299CB55700676059 /* trustmark_details_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */; };
 		C1DB631B2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */; };
 		C1EEADB22A0A347F007536C2 /* AggregateRatingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEADB12A0A347F007536C2 /* AggregateRatingsModel.swift */; };
+		C1FC40062A3AED0D00E09D66 /* TrustbadgeColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FC40052A3AED0D00E09D66 /* TrustbadgeColorScheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +112,10 @@
 		C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewTests.swift; sourceTree = "<group>"; };
 		C119217C29852A1400A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C119218629852A1400A550C7 /* TrustylibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustylibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11CE80729881DA8000D6083 /* trustMarkIconInvalidCertificate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustMarkIconInvalidCertificate.png; sourceTree = "<group>"; };
+		C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadeColorSchemeManager.swift; sourceTree = "<group>"; };
+		C11BE9242A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustMarkIconInvalidCertificate-Dark.png"; sourceTree = "<group>"; };
+		C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustMarkIconInvalidCertificate-Light.png"; sourceTree = "<group>"; };
+		C11BE9302A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadeColorSchemeManagerTests.swift; sourceTree = "<group>"; };
 		C11CE80829881DA8000D6083 /* shopGradeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopGradeIcon.png; sourceTree = "<group>"; };
 		C11CE80929881DA8000D6083 /* trustMarkIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustMarkIcon.png; sourceTree = "<group>"; };
 		C11CE80D29881DA8000D6083 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
@@ -189,6 +196,7 @@
 		C1C33EAC299CB55700676059 /* trustmark_details_service_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trustmark_details_service_response.json; sourceTree = "<group>"; };
 		C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBackendServiceURLTests.swift; sourceTree = "<group>"; };
 		C1EEADB12A0A347F007536C2 /* AggregateRatingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateRatingsModel.swift; sourceTree = "<group>"; };
+		C1FC40052A3AED0D00E09D66 /* TrustbadgeColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorScheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,8 +275,9 @@
 		C11CE80629881DA8000D6083 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C11BE9242A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png */,
+				C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */,
 				C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */,
-				C11CE80729881DA8000D6083 /* trustMarkIconInvalidCertificate.png */,
 				C11CE80829881DA8000D6083 /* shopGradeIcon.png */,
 				C11CE80929881DA8000D6083 /* trustMarkIcon.png */,
 			);
@@ -312,6 +321,7 @@
 			children = (
 				C11CE81B29881DA8000D6083 /* Logger */,
 				C190465529D64A0F0054BEE4 /* GradeCalculator.swift */,
+				C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -338,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				C11CE82429881DA8000D6083 /* TrustbadgeViewAlignment.swift */,
+				C1FC40052A3AED0D00E09D66 /* TrustbadgeColorScheme.swift */,
 				C11CE82529881DA8000D6083 /* TrustbadgeViewWrapper.swift */,
 				C11CE82629881DA8000D6083 /* Extensions */,
 				C11CE82829881DA8000D6083 /* Common */,
@@ -448,6 +459,7 @@
 				C1A401E729F6AA15008B1184 /* GradeAndRatingViewTests.swift */,
 				C1A401E929F6CCBC008B1184 /* CurrencyCodeTests.swift */,
 				C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */,
+				C11BE9302A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -581,7 +593,8 @@
 				C11CE84B29881DA8000D6083 /* trustMarkIcon.png in Resources */,
 				C11CE87429881DA8000D6083 /* Localizable.strings in Resources */,
 				C11CE84F29881DA8000D6083 /* fontawesome.ttf in Resources */,
-				C11CE84929881DA8000D6083 /* trustMarkIconInvalidCertificate.png in Resources */,
+				C11BE9272A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png in Resources */,
+				C11BE9262A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png in Resources */,
 				C16E4BE729D317BD00039933 /* buyerProtectionIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,12 +640,14 @@
 				C11CE86729881DA8000D6083 /* ShopGradeView.swift in Sources */,
 				C16E4BE929D318F100039933 /* BuyerProtectionDetailsModel.swift in Sources */,
 				C11CE84E29881DA8000D6083 /* ResourceExtension.swift in Sources */,
+				C1FC40062A3AED0D00E09D66 /* TrustbadgeColorScheme.swift in Sources */,
 				C11CE86C29881DA8000D6083 /* TSNetworkServiceMethod.swift in Sources */,
 				C11CE85429881DA8000D6083 /* TrustbadgeContext.swift in Sources */,
 				C16E4BEB29D31A5800039933 /* BuyerProtectionDataService.swift in Sources */,
 				C1A983E829F4454A00D83BBF /* ProductGradeViewModel.swift in Sources */,
 				C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */,
 				C190462329D416260054BEE4 /* CurrencyCode.swift in Sources */,
+				C11BE9192A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift in Sources */,
 				C1A983E629F4449000D83BBF /* ProductGradeModel.swift in Sources */,
 				C190462129D38A6C0054BEE4 /* BuyerProtectionView.swift in Sources */,
 				C11CE85829881DA8000D6083 /* TSLogger.swift in Sources */,
@@ -681,6 +696,7 @@
 				C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */,
 				C1A983F629F598DD00D83BBF /* ProductDetailsModelTests.swift in Sources */,
 				C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */,
+				C11BE9312A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift in Sources */,
 				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,
 				C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */,
 			);
