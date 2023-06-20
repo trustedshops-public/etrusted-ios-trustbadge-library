@@ -135,10 +135,11 @@ final class TrustbadgeViewModelTests: XCTestCase {
     
     func testTrustbadgeViewModelSetsCorrectIconNameForState() throws {
         let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .trustMark)
+        viewModel.colorScheme = .light
         viewModel.setIconForState()
         
         XCTAssert(
-            viewModel.iconImageName == "trustMarkIconInvalidCertificate",
+            viewModel.iconImageName == "trustMarkIconInvalidCertificate-Light",
             "TrustbadgeViewModel should set correct icon image name for the current badge state"
         )
         
@@ -148,7 +149,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
         
-        let iconName = viewModel.isTrustmarkValid ? "trustMarkIcon": "trustMarkIconInvalidCertificate"
+        let iconName = viewModel.isTrustmarkValid ? "trustMarkIcon": "trustMarkIconInvalidCertificate-Light"
         XCTAssert(
             viewModel.iconImageName == iconName,
             "TrustbadgeViewModel should set correct icon image name for the current badge state"

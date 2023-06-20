@@ -83,12 +83,10 @@ public struct TrustbadgeView: View {
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .environmentObject(self.colorSchemeManager)
         .onChange(of: self.colorScheme) { scheme in
-            self.viewModel.colorScheme = scheme == .light ? .light : .dark
             self.updateLibraryColorScheme(for: scheme)
         }
         .onAppear {
-            self.viewModel.colorScheme = self.colorScheme == .light ? .light : .dark
-            self.colorSchemeManager.updateColorsForScheme(self.viewModel.colorScheme)
+            self.updateLibraryColorScheme(for: self.colorScheme)
             self.viewModel.getTrustmarkDetails()
         }
     }
@@ -215,7 +213,11 @@ public struct TrustbadgeView: View {
         // Trustbadge widgets need to update color and assets only when the host application
         // doesn't enforce light or dark mode with `UIUserInterfaceStyle` key in info.plist.
         // This means that `colorSchemeManager.trustbadgeColorScheme` will have `system` value.
-        guard self.colorSchemeManager.trustbadgeColorScheme == .system else { return }
+        guard self.colorSchemeManager.trustbadgeColorScheme == .system else {
+            self.viewModel.colorScheme = self.colorSchemeManager.trustbadgeColorScheme
+            return
+        }
+        self.viewModel.colorScheme = scheme == .light ? .light : .dark
         self.colorSchemeManager.updateColorsForScheme(scheme == .light ? .light : .dark)
     }
 }

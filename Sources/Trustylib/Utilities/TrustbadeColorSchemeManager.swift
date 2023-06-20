@@ -49,12 +49,12 @@ class TrustbadgeColorSchemeManager: ObservableObject {
     @Published var titleTextColor: Color = Color.white
     @Published var ratingTextColor: Color = Color.tsGray800
     @Published var ratingRangeTextColor: Color = Color.tsGray600
+    var trustbadgeColorScheme: TrustbadgeColorScheme = .system
     
     
     // MARK: Private properties
     
-    var trustbadgeColorScheme: TrustbadgeColorScheme = .system
-    
+    private let keyNameForAppearanceSettings = "UIUserInterfaceStyle"
     
     // MARK: Initializer
     
@@ -87,14 +87,20 @@ class TrustbadgeColorSchemeManager: ObservableObject {
      Else, trustbadge color scheme is set to default value `system`
      */
     private func getHostApplicationColorSchemeIfAvailable() {
-        guard let scheme = Bundle.main.object(forInfoDictionaryKey: "UIUserInterfaceStyle") as? String else {
+        guard let scheme = Bundle.main.object(forInfoDictionaryKey: self.keyNameForAppearanceSettings) as? String else {
             self.trustbadgeColorScheme = .system
             return
         }
-        
-        if scheme.lowercased() == "light" {
+        self.setTrustbadgeSchemeFor(schemeName: scheme)
+    }
+    
+    /**
+     It sets active color scheme for Trustbadge based on the given scheme name
+     */
+    private func setTrustbadgeSchemeFor(schemeName: String) {
+        if schemeName.lowercased() == TrustbadgeColorScheme.light.name {
             self.trustbadgeColorScheme = .light
-        } else if scheme.lowercased() == "dark" {
+        } else if schemeName.lowercased() == TrustbadgeColorScheme.dark.name {
             self.trustbadgeColorScheme = .dark
         }
         
@@ -102,3 +108,10 @@ class TrustbadgeColorSchemeManager: ObservableObject {
     }
 }
 
+// MARK: Helper function for unit tests
+
+extension TrustbadgeColorSchemeManager {
+    func testSettingTrustbadgeSchemeFor(schemeName: String) {
+        self.setTrustbadgeSchemeFor(schemeName: schemeName)
+    }
+}

@@ -38,6 +38,14 @@ import Foundation
     
     // MARK: Public properties
     
+    var name: String {
+        switch self {
+        case .light: return "light"
+        case .dark: return "dark"
+        case .system: return "system"
+        }
+    }
+    
     var iconImageName: String? {
         switch self {
         case .light: return "trustMarkIconInvalidCertificate-Light"

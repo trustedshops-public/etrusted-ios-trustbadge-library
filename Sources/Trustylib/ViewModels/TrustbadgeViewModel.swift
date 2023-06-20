@@ -169,11 +169,10 @@ class TrustbadgeViewModel: ObservableObject {
     func setIconForState() {
         if self.currentState == .default(self.isTrustmarkValid) {
             if self.isTrustmarkValid {
-                self.iconImageName = "trustMarkIcon"
+                self.iconImageName = self.currentState.iconImageName
             } else {
                 self.iconImageName = self.colorScheme.iconImageName
             }
-            self.iconImageName = self.currentState.iconImageName
         } else if self.currentState == .expended {
             if self.context == .productGrade, let productImage = self.productImage {
                 self.iconImage = productImage

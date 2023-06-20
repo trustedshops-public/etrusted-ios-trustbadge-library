@@ -59,5 +59,19 @@ final class TrustbadeColorSchemeManagerTests: XCTestCase {
             "TrustbadgeColorSchemeManager should update color codes based on active color scheme"
         )
     }
-
+    
+    func testCorrectColorSchemeIsSetForGivenSchemeName() {
+        let manager = TrustbadgeColorSchemeManager.instance
+        manager.testSettingTrustbadgeSchemeFor(schemeName: TrustbadgeColorScheme.light.name)
+        XCTAssert(
+            manager.trustbadgeColorScheme == .light,
+            "TrustbadgeColorSchemeManager should set correct color scheme for the given scheme name"
+        )
+        
+        manager.testSettingTrustbadgeSchemeFor(schemeName: TrustbadgeColorScheme.dark.name)
+        XCTAssert(
+            manager.trustbadgeColorScheme == .dark,
+            "TrustbadgeColorSchemeManager should set correct color scheme for the given scheme name"
+        )
+    }
 }

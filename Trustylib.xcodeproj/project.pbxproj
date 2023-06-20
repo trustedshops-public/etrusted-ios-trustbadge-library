@@ -46,6 +46,7 @@
 		C11CE87429881DA8000D6083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11CE84129881DA8000D6083 /* Localizable.strings */; };
 		C11CE87629881E1A000D6083 /* Trustylib.h in Headers */ = {isa = PBXBuildFile; fileRef = C11CE87529881E1A000D6083 /* Trustylib.h */; };
 		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
+		C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */; };
 		C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */; };
 		C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
@@ -148,6 +149,7 @@
 		C11CE84329881DA8000D6083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
+		C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorSchemeTests.swift; sourceTree = "<group>"; };
 		C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewTests.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				C1A401E929F6CCBC008B1184 /* CurrencyCodeTests.swift */,
 				C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */,
 				C11BE9302A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift */,
+				C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				C1A983F629F598DD00D83BBF /* ProductDetailsModelTests.swift in Sources */,
 				C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */,
 				C11BE9312A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift in Sources */,
+				C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */,
 				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,
 				C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */,
 			);
