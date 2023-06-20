@@ -408,11 +408,28 @@ TrustbadgeView(
 Trustbadge view considers the alignment value for expanding itself towards the correct direction to show widget details. If the alignment is set to .leading, trustbadge content expends towards right whereas for .trailing alignment, content are expended towards left.
 
 Here is how the shop grade widget presents its contents for leading and trailing alignment,<Br>
-<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" height="100" width="400"><br>
-<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" height="100" width="400">
+<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" width="400"><br>
+<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" width="400"><br>
 
 _Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
 
-## 9. Support ##
+## 9. Dark mode support ##
+Trustylib library supports dark mode color scheme. It adapts to the iOS system's light and dark color schemes by default. If in case, you need to support only light or dark mode in your iOS apps, the library will adapt to those configurations as well. Dark mode support is available from `CocoadPod version 1.2.4` and `Swift Package version 1.2.4` onwards.
+
+This is how, the library widgets look in dark mode,<br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/a3ed610a-a56f-4bf4-8b2d-f95c5d126569" width="100">
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/e14bb876-44a2-4d93-a7f7-c4c8f78f4865" width="100"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/463b52b4-7542-4fbc-8890-55dbd0300f40" width="400"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/d35cda6a-f4b8-426c-8d1a-525539c2e8c7" width="400"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/ed39c3cc-de9a-4fdc-a00d-f099148e559a" width="400"><br>
+
+To force light or dark color mode for the library so that it doesn't change based on iOS device color scheme, please add below key-value pair to your app's Info.plist file (if not already added)
+```xml
+<key>UIUserInterfaceStyle</key>
+<string>Light/Dark</string>
+```
+[UIUserInterfaceStyle](https://developer.apple.com/documentation/bundleresources/information_property_list/uiuserinterfacestyle) key is Apple's recommanded way of sticking to either light or dark mode, thus Trustylib looks for this key in the app's Info.plist file and sets the widgets' color scheme mode based on it's value. If this key isn't found, Trustylib adapts to the iOS system provided dynamic color scheme.
+
+## 10. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com
