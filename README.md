@@ -20,10 +20,10 @@ In case, your trust certificate gets expired, the Trustmark widgets is presented
 `Shop Grade` widget expands to show shop rating and status (Excellent, Good, Fair, etc) with a nice animated effect. The widget however shows the aggregate rating and status only, it doesn't show shop actual reviews' details like review text, review date, attachments, etc. <br>
 ![shop-grade](https://user-images.githubusercontent.com/27926337/233945935-5002f633-3fef-49d2-9da4-ebd5d648495b.gif)
 
-`Buyer Protection` widget shows details about shop's buyer protection amount. This widget is available in `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).<br>
+`Buyer Protection` widget shows details about shop's buyer protection amount. This widget is available from `CocoadPod version 1.1.0+` and `Swift Package version 1.1.0+`).<br>
 ![buyer-protection](https://user-images.githubusercontent.com/27926337/233946329-21ef1b31-7d06-492a-b0db-ced72eeddb23.gif)
 
-`Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available in `CocoadPod version 1.2.1+` and `Swift Package version 1.2.1+`).<br>
+`Product Grade` widget shows product image, rating and status (Excellent, Good, Fair, etc) with an animated user interface. This widget is available from `CocoadPod version 1.2.1+` and `Swift Package version 1.2.1+`).<br>
 ![product-grade](https://user-images.githubusercontent.com/27926337/233946381-e363ecd9-8e8b-4cc0-beb2-0d8797113f2a.gif)
 
 ## 1. Installation ##
@@ -35,7 +35,7 @@ Trustylib can be added to your iOS projects via both [Swift Package Manager](htt
 Trustylib library can easily be added to xcode projects via Swift Package Manager. Here is how it is done,
 
 1. While xcode project is open, go to `File > Add Packages... >`<br>
-2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.3`<br>
+2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.4`<br>
 <img width="500" src="https://user-images.githubusercontent.com/27926337/215734320-5441934d-7aa3-4d38-9720-812a1a656e11.png"><br> 
 3. Click on `Add package` button. Xcode will clone the Trustylib git repository and attach to the xcode project, it should look like this,<br>
 <img width="250" src="https://user-images.githubusercontent.com/27926337/215734354-9c807b84-aa46-4ad3-937a-31f33c21d8b9.png"><br>
@@ -62,7 +62,7 @@ And then run pod install command in the terminal,
 pod install
 ```
 
-You should now have the latest version i.e. `1.2.3` of Trustylib library added to your xcode project!
+You should now have the latest version i.e. `1.2.4` of Trustylib library added to your xcode project!
 
 ## 2. Configuration ##
 Trustylib calls TrustedShops backend API for loading details like trust certificate validity, grade/rating, buyer protection, etc. TrustedShops backend API has three environments `development`, `stage` and `production` and Trustylib can be configured to connect to one of these environments for loading your shop and product grade/rating details.
@@ -408,11 +408,28 @@ TrustbadgeView(
 Trustbadge view considers the alignment value for expanding itself towards the correct direction to show widget details. If the alignment is set to .leading, trustbadge content expends towards right whereas for .trailing alignment, content are expended towards left.
 
 Here is how the shop grade widget presents its contents for leading and trailing alignment,<Br>
-<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" height="100" width="400"><br>
-<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" height="100" width="400">
+<img src="https://user-images.githubusercontent.com/27926337/230004518-46fe40d0-7d43-4505-91f3-94c28dc01b5a.png" width="400"><br>
+<img src="https://user-images.githubusercontent.com/27926337/230004550-629c4537-4532-4af1-a5e1-84132aafe092.png" width="400"><br>
 
-_Note_: In case you are a developer integrating Trustylib in both Android and iOS, please note that the badge alignment is slightly different in iOS and Android.
+_Note_: If you are integrating Trustylib in both Android and iOS projects, please note that the badge alignment appears slightly different on these two platforms.
 
-## 9. Support ##
+## 9. Dark mode support ##
+Trustylib library supports dark mode color scheme. It adapts to the iOS system's light and dark color schemes by default. If in case, you need to support only light or dark mode in your iOS apps, the library will adapt to those configurations as well. Dark mode support is available from `CocoadPod version 1.2.4+` and `Swift Package version 1.2.4+` onwards.
+
+This is how, the library widgets look in dark mode,<br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/a3ed610a-a56f-4bf4-8b2d-f95c5d126569" width="100">
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/e14bb876-44a2-4d93-a7f7-c4c8f78f4865" width="100"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/463b52b4-7542-4fbc-8890-55dbd0300f40" width="400"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/d35cda6a-f4b8-426c-8d1a-525539c2e8c7" width="400"><br>
+<img src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/ed39c3cc-de9a-4fdc-a00d-f099148e559a" width="400"><br>
+
+To force light or dark color mode for the library so that it doesn't change based on iOS device color scheme, please add below key-value pair to your app's Info.plist file (if not already added)
+```xml
+<key>UIUserInterfaceStyle</key>
+<string>Light/Dark</string>
+```
+[UIUserInterfaceStyle](https://developer.apple.com/documentation/bundleresources/information_property_list/uiuserinterfacestyle) key is Apple's recommanded way of sticking to either light or dark mode, thus Trustylib looks for this key in the app's Info.plist file and sets the widgets' color scheme mode based on it's value. If this key isn't found, Trustylib adapts to the iOS system provided dynamic color scheme.
+
+## 10. Support ##
 Please [let us know](https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/issues) if you
 have suggestions or questions. You may also contact Trusted Shop's mobile engineering team via email: mobileapp@trustedshops.com

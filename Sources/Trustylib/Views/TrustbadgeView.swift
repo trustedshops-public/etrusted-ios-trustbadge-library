@@ -47,9 +47,11 @@ public struct TrustbadgeView: View {
     }
     
     // MARK: Private properties
-    
+    @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel: TrustbadgeViewModel
-    private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.9
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
+    private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
     
     // MARK: Initializer
     
@@ -79,7 +81,14 @@ public struct TrustbadgeView: View {
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
-        .onAppear { self.viewModel.getTrustmarkDetails() }
+        .environmentObject(self.colorSchemeManager)
+        .onChange(of: self.colorScheme) { scheme in
+            self.updateLibraryColorScheme(for: scheme)
+        }
+        .onAppear {
+            self.updateLibraryColorScheme(for: self.colorScheme)
+            self.viewModel.getTrustmarkDetails()
+        }
     }
     
     // MARK: Private methods
@@ -105,14 +114,25 @@ public struct TrustbadgeView: View {
                     
                     ZStack(alignment: .center) {
                         // Background
-                        RoundedRectangle(cornerRadius: proposedHeight * 0.5)
-                            .fill(Color.white)
-                            .frame(
-                                width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
-                                height: proposedHeight
-                            )
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
-                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                .fill(self.colorSchemeManager.backgroundColor)
+                                .frame(
+                                    width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                    height: proposedHeight
+                                )
+                                .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
+                            
+                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                .stroke(self.colorSchemeManager.borderColor, lineWidth: 1)
+                                .frame(
+                                    width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                    height: proposedHeight
+                                )
+                                .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
+                        }
                         
                         // Content - Shop grade, product grade, etc
                         ZStack {
@@ -162,9 +182,9 @@ public struct TrustbadgeView: View {
                 // Trustbadge Icon
                 ZStack(alignment: .center) {
                     Circle()
-                        .fill(Color.white)
+                        .fill(self.colorSchemeManager.backgroundColor)
                         .frame(width: proposedWidth, height: proposedHeight)
-                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 0)
+                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
                     
                     if let image = self.viewModel.iconImage {
                         Image(uiImage: image)
@@ -172,6 +192,7 @@ public struct TrustbadgeView: View {
                             .scaledToFit()
                             .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle)
                             .clipShape(Circle())
+                            .padding(.all, 5)
                     }
                 }
                 .opacity(self.viewModel.trustMarkDetails != nil ? 1 : 0)
@@ -182,6 +203,22 @@ public struct TrustbadgeView: View {
             // aligned to the left
             if self.viewModel.alignment == .leading { Spacer(minLength: 0) }
         }
+    }
+    
+    /**
+     It passes on the updated color scheme to the color scheme manager so that the library's color and
+     assets could be updated.
+     */
+    private func updateLibraryColorScheme(for scheme: ColorScheme) {
+        // Trustbadge widgets need to update color and assets only when the host application
+        // doesn't enforce light or dark mode with `UIUserInterfaceStyle` key in info.plist.
+        // This means that `colorSchemeManager.trustbadgeColorScheme` will have `system` value.
+        guard self.colorSchemeManager.trustbadgeColorScheme == .system else {
+            self.viewModel.colorScheme = self.colorSchemeManager.trustbadgeColorScheme
+            return
+        }
+        self.viewModel.colorScheme = scheme == .light ? .light : .dark
+        self.colorSchemeManager.updateColorsForScheme(scheme == .light ? .light : .dark)
     }
 }
 

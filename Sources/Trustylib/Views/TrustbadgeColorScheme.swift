@@ -21,44 +21,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 25/11/22.
+//  Created by Prem Pratap Singh on 15/06/23.
 //
 
+
 import Foundation
-import SwiftUI
 
 /**
- This extension defines custom Trustedshops colors
+ TrustbadgeColorScheme enum defines supported appearance modes (light, dark, system) for Trustbadge
+ widgets' color and assets
  */
-public extension Color {
-
-    /// Trustedshops gray 50 color
-    static var tsGray50: Color {
-        return Color(red: 0.94, green: 0.94, blue: 0.94)
+@objc public enum TrustbadgeColorScheme: Int {
+    case light
+    case dark
+    case system
+    
+    // MARK: Public properties
+    
+    var name: String {
+        switch self {
+        case .light: return "light"
+        case .dark: return "dark"
+        case .system: return "system"
+        }
     }
     
-    /// Trustedshops gray 100 color
-    static var tsGray100: Color {
-        return Color(red: 0.90, green: 0.97, blue: 0.98)
-    }
-
-    /// Trustedshops gray 600 color
-    static var tsGray600: Color {
-        return Color(red: 0.40, green: 0.40, blue: 0.40)
-    }
-    
-    /// Trustedshops gray 700 color
-    static var tsGray700: Color {
-        return Color(red: 0.30, green: 0.30, blue: 0.30)
-    }
-    
-    /// Trustedshops gray 800 color
-    static var tsGray800: Color {
-        return Color(red: 0.20, green: 0.20, blue: 0.20)
-    }
-    
-    /// Trustedshops pineapple 500 color
-    static var tsPineapple500: Color {
-        return Color(red: 1, green: 0.86, blue: 0.05)
+    var iconImageName: String? {
+        switch self {
+        case .light: return "trustMarkIconInvalidCertificate-Light"
+        case .dark: return "trustMarkIconInvalidCertificate-Dark"
+        case .system: return nil
+        }
     }
 }

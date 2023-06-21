@@ -45,6 +45,8 @@ struct GradeAndRatingView: View {
     
     // MARK: Private properties
     
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
     private var leadingPadding: CGFloat {
         return self.alignment == .leading ? self.height + self.horizontalPadding : self.horizontalPadding
     }
@@ -59,7 +61,7 @@ struct GradeAndRatingView: View {
     // MARK: User interface
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .center, spacing: 5) {
             // Grade Text
             HStack(alignment: .center, spacing: 5) {
                 if self.alignment == .trailing {
@@ -67,12 +69,12 @@ struct GradeAndRatingView: View {
                 }
                 
                 Text(self.grade)
-                    .foregroundColor(.black)
+                    .foregroundColor(self.colorSchemeManager.titleTextColor)
                     .font(.system(size: 14, weight: .semibold))
                     .lineLimit(1)
                     .minimumScaleFactor(self.textScaleFactor)
                 Text(self.gradeTitle)
-                    .foregroundColor(.black)
+                    .foregroundColor(self.colorSchemeManager.titleTextColor)
                     .font(.system(size: 14, weight: .regular))
                     .lineLimit(1)
                     .minimumScaleFactor(self.textScaleFactor)
@@ -91,12 +93,12 @@ struct GradeAndRatingView: View {
                 StarRatingView(rating: self.rating)
                 HStack(alignment: .center, spacing: 0) {
                     Text(self.ratingFormatted)
-                        .foregroundColor(.black)
+                        .foregroundColor(self.colorSchemeManager.ratingTextColor)
                         .font(.system(size: 14, weight: .semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(self.textScaleFactor)
                     Text("/5.00")
-                        .foregroundColor(.black)
+                        .foregroundColor(self.colorSchemeManager.ratingRangeTextColor)
                         .font(.system(size: 14, weight: .regular))
                         .lineLimit(1)
                         .minimumScaleFactor(self.textScaleFactor)

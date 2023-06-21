@@ -54,6 +54,7 @@ struct BuyerProtectionView: View {
     
     // MARK: - Private properties
     
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
     @StateObject private var viewModel = BuyerProtectionViewModel()
     
     private let horizontalPadding: CGFloat = 12
@@ -76,7 +77,7 @@ struct BuyerProtectionView: View {
             VStack(alignment: self.alignment == .leading ? .leading : .trailing, spacing: 4) {
                 Text(NSLocalizedString("Independent guarantee",
                                        comment: "Trustbadge: Buyer protection title"))
-                .foregroundColor(.black)
+                .foregroundColor(self.colorSchemeManager.titleTextColor)
                 .font(.system(size: 14, weight: .semibold))
                 .lineLimit(1)
                 .minimumScaleFactor(self.textScaleFactor)
@@ -84,13 +85,13 @@ struct BuyerProtectionView: View {
                 HStack(alignment: .center, spacing: 3) {
                     Text(NSLocalizedString("Your purchase is protected up to",
                                            comment: "Trustbadge: Buyer protection description"))
-                    .foregroundColor(.black)
+                    .foregroundColor(self.colorSchemeManager.ratingTextColor)
                     .font(.system(size: 12, weight: .regular))
                     .lineLimit(1)
                     .minimumScaleFactor(self.textScaleFactor)
                     
                     Text("\(self.viewModel.protectionAmountFormatted)")
-                        .foregroundColor(.black)
+                        .foregroundColor(self.colorSchemeManager.ratingTextColor)
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(self.textScaleFactor)

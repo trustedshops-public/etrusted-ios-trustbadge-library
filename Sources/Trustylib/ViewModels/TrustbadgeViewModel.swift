@@ -47,6 +47,11 @@ class TrustbadgeViewModel: ObservableObject {
     var productId: String?
     var context: TrustbadgeContext
     var alignment: TrustbadgeViewAlignment = .leading
+    var colorScheme: TrustbadgeColorScheme = .system {
+        didSet {
+            self.setIconForState()
+        }
+    }
     
     /**
      It validates, if valid inputs are provided as required for the widget to fetch data from backend and render
@@ -163,7 +168,11 @@ class TrustbadgeViewModel: ObservableObject {
      */
     func setIconForState() {
         if self.currentState == .default(self.isTrustmarkValid) {
-            self.iconImageName = self.currentState.iconImageName
+            if self.isTrustmarkValid {
+                self.iconImageName = self.currentState.iconImageName
+            } else {
+                self.iconImageName = self.colorScheme.iconImageName
+            }
         } else if self.currentState == .expended {
             if self.context == .productGrade, let productImage = self.productImage {
                 self.iconImage = productImage
