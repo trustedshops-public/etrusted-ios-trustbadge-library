@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/trustedshops-public/etrusted-ios-trustbadge-library",
       "state" : {
-        "revision" : "eafb1f755bd2097a9fee39161efcb41e92dc8eff",
-        "version" : "1.0.0"
+        "revision" : "736394a516918d2d6307ef466289bb4697b72a66",
+        "version" : "1.2.4"
       }
     }
   ],

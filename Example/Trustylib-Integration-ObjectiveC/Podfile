@@ -6,6 +6,6 @@ target 'Trustylib-Integration-ObjectiveC' do
   use_frameworks!
 
   # Pods for Trustylib-Integration-ObjectiveC
-pod 'Trustylib', '~> 1.0.0'
+  pod 'Trustylib', '~> 1.2.4'
 
 end

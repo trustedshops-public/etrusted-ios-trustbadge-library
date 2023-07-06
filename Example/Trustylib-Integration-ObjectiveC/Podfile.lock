@@ -1,16 +1,16 @@
 PODS:
-  - Trustylib (1.0.0)
+  - Trustylib (1.2.4)
 
 DEPENDENCIES:
-  - Trustylib (~> 1.0.0)
+  - Trustylib (~> 1.2.4)
 
 SPEC REPOS:
   trunk:
     - Trustylib
 
 SPEC CHECKSUMS:
-  Trustylib: a8ee51a6cc3fd1ad11904fa4eec48606042ff575
+  Trustylib: 5599eb52b00649b02a98f2456c9f721f8f085428
 
-PODFILE CHECKSUM: d7989cc0544a69ad6931f24602c960dbf006bb31
+PODFILE CHECKSUM: 8d83bb3c84c0b98958dd890345dcc57b19cbbaa7
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

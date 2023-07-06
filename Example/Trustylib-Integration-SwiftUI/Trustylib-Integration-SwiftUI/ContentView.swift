@@ -31,7 +31,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             TrustbadgeView(
-                tsid: "X330A2E7D449E31E467D2F53A55DDD070",
+                tsId: "X330A2E7D449E31E467D2F53A55DDD070",
                 channelId: "chl-b309535d-baa0-40df-a977-0b375379a3cc",
                 context: .shopGrade
             )

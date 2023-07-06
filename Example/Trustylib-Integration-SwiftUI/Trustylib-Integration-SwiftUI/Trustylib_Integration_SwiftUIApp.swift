@@ -25,15 +25,9 @@
 //
 
 import SwiftUI
-import Trustylib
 
 @main
 struct Trustylib_Integration_SwiftUIApp: App {
-
-    init() {
-        Trustbadge.configure()
-    }
-    
     var body: some Scene {
         WindowGroup {
             ContentView()

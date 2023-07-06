@@ -1,6 +1,0 @@
-framework module Pods_Trustylib_Integration_ObjectiveC {
-  umbrella header "Pods-Trustylib-Integration-ObjectiveC-umbrella.h"
-
-  export *
-  module * { export * }
-}

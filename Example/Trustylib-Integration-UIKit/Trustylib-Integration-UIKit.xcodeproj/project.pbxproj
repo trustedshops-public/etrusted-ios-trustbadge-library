@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C17E94872A56BB8A005AA499 /* Trustylib in Frameworks */ = {isa = PBXBuildFile; productRef = C17E94862A56BB8A005AA499 /* Trustylib */; };
 		C1C166E2298AC4C300314E64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C166E1298AC4C300314E64 /* AppDelegate.swift */; };
 		C1C166E4298AC4C300314E64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C166E3298AC4C300314E64 /* SceneDelegate.swift */; };
 		C1C166E6298AC4C300314E64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C166E5298AC4C300314E64 /* ViewController.swift */; };
 		C1C166E9298AC4C300314E64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C166E7298AC4C300314E64 /* Main.storyboard */; };
 		C1C166EB298AC4C500314E64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C166EA298AC4C500314E64 /* Assets.xcassets */; };
 		C1C166EE298AC4C500314E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C166EC298AC4C500314E64 /* LaunchScreen.storyboard */; };
-		C1C166F7298AC50800314E64 /* Trustylib in Frameworks */ = {isa = PBXBuildFile; productRef = C1C166F6298AC50800314E64 /* Trustylib */; };
-		C1C166F9298AC52F00314E64 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1C166F8298AC52F00314E64 /* TrustbadgeConfiguration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,6 @@
 		C1C166EA298AC4C500314E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1C166ED298AC4C500314E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1C166EF298AC4C500314E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1C166F8298AC52F00314E64 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C166F7298AC50800314E64 /* Trustylib in Frameworks */,
+				C17E94872A56BB8A005AA499 /* Trustylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +61,6 @@
 				C1C166E1298AC4C300314E64 /* AppDelegate.swift */,
 				C1C166E3298AC4C300314E64 /* SceneDelegate.swift */,
 				C1C166E5298AC4C300314E64 /* ViewController.swift */,
-				C1C166F8298AC52F00314E64 /* TrustbadgeConfiguration.plist */,
 				C1C166E7298AC4C300314E64 /* Main.storyboard */,
 				C1C166EA298AC4C500314E64 /* Assets.xcassets */,
 				C1C166EC298AC4C500314E64 /* LaunchScreen.storyboard */,
@@ -89,7 +86,7 @@
 			);
 			name = "Trustylib-Integration-UIKit";
 			packageProductDependencies = (
-				C1C166F6298AC50800314E64 /* Trustylib */,
+				C17E94862A56BB8A005AA499 /* Trustylib */,
 			);
 			productName = "Trustylib-Integration-UIKit";
 			productReference = C1C166DE298AC4C300314E64 /* Trustylib-Integration-UIKit.app */;
@@ -120,7 +117,7 @@
 			);
 			mainGroup = C1C166D5298AC4C300314E64;
 			packageReferences = (
-				C1C166F5298AC50800314E64 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */,
+				C17E94852A56BB8A005AA499 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */,
 			);
 			productRefGroup = C1C166DF298AC4C300314E64 /* Products */;
 			projectDirPath = "";
@@ -136,7 +133,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C166F9298AC52F00314E64 /* TrustbadgeConfiguration.plist in Resources */,
 				C1C166EE298AC4C500314E64 /* LaunchScreen.storyboard in Resources */,
 				C1C166EB298AC4C500314E64 /* Assets.xcassets in Resources */,
 				C1C166E9298AC4C300314E64 /* Main.storyboard in Resources */,
@@ -372,20 +368,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C1C166F5298AC50800314E64 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */ = {
+		C17E94852A56BB8A005AA499 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/trustedshops-public/etrusted-ios-trustbadge-library";
+			repositoryURL = "https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.2.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C1C166F6298AC50800314E64 /* Trustylib */ = {
+		C17E94862A56BB8A005AA499 /* Trustylib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C1C166F5298AC50800314E64 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */;
+			package = C17E94852A56BB8A005AA499 /* XCRemoteSwiftPackageReference "etrusted-ios-trustbadge-library" */;
 			productName = Trustylib;
 		};
 /* End XCSwiftPackageProductDependency section */
