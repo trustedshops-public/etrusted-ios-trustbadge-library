@@ -21,5 +21,8 @@ fastlane/report.xml
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+## Cocoapods ##
+Example/Trustylib-Integration-ObjectiveC/Pods/
+
 ### Other Configurations ###
 .DS_Store
