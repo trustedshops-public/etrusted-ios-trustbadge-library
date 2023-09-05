@@ -1,12 +1,12 @@
 version: 2.1
 orbs:
-  codecov: codecov/codecov@3.2.4
-  sonarcloud: sonarsource/sonarcloud@1.1.1
+  codecov: codecov/codecov@3.2.5
+  sonarcloud: sonarsource/sonarcloud@2.0.0
 
 executors:
   linux-docker:
     docker:
-      - image: cimg/base:2023.05
+      - image: cimg/base:2023.08
 
 jobs:
   build-and-test:
