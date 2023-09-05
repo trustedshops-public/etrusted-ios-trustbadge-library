@@ -179,7 +179,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
         XCTAssert(
-            viewModel.currentState == .expended,
+            viewModel.currentState == .expanded,
             "TrustbadgeViewModel should set correct expended and default state for the shop grade context"
         )
     }
@@ -190,7 +190,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         let trustMarkDefaultStateExpectation = expectation(description: "TrustbadgeViewModel default state expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssert(
-                viewModel.currentState == .expended,
+                viewModel.currentState == .expanded,
                 "TrustbadgeViewModel should set correct expended and default state for the shop grade context"
             )
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
