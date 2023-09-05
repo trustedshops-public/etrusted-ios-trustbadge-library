@@ -173,7 +173,7 @@ class TrustbadgeViewModel: ObservableObject {
             } else {
                 self.iconImageName = self.colorScheme.iconImageName
             }
-        } else if self.currentState == .expended {
+        } else if self.currentState == .expanded {
             if self.context == .productGrade, let productImage = self.productImage {
                 self.iconImage = productImage
                 return
@@ -231,7 +231,7 @@ class TrustbadgeViewModel: ObservableObject {
             self.shouldShowExpendedStateContent = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.currentState = .expended
+            self.currentState = .expanded
             self.setIconForState()
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.shouldShowExpendedStateContent = false
