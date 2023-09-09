@@ -49,6 +49,7 @@
 		C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */; };
 		C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */; };
 		C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */; };
+		C12D405F2AAA41D30058B14B /* OrderDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
 		C163FBED29ACA3810090548F /* TrustbadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */; };
 		C163FBEF29AD02F30090548F /* ShopGradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */; };
@@ -153,6 +154,7 @@
 		C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorSchemeTests.swift; sourceTree = "<group>"; };
 		C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewTests.swift; sourceTree = "<group>"; };
+		C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsModel.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 		C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewModel.swift; sourceTree = "<group>"; };
 		C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				C1A983ED29F4618A00D83BBF /* ProductDetailsModel.swift */,
 				C1A983E529F4449000D83BBF /* ProductGradeModel.swift */,
 				C1B79E2C2AA777D5009C4CEA /* TrustcardState.swift */,
+				C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				C16E4BEB29D31A5800039933 /* BuyerProtectionDataService.swift in Sources */,
 				C1A983E829F4454A00D83BBF /* ProductGradeViewModel.swift in Sources */,
 				C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */,
+				C12D405F2AAA41D30058B14B /* OrderDetailsModel.swift in Sources */,
 				C190462329D416260054BEE4 /* CurrencyCode.swift in Sources */,
 				C11BE9192A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift in Sources */,
 				C1A983E629F4449000D83BBF /* ProductGradeModel.swift in Sources */,

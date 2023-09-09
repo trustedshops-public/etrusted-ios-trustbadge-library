@@ -45,6 +45,8 @@ class TrustbadgeViewModel: ObservableObject {
     var tsId: String
     var channelId: String?
     var productId: String?
+    var orderDetails: OrderDetailsModel?
+    var trustCardState: TrustcardState?
     var context: TrustbadgeContext
     var alignment: TrustbadgeViewAlignment = .leading
     var colorScheme: TrustbadgeColorScheme = .system {
@@ -112,11 +114,15 @@ class TrustbadgeViewModel: ObservableObject {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
+        orderDetails: OrderDetailsModel? = nil,
+        trustCardState: TrustcardState? = nil,
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading) {
             self.tsId = tsId
             self.channelId = channelId
             self.productId = productId
+            self.orderDetails = orderDetails
+            self.trustCardState = trustCardState
             self.context = context
             self.alignment = alignment
             self.iconImageName = TrustbadgeState.default(false).iconImageName

@@ -30,7 +30,7 @@ import Foundation
 /**
  CurrencyCode enum contains details like currency code, symbol, etc
  */
-enum CurrencyCode: String, Codable {
+public enum CurrencyCode: String, Codable {
     case chf // Swiss Franc
     case eur // Euro
     case gbp // Pound Sterling

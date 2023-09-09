@@ -59,6 +59,8 @@ public struct TrustbadgeView: View {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
+        orderDetails: OrderDetailsModel? = nil,
+        trustCardState: TrustcardState? = nil,
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading
     ) {
@@ -67,6 +69,8 @@ public struct TrustbadgeView: View {
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
+                orderDetails: orderDetails,
+                trustCardState: trustCardState,
                 context: context,
                 alignment: alignment
             )
