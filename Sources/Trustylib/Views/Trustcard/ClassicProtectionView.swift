@@ -21,17 +21,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 07/11/22.
+//  Created by Prem Pratap Singh on 10/09/23.
 //
 
-"Excellent" = "Excellent";
-"Good" = "Good";
-"Fair" = "Fair";
-"Poor" = "Poor";
-"Very poor" = "Very poor";
-"shop reviews" = "shop reviews";
-"Independent guarantee" = "Independent guarantee";
-"Your purchase is protected up to" = "Your purchase is protected up to";
-"product reviews" = "product reviews";
-"Protect your purchase!" = "Protect your purchase!";
-"Your purchase is protected up to %@!" = "Your purchase is protected up to %@!";
+
+import SwiftUI
+
+/**
+ ClassicProtectionView presents UI/UX and user action buttons for `TrustcardState.classicProtection` state
+ */
+struct ClassicProtectionView: View {
+    
+    // MARK: - Public properties
+    
+    var orderDetails: OrderDetailsModel
+    
+    // MARK: - User interface
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("ClassicProtectionView")
+            Rectangle()
+                .fill(Color.white)
+                .frame(height: 100)
+        }
+    }
+}

@@ -46,4 +46,22 @@ import Foundation
     case protectionConfirmation
     case upgradeToPlusProtection
     case reviewInvitationForm
+    
+    // MARK: - Public properties
+    
+    var title: String {
+        switch self {
+        case .classicProtection:
+            return NSLocalizedString(
+                "Protect your purchase!",
+                comment: "Trustcard view - classic protection title"
+            )
+        case .protectionConfirmation:
+            return NSLocalizedString(
+                "Your purchase is protected up to %@!",
+                comment: "Trustcard view - protection confirmation title"
+            )
+        default: return ""
+        }
+    }
 }

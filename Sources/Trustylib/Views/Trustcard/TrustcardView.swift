@@ -43,25 +43,36 @@ struct TrustcardView: View {
     
     var body: some View {
         ZStack {
-            
-            // Buyer protection content view
-            VStack(alignment: .leading, spacing: 16) {
-                Rectangle()
-                    .fill(Color.tsGray100)
-                    .frame(height: 150)
+            if let consumerOrderDetails = self.orderDetails, let trustCardState = self.state {
+                // Buyer protection content view
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack {
+                        Text(trustCardState.title)
+                            .font(.system(size: 16, weight: .semibold))
+                        Spacer()
+                        Button(
+                            action: {
+                                print("Dismiss trustcard...")
+                            },
+                            label: {
+                                Image(systemName: "xmark")
+                                    .frame(width: 18, height: 18)
+                                    .foregroundColor(Color.black)
+                            }
+                        )
+                    }
+                    
+                    switch trustCardState {
+                    case .classicProtection: ClassicProtectionView(orderDetails: consumerOrderDetails)
+                    case .protectionConfirmation: ProtectionConfirmationView()
+                    default: EmptyView()
+                    }
+                }
+                .padding(.all, 16)
                 
-                Text("We may ask for further review information by e-mail to help other online shoppers. Terms and Conditions & Privacy Policy")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(Color.tsGray800)
-                
-                Rectangle()
-                    .fill(Color.tsGray100)
-                    .frame(height: 200)
+                // Border graphics
+                TrustcardBorderGraphics()
             }
-            .padding(.all, 16)
-            
-            // Border graphics
-            TrustcardBorderGraphics()
         }
         .background(Color.white)
     }

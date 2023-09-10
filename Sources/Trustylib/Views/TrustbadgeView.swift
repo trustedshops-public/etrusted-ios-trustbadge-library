@@ -83,20 +83,23 @@ public struct TrustbadgeView: View {
     
     public var body: some View {
         GeometryReader { geoReader in
+            let trustbadgeHeight = geoReader.frame(in: .global).height
             ZStack(alignment: self.viewModel.alignment == .leading ? .bottomLeading : .bottomTrailing) {
                 // Trustbadge view
                 self.getRootViewWith(
                     proposedWidth: geoReader.frame(in: .global).width,
-                    proposedHeight: geoReader.frame(in: .global).height
+                    proposedHeight: trustbadgeHeight
                 )
                 
                 // Trustcard view
-                TrustcardView()
-                .background(GeometryReader { trustcardGeoReader in
-                    Color.clear.onAppear { self.trustcardHeight = trustcardGeoReader.size.height }
-                })
+                if let orderDetails = self.viewModel.orderDetails, let state = self.viewModel.trustCardState {
+                    TrustcardView(orderDetails: orderDetails, state: state)
+                    .background(GeometryReader { trustcardGeoReader in
+                        Color.clear.onAppear { self.trustcardHeight = trustcardGeoReader.size.height }
+                    })
+                }
             }
-            .offset(y: -self.trustcardHeight)
+            .offset(y: -(self.trustcardHeight - trustbadgeHeight))
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
