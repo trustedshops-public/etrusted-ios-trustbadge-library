@@ -51,6 +51,8 @@ public struct TrustbadgeView: View {
     @StateObject private var viewModel: TrustbadgeViewModel
     @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
     
+    @State private var trustcardHeight: CGFloat = 0
+    
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
     
     // MARK: Initializer
@@ -81,7 +83,20 @@ public struct TrustbadgeView: View {
     
     public var body: some View {
         GeometryReader { geoReader in
-            self.getRootViewWith(proposedWidth: geoReader.frame(in: .global).width, proposedHeight: geoReader.frame(in: .global).height)
+            ZStack(alignment: self.viewModel.alignment == .leading ? .bottomLeading : .bottomTrailing) {
+                // Trustbadge view
+                self.getRootViewWith(
+                    proposedWidth: geoReader.frame(in: .global).width,
+                    proposedHeight: geoReader.frame(in: .global).height
+                )
+                
+                // Trustcard view
+                TrustcardView()
+                .background(GeometryReader { trustcardGeoReader in
+                    Color.clear.onAppear { self.trustcardHeight = trustcardGeoReader.size.height }
+                })
+            }
+            .offset(y: -self.trustcardHeight)
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
