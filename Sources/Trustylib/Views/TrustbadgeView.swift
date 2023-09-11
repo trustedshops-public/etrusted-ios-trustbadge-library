@@ -52,6 +52,7 @@ public struct TrustbadgeView: View {
     @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
     
     @State private var trustcardHeight: CGFloat = 0
+    @State private var yOffset: CGFloat = 0
     
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
     
@@ -92,20 +93,24 @@ public struct TrustbadgeView: View {
                 )
                 
                 // Trustcard view
-                if let orderDetails = self.viewModel.orderDetails, let state = self.viewModel.trustCardState {
-                    TrustcardView(orderDetails: orderDetails, state: state)
-                    .background(GeometryReader { trustcardGeoReader in
-                        Color.clear.onAppear { self.trustcardHeight = trustcardGeoReader.size.height }
-                    })
-                }
+                TrustcardView(orderDetails: self.viewModel.orderDetails, state: self.viewModel.trustCardState, height: self.$trustcardHeight, delegate: self)
+                .opacity(self.viewModel.shouldShowTrustcardView ? 1 : 0)
+                .animation(.easeIn(duration: 0.2), value: self.viewModel.shouldShowTrustcardView)
             }
-            .offset(y: -(self.trustcardHeight - trustbadgeHeight))
+            .offset(y: self.yOffset)
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .environmentObject(self.colorSchemeManager)
         .onChange(of: self.colorScheme) { scheme in
             self.updateLibraryColorScheme(for: scheme)
+        }
+        .onChange(of: self.trustcardHeight) { height in
+            guard height > 0 else {
+                self.yOffset = 0
+                return
+            }
+            self.yOffset = -(self.trustcardHeight - self.viewModel.trustbadgeHeight)
         }
         .onAppear {
             self.updateLibraryColorScheme(for: self.colorScheme)
@@ -119,7 +124,7 @@ public struct TrustbadgeView: View {
      Builds up trustbadge root view based on available width, height, view model data and returns the same
      */
     private func getRootViewWith(proposedWidth: CGFloat, proposedHeight: CGFloat) -> some View {
-        
+        self.viewModel.trustbadgeHeight = proposedHeight
         return HStack(alignment: .center) {
             
             // This spacer helps in keeping the trustmark icon and expanding view
@@ -244,7 +249,7 @@ public struct TrustbadgeView: View {
     }
 }
 
-// MARK: ShopGradeViewDelegate methods
+// MARK: - ShopGradeViewDelegate methods
 
 extension TrustbadgeView: ShopGradeViewDelegate {
     func didLoadShopGrades() {
@@ -252,7 +257,7 @@ extension TrustbadgeView: ShopGradeViewDelegate {
     }
 }
 
-// MARK: ProductGradeViewDelegate methods
+// MARK: - ProductGradeViewDelegate methods
 
 extension TrustbadgeView: ProductGradeViewDelegate {
     func didLoadProductDetails(imageUrl: String) {
@@ -262,7 +267,7 @@ extension TrustbadgeView: ProductGradeViewDelegate {
     }
 }
 
-// MARK: BuyerProtectionViewDelegate methods
+// MARK: - BuyerProtectionViewDelegate methods
 
 extension TrustbadgeView: BuyerProtectionViewDelegate {
     func didLoadBuyerProtectionDetails() {
@@ -270,10 +275,19 @@ extension TrustbadgeView: BuyerProtectionViewDelegate {
     }
 }
 
+// MARK: - TrustcardViewDelegate methods
+
+extension TrustbadgeView: TrustcardViewDelegate {
+    func didTapOnDismissTrustcardButton() {
+        self.trustcardHeight = self.viewModel.trustbadgeHeight
+        self.viewModel.orderDetails = nil
+        self.viewModel.trustCardState = nil
+    }
+}
+
 // MARK: Helper properties/methods for tests
 
 extension TrustbadgeView {
-    
     var currentViewModel: TrustbadgeViewModel {
         return self.viewModel
     }

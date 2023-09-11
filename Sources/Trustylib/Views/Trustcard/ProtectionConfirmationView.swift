@@ -35,6 +35,20 @@ struct ProtectionConfirmationView: View {
     // MARK: - User interface
     
     var body: some View {
-        Text("ProtectionConfirmationView")
+        VStack(alignment: .leading, spacing: 10) {
+            Text(NSLocalizedString("Trusted Shops will send you an email in order to review your order.", comment: "Buyer protection confirmation - description"))
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.black)
+                .padding(.bottom, 40)
+            
+            Text(NSLocalizedString("Terms & conditions", comment: "Buyer protection confirmation - terms and conditions link title"))
+                .font(.system(size: 11, weight: .regular))
+                .foregroundColor(Color.tsGray700)
+            
+            Text(NSLocalizedString("Imprint & Data protection", comment: "Buyer protection confirmation - imprint and data protection link title"))
+                .font(.system(size: 11, weight: .regular))
+                .foregroundColor(Color.tsGray700)
+        }
+        
     }
 }

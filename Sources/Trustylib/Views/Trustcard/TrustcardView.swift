@@ -27,6 +27,15 @@
 
 import SwiftUI
 
+
+/**
+ TrustcardViewDelegate is updated about  trust card view's internal events
+ so that required actions be taken at the parent view level.
+ */
+protocol TrustcardViewDelegate {
+    func didTapOnDismissTrustcardButton()
+}
+
 /**
  TrustcardView presents UI/UX showing details about the buyer protection support and
  action buttons for subscribing to buyer protection, upgrading to plus protection and
@@ -37,7 +46,9 @@ struct TrustcardView: View {
     // MARK: - Public properties
     
     var orderDetails: OrderDetailsModel?
-    var state: TrustcardState?
+    @State var state: TrustcardState?
+    @Binding var height: CGFloat
+    var delegate: TrustcardViewDelegate
     
     // MARK: - User interface
     
@@ -52,7 +63,7 @@ struct TrustcardView: View {
                         Spacer()
                         Button(
                             action: {
-                                print("Dismiss trustcard...")
+                                self.delegate.didTapOnDismissTrustcardButton()
                             },
                             label: {
                                 Image(systemName: "xmark")
@@ -63,17 +74,43 @@ struct TrustcardView: View {
                     }
                     
                     switch trustCardState {
-                    case .classicProtection: ClassicProtectionView(orderDetails: consumerOrderDetails)
+                    case .classicProtection: ClassicProtectionView(orderDetails: consumerOrderDetails, delegate: self)
                     case .protectionConfirmation: ProtectionConfirmationView()
                     default: EmptyView()
                     }
                 }
-                .padding(.all, 16)
+                .padding(.all, 24)
                 
                 // Border graphics
                 TrustcardBorderGraphics()
             }
         }
-        .background(Color.white)
+        .background(GeometryReader { geometry in
+            Color.white.preference(
+                key: TrustcardHeightPreferenceKey.self,
+                value: geometry.size.height
+            )
+        })
+        .onPreferenceChange(TrustcardHeightPreferenceKey.self) {
+            self.height = $0
+        }
+    }
+}
+
+// MARK: - ClassicProtectionViewDelegate methods
+
+extension TrustcardView: ClassicProtectionViewDelegate {
+    func didTapOnSubscribeToProtectionButton() {
+        self.state = .protectionConfirmation
+    }
+}
+
+/**
+ TrustcardHeightPreferenceKey helps in keeping track of changes in trustcard view height
+ */
+struct TrustcardHeightPreferenceKey: PreferenceKey {
+    static let defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
     }
 }
