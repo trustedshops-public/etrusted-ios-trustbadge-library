@@ -53,8 +53,8 @@ import SwiftUI
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
-                orderDetails: orderDetails,
-                trustCardState: trustCardState,
+                orderDetails: .constant(orderDetails),
+                trustCardState: .constant(trustCardState),
                 context: context,
                 alignment: alignment
             )

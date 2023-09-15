@@ -32,21 +32,38 @@ import SwiftUI
  */
 struct ProtectionConfirmationView: View {
     
+    // MARK: - Private properties
+    
+    private var termsAndConditionsLinkText: String {
+        let text = NSLocalizedString("[Terms & conditions](%@)", comment: "Protection confirmation view - terms and conditions")
+        let linkText = String(format: text, TrustcardView.urlForTermsConditionsAndPrivacyPolicy)
+        return linkText
+    }
+    
+    private var imprintLinkText: String {
+        let text = NSLocalizedString("[Imprint & Data protection](%@)", comment: "Protection confirmation view - imprint")
+        let linkText = String(format: text, TrustcardView.urlForImprintAndDataProtection)
+        return linkText
+    }
+    
     // MARK: - User interface
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(NSLocalizedString("Trusted Shops will send you an email in order to review your order.", comment: "Buyer protection confirmation - description"))
                 .font(.system(size: 13, weight: .regular))
                 .foregroundColor(Color.black)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 40)
             
-            Text(NSLocalizedString("Terms & conditions", comment: "Buyer protection confirmation - terms and conditions link title"))
+            Text(.init(self.termsAndConditionsLinkText))
                 .font(.system(size: 11, weight: .regular))
+                .accentColor(Color.tsBlue700)
                 .foregroundColor(Color.tsGray700)
             
-            Text(NSLocalizedString("Imprint & Data protection", comment: "Buyer protection confirmation - imprint and data protection link title"))
+            Text(.init(self.imprintLinkText))
                 .font(.system(size: 11, weight: .regular))
+                .accentColor(Color.tsBlue700)
                 .foregroundColor(Color.tsGray700)
         }
         

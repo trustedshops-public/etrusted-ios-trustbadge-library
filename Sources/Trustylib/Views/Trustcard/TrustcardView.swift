@@ -45,8 +45,10 @@ struct TrustcardView: View {
     
     // MARK: - Public properties
     
-    var orderDetails: OrderDetailsModel?
-    @State var state: TrustcardState?
+    var trustMarkDetails: TrustmarkDetailsModel?
+    @Binding var orderDetails: OrderDetailsModel?
+    var protectionAmountWithCurrencyCode: String?
+    @Binding var state: TrustcardState?
     @Binding var height: CGFloat
     var delegate: TrustcardViewDelegate
     
@@ -54,16 +56,19 @@ struct TrustcardView: View {
     
     var body: some View {
         ZStack {
-            if let consumerOrderDetails = self.orderDetails, let trustCardState = self.state {
+            if let trustMarkDetails = self.trustMarkDetails, let consumerOrderDetails = self.orderDetails, let protectionAmount = self.protectionAmountWithCurrencyCode, let trustCardState = self.state {
                 // Buyer protection content view
                 VStack(alignment: .leading, spacing: 16) {
-                    HStack {
-                        Text(trustCardState.title)
+                    HStack(alignment: .top) {
+                        Text(trustCardState.getTitle(with: protectionAmount))
                             .font(.system(size: 16, weight: .semibold))
-                        Spacer()
+                            .fixedSize(horizontal: false, vertical: true)
+                        Spacer(minLength: 10)
                         Button(
                             action: {
                                 self.delegate.didTapOnDismissTrustcardButton()
+                                self.orderDetails = nil
+                                self.state = nil
                             },
                             label: {
                                 Image(systemName: "xmark")
@@ -74,12 +79,12 @@ struct TrustcardView: View {
                     }
                     
                     switch trustCardState {
-                    case .classicProtection: ClassicProtectionView(orderDetails: consumerOrderDetails, delegate: self)
+                    case .classicProtection: ClassicProtectionView(trustMarkDetails: trustMarkDetails, orderDetails: consumerOrderDetails, protectionAmountWithCurrencyCode: protectionAmount, delegate: self)
                     case .protectionConfirmation: ProtectionConfirmationView()
                     default: EmptyView()
                     }
                 }
-                .padding(.all, 24)
+                .padding(.all, 18)
                 
                 // Border graphics
                 TrustcardBorderGraphics()
@@ -112,5 +117,18 @@ struct TrustcardHeightPreferenceKey: PreferenceKey {
     static let defaultValue: CGFloat = 0
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = max(value, nextValue())
+    }
+}
+
+/**
+ TrustedShops urls for Trustcard related terms conditions, privacy policy, imprint etc
+ */
+extension TrustcardView {
+    static var urlForTermsConditionsAndPrivacyPolicy: String {
+        return "https://www.trustedshops.com/tsdocument/BUYER_AUTO_PROTECTION_TERMS_en.pdf"
+    }
+    
+    static var urlForImprintAndDataProtection: String {
+        return "https://www.trustedshops.co.uk/imprint/#user-privacy-policy"
     }
 }

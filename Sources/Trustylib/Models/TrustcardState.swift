@@ -33,23 +33,16 @@ import Foundation
  
  Here is what these states refer to,
  1. `classicProtection` - This state refers to the use case when the consumer who placed the order, doesn't have buyer protection subscription.
- 2. `plusProtection` - This state refers to the use case when the consumer has plus protection subscription.
- 3. `protectionConfirmation` - This state is set after the consumer's opt in for buyer protection is successful. This state presents the subscription
+ 2. `protectionConfirmation` - This state is set after the consumer's opt in for buyer protection is successful. This state presents the subscription
  confirmation.
- 4. `upgradeToPlusProtection` - This state presents the UI/UX for consumers to upgrade to plus protection subscription.
- 5. `reviewInvitationForm` - This state presents the input form where the consumer needs to provide his/her email and order number so that
- review invitation could be sent to the consumer.
  */
 @objc public enum TrustcardState: Int {
     case classicProtection
-    case plusProtection
     case protectionConfirmation
-    case upgradeToPlusProtection
-    case reviewInvitationForm
     
-    // MARK: - Public properties
+    // MARK: - Public methods
     
-    var title: String {
+    func getTitle(with protectionAmount: String) -> String {
         switch self {
         case .classicProtection:
             return NSLocalizedString(
@@ -57,11 +50,11 @@ import Foundation
                 comment: "Trustcard view - classic protection title"
             )
         case .protectionConfirmation:
-            return NSLocalizedString(
-                "Your purchase is protected up to %@!",
+            let string = NSLocalizedString(
+                "Your purchase is protected up to %@",
                 comment: "Trustcard view - protection confirmation title"
             )
-        default: return ""
+            return String(format: string, protectionAmount)
         }
     }
 }

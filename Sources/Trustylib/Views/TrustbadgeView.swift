@@ -45,7 +45,7 @@ public struct TrustbadgeView: View {
             self.viewModel.currentState = newValue == true ? .invisible : .default(self.viewModel.isTrustmarkValid)
         }
     }
-    
+
     // MARK: Private properties
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel: TrustbadgeViewModel
@@ -62,8 +62,8 @@ public struct TrustbadgeView: View {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
-        orderDetails: OrderDetailsModel? = nil,
-        trustCardState: TrustcardState? = nil,
+        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
+        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading
     ) {
@@ -93,9 +93,10 @@ public struct TrustbadgeView: View {
                 )
                 
                 // Trustcard view
-                TrustcardView(orderDetails: self.viewModel.orderDetails, state: self.viewModel.trustCardState, height: self.$trustcardHeight, delegate: self)
-                .opacity(self.viewModel.shouldShowTrustcardView ? 1 : 0)
-                .animation(.easeIn(duration: 0.2), value: self.viewModel.shouldShowTrustcardView)
+                if self.viewModel.trustMarkDetails != nil {
+                    TrustcardView(trustMarkDetails: self.viewModel.trustMarkDetails, orderDetails: self.viewModel.orderDetails, protectionAmountWithCurrencyCode: self.viewModel.protectionAmountWithCurrencyCode, state: self.viewModel.trustCardState, height: self.$trustcardHeight, delegate: self)
+                        .background(Color.white)
+                }
             }
             .offset(y: self.yOffset)
         }
@@ -270,7 +271,8 @@ extension TrustbadgeView: ProductGradeViewDelegate {
 // MARK: - BuyerProtectionViewDelegate methods
 
 extension TrustbadgeView: BuyerProtectionViewDelegate {
-    func didLoadBuyerProtectionDetails() {
+    func didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: String) {
+        self.viewModel.protectionAmountWithCurrencyCode = protectionAmountWithCurrencyCode
         self.viewModel.expandBadgeToShowDetails()
     }
 }
@@ -280,8 +282,10 @@ extension TrustbadgeView: BuyerProtectionViewDelegate {
 extension TrustbadgeView: TrustcardViewDelegate {
     func didTapOnDismissTrustcardButton() {
         self.trustcardHeight = self.viewModel.trustbadgeHeight
-        self.viewModel.orderDetails = nil
-        self.viewModel.trustCardState = nil
+        //self.orderDetails = nil
+        //self.trustcardState = nil
+        self.viewModel.orderDetails = .constant(nil)
+        self.viewModel.trustCardState = .constant(nil)
     }
 }
 

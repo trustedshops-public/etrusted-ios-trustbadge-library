@@ -46,16 +46,17 @@ class TrustbadgeViewModel: ObservableObject {
     var tsId: String
     var channelId: String?
     var productId: String?
-    var orderDetails: OrderDetailsModel? {
+    var orderDetails: Binding<OrderDetailsModel?> {
         didSet {
             self.setTrustcardVisibilityState()
         }
     }
-    var trustCardState: TrustcardState? {
+    var trustCardState: Binding<TrustcardState?> {
         didSet {
             self.setTrustcardVisibilityState()
         }
     }
+    var protectionAmountWithCurrencyCode: String?
     var context: TrustbadgeContext
     var alignment: TrustbadgeViewAlignment = .leading
     var colorScheme: TrustbadgeColorScheme = .system {
@@ -124,8 +125,8 @@ class TrustbadgeViewModel: ObservableObject {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
-        orderDetails: OrderDetailsModel? = nil,
-        trustCardState: TrustcardState? = nil,
+        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
+        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading) {
             self.tsId = tsId

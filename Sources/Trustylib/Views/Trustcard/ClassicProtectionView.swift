@@ -42,17 +42,34 @@ struct ClassicProtectionView: View {
     
     // MARK: - Public properties
     
+    var trustMarkDetails: TrustmarkDetailsModel
     var orderDetails: OrderDetailsModel
+    var protectionAmountWithCurrencyCode: String
     var delegate: ClassicProtectionViewDelegate
     
     // MARK: - Private properties
     
     private var protectionTerms: [String] {
+        let protectionAmountString = NSLocalizedString("Automatic guarantee up to %@ for all purchases", comment: "Classic buyer protection - gurantee amount")
+        let protectionAmountStringFormatted = String(format: protectionAmountString, self.protectionAmountWithCurrencyCode)
         return [
-            NSLocalizedString("Automatic guarantee up to 100 € for all purchases", comment: "Classic buyer protection - First term"),
-            NSLocalizedString("Available in shops with the Trusted Shops trustmark", comment: "Classic buyer protection - Second term"),
-            NSLocalizedString("All benefits of the Trusted Shops services", comment: "Classic buyer protection - Third term")
+            protectionAmountStringFormatted,
+            NSLocalizedString("Available in shops with the Trusted Shops trustmark", comment: "Classic buyer protection - availability"),
+            NSLocalizedString("All benefits of the Trusted Shops services", comment: "Classic buyer protection - benefits")
         ]
+    }
+    
+    private var descriptionText: String {
+        let textOne = NSLocalizedString("We may ask for further review information by e-mail to help other online shoppers.", comment: "Classic buyer protection - description")
+        let textTwo = NSLocalizedString("[Terms and Conditions & Privacy Policy](%@)", comment: "Classic buyer protection - terms and conditions")
+        let string = String(format: "\(textOne) \(textTwo)", TrustcardView.urlForTermsConditionsAndPrivacyPolicy)
+        return string
+    }
+    
+    private var imprintLinkText: String {
+        let text = NSLocalizedString("[Imprint](%@)", comment: "Classic buyer protection - imprint")
+        let linkText = String(format: text, TrustcardView.urlForImprintAndDataProtection)
+        return linkText
     }
     
     // MARK: - User interface
@@ -63,42 +80,47 @@ struct ClassicProtectionView: View {
             // Shop name and order amount
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(NSLocalizedString("Shop", comment: "Classic buyer protection - shop title"))
+                    Text(NSLocalizedString("Shop", comment: "Classic buyer protection - shop name"))
                         .font(.system(size: 13, weight: .regular))
                         .foregroundColor(Color.black)
-                    Text("shop-name.com")
+                    Text("\(self.trustMarkDetails.name)")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(Color.black)
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(NSLocalizedString("Order amount", comment: "Classic buyer protection - order amount title"))
+                    Text(NSLocalizedString("Order amount", comment: "Classic buyer protection - order amount"))
                         .font(.system(size: 13, weight: .regular))
                         .foregroundColor(Color.black)
-                    Text("$100")
+                    Text("\(self.orderDetails.amount.formatted()) \(self.orderDetails.currency.symbol)")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(Color.black)
                 }
             }
             
             // Protection terms
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 14) {
                 ForEach(self.protectionTerms, id: \.self) { term in
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(Color.tsGreen500)
                             .frame(width: 13, height: 13)
+                            .offset(x: 2, y: 2)
                         Text(term)
                             .font(.system(size: 13, weight: .regular))
                             .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
             
-            // Links to Terms/Conditions and Privacy Policy
-            Text(NSLocalizedString("We may ask for further review information by e-mail to help other online shoppers. Terms and Conditions & Privacy Policy", comment: "Classic buyer protection - terms and conditions"))
+            // Link to Terms/Conditions and Privacy Policy
+            Text(.init(self.descriptionText))
                 .font(.system(size: 11, weight: .regular))
+                .accentColor(Color.tsBlue700)
                 .foregroundColor(Color.black)
+                .fixedSize(horizontal: false, vertical: true)
             
             
             // Click to action button
@@ -120,7 +142,15 @@ struct ClassicProtectionView: View {
             )
             .padding(.horizontal, 16)
             
-            Spacer(minLength: 50)
+            Spacer(minLength: 20)
+            
+            // Link to imprint and data protection
+            Text(.init(self.imprintLinkText))
+                .font(.system(size: 11, weight: .regular))
+                .accentColor(Color.tsBlue700)
+                .foregroundColor(Color.tsGray700)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.bottom, 10)
         }
     }
 }
