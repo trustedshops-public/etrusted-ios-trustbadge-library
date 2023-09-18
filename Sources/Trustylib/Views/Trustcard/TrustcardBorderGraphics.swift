@@ -35,26 +35,15 @@ struct TrustcardBorderGraphics: View {
     // MARK: - Private properties
     
     @State private var bannerImage: UIImage?
-    private let bannerImageAssetName = "trustcardBanner"
     
     // MARK: - User interface
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.tsPineapple500, lineWidth: 6)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            if let image = self.bannerImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 75)
-            }
+            RoundedRectangle(cornerRadius: 8).stroke(Color.tsPineapple500, lineWidth: 6).frame(maxWidth: .infinity, maxHeight: .infinity)
+            if let image = self.bannerImage { Image(uiImage: image).resizable().scaledToFit().frame(height: 75) }
         }
-        .onAppear {
-            self.loadBannerImage()
-        }
+        .onAppear { self.loadBannerImage(name: "trustcardBanner") }
     }
     
     // MARK: - Private methods
@@ -62,14 +51,21 @@ struct TrustcardBorderGraphics: View {
     /**
      Loads bottom right banner image from resource bundle
      */
-    private func loadBannerImage() {
-        guard let imgPath = TrustbadgeResources.resourceBundle.path(
-                forResource: self.bannerImageAssetName,
-                ofType: ResourceExtension.png
-              ),
+    private func loadBannerImage(name: String, completionHandler: ResponseHandler<Bool>? = nil) {
+        guard let imgPath = TrustbadgeResources.resourceBundle.path( forResource: name, ofType: ResourceExtension.png),
               let image = UIImage(contentsOfFile: imgPath) else {
+            completionHandler?(false)
             return
         }
         self.bannerImage = image
+        completionHandler?(true)
+    }
+}
+
+// MARK: Unit tests helper methods
+
+extension TrustcardBorderGraphics {
+    func loadBannerGraphics(name: String, completionHandler: ResponseHandler<Bool>? = nil) {
+        self.loadBannerImage(name: name, completionHandler: completionHandler)
     }
 }

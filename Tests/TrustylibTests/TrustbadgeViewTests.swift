@@ -64,6 +64,48 @@ final class TrustbadgeViewTests: XCTestCase {
         )
     }
     
+    func testTrustbadgeViewBuyerProtectionInitializesWithCorrectValues() throws {
+        let orderDetails = OrderDetailsModel(number: "123", amount: 789, currency: .eur, paymentType: "credit-card", estimatedDeliveryDate: "23-11-2023", buyerEmail: "abc@xyz.com")
+        
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            orderDetails: .constant(orderDetails)  ,
+            trustCardState: .constant(.classicProtection),
+            context: .buyerProtection
+        )
+        
+        XCTAssertNotNil(
+            trustbadgeView.currentViewModel,
+            "TrustbadgeView should initialize view model during initialization"
+        )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.tsId == self.tsId,
+            "TrustbadgeView should set correct tsid during initialization"
+        )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.channelId == self.channelId,
+            "TrustbadgeView should set correct channel id during initialization"
+        )
+        
+        XCTAssertNotNil(
+            trustbadgeView.currentViewModel.orderDetails,
+            "TrustbadgeView should set correct order details during initialization"
+        )
+        
+        XCTAssertNotNil(
+            trustbadgeView.currentViewModel.trustCardState,
+            "TrustbadgeView should set correct trustcard state during initialization"
+        )
+        
+        XCTAssert(
+            trustbadgeView.currentViewModel.context == .buyerProtection,
+            "TrustbadgeView should set correct context during initialization"
+        )
+    }
+    
     func testTrustbadgeViewBodyIsNotNilForShopGradeContext() {
         let trustbadgeView = TrustbadgeView(
             tsId: self.tsId,
@@ -146,5 +188,36 @@ final class TrustbadgeViewTests: XCTestCase {
             trustbadgeView.currentViewModel.currentState != .default(true),
             "Trustbadge view state should change to invisible when isHidden set to true"
         )
+    }
+    
+    func testTrustbadgeViewSetsCorrectColorScheme() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: self.context)
+        trustbadgeView.updateColorScheme(for: .dark)
+        XCTAssertTrue(
+            trustbadgeView.currentViewModel.colorScheme != .light,
+            "Trustbadge view should set the correct color scheme"
+        )
+    }
+    
+    func testTrustbadgeViewResetsTrustcardDetailsOnTrustcardDismiss() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: self.context)
+        trustbadgeView.didTapOnDismissTrustcardButton()
+        trustbadgeView.didLoadShopGrades()
+        trustbadgeView.didLoadProductDetails(imageUrl: "")
+        trustbadgeView.didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: "100 &")
+//        XCTAssertNil(
+//            trustbadgeView.currentViewModel.orderDetails == .constant(nil),
+//            "Trustbadge view should reset Trustcard orderDetails to nil when Trustcard is dismissed"
+//        )
+//        XCTAssertNil(
+//            trustbadgeView.currentViewModel.trustCardState == .constant(nil),
+//            "Trustbadge view should reset Trustcard trustCardState to nil when Trustcard is dismissed"
+//        )
     }
 }

@@ -27,8 +27,6 @@
 import XCTest
 @testable import Trustylib
 
-typealias TrustmarkDetailsServiceResponseHandler = ([TrustmarkBackendResponseModel]?, Error?) -> Void
-
 /**
  This test suite tests decoding of trustmark details service respons JSON to `TrustmarkDetailsModel`  data object
  */
@@ -74,19 +72,8 @@ final class TrustmarkDetailsModelTests: XCTestCase {
      object after encoding the json data
      */
     private func getModalObjectForTrustmarkDetailsServiceMockResponse() {
-        let responseHandler: TrustmarkDetailsServiceResponseHandler = { response, error in
-            guard error == nil,
-                  let dataResponse = response,
-                  let trustmarkDetailsResponseModel = dataResponse.first else {
-                return
-            }
-            self.trustmarkDetailsModel = trustmarkDetailsResponseModel.response.data.shop
+        TestDataLoadWorker.getMockTrustmarkDetails { details in
+            self.trustmarkDetailsModel = details
         }
-
-        let fileDataLoader = FileDataLoader()
-        fileDataLoader.getData(for: .trustmarkDetailsServiceResponse,
-                                extenson: .json,
-                                responseHandler: responseHandler)
     }
-
 }

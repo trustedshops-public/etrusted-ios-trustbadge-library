@@ -80,63 +80,32 @@ struct ClassicProtectionView: View {
             // Shop name and order amount
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(NSLocalizedString("Shop", comment: "Classic buyer protection - shop name"))
-                        .font(.system(size: 13, weight: .regular))
-                        .foregroundColor(Color.black)
-                    Text("\(self.trustMarkDetails.name)")
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Color.black)
+                    Text(NSLocalizedString("Shop", comment: "Classic buyer protection - shop name")).font(.system(size: 13, weight: .regular)).foregroundColor(Color.black)
+                    Text("\(self.trustMarkDetails.name)").font(.system(size: 16, weight: .regular)).foregroundColor(Color.black)
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(NSLocalizedString("Order amount", comment: "Classic buyer protection - order amount"))
-                        .font(.system(size: 13, weight: .regular))
-                        .foregroundColor(Color.black)
-                    Text("\(self.orderDetails.amount.formatted()) \(self.orderDetails.currency.symbol)")
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Color.black)
+                    Text(NSLocalizedString("Order amount", comment: "Classic buyer protection - order amount")).font(.system(size: 13, weight: .regular)).foregroundColor(Color.black)
+                    Text("\(self.orderDetails.amount.formatted()) \(self.orderDetails.currency.symbol)").font(.system(size: 16, weight: .regular)).foregroundColor(Color.black)
                 }
             }
             
             // Protection terms
             VStack(alignment: .leading, spacing: 14) {
-                ForEach(self.protectionTerms, id: \.self) { term in
-                    HStack(alignment: .top, spacing: 10) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(Color.tsGreen500)
-                            .frame(width: 13, height: 13)
-                            .offset(x: 2, y: 2)
-                        Text(term)
-                            .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(Color.black)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
+                ForEach(self.protectionTerms, id: \.self) { term in ProtectionTermsView(term: term) }
             }
             
             // Link to Terms/Conditions and Privacy Policy
-            Text(.init(self.descriptionText))
-                .font(.system(size: 11, weight: .regular))
-                .accentColor(Color.tsBlue700)
-                .foregroundColor(Color.black)
-                .fixedSize(horizontal: false, vertical: true)
+            Text(.init(self.descriptionText)).font(.system(size: 11, weight: .regular)).accentColor(Color.tsBlue700).foregroundColor(Color.black).fixedSize(horizontal: false, vertical: true)
             
             
             // Click to action button
             Button(
-                action: {
-                    self.delegate.didTapOnSubscribeToProtectionButton()
-                },
+                action: { self.delegate.didTapOnSubscribeToProtectionButton() },
                 label: {
                     ZStack(alignment: .center) {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.tsBlue800, lineWidth: 1)
-                            .frame(height: 43)
-                            .background(RoundedRectangle(cornerRadius: 6).fill(Color.tsBlue700))
-                        Text(NSLocalizedString("Protect your purchase for free", comment: "Classic buyer protection - subscribe to protection button title"))
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color.white)
+                        RoundedRectangle(cornerRadius: 8).stroke(Color.tsBlue800, lineWidth: 1).frame(height: 43).background(RoundedRectangle(cornerRadius: 6).fill(Color.tsBlue700))
+                        Text(NSLocalizedString("Protect your purchase for free", comment: "Classic buyer protection - subscribe to protection button title")).font(.system(size: 16, weight: .semibold)).foregroundColor(Color.white)
                     }
                 }
             )
@@ -145,12 +114,7 @@ struct ClassicProtectionView: View {
             Spacer(minLength: 20)
             
             // Link to imprint and data protection
-            Text(.init(self.imprintLinkText))
-                .font(.system(size: 11, weight: .regular))
-                .accentColor(Color.tsBlue700)
-                .foregroundColor(Color.tsGray700)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, 10)
+            Text(.init(self.imprintLinkText)).font(.system(size: 11, weight: .regular)).accentColor(Color.tsBlue700).foregroundColor(Color.tsGray700).fixedSize(horizontal: false, vertical: true).padding(.bottom, 10)
         }
     }
 }

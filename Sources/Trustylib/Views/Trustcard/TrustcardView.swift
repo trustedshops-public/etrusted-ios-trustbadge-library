@@ -60,28 +60,17 @@ struct TrustcardView: View {
                 // Buyer protection content view
                 VStack(alignment: .leading, spacing: 16) {
                     HStack(alignment: .top) {
-                        Text(trustCardState.getTitle(with: protectionAmount))
-                            .font(.system(size: 16, weight: .semibold))
-                            .fixedSize(horizontal: false, vertical: true)
+                        Text(trustCardState.getTitle(with: protectionAmount)).font(.system(size: 16, weight: .semibold)).fixedSize(horizontal: false, vertical: true)
                         Spacer(minLength: 10)
                         Button(
-                            action: {
-                                self.delegate.didTapOnDismissTrustcardButton()
-                                self.orderDetails = nil
-                                self.state = nil
-                            },
-                            label: {
-                                Image(systemName: "xmark")
-                                    .frame(width: 18, height: 18)
-                                    .foregroundColor(Color.black)
-                            }
+                            action: { self.didTapOnDismissButton() },
+                            label: { Image(systemName: "xmark").frame(width: 18, height: 18).foregroundColor(Color.black) }
                         )
                     }
                     
                     switch trustCardState {
                     case .classicProtection: ClassicProtectionView(trustMarkDetails: trustMarkDetails, orderDetails: consumerOrderDetails, protectionAmountWithCurrencyCode: protectionAmount, delegate: self)
                     case .protectionConfirmation: ProtectionConfirmationView()
-                    default: EmptyView()
                     }
                 }
                 .padding(.all, 18)
@@ -91,23 +80,27 @@ struct TrustcardView: View {
             }
         }
         .background(GeometryReader { geometry in
-            Color.white.preference(
-                key: TrustcardHeightPreferenceKey.self,
-                value: geometry.size.height
-            )
+            Color.white.preference(key: TrustcardHeightPreferenceKey.self, value: geometry.size.height)
         })
-        .onPreferenceChange(TrustcardHeightPreferenceKey.self) {
-            self.height = $0
-        }
+        .onPreferenceChange(TrustcardHeightPreferenceKey.self) { self.height = $0 }
+    }
+    
+    // MARK: - Private methods
+    
+    /**
+     Resets trustcard state when user taps on the dismiss button
+     */
+    private func didTapOnDismissButton() {
+        self.delegate.didTapOnDismissTrustcardButton()
+        self.orderDetails = nil
+        self.state = nil
     }
 }
 
 // MARK: - ClassicProtectionViewDelegate methods
 
 extension TrustcardView: ClassicProtectionViewDelegate {
-    func didTapOnSubscribeToProtectionButton() {
-        self.state = .protectionConfirmation
-    }
+    func didTapOnSubscribeToProtectionButton() { self.state = .protectionConfirmation }
 }
 
 /**
@@ -115,9 +108,7 @@ extension TrustcardView: ClassicProtectionViewDelegate {
  */
 struct TrustcardHeightPreferenceKey: PreferenceKey {
     static let defaultValue: CGFloat = 0
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = max(value, nextValue())
-    }
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
 }
 
 /**
@@ -131,4 +122,12 @@ extension TrustcardView {
     static var urlForImprintAndDataProtection: String {
         return "https://www.trustedshops.co.uk/imprint/#user-privacy-policy"
     }
+}
+
+/**
+ Unit/UI test helper methods
+ */
+extension TrustcardView {
+    func tapOnDismissButton() { self.didTapOnDismissButton() }
+    func tapOnSubscribeToProtectionButton() { self.didTapOnSubscribeToProtectionButton() }
 }

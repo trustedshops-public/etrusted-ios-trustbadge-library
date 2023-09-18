@@ -50,21 +50,11 @@ struct ProtectionConfirmationView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(NSLocalizedString("Trusted Shops will send you an email in order to review your order.", comment: "Buyer protection confirmation - description"))
-                .font(.system(size: 13, weight: .regular))
-                .foregroundColor(Color.black)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, 40)
+            Text(NSLocalizedString("Trusted Shops will send you an email in order to review your order.", comment: "Buyer protection confirmation - description")).font(.system(size: 13, weight: .regular)).foregroundColor(Color.black).fixedSize(horizontal: false, vertical: true).padding(.bottom, 40)
             
-            Text(.init(self.termsAndConditionsLinkText))
-                .font(.system(size: 11, weight: .regular))
-                .accentColor(Color.tsBlue700)
-                .foregroundColor(Color.tsGray700)
+            Text(.init(self.termsAndConditionsLinkText)).font(.system(size: 11, weight: .regular)).accentColor(Color.tsBlue700).foregroundColor(Color.tsGray700)
             
-            Text(.init(self.imprintLinkText))
-                .font(.system(size: 11, weight: .regular))
-                .accentColor(Color.tsBlue700)
-                .foregroundColor(Color.tsGray700)
+            Text(.init(self.imprintLinkText)).font(.system(size: 11, weight: .regular)).accentColor(Color.tsBlue700).foregroundColor(Color.tsGray700)
         }
         
     }
