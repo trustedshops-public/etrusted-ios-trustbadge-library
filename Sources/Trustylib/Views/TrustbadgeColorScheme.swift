@@ -48,9 +48,23 @@ import Foundation
     
     var iconImageName: String? {
         switch self {
-        case .light: return "trustMarkIconInvalidCertificate-Light"
-        case .dark: return "trustMarkIconInvalidCertificate-Dark"
-        case .system: return nil
+        case .light:
+            return "trustMarkIconInvalidCertificate-Light"
+        case .dark:
+            return "trustMarkIconInvalidCertificate-Dark"
+        case .system:
+            return nil
+        }
+    }
+    
+    var trustCardBannerImageName: String? {
+        switch self {
+        case .light:
+            return "trustcardBanner-Light"
+        case .dark:
+            return "trustcardBanner-Dark"
+        case .system:
+            return nil
         }
     }
 }

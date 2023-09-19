@@ -34,16 +34,19 @@ struct TrustcardBorderGraphics: View {
     
     // MARK: - Private properties
     
+    @Environment(\.colorScheme) var colorScheme
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
     @State private var bannerImage: UIImage?
     
     // MARK: - User interface
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            RoundedRectangle(cornerRadius: 8).stroke(Color.tsPineapple500, lineWidth: 6).frame(maxWidth: .infinity, maxHeight: .infinity)
+            RoundedRectangle(cornerRadius: 8).stroke(self.colorSchemeManager.trustCardBorderColor, lineWidth: 6).frame(maxWidth: .infinity, maxHeight: .infinity)
             if let image = self.bannerImage { Image(uiImage: image).resizable().scaledToFit().frame(height: 75) }
         }
-        .onAppear { self.loadBannerImage(name: "trustcardBanner") }
+        .onAppear { self.loadBannerImage(name: self.colorSchemeManager.trustCardBannerImageName) }
+        .onChange(of: self.colorSchemeManager.trustCardBannerImageName) { name in self.loadBannerImage(name: name) }
     }
     
     // MARK: - Private methods
@@ -51,8 +54,8 @@ struct TrustcardBorderGraphics: View {
     /**
      Loads bottom right banner image from resource bundle
      */
-    private func loadBannerImage(name: String, completionHandler: ResponseHandler<Bool>? = nil) {
-        guard let imgPath = TrustbadgeResources.resourceBundle.path( forResource: name, ofType: ResourceExtension.png),
+    private func loadBannerImage(name: String?, completionHandler: ResponseHandler<Bool>? = nil) {
+        guard let imgName = name, let imgPath = TrustbadgeResources.resourceBundle.path( forResource: imgName, ofType: ResourceExtension.png),
               let image = UIImage(contentsOfFile: imgPath) else {
             completionHandler?(false)
             return

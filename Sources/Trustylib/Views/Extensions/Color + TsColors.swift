@@ -63,6 +63,11 @@ public extension Color {
     }
     
     /// Trustedshops blue 700 color
+    static var tsBlue150: Color {
+        return Color(red: 0.5, green: 0.74, blue: 0.94)
+    }
+    
+    /// Trustedshops blue 700 color
     static var tsBlue700: Color {
         return Color(red: 0, green: 0.35, blue: 0.63)
     }

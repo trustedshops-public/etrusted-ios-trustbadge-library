@@ -40,13 +40,13 @@ final class TrustcardBorderGraphicsTests: XCTestCase {
     
     func testTrustcardBorderGraphicsLoadsBannerImageCorrectly() throws {
         let graphics = TrustcardBorderGraphics()
-        graphics.loadBannerGraphics(name: "trustcardBanner") { didLoadGraphics in
+        graphics.loadBannerGraphics(name: "trustcardBanner-Dark") { didLoadGraphics in
             XCTAssertTrue(
                 didLoadGraphics,
                 "TrustcardBorderGraphics should load banner graphics from resource bundle correctly"
             )
         }
-        graphics.loadBannerGraphics(name: "trustcardBanner-123") { didLoadGraphics in
+        graphics.loadBannerGraphics(name: "trustcardBanner") { didLoadGraphics in
             XCTAssertFalse(
                 didLoadGraphics,
                 "TrustcardBorderGraphics should load banner graphics from resource bundle correctly"

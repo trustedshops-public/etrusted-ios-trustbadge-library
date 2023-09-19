@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C1062E102AB8011F0050EF1A /* TestDataLoadWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */; };
+		C1062E232AB97B9E0050EF1A /* trustcardBanner-Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */; };
 		C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */; };
 		C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */; };
 		C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C119217C29852A1400A550C7 /* Trustylib.framework */; };
@@ -60,7 +61,7 @@
 		C12D405F2AAA41D30058B14B /* OrderDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */; };
 		C12D40622AACF4680058B14B /* TrustcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40612AACF4680058B14B /* TrustcardView.swift */; };
 		C12D40642AACF4ED0058B14B /* TrustcardBorderGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40632AACF4ED0058B14B /* TrustcardBorderGraphics.swift */; };
-		C12D40662AACFE580058B14B /* trustcardBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D40652AACFE580058B14B /* trustcardBanner.png */; };
+		C12D40662AACFE580058B14B /* trustcardBanner-Light.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D40652AACFE580058B14B /* trustcardBanner-Light.png */; };
 		C12D40682AAE09990058B14B /* ClassicProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40672AAE09990058B14B /* ClassicProtectionView.swift */; };
 		C12D406A2AAE09AE0058B14B /* ProtectionConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40692AAE09AE0058B14B /* ProtectionConfirmationView.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
@@ -125,6 +126,7 @@
 
 /* Begin PBXFileReference section */
 		C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataLoadWorker.swift; sourceTree = "<group>"; };
+		C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustcardBanner-Dark.png"; sourceTree = "<group>"; };
 		C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkDataServiceTests.swift; sourceTree = "<group>"; };
 		C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewTests.swift; sourceTree = "<group>"; };
 		C119217C29852A1400A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,7 +180,7 @@
 		C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsModel.swift; sourceTree = "<group>"; };
 		C12D40612AACF4680058B14B /* TrustcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardView.swift; sourceTree = "<group>"; };
 		C12D40632AACF4ED0058B14B /* TrustcardBorderGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardBorderGraphics.swift; sourceTree = "<group>"; };
-		C12D40652AACFE580058B14B /* trustcardBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trustcardBanner.png; sourceTree = "<group>"; };
+		C12D40652AACFE580058B14B /* trustcardBanner-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustcardBanner-Light.png"; sourceTree = "<group>"; };
 		C12D40672AAE09990058B14B /* ClassicProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicProtectionView.swift; sourceTree = "<group>"; };
 		C12D40692AAE09AE0058B14B /* ProtectionConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionConfirmationView.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
@@ -319,7 +321,8 @@
 				C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */,
 				C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */,
 				C11CE80829881DA8000D6083 /* shopGradeIcon.png */,
-				C12D40652AACFE580058B14B /* trustcardBanner.png */,
+				C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */,
+				C12D40652AACFE580058B14B /* trustcardBanner-Light.png */,
 				C11CE80929881DA8000D6083 /* trustMarkIcon.png */,
 			);
 			path = Images;
@@ -653,7 +656,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C12D40662AACFE580058B14B /* trustcardBanner.png in Resources */,
+				C12D40662AACFE580058B14B /* trustcardBanner-Light.png in Resources */,
+				C1062E232AB97B9E0050EF1A /* trustcardBanner-Dark.png in Resources */,
 				C11CE84A29881DA8000D6083 /* shopGradeIcon.png in Resources */,
 				C11CE84B29881DA8000D6083 /* trustMarkIcon.png in Resources */,
 				C11CE87429881DA8000D6083 /* Localizable.strings in Resources */,

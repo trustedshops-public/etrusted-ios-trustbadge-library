@@ -52,6 +52,10 @@ struct TrustcardView: View {
     @Binding var height: CGFloat
     var delegate: TrustcardViewDelegate
     
+    // MARK: - Private properties
+    
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
     // MARK: - User interface
     
     var body: some View {
@@ -64,7 +68,7 @@ struct TrustcardView: View {
                         Spacer(minLength: 10)
                         Button(
                             action: { self.didTapOnDismissButton() },
-                            label: { Image(systemName: "xmark").frame(width: 18, height: 18).foregroundColor(Color.black) }
+                            label: { Image(systemName: "xmark").frame(width: 18, height: 18).foregroundColor(self.colorSchemeManager.titleTextColor) }
                         )
                     }
                     
@@ -80,7 +84,7 @@ struct TrustcardView: View {
             }
         }
         .background(GeometryReader { geometry in
-            Color.white.preference(key: TrustcardHeightPreferenceKey.self, value: geometry.size.height)
+            self.colorSchemeManager.backgroundColor.preference(key: TrustcardHeightPreferenceKey.self, value: geometry.size.height)
         })
         .onPreferenceChange(TrustcardHeightPreferenceKey.self) { self.height = $0 }
     }

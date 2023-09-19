@@ -36,12 +36,16 @@ struct ProtectionTermsView: View {
     
     var term: String
     
+    // MARK: - Private properties
+    
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
     // MARK: - User interface
     
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "checkmark.circle.fill").foregroundColor(Color.tsGreen500).frame(width: 13, height: 13).offset(x: 2, y: 2)
-            Text(self.term).font(.system(size: 13, weight: .regular)).foregroundColor(Color.black).frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
+            Text(self.term).font(.system(size: 13, weight: .regular)).foregroundColor(self.colorSchemeManager.titleTextColor).frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
         }
     }
 }

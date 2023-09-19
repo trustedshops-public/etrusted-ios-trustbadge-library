@@ -44,6 +44,12 @@ class TrustbadgeColorSchemeManager: ObservableObject {
     
     static let instance = TrustbadgeColorSchemeManager()
     
+    @Published var trustCardBorderColor: Color = Color.tsPineapple500
+    @Published var trustCardButtonColor: Color = Color.tsBlue700
+    @Published var trustCardButtonBorderColor: Color = Color.tsBlue800
+    @Published var trustCardButtonTitleTextColor: Color = Color.white
+    @Published var trustCardBannerImageName: String?
+    @Published var trustCardLinkColor: Color = Color.tsBlue700
     @Published var borderColor: Color = Color.tsGray50
     @Published var backgroundColor: Color = Color.white
     @Published var titleTextColor: Color = Color.white
@@ -71,6 +77,12 @@ class TrustbadgeColorSchemeManager: ObservableObject {
      so that trustbade widgets could update its color and assets based on active color scheme.
      */
     func updateColorsForScheme(_ scheme: TrustbadgeColorScheme) {
+        self.trustCardBorderColor = scheme == .light ? Color.tsPineapple500 : Color.black
+        self.trustCardButtonColor = scheme == .light ? Color.tsBlue700 : Color.tsBlue150
+        self.trustCardButtonBorderColor = scheme == .light ? Color.tsBlue800 : Color.tsBlue150
+        self.trustCardButtonTitleTextColor = scheme == .light ? Color.white : Color.black
+        self.trustCardBannerImageName = scheme.trustCardBannerImageName
+        self.trustCardLinkColor = scheme == .light ? Color.tsBlue700 : Color.white
         self.borderColor = scheme == .light ? Color.tsGray50 : Color.tsGray700
         self.backgroundColor = scheme == .light ? Color.white : Color.tsGray800
         self.titleTextColor = scheme == .light ? Color.black : Color.white
