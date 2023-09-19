@@ -263,8 +263,8 @@ extension TrustbadgeView: BuyerProtectionViewDelegate {
 extension TrustbadgeView: TrustcardViewDelegate {
     func didTapOnDismissTrustcardButton() {
         self.trustcardHeight = self.viewModel.trustbadgeHeight
-        self.viewModel.orderDetails = .constant(nil)
-        self.viewModel.trustCardState = .constant(nil)
+        self.viewModel.orderDetails.wrappedValue = nil
+        self.viewModel.trustCardState.wrappedValue = nil
     }
 }
 
