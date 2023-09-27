@@ -84,9 +84,7 @@ public struct TrustbadgeView: View {
     
     public var body: some View {
         GeometryReader { geoReader in
-            let trustbadgeHeight = geoReader.frame(in: .global).height
-            let trustbadgeWidth = geoReader.frame(in: .global).width
-            self.getRootViewWith(proposedWidth: trustbadgeWidth, proposedHeight: trustbadgeHeight)
+            self.getRootViewWith(proposedWidth: geoReader.frame(in: .global).width, proposedHeight: geoReader.frame(in: .global).height)
             .offset(y: self.yOffset)
         }
         .opacity(self.isHidden ? 0 : 1)

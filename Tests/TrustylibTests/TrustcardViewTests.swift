@@ -69,40 +69,30 @@ final class TrustcardViewTests: XCTestCase {
     }
     
     func testTrustcardViewIntializesWithCorrectValues() throws {
-        guard let trustcardView = self.trustcardView else {
-            XCTFail("Trustcard view should be initialized with valid values")
-            return
-        }
-        
         XCTAssertNotNil(
-            trustcardView.trustMarkDetails,
+            self.trustcardView?.trustMarkDetails,
             "TrustcardView should be initialized with correct trustmark details"
         )
         
         XCTAssertNotNil(
-            trustcardView.orderDetails,
+            self.trustcardView?.orderDetails,
             "TrustcardView should be initialized with correct order details value"
         )
         
         XCTAssertTrue(
-            trustcardView.protectionAmountWithCurrencyCode == "100 $",
+            self.trustcardView?.protectionAmountWithCurrencyCode == "100 $",
             "TrustcardView should be initialized with correct buyer protection amount value"
         )
         
         XCTAssertTrue(
-            trustcardView.state == .classicProtection,
+            self.trustcardView?.state == .classicProtection,
             "TrustcardView should be initialized with correct state value"
         )
     }
     
     func testTrustcardViewBodyIsNotNil() throws {
-        guard let trustcardView = self.trustcardView else {
-            XCTFail("Trustcard view should be initialized with valid values")
-            return
-        }
-        
         XCTAssertNotNil(
-            trustcardView.body,
+            self.trustcardView?.body,
             "Trustcard view body shouldn't return nil value"
         )
     }
@@ -120,25 +110,17 @@ final class TrustcardViewTests: XCTestCase {
     }
     
     func testTrustcardViewResetsWhenTappedOnDismissButton() {
-        guard let trustcardView = self.trustcardView else {
-            XCTFail("Trustcard view should be initialized with valid values")
-            return
-        }
-        trustcardView.tapOnDismissButton()
+        self.trustcardView?.tapOnDismissButton()
         XCTAssertTrue(
-            trustcardView.orderDetails == nil,
+            self.trustcardView?.orderDetails == nil,
             "Trustcard view should set current state to nil when user taps on the dismiss button"
         )
     }
     
     func testTrustcardViewChangesStateWhenTappedOnSubscribeToProtectionButton() {
-        guard let trustcardView = self.trustcardView else {
-            XCTFail("Trustcard view should be initialized with valid values")
-            return
-        }
-        trustcardView.tapOnSubscribeToProtectionButton()
+        self.trustcardView?.tapOnSubscribeToProtectionButton()
         XCTAssertTrue(
-            trustcardView.state == .protectionConfirmation,
+            self.trustcardView?.state == .protectionConfirmation,
             "Trustcard view should set state when user taps on the subscribe to protection button"
         )
     }

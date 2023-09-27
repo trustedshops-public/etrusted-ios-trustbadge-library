@@ -252,4 +252,15 @@ final class TrustbadgeViewModelTests: XCTestCase {
             "TrustbadgeViewModel should load product image from a valid image url"
         )
     }
+    
+    func testTrustbadgeViewModelSetsCorrectTrustmarkVisibilityState() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let orderDetails = OrderDetailsModel(number: "123", amount: 789, currency: .eur, paymentType: "credit-card", estimatedDeliveryDate: "23-11-2023", buyerEmail: "abc@xyz.com")
+        viewModel.orderDetails = .constant(orderDetails)
+        viewModel.trustCardState = .constant(.classicProtection)
+        XCTAssertTrue(
+            viewModel.shouldShowTrustcardView,
+            "TrustbadgeViewModel should set trustcard visiblity flag to true, if order details and trustcard state are provided"
+        )
+    }
 }

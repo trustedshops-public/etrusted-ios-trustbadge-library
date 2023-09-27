@@ -42,15 +42,10 @@ final class ClassicProtectionViewTests: XCTestCase {
     
     override func setUpWithError() throws {
         self.getModalObjectForTrustmarkDetailsServiceMockResponse()
-        guard let trustmarkDetailsModel = self.trustmarkDetailsModel else {
-            XCTFail("TrustmarkDetailsModel should be initialized properly")
-            return
-        }
-        
         let orderDetails = OrderDetailsModel(number: "123", amount: 789, currency: .eur, paymentType: "credit-card", estimatedDeliveryDate: "23-11-2023", buyerEmail: "abc@xyz.com")
         
         self.classicProtectionView = ClassicProtectionView(
-            trustMarkDetails: trustmarkDetailsModel,
+            trustMarkDetails: trustmarkDetailsModel!,
             orderDetails: orderDetails,
             protectionAmountWithCurrencyCode: "100 $",
             delegate: self
@@ -63,35 +58,25 @@ final class ClassicProtectionViewTests: XCTestCase {
     }
 
     func testClassicProtectionViewIntializesWithCorrectValues() throws {
-        guard let classicProtectionView = self.classicProtectionView else {
-            XCTFail("ClassicProtectionView view should be initialized with valid values")
-            return
-        }
-        
         XCTAssertNotNil(
-            classicProtectionView.trustMarkDetails,
+            self.classicProtectionView?.trustMarkDetails,
             "ClassicProtectionView should be initialized with correct trustmark details"
         )
         
         XCTAssertNotNil(
-            classicProtectionView.orderDetails,
+            self.classicProtectionView?.orderDetails,
             "ClassicProtectionView should be initialized with correct order details value"
         )
         
         XCTAssertTrue(
-            classicProtectionView.protectionAmountWithCurrencyCode == "100 $",
+            self.classicProtectionView?.protectionAmountWithCurrencyCode == "100 $",
             "ClassicProtectionView should be initialized with correct buyer protection amount value"
         )
     }
     
     func testClassicProtectionViewBodyIsNotNil() throws {
-        guard let classicProtectionView = self.classicProtectionView else {
-            XCTFail("ClassicProtectionView view should be initialized with valid values")
-            return
-        }
-        
         XCTAssertNotNil(
-            classicProtectionView.body,
+            self.classicProtectionView?.body,
             "ClassicProtectionView body shouldn't return nil value"
         )
     }
