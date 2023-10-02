@@ -44,6 +44,8 @@ import SwiftUI
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
+        orderDetails: OrderDetailsModel? = nil,
+        trustCardState: TrustcardState = .classicProtection,
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading) -> UIViewController {
         return UIHostingController(
@@ -51,6 +53,8 @@ import SwiftUI
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
+                orderDetails: .constant(orderDetails),
+                trustCardState: .constant(trustCardState),
                 context: context,
                 alignment: alignment
             )

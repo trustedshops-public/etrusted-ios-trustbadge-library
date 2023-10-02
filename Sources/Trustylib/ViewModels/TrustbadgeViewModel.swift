@@ -41,10 +41,22 @@ class TrustbadgeViewModel: ObservableObject {
     @Published var iconImageName: String?
     @Published var iconImage: UIImage?
     @Published var shouldShowExpendedStateContent: Bool = false
+    @Published var shouldShowTrustcardView: Bool = false
     
     var tsId: String
     var channelId: String?
     var productId: String?
+    var orderDetails: Binding<OrderDetailsModel?> {
+        didSet {
+            self.setTrustcardVisibilityState()
+        }
+    }
+    var trustCardState: Binding<TrustcardState?> {
+        didSet {
+            self.setTrustcardVisibilityState()
+        }
+    }
+    var protectionAmountWithCurrencyCode: String?
     var context: TrustbadgeContext
     var alignment: TrustbadgeViewAlignment = .leading
     var colorScheme: TrustbadgeColorScheme = .system {
@@ -52,6 +64,7 @@ class TrustbadgeViewModel: ObservableObject {
             self.setIconForState()
         }
     }
+    var trustbadgeHeight: CGFloat = 0
     
     /**
      It validates, if valid inputs are provided as required for the widget to fetch data from backend and render
@@ -112,14 +125,20 @@ class TrustbadgeViewModel: ObservableObject {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
+        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
+        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading) {
             self.tsId = tsId
             self.channelId = channelId
             self.productId = productId
+            self.orderDetails = orderDetails
+            self.trustCardState = trustCardState
             self.context = context
             self.alignment = alignment
             self.iconImageName = TrustbadgeState.default(false).iconImageName
+            
+            self.setTrustcardVisibilityState()
     }
     
     // MARK: Public methods
@@ -173,7 +192,7 @@ class TrustbadgeViewModel: ObservableObject {
             } else {
                 self.iconImageName = self.colorScheme.iconImageName
             }
-        } else if self.currentState == .expended {
+        } else if self.currentState == .expanded {
             if self.context == .productGrade, let productImage = self.productImage {
                 self.iconImage = productImage
                 return
@@ -231,7 +250,7 @@ class TrustbadgeViewModel: ObservableObject {
             self.shouldShowExpendedStateContent = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.currentState = .expended
+            self.currentState = .expanded
             self.setIconForState()
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.shouldShowExpendedStateContent = false
@@ -241,6 +260,14 @@ class TrustbadgeViewModel: ObservableObject {
                 self.setIconForState()
             }
         }
+    }
+    
+    /**
+     Sets `shouldShowTrustcardView` boolean flag based on the order details and trustcardState property values.
+     `shouldShowTrustcardView` boolean flag controls the visiblity of TrustcardView
+     */
+    func setTrustcardVisibilityState() {
+        self.shouldShowTrustcardView = self.orderDetails != nil && self.trustCardState != nil
     }
 }
 

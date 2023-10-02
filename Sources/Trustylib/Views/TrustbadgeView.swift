@@ -45,11 +45,14 @@ public struct TrustbadgeView: View {
             self.viewModel.currentState = newValue == true ? .invisible : .default(self.viewModel.isTrustmarkValid)
         }
     }
-    
+
     // MARK: Private properties
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel: TrustbadgeViewModel
     @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
+    @State private var trustcardHeight: CGFloat = 0
+    @State private var yOffset: CGFloat = 0
     
     private let badgeIconHeightPercentToBackgroudCircle: CGFloat = 0.8
     
@@ -59,6 +62,8 @@ public struct TrustbadgeView: View {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
+        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
+        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading
     ) {
@@ -67,6 +72,8 @@ public struct TrustbadgeView: View {
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
+                orderDetails: orderDetails,
+                trustCardState: trustCardState,
                 context: context,
                 alignment: alignment
             )
@@ -78,12 +85,15 @@ public struct TrustbadgeView: View {
     public var body: some View {
         GeometryReader { geoReader in
             self.getRootViewWith(proposedWidth: geoReader.frame(in: .global).width, proposedHeight: geoReader.frame(in: .global).height)
+            .offset(y: self.yOffset)
         }
         .opacity(self.isHidden ? 0 : 1)
         .animation(.easeIn(duration: 0.2), value: self.isHidden)
         .environmentObject(self.colorSchemeManager)
-        .onChange(of: self.colorScheme) { scheme in
-            self.updateLibraryColorScheme(for: scheme)
+        .onChange(of: self.colorScheme) { scheme in self.updateLibraryColorScheme(for: scheme) }
+        .onChange(of: self.trustcardHeight) { height in
+            guard height > 0 else { self.yOffset = 0; return }
+            self.yOffset = -(self.trustcardHeight - self.viewModel.trustbadgeHeight)
         }
         .onAppear {
             self.updateLibraryColorScheme(for: self.colorScheme)
@@ -97,49 +107,61 @@ public struct TrustbadgeView: View {
      Builds up trustbadge root view based on available width, height, view model data and returns the same
      */
     private func getRootViewWith(proposedWidth: CGFloat, proposedHeight: CGFloat) -> some View {
+        self.viewModel.trustbadgeHeight = proposedHeight
         
-        return HStack(alignment: .center) {
-            
-            // This spacer helps in keeping the trustmark icon and expanding view
-            // aligned to the right
-            if self.viewModel.alignment == .trailing { Spacer(minLength: 0) }
-            
-            ZStack(alignment: self.viewModel.alignment == .leading ? .leading : .trailing) {
+        return ZStack(alignment: self.viewModel.alignment == .leading ? .bottomLeading : .bottomTrailing) {
+            // Trustbadge view
+            HStack(alignment: .center) {
+                // This spacer helps in keeping the trustmark icon and expanding view
+                // aligned to the right
+                if self.viewModel.alignment == .trailing { Spacer(minLength: 0) }
                 
-                // Expendable view is added to the view only if the client id and
-                // client secret details were loaded from the configuration file
-                // which are reuired for showing shop grade, product grade, etc
-                
-                if self.viewModel.areBadgeInputsValid {
+                ZStack(alignment: self.viewModel.alignment == .leading ? .leading : .trailing) {
                     
-                    ZStack(alignment: .center) {
-                        // Background
-                        ZStack {
-                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
-                                .fill(self.colorSchemeManager.backgroundColor)
-                                .frame(
-                                    width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
-                                    height: proposedHeight
-                                )
-                                .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
-                                .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
+                    // Expendable view is added to the view only if the client id and
+                    // client secret details were loaded from the configuration file
+                    // which are reuired for showing shop grade, product grade, etc
+                    
+                    if self.viewModel.areBadgeInputsValid {
+                        ZStack(alignment: .center) {
+                            // Background
+                            ZStack {
+                                RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                    .fill(self.colorSchemeManager.backgroundColor)
+                                    .frame(
+                                        width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                        height: proposedHeight
+                                    )
+                                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                                    .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
+                                
+                                RoundedRectangle(cornerRadius: proposedHeight * 0.5)
+                                    .stroke(self.colorSchemeManager.borderColor, lineWidth: 1)
+                                    .frame(
+                                        width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
+                                        height: proposedHeight
+                                    )
+                                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                                    .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
+                            }
                             
-                            RoundedRectangle(cornerRadius: proposedHeight * 0.5)
-                                .stroke(self.colorSchemeManager.borderColor, lineWidth: 1)
-                                .frame(
-                                    width: self.viewModel.currentState == .default(self.viewModel.isTrustmarkValid) ? proposedHeight : proposedWidth,
-                                    height: proposedHeight
-                                )
-                                .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
-                                .animation(.easeOut(duration: 0.3), value: self.viewModel.currentState)
-                        }
-                        
-                        // Content - Shop grade, product grade, etc
-                        ZStack {
-                            if self.viewModel.context == .shopGrade {
-                                if let channelId = self.viewModel.channelId {
-                                    ShopGradeView(
-                                        channelId: channelId,
+                            // Content - Shop grade, product grade, etc
+                            ZStack {
+                                if self.viewModel.context == .shopGrade {
+                                    if let channelId = self.viewModel.channelId {
+                                        ShopGradeView(
+                                            channelId: channelId,
+                                            currentState: self.viewModel.currentState,
+                                            alignment: self.viewModel.alignment,
+                                            isTrustmarkValid: self.viewModel.isTrustmarkValid,
+                                            height: proposedHeight,
+                                            width: proposedWidth,
+                                            delegate: self
+                                        )
+                                    }
+                                } else if self.viewModel.context == .buyerProtection {
+                                    BuyerProtectionView(
+                                        tsid: self.viewModel.tsId,
                                         currentState: self.viewModel.currentState,
                                         alignment: self.viewModel.alignment,
                                         isTrustmarkValid: self.viewModel.isTrustmarkValid,
@@ -147,61 +169,49 @@ public struct TrustbadgeView: View {
                                         width: proposedWidth,
                                         delegate: self
                                     )
-                                }
-                            } else if self.viewModel.context == .buyerProtection {
-                                BuyerProtectionView(
-                                    tsid: self.viewModel.tsId,
-                                    currentState: self.viewModel.currentState,
-                                    alignment: self.viewModel.alignment,
-                                    isTrustmarkValid: self.viewModel.isTrustmarkValid,
-                                    height: proposedHeight,
-                                    width: proposedWidth,
-                                    delegate: self
-                                )
-                            } else if self.viewModel.context == .productGrade {
-                                if let channelId = self.viewModel.channelId,
-                                   let productId = self.viewModel.productId {
-                                    ProductGradeView(
-                                        channelId: channelId,
-                                        productId: productId,
-                                        currentState: self.viewModel.currentState,
-                                        alignment: self.viewModel.alignment,
-                                        isTrustmarkValid: self.viewModel.isTrustmarkValid,
-                                        height: proposedHeight,
-                                        width: proposedWidth,
-                                        delegate: self
-                                    )
+                                } else if self.viewModel.context == .productGrade {
+                                    if let channelId = self.viewModel.channelId,
+                                       let productId = self.viewModel.productId {
+                                        ProductGradeView(
+                                            channelId: channelId,
+                                            productId: productId,
+                                            currentState: self.viewModel.currentState,
+                                            alignment: self.viewModel.alignment,
+                                            isTrustmarkValid: self.viewModel.isTrustmarkValid,
+                                            height: proposedHeight,
+                                            width: proposedWidth,
+                                            delegate: self
+                                        )
+                                    }
                                 }
                             }
+                            .opacity(self.viewModel.shouldShowExpendedStateContent ? 1 : 0)
+                            .animation(.easeIn(duration: 0.2), value: self.viewModel.shouldShowExpendedStateContent)
                         }
-                        .opacity(self.viewModel.shouldShowExpendedStateContent ? 1 : 0)
-                        .animation(.easeIn(duration: 0.2), value: self.viewModel.shouldShowExpendedStateContent)
                     }
+                    
+                    // Trustbadge Icon
+                    ZStack(alignment: .center) {
+                        Circle().fill(self.colorSchemeManager.backgroundColor).frame(width: proposedWidth, height: proposedHeight).shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                        
+                        if let image = self.viewModel.iconImage {
+                            Image(uiImage: image).resizable().scaledToFit()
+                                .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle).clipShape(Circle()).padding(.all, 5)
+                        }
+                    }
+                    .opacity(self.viewModel.trustMarkDetails != nil ? 1 : 0)
+                    .frame(width: proposedHeight, height: proposedHeight)
                 }
                 
-                // Trustbadge Icon
-                ZStack(alignment: .center) {
-                    Circle()
-                        .fill(self.colorSchemeManager.backgroundColor)
-                        .frame(width: proposedWidth, height: proposedHeight)
-                        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
-                    
-                    if let image = self.viewModel.iconImage {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle)
-                            .clipShape(Circle())
-                            .padding(.all, 5)
-                    }
-                }
-                .opacity(self.viewModel.trustMarkDetails != nil ? 1 : 0)
-                .frame(width: proposedHeight, height: proposedHeight)
+                // This spacer helps in keeping the trustmark icon and expanding view
+                // aligned to the left
+                if self.viewModel.alignment == .leading { Spacer(minLength: 0) }
             }
             
-            // This spacer helps in keeping the trustmark icon and expanding view
-            // aligned to the left
-            if self.viewModel.alignment == .leading { Spacer(minLength: 0) }
+            // Trustcard view
+            if self.viewModel.trustMarkDetails != nil {
+                TrustcardView(trustMarkDetails: self.viewModel.trustMarkDetails, orderDetails: self.viewModel.orderDetails, protectionAmountWithCurrencyCode: self.viewModel.protectionAmountWithCurrencyCode, state: self.viewModel.trustCardState, height: self.$trustcardHeight, delegate: self).background(Color.white)
+            }
         }
     }
     
@@ -213,16 +223,13 @@ public struct TrustbadgeView: View {
         // Trustbadge widgets need to update color and assets only when the host application
         // doesn't enforce light or dark mode with `UIUserInterfaceStyle` key in info.plist.
         // This means that `colorSchemeManager.trustbadgeColorScheme` will have `system` value.
-        guard self.colorSchemeManager.trustbadgeColorScheme == .system else {
-            self.viewModel.colorScheme = self.colorSchemeManager.trustbadgeColorScheme
-            return
-        }
+        guard self.colorSchemeManager.trustbadgeColorScheme == .system else { self.viewModel.colorScheme = self.colorSchemeManager.trustbadgeColorScheme; return }
         self.viewModel.colorScheme = scheme == .light ? .light : .dark
         self.colorSchemeManager.updateColorsForScheme(scheme == .light ? .light : .dark)
     }
 }
 
-// MARK: ShopGradeViewDelegate methods
+// MARK: - ShopGradeViewDelegate methods
 
 extension TrustbadgeView: ShopGradeViewDelegate {
     func didLoadShopGrades() {
@@ -230,7 +237,7 @@ extension TrustbadgeView: ShopGradeViewDelegate {
     }
 }
 
-// MARK: ProductGradeViewDelegate methods
+// MARK: - ProductGradeViewDelegate methods
 
 extension TrustbadgeView: ProductGradeViewDelegate {
     func didLoadProductDetails(imageUrl: String) {
@@ -240,23 +247,37 @@ extension TrustbadgeView: ProductGradeViewDelegate {
     }
 }
 
-// MARK: BuyerProtectionViewDelegate methods
+// MARK: - BuyerProtectionViewDelegate methods
 
 extension TrustbadgeView: BuyerProtectionViewDelegate {
-    func didLoadBuyerProtectionDetails() {
+    func didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: String) {
+        self.viewModel.protectionAmountWithCurrencyCode = protectionAmountWithCurrencyCode
         self.viewModel.expandBadgeToShowDetails()
+    }
+}
+
+// MARK: - TrustcardViewDelegate methods
+
+extension TrustbadgeView: TrustcardViewDelegate {
+    func didTapOnDismissTrustcardButton() {
+        self.trustcardHeight = self.viewModel.trustbadgeHeight
+        self.viewModel.orderDetails.wrappedValue = nil
+        self.viewModel.trustCardState.wrappedValue = nil
     }
 }
 
 // MARK: Helper properties/methods for tests
 
 extension TrustbadgeView {
-    
     var currentViewModel: TrustbadgeViewModel {
         return self.viewModel
     }
     
     func getTestRootViewWith(proposedWidth: CGFloat, proposedHeight: CGFloat) -> some View {
         return self.getRootViewWith(proposedWidth: proposedWidth, proposedHeight: proposedHeight)
+    }
+    
+    func updateColorScheme(for scheme: ColorScheme) {
+        self.updateLibraryColorScheme(for: scheme)
     }
 }

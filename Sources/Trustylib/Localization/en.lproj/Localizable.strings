@@ -24,12 +24,31 @@
 //  Created by Prem Pratap Singh on 07/11/22.
 //
 
+// MARK: - Shop/product grade
+
 "Excellent" = "Excellent";
 "Good" = "Good";
 "Fair" = "Fair";
 "Poor" = "Poor";
 "Very poor" = "Very poor";
 "shop reviews" = "shop reviews";
+
+// MARK: - Buyer protection
+
 "Independent guarantee" = "Independent guarantee";
 "Your purchase is protected up to" = "Your purchase is protected up to";
 "product reviews" = "product reviews";
+"Protect your purchase!" = "Protect your purchase!";
+"Your purchase is protected up to %@" = "Your purchase is protected up to %@";
+"Automatic guarantee up to %@ for all purchases" = "Automatic guarantee up to %@ for all purchases";
+"Available in shops with the Trusted Shops trustmark" = "Available in shops with the Trusted Shops trustmark";
+"All benefits of the Trusted Shops services" = "All benefits of the Trusted Shops services";
+"Shop" = "Shop";
+"Order amount" = "Order amount";
+"We may ask for further review information by e-mail to help other online shoppers." = "We may ask for further review information by e-mail to help other online shoppers.";
+"[Terms and Conditions & Privacy Policy](%@)" = "[Terms and Conditions & Privacy Policy](%@)";
+"[Imprint](%@)" = "[Imprint](%@)";
+"Protect your purchase for free" = "Protect your purchase for free";
+"Trusted Shops will send you an email in order to review your order." = "Trusted Shops will send you an email in order to review your order.";
+"[Terms & conditions](%@)" = "[Terms & conditions](%@)";
+"[Imprint & Data protection](%@)" = "[Imprint & Data protection](%@)";

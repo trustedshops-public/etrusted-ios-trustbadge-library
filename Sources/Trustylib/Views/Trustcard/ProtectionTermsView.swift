@@ -21,33 +21,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 17/09/23.
 //
 
-import Foundation
 
+import SwiftUI
 
 /**
- TrustbadgeState enumeration defines different possible UI states for the trustbadge view.
- These states are,
- 1. `default` - In default state, the trustbadge view is presented as a circular badge icon aka `Seal`
- 2. `expanded` - In expended state, the trustbadge view shows a sub view expanding to show shop/product grade or other details
- 3. `expandedAsCard` - In this state, the trustbadge view is shown as a card. For example: Trustcard that shows details about buyer protection.
- 4. `invisible` - In this state, the trustbadge view contents are hidden
+ ProtectionTermsView shows classic protection term text with tick icon
  */
-enum TrustbadgeState: Equatable {
-    case `default`(Bool)
-    case expanded
-    case expandedAsCard
-    case invisible
-
-    // MARK: Public properties
-
-    /// Icon name for the state
-    var iconImageName: String? {
-        switch self {
-        case .default(let isValid): return isValid ? "trustMarkIcon" : "trustMarkIconInvalidCertificate"
-        case .expanded, .expandedAsCard, .invisible: return nil
+struct ProtectionTermsView: View {
+    
+    // MARK: - Puplic properties
+    
+    var term: String
+    
+    // MARK: - Private properties
+    
+    @StateObject private var colorSchemeManager = TrustbadgeColorSchemeManager.instance
+    
+    // MARK: - User interface
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "checkmark.circle.fill").foregroundColor(Color.tsGreen500).frame(width: 13, height: 13).offset(x: 2, y: 2)
+            Text(self.term).font(.system(size: 13, weight: .regular)).foregroundColor(self.colorSchemeManager.titleTextColor).frame(maxWidth: .infinity, alignment: .leading).fixedSize(horizontal: false, vertical: true)
         }
     }
 }

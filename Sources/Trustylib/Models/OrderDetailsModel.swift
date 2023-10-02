@@ -21,33 +21,39 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 07/09/23.
 //
+
 
 import Foundation
 
-
 /**
- TrustbadgeState enumeration defines different possible UI states for the trustbadge view.
- These states are,
- 1. `default` - In default state, the trustbadge view is presented as a circular badge icon aka `Seal`
- 2. `expanded` - In expended state, the trustbadge view shows a sub view expanding to show shop/product grade or other details
- 3. `expandedAsCard` - In this state, the trustbadge view is shown as a card. For example: Trustcard that shows details about buyer protection.
- 4. `invisible` - In this state, the trustbadge view contents are hidden
+ OrderDetailsModel contains details about an order which is required for
+ buyer protection related workflows.
  */
-enum TrustbadgeState: Equatable {
-    case `default`(Bool)
-    case expanded
-    case expandedAsCard
-    case invisible
-
-    // MARK: Public properties
-
-    /// Icon name for the state
-    var iconImageName: String? {
-        switch self {
-        case .default(let isValid): return isValid ? "trustMarkIcon" : "trustMarkIconInvalidCertificate"
-        case .expanded, .expandedAsCard, .invisible: return nil
-        }
+@objc public class OrderDetailsModel: NSObject {
+    let number: String
+    let amount: Double
+    let currency: CurrencyCode
+    let paymentType: String
+    let estimatedDeliveryDate: String
+    let buyerEmail: String
+    
+    // MARK: Intializer
+    
+    public init(
+        number: String,
+        amount: Double,
+        currency: CurrencyCode,
+        paymentType: String,
+        estimatedDeliveryDate: String,
+        buyerEmail: String) {
+            
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.paymentType = paymentType
+        self.estimatedDeliveryDate = estimatedDeliveryDate
+        self.buyerEmail = buyerEmail
     }
 }
