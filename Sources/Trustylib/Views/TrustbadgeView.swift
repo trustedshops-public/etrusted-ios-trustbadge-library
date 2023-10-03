@@ -25,6 +25,7 @@
 //
 
 import SwiftUI
+import Mixpanel
 
 /**
  TrustbadgeView is the main container view for showing different types of widgets like,
@@ -78,6 +79,8 @@ public struct TrustbadgeView: View {
                 alignment: alignment
             )
         )
+        
+        Mixpanel.initialize(token: "6774458ea1a3befd85a428ccb337de26", trackAutomaticEvents: false)
     }
     
     // MARK: User interface
@@ -197,6 +200,16 @@ public struct TrustbadgeView: View {
                         if let image = self.viewModel.iconImage {
                             Image(uiImage: image).resizable().scaledToFit()
                                 .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle).clipShape(Circle()).padding(.all, 5)
+                                .onAppear {
+                                    Mixpanel.mainInstance().track(event: "trustbadge_presented", properties: [
+                                        "tsid": self.viewModel.tsId
+                                    ])
+                                }
+                                .onTapGesture {
+                                    Mixpanel.mainInstance().track(event: "trustbadge_clicked", properties: [
+                                        "tsid": self.viewModel.tsId
+                                    ])
+                                }
                         }
                     }
                     .opacity(self.viewModel.trustMarkDetails != nil ? 1 : 0)

@@ -1,0 +1,25 @@
+PODS:
+  - Mixpanel-swift (4.1.4):
+    - Mixpanel-swift/Complete (= 4.1.4)
+  - Mixpanel-swift/Complete (4.1.4)
+  - Trustylib (1.2.4):
+    - Mixpanel-swift
+
+DEPENDENCIES:
+  - Trustylib (from `../../`)
+
+SPEC REPOS:
+  trunk:
+    - Mixpanel-swift
+
+EXTERNAL SOURCES:
+  Trustylib:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Mixpanel-swift: 4991762c97c3535ce4e67c395a93e40ab7b666f7
+  Trustylib: a621fa411638365e32e351add1885419f0d0722f
+
+PODFILE CHECKSUM: 1403b62a47c0999f50d2ecdb6bfbf3cef78017da
+
+COCOAPODS: 1.12.1

@@ -16,4 +16,5 @@ Pod::Spec.new do |spec|
   spec.source_files = "Sources/Trustylib/**/*.{swift}"
   spec.exclude_files = "Example/*"
   spec.resources = "Sources/Trustylib/Resources/Images/*.png"
+  spec.dependency "Mixpanel-swift"
 end

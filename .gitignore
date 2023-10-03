@@ -23,6 +23,7 @@ fastlane/report.xml
 
 ## Cocoapods ##
 Example/Trustylib-Integration-ObjectiveC/Pods/
+Pods/
 
 ### Other Configurations ###
 .DS_Store

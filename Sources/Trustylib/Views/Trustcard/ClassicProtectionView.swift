@@ -88,7 +88,7 @@ struct ClassicProtectionView: View {
                 Spacer()
                 VStack(alignment: .leading, spacing: 0) {
                     Text(NSLocalizedString("Order amount", comment: "Classic buyer protection - order amount")).font(.system(size: 13, weight: .regular)).foregroundColor(self.colorSchemeManager.titleTextColor)
-                    Text("\(self.orderDetails.amount.formatted()) \(self.orderDetails.currency.symbol)").font(.system(size: 16, weight: .regular)).foregroundColor(self.colorSchemeManager.titleTextColor)
+                    Text("\(self.orderDetails.amount) \(self.orderDetails.currency.symbol)").font(.system(size: 16, weight: .regular)).foregroundColor(self.colorSchemeManager.titleTextColor)
                 }
             }
             
