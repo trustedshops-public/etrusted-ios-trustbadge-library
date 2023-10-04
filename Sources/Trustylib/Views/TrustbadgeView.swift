@@ -79,8 +79,6 @@ public struct TrustbadgeView: View {
                 alignment: alignment
             )
         )
-        
-        Mixpanel.initialize(token: "6774458ea1a3befd85a428ccb337de26", trackAutomaticEvents: false)
     }
     
     // MARK: User interface
@@ -201,14 +199,10 @@ public struct TrustbadgeView: View {
                             Image(uiImage: image).resizable().scaledToFit()
                                 .frame(width: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle, height: proposedHeight * self.badgeIconHeightPercentToBackgroudCircle).clipShape(Circle()).padding(.all, 5)
                                 .onAppear {
-                                    Mixpanel.mainInstance().track(event: "trustbadge_presented", properties: [
-                                        "tsid": self.viewModel.tsId
-                                    ])
+                                    TrustbadgeAnalyticsService.instance.logEvent(event: .trustbadgePresented)
                                 }
                                 .onTapGesture {
-                                    Mixpanel.mainInstance().track(event: "trustbadge_clicked", properties: [
-                                        "tsid": self.viewModel.tsId
-                                    ])
+                                    TrustbadgeAnalyticsService.instance.logEvent(event: .trustbadgeClicked)
                                 }
                         }
                     }

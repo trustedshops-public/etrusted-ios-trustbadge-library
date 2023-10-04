@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B193113292AAAF76416275A /* Pods_Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDBF7B5F98946742D960B65 /* Pods_Trustylib.framework */; };
-		8F7D3E623C3392C2F2B6FAA9 /* Pods_Trustylib_TrustylibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330B08CD67636C0EEB632BDA /* Pods_Trustylib_TrustylibTests.framework */; };
+		5AFD10B10D7BC0E0A8D743AF /* Pods_Trustylib_TrustylibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F33B599577600576A2CF224 /* Pods_Trustylib_TrustylibTests.framework */; };
+		7454CF55A5EEF9F44509831A /* Pods_Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B29FC741F4600E78ECD42F7 /* Pods_Trustylib.framework */; };
 		C1062E102AB8011F0050EF1A /* TestDataLoadWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */; };
 		C1062E232AB97B9E0050EF1A /* trustcardBanner-Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */; };
 		C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */; };
@@ -57,6 +57,7 @@
 		C11CE87429881DA8000D6083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11CE84129881DA8000D6083 /* Localizable.strings */; };
 		C11CE87629881E1A000D6083 /* Trustylib.h in Headers */ = {isa = PBXBuildFile; fileRef = C11CE87529881E1A000D6083 /* Trustylib.h */; };
 		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
+		C121D8622ACC3A7000AE9333 /* TrustbadgeAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121D8612ACC3A7000AE9333 /* TrustbadgeAnalyticsService.swift */; };
 		C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */; };
 		C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */; };
 		C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */; };
@@ -127,9 +128,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		330B08CD67636C0EEB632BDA /* Pods_Trustylib_TrustylibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trustylib_TrustylibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49E3F2B180F70BCB9D86FD1D /* Pods-Trustylib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib.debug.xcconfig"; path = "Target Support Files/Pods-Trustylib/Pods-Trustylib.debug.xcconfig"; sourceTree = "<group>"; };
-		5BDBF7B5F98946742D960B65 /* Pods_Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9BD13892F6EE118B68D99E /* Pods-Trustylib-TrustylibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib-TrustylibTests.debug.xcconfig"; path = "Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F33B599577600576A2CF224 /* Pods_Trustylib_TrustylibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trustylib_TrustylibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B29FC741F4600E78ECD42F7 /* Pods_Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8294549513937EF705E9A712 /* Pods-Trustylib-TrustylibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib-TrustylibTests.release.xcconfig"; path = "Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6BF436230CB34C4C420D9E4 /* Pods-Trustylib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib.release.xcconfig"; path = "Target Support Files/Pods-Trustylib/Pods-Trustylib.release.xcconfig"; sourceTree = "<group>"; };
 		C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataLoadWorker.swift; sourceTree = "<group>"; };
 		C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustcardBanner-Dark.png"; sourceTree = "<group>"; };
 		C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkDataServiceTests.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		C11CE84329881DA8000D6083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
+		C121D8612ACC3A7000AE9333 /* TrustbadgeAnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustbadgeAnalyticsService.swift; sourceTree = "<group>"; };
 		C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorSchemeTests.swift; sourceTree = "<group>"; };
 		C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewTests.swift; sourceTree = "<group>"; };
@@ -236,9 +240,7 @@
 		C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBackendServiceURLTests.swift; sourceTree = "<group>"; };
 		C1EEADB12A0A347F007536C2 /* AggregateRatingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateRatingsModel.swift; sourceTree = "<group>"; };
 		C1FC40052A3AED0D00E09D66 /* TrustbadgeColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorScheme.swift; sourceTree = "<group>"; };
-		DE65FD170941560F75552A9A /* Pods-Trustylib-TrustylibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib-TrustylibTests.release.xcconfig"; path = "Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests.release.xcconfig"; sourceTree = "<group>"; };
-		EC963A3B802A8CAEFCDDF165 /* Pods-Trustylib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib.release.xcconfig"; path = "Target Support Files/Pods-Trustylib/Pods-Trustylib.release.xcconfig"; sourceTree = "<group>"; };
-		F9F0876D60E14422B1FF3889 /* Pods-Trustylib-TrustylibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib-TrustylibTests.debug.xcconfig"; path = "Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA74D2A1960F22D107D1A28F /* Pods-Trustylib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trustylib.debug.xcconfig"; path = "Target Support Files/Pods-Trustylib/Pods-Trustylib.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B193113292AAAF76416275A /* Pods_Trustylib.framework in Frameworks */,
+				7454CF55A5EEF9F44509831A /* Pods_Trustylib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */,
-				8F7D3E623C3392C2F2B6FAA9 /* Pods_Trustylib_TrustylibTests.framework in Frameworks */,
+				5AFD10B10D7BC0E0A8D743AF /* Pods_Trustylib_TrustylibTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,20 +267,19 @@
 		4A5CB4C104A16ADF76955B9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				49E3F2B180F70BCB9D86FD1D /* Pods-Trustylib.debug.xcconfig */,
-				EC963A3B802A8CAEFCDDF165 /* Pods-Trustylib.release.xcconfig */,
-				F9F0876D60E14422B1FF3889 /* Pods-Trustylib-TrustylibTests.debug.xcconfig */,
-				DE65FD170941560F75552A9A /* Pods-Trustylib-TrustylibTests.release.xcconfig */,
+				EA74D2A1960F22D107D1A28F /* Pods-Trustylib.debug.xcconfig */,
+				A6BF436230CB34C4C420D9E4 /* Pods-Trustylib.release.xcconfig */,
+				1A9BD13892F6EE118B68D99E /* Pods-Trustylib-TrustylibTests.debug.xcconfig */,
+				8294549513937EF705E9A712 /* Pods-Trustylib-TrustylibTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		937CB06C564724F847F7DFE6 /* Frameworks */ = {
+		B717CEF9FCE6E401C1D2C0F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5BDBF7B5F98946742D960B65 /* Pods_Trustylib.framework */,
-				330B08CD67636C0EEB632BDA /* Pods_Trustylib_TrustylibTests.framework */,
+				7B29FC741F4600E78ECD42F7 /* Pods_Trustylib.framework */,
+				4F33B599577600576A2CF224 /* Pods_Trustylib_TrustylibTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,7 +299,7 @@
 				C1324137299B572800C36A11 /* Tests */,
 				C119217D29852A1400A550C7 /* Products */,
 				4A5CB4C104A16ADF76955B9F /* Pods */,
-				937CB06C564724F847F7DFE6 /* Frameworks */,
+				B717CEF9FCE6E401C1D2C0F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -469,6 +470,7 @@
 		C11CE83229881DA8000D6083 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C121D8612ACC3A7000AE9333 /* TrustbadgeAnalyticsService.swift */,
 				C11CE83429881DA8000D6083 /* TrustmarkDataService.swift */,
 				C11CE83629881DA8000D6083 /* ShopGradeDataService.swift */,
 				C16E4BEA29D31A5800039933 /* BuyerProtectionDataService.swift */,
@@ -615,7 +617,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C119219029852A1400A550C7 /* Build configuration list for PBXNativeTarget "Trustylib" */;
 			buildPhases = (
-				DFD7A6BEC070CEBB177DDD2E /* [CP] Check Pods Manifest.lock */,
+				65E5B2D32E09384D070D4B52 /* [CP] Check Pods Manifest.lock */,
 				C119217729852A1400A550C7 /* Headers */,
 				C119217829852A1400A550C7 /* Sources */,
 				C119217929852A1400A550C7 /* Frameworks */,
@@ -634,11 +636,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C119219329852A1400A550C7 /* Build configuration list for PBXNativeTarget "TrustylibTests" */;
 			buildPhases = (
-				40A29F8C67CF8542E294BFE7 /* [CP] Check Pods Manifest.lock */,
+				9994D2FE9C5066F6E48D1D20 /* [CP] Check Pods Manifest.lock */,
 				C119218229852A1400A550C7 /* Sources */,
 				C119218329852A1400A550C7 /* Frameworks */,
 				C119218429852A1400A550C7 /* Resources */,
-				327152B05F788C766FA57468 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -721,46 +722,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		327152B05F788C766FA57468 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trustylib-TrustylibTests/Pods-Trustylib-TrustylibTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		40A29F8C67CF8542E294BFE7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Trustylib-TrustylibTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFD7A6BEC070CEBB177DDD2E /* [CP] Check Pods Manifest.lock */ = {
+		65E5B2D32E09384D070D4B52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -776,6 +738,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Trustylib-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9994D2FE9C5066F6E48D1D20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trustylib-TrustylibTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -802,6 +786,7 @@
 				C163FBEF29AD02F30090548F /* ShopGradeViewModel.swift in Sources */,
 				C11B3EC32AB7224A00C14ECE /* ProtectionTermsView.swift in Sources */,
 				C11CE86329881DA8000D6083 /* TrustbadgeView.swift in Sources */,
+				C121D8622ACC3A7000AE9333 /* TrustbadgeAnalyticsService.swift in Sources */,
 				C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */,
 				C11CE87029881DA8000D6083 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
 				C11CE85D29881DA8000D6083 /* TrustbadgeViewAlignment.swift in Sources */,
@@ -1030,7 +1015,7 @@
 		};
 		C119219129852A1400A550C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49E3F2B180F70BCB9D86FD1D /* Pods-Trustylib.debug.xcconfig */;
+			baseConfigurationReference = EA74D2A1960F22D107D1A28F /* Pods-Trustylib.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1064,7 +1049,7 @@
 		};
 		C119219229852A1400A550C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC963A3B802A8CAEFCDDF165 /* Pods-Trustylib.release.xcconfig */;
+			baseConfigurationReference = A6BF436230CB34C4C420D9E4 /* Pods-Trustylib.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1098,7 +1083,7 @@
 		};
 		C119219429852A1400A550C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9F0876D60E14422B1FF3889 /* Pods-Trustylib-TrustylibTests.debug.xcconfig */;
+			baseConfigurationReference = 1A9BD13892F6EE118B68D99E /* Pods-Trustylib-TrustylibTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1116,7 +1101,7 @@
 		};
 		C119219529852A1400A550C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE65FD170941560F75552A9A /* Pods-Trustylib-TrustylibTests.release.xcconfig */;
+			baseConfigurationReference = 8294549513937EF705E9A712 /* Pods-Trustylib-TrustylibTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

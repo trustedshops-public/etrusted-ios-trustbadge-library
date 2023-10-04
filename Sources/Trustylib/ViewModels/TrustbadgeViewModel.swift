@@ -139,6 +139,7 @@ class TrustbadgeViewModel: ObservableObject {
             self.iconImageName = TrustbadgeState.default(false).iconImageName
             
             self.setTrustcardVisibilityState()
+            self.initializeAnalyticsService()
     }
     
     // MARK: Public methods
@@ -268,6 +269,14 @@ class TrustbadgeViewModel: ObservableObject {
      */
     func setTrustcardVisibilityState() {
         self.shouldShowTrustcardView = self.orderDetails != nil && self.trustCardState != nil
+    }
+    
+    // MARK: - Private methods
+    
+    private func initializeAnalyticsService() {
+        TrustbadgeAnalyticsService.instance.setupAnalyticsEnvironment(
+            trustbadgeEnvironment: TSBackendServiceURL.shared.currentEnvironment
+        )
     }
 }
 

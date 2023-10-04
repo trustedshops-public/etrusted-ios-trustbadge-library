@@ -3,9 +3,9 @@
 
 target 'Trustylib-Integration-SwiftUI' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks! :linkage => :static
-  pod 'Trustylib', :path => '../../'
 
   # Pods for Trustylib-Integration-SwiftUI
+  use_frameworks! :linkage => :static
+  pod 'Trustylib', :path => '../../'
 
 end

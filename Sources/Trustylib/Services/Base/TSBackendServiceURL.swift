@@ -49,10 +49,12 @@ class TSBackendServiceURL {
 
     private static var instance: TSBackendServiceURL?
     private var environment: TSEnvironment = .production
-    private let launchEnvKey = "Trustylib.Environment"
-    private let launchEnvValueDevelopment = "development"
-    private let launchEnvValueStage = "stage"
-    private let launchEnvValueProduction = "production"
+    
+    private let environmentVariablesKey = "LSEnvironment"
+    private let environmentKey = "TrustbadgeEnvironment"
+    private let buildEnvValueDevelopment = "development"
+    private let buildEnvValueStage = "stage"
+    private let buildEnvValueProduction = "production"
 
     /// Returns base URL string for Trustedshop's CDN services
     private var cdnServiceBaseUrlString: String {
@@ -124,29 +126,24 @@ class TSBackendServiceURL {
         let endpointWithTsid = String(format: endpoint, arguments: [tsid])
         return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
     }
-    
-    /**
-     Sets current environment based on the given value for the compiler argument
-     */
-    func setEnvironment(forLaunchEnvValue: String) {
-        switch forLaunchEnvValue {
-        case self.launchEnvValueDevelopment: self.environment = .development
-        case self.launchEnvValueStage: self.environment = .stage
-        case self.launchEnvValueProduction: self.environment = .production
-        default: self.environment = .production
-        }
-    }
 
     // MARK: Private methods
 
     /// Sets application run environment based on the launch key parameter
     /// Environment value determines the backend service endpoint URLs and other run environment specific details
     private func configureEnvironment() {
-        guard let launchEnvValue = ProcessInfo.processInfo.environment[self.launchEnvKey] else {
+        guard let infoDictionary = Bundle.main.infoDictionary,
+              let trustbadgeEnvironment = infoDictionary[self.environmentKey] as? String else {
             self.environment = .production
             return
         }
-        self.setEnvironment(forLaunchEnvValue: launchEnvValue)
+        
+        switch trustbadgeEnvironment {
+        case self.buildEnvValueDevelopment: self.environment = .development
+        case self.buildEnvValueProduction: self.environment = .production
+        case self.buildEnvValueStage: self.environment = .stage
+        default: self.environment = .production
+        }
     }
 
     private func getQualifiedURL(for endpoint: String, baseURLString: String) -> URL? {
