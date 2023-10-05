@@ -32,31 +32,13 @@ class TSBackendServiceURL {
 
     // MARK: Public properties
 
-    static var shared: TSBackendServiceURL {
-        guard let instance = self.instance else {
-            let service = TSBackendServiceURL()
-            self.instance = service
-            return service
-        }
-        return instance
-    }
-
-    var currentEnvironment: TSEnvironment {
-        return self.environment
-    }
+    static var shared = TSBackendServiceURL()
     
     // MARK: Private properties
 
-    private static var instance: TSBackendServiceURL?
-    private var environment: TSEnvironment = .production
-    private let launchEnvKey = "Trustylib.Environment"
-    private let launchEnvValueDevelopment = "development"
-    private let launchEnvValueStage = "stage"
-    private let launchEnvValueProduction = "production"
-
     /// Returns base URL string for Trustedshop's CDN services
     private var cdnServiceBaseUrlString: String {
-        switch self.environment {
+        switch TrustbadgeEnvironmentManager.shared.currentEnvironment {
         case .development: return "https://cdn1.api-dev.trustedshops.com"
         case .stage: return "https://cdn1.api-qa.trustedshops.com"
         case .production: return "https://cdn1.api.trustedshops.com"
@@ -65,7 +47,7 @@ class TSBackendServiceURL {
     
     /// Returns base URL string for Trustedshops grade and ratings feed API
     private var integrationServiceBaseUrlString: String {
-        switch self.environment {
+        switch TrustbadgeEnvironmentManager.shared.currentEnvironment {
         case .development: return "https://integrations.etrusted.koeln"
         case .stage: return "https://integrations.etrusted.site"
         case .production: return "https://integrations.etrusted.com"
@@ -74,9 +56,7 @@ class TSBackendServiceURL {
 
     // MARK: Initilizer
 
-    private init() {
-        self.configureEnvironment()
-    }
+    private init() {}
 
     // MARK: Public methods
 
@@ -124,45 +104,14 @@ class TSBackendServiceURL {
         let endpointWithTsid = String(format: endpoint, arguments: [tsid])
         return self.getQualifiedURL(for: endpointWithTsid, baseURLString: self.cdnServiceBaseUrlString)
     }
-    
-    /**
-     Sets current environment based on the given value for the compiler argument
-     */
-    func setEnvironment(forLaunchEnvValue: String) {
-        switch forLaunchEnvValue {
-        case self.launchEnvValueDevelopment: self.environment = .development
-        case self.launchEnvValueStage: self.environment = .stage
-        case self.launchEnvValueProduction: self.environment = .production
-        default: self.environment = .production
-        }
-    }
 
     // MARK: Private methods
-
-    /// Sets application run environment based on the launch key parameter
-    /// Environment value determines the backend service endpoint URLs and other run environment specific details
-    private func configureEnvironment() {
-        guard let launchEnvValue = ProcessInfo.processInfo.environment[self.launchEnvKey] else {
-            self.environment = .production
-            return
-        }
-        self.setEnvironment(forLaunchEnvValue: launchEnvValue)
-    }
 
     private func getQualifiedURL(for endpoint: String, baseURLString: String) -> URL? {
         let qualifiedURLString = baseURLString.appending(endpoint)
         let qualifiedURL = URL(string: qualifiedURLString)
         return qualifiedURL
     }
-}
-
-/**
- TSEnvironment enumeration defines build time environment for the library
- */
-enum TSEnvironment {
-    case development
-    case stage
-    case production
 }
 
 /**

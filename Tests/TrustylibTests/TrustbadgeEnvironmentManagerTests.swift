@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2023 Trusted Shops GmbH
+//  Copyright (C) 2023 Trusted Shops AG
 //
 //  MIT License
 //
@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 20/05/23.
+//  Created by Prem Pratap Singh on 05/10/23.
 //
 
 
@@ -29,31 +29,34 @@ import XCTest
 @testable import Trustylib
 
 /**
- TSBackendServiceURLTests tests library API url related workflows like
- setting up of the current environment, accuracy of the API urls, etc.
+ TrustbadgeEnvironmentManagerTests tests the workflow for setting accurate Trustbadge environment 
  */
-final class TSBackendServiceURLTests: XCTestCase {
-
-    func testTSBackendServiceURLReturnsCorrectAPIUrl() {
-        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "development")
-        let serviceURLDev = TSBackendServiceURL.shared.getShopGradeServiceUrl(for: "TestChannel")?.absoluteString
+final class TrustbadgeEnvironmentManagerTests: XCTestCase {
+    
+    func testTrustbadgeEnvironmentManagerSetsProductionAsDefaultEnvironment() {
         XCTAssert(
-            serviceURLDev == "https://integrations.etrusted.koeln/feeds/grades/v1/channels/TestChannel/touchpoints/all/feed.json",
-            "TSBackendServiceURL should return correct API url for the given environment"
+            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
+            "TrustbadgeEnvironmentManager should set production as the deefault when info plist variable is not found"
+        )
+    }
+    
+    func testTrustbadgeEnvironmentManagerSetsCorrectEnvironment() {
+        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "development")
+        XCTAssert(
+            TrustbadgeEnvironmentManager.shared.currentEnvironment == .development,
+            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
         )
         
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "stage")
-        let serviceURLTest = TSBackendServiceURL.shared.getShopGradeServiceUrl(for: "TestChannel")?.absoluteString
         XCTAssert(
-            serviceURLTest == "https://integrations.etrusted.site/feeds/grades/v1/channels/TestChannel/touchpoints/all/feed.json",
-            "TSBackendServiceURL should return correct API url for the given environment"
+            TrustbadgeEnvironmentManager.shared.currentEnvironment == .stage,
+            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
         )
         
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "production")
-        let serviceURLProd = TSBackendServiceURL.shared.getShopGradeServiceUrl(for: "TestChannel")?.absoluteString
         XCTAssert(
-            serviceURLProd == "https://integrations.etrusted.com/feeds/grades/v1/channels/TestChannel/touchpoints/all/feed.json",
-            "TSBackendServiceURL should return correct API url for the given environment"
+            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
+            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
         )
     }
 }
