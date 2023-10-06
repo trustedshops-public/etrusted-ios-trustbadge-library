@@ -62,8 +62,6 @@ public struct TrustbadgeView: View {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
-        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
-        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading
     ) {
@@ -72,8 +70,6 @@ public struct TrustbadgeView: View {
                 tsId: tsId,
                 channelId: channelId,
                 productId: productId,
-                orderDetails: orderDetails,
-                trustCardState: trustCardState,
                 context: context,
                 alignment: alignment
             )

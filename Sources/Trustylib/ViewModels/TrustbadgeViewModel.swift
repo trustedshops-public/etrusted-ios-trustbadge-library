@@ -125,18 +125,16 @@ class TrustbadgeViewModel: ObservableObject {
         tsId: String,
         channelId: String? = nil,
         productId: String? = nil,
-        orderDetails: Binding<OrderDetailsModel?> = .constant(nil),
-        trustCardState: Binding<TrustcardState?> = .constant(nil),
         context: TrustbadgeContext,
         alignment: TrustbadgeViewAlignment = .leading) {
             self.tsId = tsId
             self.channelId = channelId
             self.productId = productId
-            self.orderDetails = orderDetails
-            self.trustCardState = trustCardState
             self.context = context
             self.alignment = alignment
             self.iconImageName = TrustbadgeState.default(false).iconImageName
+            self.orderDetails = .constant(nil)
+            self.trustCardState = .constant(nil)
             
             self.setTrustcardVisibilityState()
     }

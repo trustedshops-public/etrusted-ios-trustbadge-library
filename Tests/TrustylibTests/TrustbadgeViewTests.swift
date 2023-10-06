@@ -64,48 +64,6 @@ final class TrustbadgeViewTests: XCTestCase {
         )
     }
     
-    func testTrustbadgeViewBuyerProtectionInitializesWithCorrectValues() throws {
-        let orderDetails = OrderDetailsModel(number: "123", amount: 789, currency: .eur, paymentType: "credit-card", estimatedDeliveryDate: "23-11-2023", buyerEmail: "abc@xyz.com")
-        
-        let trustbadgeView = TrustbadgeView(
-            tsId: self.tsId,
-            channelId: self.channelId,
-            orderDetails: .constant(orderDetails)  ,
-            trustCardState: .constant(.classicProtection),
-            context: .buyerProtection
-        )
-        
-        XCTAssertNotNil(
-            trustbadgeView.currentViewModel,
-            "TrustbadgeView should initialize view model during initialization"
-        )
-        
-        XCTAssert(
-            trustbadgeView.currentViewModel.tsId == self.tsId,
-            "TrustbadgeView should set correct tsid during initialization"
-        )
-        
-        XCTAssert(
-            trustbadgeView.currentViewModel.channelId == self.channelId,
-            "TrustbadgeView should set correct channel id during initialization"
-        )
-        
-        XCTAssertNotNil(
-            trustbadgeView.currentViewModel.orderDetails,
-            "TrustbadgeView should set correct order details during initialization"
-        )
-        
-        XCTAssertNotNil(
-            trustbadgeView.currentViewModel.trustCardState,
-            "TrustbadgeView should set correct trustcard state during initialization"
-        )
-        
-        XCTAssert(
-            trustbadgeView.currentViewModel.context == .buyerProtection,
-            "TrustbadgeView should set correct context during initialization"
-        )
-    }
-    
     func testTrustbadgeViewBodyIsNotNilForShopGradeContext() {
         let trustbadgeView = TrustbadgeView(
             tsId: self.tsId,
