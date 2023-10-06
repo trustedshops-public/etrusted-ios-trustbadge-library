@@ -56,4 +56,27 @@ final class TSBackendServiceURLTests: XCTestCase {
             "TSBackendServiceURL should return correct API url for the given environment"
         )
     }
+    
+    func testTSBackendServiceURLReturnsCorrectCDNUrl() {
+        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "development")
+        let serviceURLDev = TSBackendServiceURL.shared.getTrustmarkDetailsServiceUrl(for: "TestTSID")?.absoluteString
+        XCTAssert(
+            serviceURLDev == "https://cdn1.api-dev.trustedshops.com/shops/TestTSID/mobiles/v1/sdks/ios/trustmarks.json",
+            "TSBackendServiceURL should return correct CDN url for the given environment"
+        )
+        
+        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "stage")
+        let serviceURLTest = TSBackendServiceURL.shared.getTrustmarkDetailsServiceUrl(for: "TestTSID")?.absoluteString
+        XCTAssert(
+            serviceURLTest == "https://cdn1.api-qa.trustedshops.com/shops/TestTSID/mobiles/v1/sdks/ios/trustmarks.json",
+            "TSBackendServiceURL should return correct CDN url for the given environment"
+        )
+        
+        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "production")
+        let serviceURLProd = TSBackendServiceURL.shared.getTrustmarkDetailsServiceUrl(for: "TestTSID")?.absoluteString
+        XCTAssert(
+            serviceURLProd == "https://cdn1.api.trustedshops.com/shops/TestTSID/mobiles/v1/sdks/ios/trustmarks.json",
+            "TSBackendServiceURL should return correct CDN url for the given environment"
+        )
+    }
 }

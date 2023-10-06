@@ -53,6 +53,12 @@ final class TrustbadgeEnvironmentManagerTests: XCTestCase {
             "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
         )
         
+        TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "invalid")
+        XCTAssert(
+            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
+            "TrustbadgeEnvironmentManager should set environment to production for invalid info plist value"
+        )
+        
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "production")
         XCTAssert(
             TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
