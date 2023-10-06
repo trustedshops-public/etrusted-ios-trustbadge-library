@@ -34,35 +34,20 @@ import XCTest
 final class TrustbadgeEnvironmentManagerTests: XCTestCase {
     
     func testTrustbadgeEnvironmentManagerSetsProductionAsDefaultEnvironment() {
-        XCTAssert(
-            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
-            "TrustbadgeEnvironmentManager should set production as the deefault when info plist variable is not found"
-        )
+        XCTAssert(TrustbadgeEnvironmentManager.shared.currentEnvironment == .production, "TrustbadgeEnvironmentManager should set production as the deefault when info plist variable is not found")
     }
     
     func testTrustbadgeEnvironmentManagerSetsCorrectEnvironment() {
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "development")
-        XCTAssert(
-            TrustbadgeEnvironmentManager.shared.currentEnvironment == .development,
-            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
-        )
+        XCTAssert(TrustbadgeEnvironmentManager.shared.currentEnvironment == .development, "TrustbadgeEnvironmentManager should set correct environment for the given info plist value")
         
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "stage")
-        XCTAssert(
-            TrustbadgeEnvironmentManager.shared.currentEnvironment == .stage,
-            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
-        )
+        XCTAssert(TrustbadgeEnvironmentManager.shared.currentEnvironment == .stage, "TrustbadgeEnvironmentManager should set correct environment for the given info plist value")
         
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "invalid")
-        XCTAssert(
-            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
-            "TrustbadgeEnvironmentManager should set environment to production for invalid info plist value"
-        )
+        XCTAssert(TrustbadgeEnvironmentManager.shared.currentEnvironment == .production, "TrustbadgeEnvironmentManager should set environment to production for invalid info plist value")
         
         TrustbadgeEnvironmentManager.shared.testSetEnvironment(forValue: "production")
-        XCTAssert(
-            TrustbadgeEnvironmentManager.shared.currentEnvironment == .production,
-            "TrustbadgeEnvironmentManager should set correct environment for the given info plist value"
-        )
+        XCTAssert(TrustbadgeEnvironmentManager.shared.currentEnvironment == .production, "TrustbadgeEnvironmentManager should set correct environment for the given info plist value")
     }
 }
