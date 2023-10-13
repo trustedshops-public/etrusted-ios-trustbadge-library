@@ -35,7 +35,7 @@ Trustylib can be added to your iOS projects via both [Swift Package Manager](htt
 Trustylib library can easily be added to xcode projects via Swift Package Manager. Here is how it is done,
 
 1. While xcode project is open, go to `File > Add Packages... >`<br>
-2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.4`<br>
+2. Enter Trustylib library's git URL (https://github.com/trustedshops-public/etrusted-ios-trustbadge-library.git) in the search box, xcode will display the library details. Please select `Upto next major version` for the dependancy rule, xcode will automatically fill the latest Trustylib release version number i.e. `1.2.6`<br>
 <img width="500" src="https://user-images.githubusercontent.com/27926337/215734320-5441934d-7aa3-4d38-9720-812a1a656e11.png"><br> 
 3. Click on `Add package` button. Xcode will clone the Trustylib git repository and attach to the xcode project, it should look like this,<br>
 <img width="250" src="https://user-images.githubusercontent.com/27926337/215734354-9c807b84-aa46-4ad3-937a-31f33c21d8b9.png"><br>
@@ -62,7 +62,7 @@ And then run pod install command in the terminal,
 pod install
 ```
 
-You should now have the latest version i.e. `1.2.4` of Trustylib library added to your xcode project!
+You should now have the latest version i.e. `1.2.6` of Trustylib library added to your xcode project!
 
 ## 2. Configuration ##
 Trustylib calls TrustedShops backend API for loading details like trust certificate validity, grade/rating, buyer protection, etc. TrustedShops backend API has three environments `development`, `stage` and `production` and Trustylib can be configured to connect to one of these environments for loading your shop and product grade/rating details.
