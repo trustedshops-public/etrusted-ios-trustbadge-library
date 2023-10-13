@@ -265,7 +265,7 @@ class TrustbadgeViewModel: ObservableObject {
      `shouldShowTrustcardView` boolean flag controls the visiblity of TrustcardView
      */
     func setTrustcardVisibilityState() {
-        self.shouldShowTrustcardView = self.orderDetails != nil && self.trustCardState != nil
+        self.shouldShowTrustcardView = self.orderDetails.wrappedValue != nil && self.trustCardState.wrappedValue != nil
     }
 }
 
