@@ -61,4 +61,24 @@ public extension Color {
     static var tsPineapple500: Color {
         return Color(red: 1, green: 0.86, blue: 0.05)
     }
+    
+    /// Trustedshops blue 700 color
+    static var tsBlue150: Color {
+        return Color(red: 0.5, green: 0.74, blue: 0.94)
+    }
+    
+    /// Trustedshops blue 700 color
+    static var tsBlue700: Color {
+        return Color(red: 0, green: 0.35, blue: 0.63)
+    }
+    
+    /// Trustedshops blue 800 color
+    static var tsBlue800: Color {
+        return Color(red: 0, green: 0.30, blue: 0.53)
+    }
+    
+    /// Trustedshops green 500 color
+    static var tsGreen500: Color {
+        return Color(red: 0.30, green: 0.72, blue: 0.37)
+    }
 }

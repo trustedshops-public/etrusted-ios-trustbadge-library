@@ -21,33 +21,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 15/09/23.
 //
 
-import Foundation
 
+import XCTest
+@testable import Trustylib
 
-/**
- TrustbadgeState enumeration defines different possible UI states for the trustbadge view.
- These states are,
- 1. `default` - In default state, the trustbadge view is presented as a circular badge icon aka `Seal`
- 2. `expanded` - In expended state, the trustbadge view shows a sub view expanding to show shop/product grade or other details
- 3. `expandedAsCard` - In this state, the trustbadge view is shown as a card. For example: Trustcard that shows details about buyer protection.
- 4. `invisible` - In this state, the trustbadge view contents are hidden
- */
-enum TrustbadgeState: Equatable {
-    case `default`(Bool)
-    case expanded
-    case expandedAsCard
-    case invisible
+final class TrustcardBorderGraphicsTests: XCTestCase {
 
-    // MARK: Public properties
-
-    /// Icon name for the state
-    var iconImageName: String? {
-        switch self {
-        case .default(let isValid): return isValid ? "trustMarkIcon" : "trustMarkIconInvalidCertificate"
-        case .expanded, .expandedAsCard, .invisible: return nil
+    func testTrustcardBorderGraphicsBodyIsNotNil() throws {
+        let graphics = TrustcardBorderGraphics()
+        XCTAssertNotNil(
+            graphics.body,
+            "TrustcardBorderGraphics body shouldn't return nil value"
+        )
+    }
+    
+    func testTrustcardBorderGraphicsLoadsBannerImageCorrectly() throws {
+        let graphics = TrustcardBorderGraphics()
+        graphics.loadBannerGraphics(name: "trustcardBanner-Dark") { didLoadGraphics in
+            XCTAssertTrue(
+                didLoadGraphics,
+                "TrustcardBorderGraphics should load banner graphics from resource bundle correctly"
+            )
+        }
+        graphics.loadBannerGraphics(name: "trustcardBanner") { didLoadGraphics in
+            XCTAssertFalse(
+                didLoadGraphics,
+                "TrustcardBorderGraphics should load banner graphics from resource bundle correctly"
+            )
         }
     }
 }

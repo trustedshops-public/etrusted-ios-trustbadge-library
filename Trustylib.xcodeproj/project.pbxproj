@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1062E102AB8011F0050EF1A /* TestDataLoadWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */; };
+		C1062E232AB97B9E0050EF1A /* trustcardBanner-Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */; };
 		C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */; };
 		C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */; };
 		C119218729852A1400A550C7 /* Trustylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C119217C29852A1400A550C7 /* Trustylib.framework */; };
+		C11B3EB72AB49A0F00C14ECE /* OrderDetailsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EB62AB49A0F00C14ECE /* OrderDetailsModelTests.swift */; };
+		C11B3EB92AB49B4600C14ECE /* TrustcardStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EB82AB49B4600C14ECE /* TrustcardStateTests.swift */; };
+		C11B3EBB2AB4A0B200C14ECE /* TrustcardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EBA2AB4A0B200C14ECE /* TrustcardViewTests.swift */; };
+		C11B3EBD2AB4BA3800C14ECE /* TrustcardBorderGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EBC2AB4BA3800C14ECE /* TrustcardBorderGraphicsTests.swift */; };
+		C11B3EBF2AB7080D00C14ECE /* ClassicProtectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EBE2AB7080D00C14ECE /* ClassicProtectionViewTests.swift */; };
+		C11B3EC12AB7082800C14ECE /* ProtectionConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EC02AB7082800C14ECE /* ProtectionConfirmationViewTests.swift */; };
+		C11B3EC32AB7224A00C14ECE /* ProtectionTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11B3EC22AB7224A00C14ECE /* ProtectionTermsView.swift */; };
 		C11BE9192A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */; };
 		C11BE9262A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C11BE9242A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png */; };
 		C11BE9272A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png in Resources */ = {isa = PBXBuildFile; fileRef = C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */; };
@@ -46,9 +55,17 @@
 		C11CE87429881DA8000D6083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C11CE84129881DA8000D6083 /* Localizable.strings */; };
 		C11CE87629881E1A000D6083 /* Trustylib.h in Headers */ = {isa = PBXBuildFile; fileRef = C11CE87529881E1A000D6083 /* Trustylib.h */; };
 		C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */; };
+		C121D8662ACE924100AE9333 /* TrustbadgeEnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121D8652ACE924100AE9333 /* TrustbadgeEnvironmentManager.swift */; };
+		C121D8682ACE97EB00AE9333 /* TrustbadgeEnvironmentManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C121D8672ACE97EB00AE9333 /* TrustbadgeEnvironmentManagerTests.swift */; };
 		C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */; };
 		C1270A9329F5ABEF00388694 /* ProductGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */; };
 		C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */; };
+		C12D405F2AAA41D30058B14B /* OrderDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */; };
+		C12D40622AACF4680058B14B /* TrustcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40612AACF4680058B14B /* TrustcardView.swift */; };
+		C12D40642AACF4ED0058B14B /* TrustcardBorderGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40632AACF4ED0058B14B /* TrustcardBorderGraphics.swift */; };
+		C12D40662AACFE580058B14B /* trustcardBanner-Light.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D40652AACFE580058B14B /* trustcardBanner-Light.png */; };
+		C12D40682AAE09990058B14B /* ClassicProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40672AAE09990058B14B /* ClassicProtectionView.swift */; };
+		C12D406A2AAE09AE0058B14B /* ProtectionConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D40692AAE09AE0058B14B /* ProtectionConfirmationView.swift */; };
 		C1324140299B60AB00C36A11 /* TrustbadgeConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */; };
 		C163FBED29ACA3810090548F /* TrustbadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */; };
 		C163FBEF29AD02F30090548F /* ShopGradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */; };
@@ -80,6 +97,7 @@
 		C1A983F929F59C4E00D83BBF /* product_ratings_service_response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1A983F329F598A600D83BBF /* product_ratings_service_response.json */; };
 		C1A983FB29F5A1B100D83BBF /* ProductRatingsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A983FA29F5A1B100D83BBF /* ProductRatingsModelTests.swift */; };
 		C1A983FD29F5A5BF00D83BBF /* ProductDetailsDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A983FC29F5A5BF00D83BBF /* ProductDetailsDataServiceTests.swift */; };
+		C1B79E2D2AA777D5009C4CEA /* TrustcardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B79E2C2AA777D5009C4CEA /* TrustcardState.swift */; };
 		C1B99E5229AE0A9B00F80599 /* ShopGradeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5129AE0A9B00F80599 /* ShopGradeViewModelTests.swift */; };
 		C1B99E5629AE282900F80599 /* TrustbadgeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5529AE282900F80599 /* TrustbadgeViewTests.swift */; };
 		C1B99E5829AE306400F80599 /* ShopGradeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B99E5729AE306400F80599 /* ShopGradeViewTests.swift */; };
@@ -109,10 +127,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataLoadWorker.swift; sourceTree = "<group>"; };
+		C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustcardBanner-Dark.png"; sourceTree = "<group>"; };
 		C1148D1029D6E51700851428 /* TSNetworkDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkDataServiceTests.swift; sourceTree = "<group>"; };
 		C1148D1229D6ED2A00851428 /* StarRatingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewTests.swift; sourceTree = "<group>"; };
 		C119217C29852A1400A550C7 /* Trustylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trustylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C119218629852A1400A550C7 /* TrustylibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrustylibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C11B3EB62AB49A0F00C14ECE /* OrderDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsModelTests.swift; sourceTree = "<group>"; };
+		C11B3EB82AB49B4600C14ECE /* TrustcardStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardStateTests.swift; sourceTree = "<group>"; };
+		C11B3EBA2AB4A0B200C14ECE /* TrustcardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardViewTests.swift; sourceTree = "<group>"; };
+		C11B3EBC2AB4BA3800C14ECE /* TrustcardBorderGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardBorderGraphicsTests.swift; sourceTree = "<group>"; };
+		C11B3EBE2AB7080D00C14ECE /* ClassicProtectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicProtectionViewTests.swift; sourceTree = "<group>"; };
+		C11B3EC02AB7082800C14ECE /* ProtectionConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionConfirmationViewTests.swift; sourceTree = "<group>"; };
+		C11B3EC22AB7224A00C14ECE /* ProtectionTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionTermsView.swift; sourceTree = "<group>"; };
 		C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadeColorSchemeManager.swift; sourceTree = "<group>"; };
 		C11BE9242A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustMarkIconInvalidCertificate-Dark.png"; sourceTree = "<group>"; };
 		C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustMarkIconInvalidCertificate-Light.png"; sourceTree = "<group>"; };
@@ -149,9 +176,17 @@
 		C11CE84329881DA8000D6083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C11CE87529881E1A000D6083 /* Trustylib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trustylib.h; sourceTree = "<group>"; };
 		C11CE8962988B6A0000D6083 /* TrustbadgeResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeResources.swift; sourceTree = "<group>"; };
+		C121D8652ACE924100AE9333 /* TrustbadgeEnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeEnvironmentManager.swift; sourceTree = "<group>"; };
+		C121D8672ACE97EB00AE9333 /* TrustbadgeEnvironmentManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeEnvironmentManagerTests.swift; sourceTree = "<group>"; };
 		C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeColorSchemeTests.swift; sourceTree = "<group>"; };
 		C1270A9229F5ABEF00388694 /* ProductGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1270A9429F5B1A700388694 /* ProductGradeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGradeViewTests.swift; sourceTree = "<group>"; };
+		C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsModel.swift; sourceTree = "<group>"; };
+		C12D40612AACF4680058B14B /* TrustcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardView.swift; sourceTree = "<group>"; };
+		C12D40632AACF4ED0058B14B /* TrustcardBorderGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardBorderGraphics.swift; sourceTree = "<group>"; };
+		C12D40652AACFE580058B14B /* trustcardBanner-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trustcardBanner-Light.png"; sourceTree = "<group>"; };
+		C12D40672AAE09990058B14B /* ClassicProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicProtectionView.swift; sourceTree = "<group>"; };
+		C12D40692AAE09AE0058B14B /* ProtectionConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionConfirmationView.swift; sourceTree = "<group>"; };
 		C132413F299B60AB00C36A11 /* TrustbadgeConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrustbadgeConfiguration.plist; sourceTree = "<group>"; };
 		C163FBEC29ACA3810090548F /* TrustbadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewModel.swift; sourceTree = "<group>"; };
 		C163FBEE29AD02F30090548F /* ShopGradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewModel.swift; sourceTree = "<group>"; };
@@ -183,6 +218,7 @@
 		C1A983F529F598DD00D83BBF /* ProductDetailsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsModelTests.swift; sourceTree = "<group>"; };
 		C1A983FA29F5A1B100D83BBF /* ProductRatingsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRatingsModelTests.swift; sourceTree = "<group>"; };
 		C1A983FC29F5A5BF00D83BBF /* ProductDetailsDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsDataServiceTests.swift; sourceTree = "<group>"; };
+		C1B79E2C2AA777D5009C4CEA /* TrustcardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustcardState.swift; sourceTree = "<group>"; };
 		C1B99E5129AE0A9B00F80599 /* ShopGradeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewModelTests.swift; sourceTree = "<group>"; };
 		C1B99E5529AE282900F80599 /* TrustbadgeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustbadgeViewTests.swift; sourceTree = "<group>"; };
 		C1B99E5729AE306400F80599 /* ShopGradeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGradeViewTests.swift; sourceTree = "<group>"; };
@@ -220,6 +256,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1062E0D2AB7FD320050EF1A /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				C1062E0E2AB7FD4A0050EF1A /* TestDataLoadWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		C119217229852A1300A550C7 = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +293,7 @@
 		C11CE80329881DA8000D6083 /* Trustylib */ = {
 			isa = PBXGroup;
 			children = (
+				C121D8642ACE922300AE9333 /* Managers */,
 				C11CE87529881E1A000D6083 /* Trustylib.h */,
 				C11CE80529881DA8000D6083 /* Resources */,
 				C11CE81029881DA8000D6083 /* Models */,
@@ -281,6 +326,8 @@
 				C11BE9252A40ED5500B3DEE5 /* trustMarkIconInvalidCertificate-Light.png */,
 				C16E4BE629D317BD00039933 /* buyerProtectionIcon.png */,
 				C11CE80829881DA8000D6083 /* shopGradeIcon.png */,
+				C1062E222AB97B9E0050EF1A /* trustcardBanner-Dark.png */,
+				C12D40652AACFE580058B14B /* trustcardBanner-Light.png */,
 				C11CE80929881DA8000D6083 /* trustMarkIcon.png */,
 			);
 			path = Images;
@@ -306,6 +353,8 @@
 				C190462229D416260054BEE4 /* CurrencyCode.swift */,
 				C1A983ED29F4618A00D83BBF /* ProductDetailsModel.swift */,
 				C1A983E529F4449000D83BBF /* ProductGradeModel.swift */,
+				C1B79E2C2AA777D5009C4CEA /* TrustcardState.swift */,
+				C12D405E2AAA41D30058B14B /* OrderDetailsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -323,7 +372,6 @@
 			children = (
 				C11CE81B29881DA8000D6083 /* Logger */,
 				C190465529D64A0F0054BEE4 /* GradeCalculator.swift */,
-				C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -349,6 +397,7 @@
 		C11CE82329881DA8000D6083 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C12D40602AACF44A0058B14B /* Trustcard */,
 				C11CE82429881DA8000D6083 /* TrustbadgeViewAlignment.swift */,
 				C1FC40052A3AED0D00E09D66 /* TrustbadgeColorScheme.swift */,
 				C11CE82529881DA8000D6083 /* TrustbadgeViewWrapper.swift */,
@@ -422,6 +471,27 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		C121D8642ACE922300AE9333 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C121D8652ACE924100AE9333 /* TrustbadgeEnvironmentManager.swift */,
+				C11BE9182A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C12D40602AACF44A0058B14B /* Trustcard */ = {
+			isa = PBXGroup;
+			children = (
+				C12D40612AACF4680058B14B /* TrustcardView.swift */,
+				C12D40632AACF4ED0058B14B /* TrustcardBorderGraphics.swift */,
+				C12D40672AAE09990058B14B /* ClassicProtectionView.swift */,
+				C12D40692AAE09AE0058B14B /* ProtectionConfirmationView.swift */,
+				C11B3EC22AB7224A00C14ECE /* ProtectionTermsView.swift */,
+			);
+			path = Trustcard;
+			sourceTree = "<group>";
+		};
 		C1324137299B572800C36A11 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +503,7 @@
 		C1324138299B572800C36A11 /* TrustylibTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1062E0D2AB7FD320050EF1A /* Workers */,
 				C1C33EA1299BE56000676059 /* TestUtils */,
 				C132413E299B607000C36A11 /* TestResources */,
 				C1C33E99299B8DA800676059 /* TrustmarkDataServiceTests.swift */,
@@ -463,6 +534,13 @@
 				C1DB631A2A17FA0D00EB56DD /* TSBackendServiceURLTests.swift */,
 				C11BE9302A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift */,
 				C12631832A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift */,
+				C11B3EB62AB49A0F00C14ECE /* OrderDetailsModelTests.swift */,
+				C11B3EB82AB49B4600C14ECE /* TrustcardStateTests.swift */,
+				C11B3EBA2AB4A0B200C14ECE /* TrustcardViewTests.swift */,
+				C11B3EBC2AB4BA3800C14ECE /* TrustcardBorderGraphicsTests.swift */,
+				C11B3EBE2AB7080D00C14ECE /* ClassicProtectionViewTests.swift */,
+				C11B3EC02AB7082800C14ECE /* ProtectionConfirmationViewTests.swift */,
+				C121D8672ACE97EB00AE9333 /* TrustbadgeEnvironmentManagerTests.swift */,
 			);
 			path = TrustylibTests;
 			sourceTree = "<group>";
@@ -592,6 +670,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12D40662AACFE580058B14B /* trustcardBanner-Light.png in Resources */,
+				C1062E232AB97B9E0050EF1A /* trustcardBanner-Dark.png in Resources */,
 				C11CE84A29881DA8000D6083 /* shopGradeIcon.png in Resources */,
 				C11CE84B29881DA8000D6083 /* trustMarkIcon.png in Resources */,
 				C11CE87429881DA8000D6083 /* Localizable.strings in Resources */,
@@ -623,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B79E2D2AA777D5009C4CEA /* TrustcardState.swift in Sources */,
 				C11CE85129881DA8000D6083 /* ShopGradeModel.swift in Sources */,
 				C11CE8972988B6A0000D6083 /* TrustbadgeResources.swift in Sources */,
 				C11CE86D29881DA8000D6083 /* TSNetworkServiceHeaderField.swift in Sources */,
@@ -633,6 +714,7 @@
 				C11CE85629881DA8000D6083 /* Date + Formatting.swift in Sources */,
 				C11CE85F29881DA8000D6083 /* Color + TsColors.swift in Sources */,
 				C163FBEF29AD02F30090548F /* ShopGradeViewModel.swift in Sources */,
+				C11B3EC32AB7224A00C14ECE /* ProtectionTermsView.swift in Sources */,
 				C11CE86329881DA8000D6083 /* TrustbadgeView.swift in Sources */,
 				C11CE85529881DA8000D6083 /* TrustmarkDetailsModel.swift in Sources */,
 				C11CE87029881DA8000D6083 /* TSNetworkServiceResponseConfiguration.swift in Sources */,
@@ -645,14 +727,19 @@
 				C11CE84E29881DA8000D6083 /* ResourceExtension.swift in Sources */,
 				C1FC40062A3AED0D00E09D66 /* TrustbadgeColorScheme.swift in Sources */,
 				C11CE86C29881DA8000D6083 /* TSNetworkServiceMethod.swift in Sources */,
+				C12D40622AACF4680058B14B /* TrustcardView.swift in Sources */,
 				C11CE85429881DA8000D6083 /* TrustbadgeContext.swift in Sources */,
 				C16E4BEB29D31A5800039933 /* BuyerProtectionDataService.swift in Sources */,
 				C1A983E829F4454A00D83BBF /* ProductGradeViewModel.swift in Sources */,
 				C11CE86229881DA8000D6083 /* StarRatingView.swift in Sources */,
+				C12D405F2AAA41D30058B14B /* OrderDetailsModel.swift in Sources */,
+				C121D8662ACE924100AE9333 /* TrustbadgeEnvironmentManager.swift in Sources */,
 				C190462329D416260054BEE4 /* CurrencyCode.swift in Sources */,
 				C11BE9192A403DE500B3DEE5 /* TrustbadeColorSchemeManager.swift in Sources */,
+				C12D40642AACF4ED0058B14B /* TrustcardBorderGraphics.swift in Sources */,
 				C1A983E629F4449000D83BBF /* ProductGradeModel.swift in Sources */,
 				C190462129D38A6C0054BEE4 /* BuyerProtectionView.swift in Sources */,
+				C12D40682AAE09990058B14B /* ClassicProtectionView.swift in Sources */,
 				C11CE85829881DA8000D6083 /* TSLogger.swift in Sources */,
 				C1A983EA29F445E100D83BBF /* ProductGradeView.swift in Sources */,
 				C11CE87129881DA8000D6083 /* TSNetworkServiceError.swift in Sources */,
@@ -664,6 +751,7 @@
 				C11CE85B29881DA8000D6083 /* TypeAliases.swift in Sources */,
 				C1A983EC29F44B8C00D83BBF /* ProductDetailsDataService.swift in Sources */,
 				C11CE86E29881DA8000D6083 /* TSNetworkServiceRequest.swift in Sources */,
+				C12D406A2AAE09AE0058B14B /* ProtectionConfirmationView.swift in Sources */,
 				C190465629D64A0F0054BEE4 /* GradeCalculator.swift in Sources */,
 				C163FBED29ACA3810090548F /* TrustbadgeViewModel.swift in Sources */,
 				C11CE85E29881DA8000D6083 /* TrustbadgeViewWrapper.swift in Sources */,
@@ -676,19 +764,24 @@
 			files = (
 				C190465229D5A2B10054BEE4 /* BuyerProtectionDataServiceTests.swift in Sources */,
 				C1B99E5C29AE3F1A00F80599 /* TrustbadgeViewWrapperTests.swift in Sources */,
+				C11B3EBF2AB7080D00C14ECE /* ClassicProtectionViewTests.swift in Sources */,
 				C1A401EA29F6CCBC008B1184 /* CurrencyCodeTests.swift in Sources */,
 				C1C33EA7299CAD7000676059 /* AggregateRatingsModelTests.swift in Sources */,
 				C1B99E5229AE0A9B00F80599 /* ShopGradeViewModelTests.swift in Sources */,
 				C1C33E9C299B950E00676059 /* ShopGradeDataServiceTests.swift in Sources */,
 				C1C33E9A299B8DA800676059 /* TrustmarkDataServiceTests.swift in Sources */,
 				C1B99E5829AE306400F80599 /* ShopGradeViewTests.swift in Sources */,
+				C11B3EC12AB7082800C14ECE /* ProtectionConfirmationViewTests.swift in Sources */,
 				C1B99E7629AF2C1800F80599 /* TSErrorTypeTests.swift in Sources */,
+				C121D8682ACE97EB00AE9333 /* TrustbadgeEnvironmentManagerTests.swift in Sources */,
 				C1B99E5A29AE345500F80599 /* CustomComponentsTests.swift in Sources */,
 				C1A983FD29F5A5BF00D83BBF /* ProductDetailsDataServiceTests.swift in Sources */,
 				C1C33EA9299CB1C000676059 /* TrustmarkDetailsModelTests.swift in Sources */,
 				C170E34829ADE5C300CC55B4 /* TrustbadgeViewModelTests.swift in Sources */,
+				C1062E102AB8011F0050EF1A /* TestDataLoadWorker.swift in Sources */,
 				C190465829D64B530054BEE4 /* GradeCalculatorTests.swift in Sources */,
 				C190465029D598460054BEE4 /* BuyerProtectionViewModelTests.swift in Sources */,
+				C11B3EB92AB49B4600C14ECE /* TrustcardStateTests.swift in Sources */,
 				C190465429D5A59D0054BEE4 /* BuyerProtectionViewTests.swift in Sources */,
 				C1B99E5629AE282900F80599 /* TrustbadgeViewTests.swift in Sources */,
 				C1A401E829F6AA15008B1184 /* GradeAndRatingViewTests.swift in Sources */,
@@ -697,10 +790,13 @@
 				C190464E29D58F7A0054BEE4 /* BuyerProtectionDetailsModelTests.swift in Sources */,
 				C1A983FB29F5A1B100D83BBF /* ProductRatingsModelTests.swift in Sources */,
 				C1148D1129D6E51700851428 /* TSNetworkDataServiceTests.swift in Sources */,
+				C11B3EBD2AB4BA3800C14ECE /* TrustcardBorderGraphicsTests.swift in Sources */,
 				C1A983F629F598DD00D83BBF /* ProductDetailsModelTests.swift in Sources */,
 				C1270A9529F5B1A700388694 /* ProductGradeViewTests.swift in Sources */,
+				C11B3EB72AB49A0F00C14ECE /* OrderDetailsModelTests.swift in Sources */,
 				C11BE9312A40FDB300B3DEE5 /* TrustbadeColorSchemeManagerTests.swift in Sources */,
 				C12631842A417664004AD6A2 /* TrustbadgeColorSchemeTests.swift in Sources */,
+				C11B3EBB2AB4A0B200C14ECE /* TrustcardViewTests.swift in Sources */,
 				C1C33EA3299BE5A800676059 /* FileDataLoader.swift in Sources */,
 				C1148D1329D6ED2A00851428 /* StarRatingViewTests.swift in Sources */,
 			);
@@ -860,6 +956,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -893,6 +990,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -922,6 +1020,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SP56HZ86QA;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xparrow.iOS.TrustylibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -939,6 +1039,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SP56HZ86QA;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xparrow.iOS.TrustylibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

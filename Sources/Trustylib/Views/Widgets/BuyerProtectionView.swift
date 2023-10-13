@@ -33,7 +33,7 @@ import SwiftUI
  so that the required actions be taken.
  */
 protocol BuyerProtectionViewDelegate {
-    func didLoadBuyerProtectionDetails()
+    func didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: String)
 }
 
 /**
@@ -117,7 +117,7 @@ struct BuyerProtectionView: View {
     private func loadBuyerProtectionDetails() {
         self.viewModel.loadBuyerProtectionDetails(for: self.tsid) { didLoadDetails in
             guard didLoadDetails else { return }
-            self.delegate?.didLoadBuyerProtectionDetails()
+            self.delegate?.didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: self.viewModel.protectionAmountFormatted)
         }
     }
 }

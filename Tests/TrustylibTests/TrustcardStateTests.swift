@@ -21,33 +21,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  Created by Prem Pratap Singh on 24/11/22.
+//  Created by Prem Pratap Singh on 15/09/23.
 //
 
-import Foundation
 
+import XCTest
+@testable import Trustylib
 
 /**
- TrustbadgeState enumeration defines different possible UI states for the trustbadge view.
- These states are,
- 1. `default` - In default state, the trustbadge view is presented as a circular badge icon aka `Seal`
- 2. `expanded` - In expended state, the trustbadge view shows a sub view expanding to show shop/product grade or other details
- 3. `expandedAsCard` - In this state, the trustbadge view is shown as a card. For example: Trustcard that shows details about buyer protection.
- 4. `invisible` - In this state, the trustbadge view contents are hidden
+ TrustcardStateTests tests the accuracy of values returned for TrustcardState
  */
-enum TrustbadgeState: Equatable {
-    case `default`(Bool)
-    case expanded
-    case expandedAsCard
-    case invisible
-
-    // MARK: Public properties
-
-    /// Icon name for the state
-    var iconImageName: String? {
-        switch self {
-        case .default(let isValid): return isValid ? "trustMarkIcon" : "trustMarkIconInvalidCertificate"
-        case .expanded, .expandedAsCard, .invisible: return nil
-        }
+final class TrustcardStateTests: XCTestCase {
+    
+    func testTrustcardStateReturnsCorrectTitleText() throws {
+        let classicProtectionState: TrustcardState = .classicProtection
+        XCTAssertTrue(
+            classicProtectionState.getTitle(with: "123 $") == "Protect your purchase!",
+            "Trustcard's classic protection state should return correct title text"
+        )
+        
+        let protectionConfirmationState: TrustcardState = .protectionConfirmation
+        XCTAssertTrue(
+            protectionConfirmationState.getTitle(with: "123 $") == "Your purchase is protected up to 123 $",
+            "Trustcard's classic protection state should return correct title text"
+        )
     }
 }

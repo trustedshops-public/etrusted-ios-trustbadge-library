@@ -53,17 +53,32 @@ final class TrustbadgeColorSchemeTests: XCTestCase {
     func testTrustbadgeColorSchemeReturnsCorrectImageIconAssetName() throws {
         XCTAssertTrue(
             TrustbadgeColorScheme.light.iconImageName == "trustMarkIconInvalidCertificate-Light",
-            "TrustbadgeColorScheme should return correct image asset name for active schme"
+            "TrustbadgeColorScheme should return correct image asset name for active scheme"
         )
         
         XCTAssertTrue(
             TrustbadgeColorScheme.dark.iconImageName == "trustMarkIconInvalidCertificate-Dark",
-            "TrustbadgeColorScheme should return correct image asset name for active schme"
+            "TrustbadgeColorScheme should return correct image asset name for active scheme"
         )
         
         XCTAssertNil(
             TrustbadgeColorScheme.system.iconImageName,
-            "TrustbadgeColorScheme should return nil for image asset name for system schme"
+            "TrustbadgeColorScheme should return nil for image asset name for system scheme"
+        )
+        
+        XCTAssertTrue(
+            TrustbadgeColorScheme.light.trustCardBannerImageName == "trustcardBanner-Light",
+            "TrustbadgeColorScheme should return correct image asset name for active scheme"
+        )
+        
+        XCTAssertTrue(
+            TrustbadgeColorScheme.dark.trustCardBannerImageName == "trustcardBanner-Dark",
+            "TrustbadgeColorScheme should return correct image asset name for active scheme"
+        )
+        
+        XCTAssertNil(
+            TrustbadgeColorScheme.system.trustCardBannerImageName,
+            "TrustbadgeColorScheme should return nil for image asset name for system scheme"
         )
     }
 }

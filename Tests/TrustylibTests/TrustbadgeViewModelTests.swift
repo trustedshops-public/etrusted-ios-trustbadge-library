@@ -179,7 +179,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
         XCTAssert(
-            viewModel.currentState == .expended,
+            viewModel.currentState == .expanded,
             "TrustbadgeViewModel should set correct expended and default state for the shop grade context"
         )
     }
@@ -190,7 +190,7 @@ final class TrustbadgeViewModelTests: XCTestCase {
         let trustMarkDefaultStateExpectation = expectation(description: "TrustbadgeViewModel default state expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssert(
-                viewModel.currentState == .expended,
+                viewModel.currentState == .expanded,
                 "TrustbadgeViewModel should set correct expended and default state for the shop grade context"
             )
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
@@ -250,6 +250,17 @@ final class TrustbadgeViewModelTests: XCTestCase {
         XCTAssertFalse(
             didLoadProductImage,
             "TrustbadgeViewModel should load product image from a valid image url"
+        )
+    }
+    
+    func testTrustbadgeViewModelSetsCorrectTrustmarkVisibilityState() {
+        let viewModel = TrustbadgeViewModel(tsId: self.tsId, context: .productGrade)
+        let orderDetails = OrderDetailsModel(number: "123", amount: 789, currency: .eur, paymentType: "credit-card", estimatedDeliveryDate: "23-11-2023", buyerEmail: "abc@xyz.com")
+        viewModel.orderDetails = .constant(orderDetails)
+        viewModel.trustCardState = .constant(.classicProtection)
+        XCTAssertTrue(
+            viewModel.shouldShowTrustcardView,
+            "TrustbadgeViewModel should set trustcard visiblity flag to true, if order details and trustcard state are provided"
         )
     }
 }

@@ -67,10 +67,11 @@ You should now have the latest version i.e. `1.2.4` of Trustylib library added t
 ## 2. Configuration ##
 Trustylib calls TrustedShops backend API for loading details like trust certificate validity, grade/rating, buyer protection, etc. TrustedShops backend API has three environments `development`, `stage` and `production` and Trustylib can be configured to connect to one of these environments for loading your shop and product grade/rating details.
 
-Trustylib looks for a runtime environment variable `Trustylib.Environment` with supported values as `development`, `stage` and `production`. If this environment variable is found with one of the supported values, library environment is set accordingly. Else, library's environment is set to `production` as default environment.
+Trustylib looks for a `TrustbadgeEnvironment` property in your iOS app's `info.plist` file. If this property is found, Trustylib environment is set accordingly. Else, library's environment is set to `production` as default environment. <br>
+<img width="500" src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/eca813df-3764-4662-bc23-b3f68b518664">
 
-This is how, you can set this runtime environment variable via your xcode project's `scheme` settings. More details could be found [here](https://www.swiftdevjournal.com/using-environment-variables-in-swift-apps/).<br>
-<img width="500" src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/7e166e74-f875-41bd-805a-87b76f6805af">
+To provide a valid value to the `TrustbadgeEnvironment` property, you need to add a user defined property (with possible values as `development`, `stage` and `production`) under your xcode project's target build settings. This is how it is done,<br>
+<img width="500" src="https://github.com/trustedshops-public/etrusted-ios-trustbadge-library/assets/27926337/f0f5b9c7-1b23-45a2-8486-dc33ab7da29a">
 
 ## 3. Adding Trustylib UI widgets
 Trustylib has one `TrustbadgeView` view which makes it very easy to present `Trustmark`, `Shop Grade`, `Product Grade` and `Buyer Protection` widgets. We just need to provide inputs like `TSID`, `channel id`, `product id` and `context`, based on these inputs TrustbadgeView then presents the required widgets.

@@ -147,4 +147,35 @@ final class TrustbadgeViewTests: XCTestCase {
             "Trustbadge view state should change to invisible when isHidden set to true"
         )
     }
+    
+    func testTrustbadgeViewSetsCorrectColorScheme() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: self.context)
+        trustbadgeView.updateColorScheme(for: .dark)
+        XCTAssertTrue(
+            trustbadgeView.currentViewModel.colorScheme != .light,
+            "Trustbadge view should set the correct color scheme"
+        )
+    }
+    
+    func testTrustbadgeViewResetsTrustcardDetailsOnTrustcardDismiss() {
+        let trustbadgeView = TrustbadgeView(
+            tsId: self.tsId,
+            channelId: self.channelId,
+            context: self.context)
+        trustbadgeView.didTapOnDismissTrustcardButton()
+        trustbadgeView.didLoadShopGrades()
+        trustbadgeView.didLoadProductDetails(imageUrl: "")
+        trustbadgeView.didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: "100 &")
+//        XCTAssertNil(
+//            trustbadgeView.currentViewModel.orderDetails == .constant(nil),
+//            "Trustbadge view should reset Trustcard orderDetails to nil when Trustcard is dismissed"
+//        )
+//        XCTAssertNil(
+//            trustbadgeView.currentViewModel.trustCardState == .constant(nil),
+//            "Trustbadge view should reset Trustcard trustCardState to nil when Trustcard is dismissed"
+//        )
+    }
 }

@@ -134,7 +134,7 @@ class MockBuyerProtectionViewDelegate: BuyerProtectionViewDelegate {
         self.expectation = expectation
     }
     
-    func didLoadBuyerProtectionDetails() {
+    func didLoadBuyerProtectionDetails(protectionAmountWithCurrencyCode: String) {
         self.didLoadDetails = true
         self.expectation?.fulfill()
     }
