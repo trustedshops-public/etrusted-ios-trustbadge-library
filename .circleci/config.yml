@@ -6,7 +6,7 @@ orbs:
 executors:
   linux-docker:
     docker:
-      - image: cimg/base:2023.09
+      - image: cimg/base:2023.12
 
 jobs:
   build-and-test:
